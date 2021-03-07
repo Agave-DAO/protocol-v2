@@ -6,6 +6,7 @@ import {IERC20} from '../dependencies/openzeppelin/contracts/IERC20.sol';
 
 import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
 import {IChainlinkAggregator} from '../interfaces/IChainlinkAggregator.sol';
+import {mulDiv} from '../libraries/math/MathUtils.sol';
 import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
 
 /// @title AaveOracle
@@ -18,13 +19,14 @@ import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
 contract AaveOracle is IPriceOracleGetter, Ownable {
   using SafeERC20 for IERC20;
 
-  event WethSet(address indexed weth);
+  event WrappedNativeSet(address indexed wrappedNative);
   event AssetSourceUpdated(address indexed asset, address indexed source);
   event FallbackOracleUpdated(address indexed fallbackOracle);
 
   mapping(address => IChainlinkAggregator) private assetsSources;
   IPriceOracleGetter private _fallbackOracle;
-  address public immutable WETH;
+  address public immutable wrappedNative;
+  uint256 private immutable _wrappedNativeDecimals;
 
   /// @notice Constructor
   /// @param assets The addresses of the assets
@@ -35,12 +37,13 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
     address[] memory assets,
     address[] memory sources,
     address fallbackOracle,
-    address weth
+    address _wrappedNative
   ) public {
     _setFallbackOracle(fallbackOracle);
     _setAssetsSources(assets, sources);
-    WETH = weth;
-    emit WethSet(weth);
+    wrappedNative = _wrappedNative;
+    _wrappedNativeDecimals = IERC20(_wrappedNative).decimals();
+    emit WrappedNativeSet(_wrappedNative);
   }
 
   /// @notice External function called by the Aave governance to set or replace sources of assets
@@ -82,27 +85,26 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
   /// @param asset The asset address
   function getAssetPrice(address asset) public view override returns (uint256) {
     IChainlinkAggregator source = assetsSources[asset];
-    IChainlinkAggregator wethUsdSource = assetsSources[WETH];
+    IChainlinkAggregator wrappedNativeUsdSource = assetsSources[wrappedNative];
 
-    if (asset == WETH) {
+    if (asset == wrappedNative) {
+      // "ether" here refers to the unwrapped native asset of the chain
       return 1 ether;
-    } else if (address(source) == address(0) || address(wethUsdSource) == address(0)) {
+    } else if (address(source) == address(0) || address(wrappedNativeUsdSource) == address(0)) {
       return _fallbackOracle.getAssetPrice(asset);
     } else {
-      // XDAI: On xDai our native token (and thus, the wrapped version of it) is valued like DAI.
-      // Further, Chainlink aggregators on xdai are USD pairs.
-      // So, we need to first get the value of our native token in USD,
-      // so the values can make sense priced in terms of our native asset.
-      int256 wethUsdPrice = wethUsdSource.latestAnswer();
-      if (wethUsdPrice <= 0) {
+      // Get the price of our common base (USD) in our native token
+      int256 wrappedNativeUsdPrice = wrappedNativeUsdSource.latestAnswer();
+      if (wrappedNativeUsdPrice <= 0) {
         return _fallbackOracle.getAssetPrice(asset);
       }
 
       int256 price = IChainlinkAggregator(source).latestAnswer();
       if (price > 0) {
-        // Now we have the price in USD. Dividing by the DAI/USD price gets us the value in our native token.
+        // Now we have the price in USD. Dividing by the NATIVE/USD price gets us the value in our native token.
         // On mainnet, Aave and Chainlink price everything in ether, thus avoiding this double conversion.
-        return uint256(price / wethUsdPrice);
+        // Note that the NATIVE/* price includes NATIVE's decimals so we need to divide those back out here.
+        return muldiv(price, wrappedNativeUsdPrice, 10 ** _wrappedNativeDecimals);
       } else {
         return _fallbackOracle.getAssetPrice(asset);
       }

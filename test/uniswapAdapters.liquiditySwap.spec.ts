@@ -189,17 +189,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralDecimals = (await usdc.decimals()).toString();
         const principalDecimals = (await dai.decimals()).toString();
 
-        const expectedDaiAmountForUsdc = await convertToCurrencyDecimals(
-          dai.address,
-          new BigNumber('10')
+        const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
             .times(
               new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
             )
             .div(
               new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
             )
-            .toFixed(0)
-        );
+            .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -312,17 +309,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralDecimals = (await usdc.decimals()).toString();
         const principalDecimals = (await dai.decimals()).toString();
 
-        const expectedDaiAmountForUsdc = await convertToCurrencyDecimals(
-          dai.address,
-          new BigNumber('10')
+        const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
             .times(
               new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
             )
             .div(
               new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
             )
-            .toFixed(0)
-        );
+            .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -356,7 +350,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           uniswapLiquiditySwapAdapter.address,
           aWethNonce,
           deadline,
-          '10'
+          amountWETHtoSwap.toString()
         );
         const { v: aWETHv, r: aWETHr, s: aWETHs } = getSignatureFromTypedData(
           ownerPrivateKey,
@@ -868,17 +862,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralDecimals = (await usdc.decimals()).toString();
         const principalDecimals = (await dai.decimals()).toString();
 
-        const expectedDaiAmount = await convertToCurrencyDecimals(
-          dai.address,
-          new BigNumber(amountUSDCtoSwap.toString())
+        const expectedDaiAmount = new BigNumber(amountUSDCtoSwap.toString())
             .times(
               new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
             )
             .div(
               new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
             )
-            .toFixed(0)
-        );
+            .toFixed(0);
 
         await mockUniswapRouter.connect(user).setAmountToReturn(usdc.address, expectedDaiAmount);
 
@@ -1227,7 +1218,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           )
         )
           .to.emit(uniswapLiquiditySwapAdapter, 'Swapped')
-          .withArgs(weth.address, dai.address, '10', expectedDaiAmount);
+          .withArgs(weth.address, dai.address, amountWETHtoSwap, expectedDaiAmount);
 
         const adapterWethBalance = await weth.balanceOf(uniswapLiquiditySwapAdapter.address);
         const adapterDaiBalance = await dai.balanceOf(uniswapLiquiditySwapAdapter.address);
@@ -1307,7 +1298,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           )
         )
           .to.emit(uniswapLiquiditySwapAdapter, 'Swapped')
-          .withArgs(weth.address, dai.address, '10', expectedDaiAmount);
+          .withArgs(weth.address, dai.address, amountWETHtoSwap, expectedDaiAmount);
 
         const adapterWethBalance = await weth.balanceOf(uniswapLiquiditySwapAdapter.address);
         const adapterDaiBalance = await dai.balanceOf(uniswapLiquiditySwapAdapter.address);
@@ -1486,9 +1477,10 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const amountWETHtoSwap = await convertToCurrencyDecimals(weth.address, '10');
 
         const daiPrice = await oracle.getAssetPrice(dai.address);
+        const ethPrice = await oracle.getAssetPrice(weth.address);
         const expectedDaiAmountForEth = await convertToCurrencyDecimals(
           dai.address,
-          new BigNumber('10').div(daiPrice.toString()).toFixed(0)
+          new BigNumber('10').times(ethPrice.toString()).div(daiPrice.toString()).toFixed(0)
         );
 
         const amountUSDCtoSwap = await convertToCurrencyDecimals(usdc.address, '10');
@@ -1497,17 +1489,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralDecimals = (await usdc.decimals()).toString();
         const principalDecimals = (await dai.decimals()).toString();
 
-        const expectedDaiAmountForUsdc = await convertToCurrencyDecimals(
-          dai.address,
-          new BigNumber('10')
+        const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
             .times(
               new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
             )
             .div(
               new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
             )
-            .toFixed(0)
-        );
+            .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -1606,17 +1595,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralDecimals = (await usdc.decimals()).toString();
         const principalDecimals = (await dai.decimals()).toString();
 
-        const expectedDaiAmountForUsdc = await convertToCurrencyDecimals(
-          dai.address,
-          new BigNumber('10')
+        const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
             .times(
               new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
             )
             .div(
               new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
             )
-            .toFixed(0)
-        );
+            .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -1642,7 +1628,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           uniswapLiquiditySwapAdapter.address,
           aWethNonce,
           deadline,
-          '10'
+          amountWETHtoSwap.toString()
         );
         const { v: aWETHv, r: aWETHr, s: aWETHs } = getSignatureFromTypedData(
           ownerPrivateKey,
@@ -1760,7 +1746,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           )
         )
           .to.emit(uniswapLiquiditySwapAdapter, 'Swapped')
-          .withArgs(weth.address, dai.address, '10', expectedDaiAmount);
+          .withArgs(weth.address, dai.address, amountWETHtoSwap, expectedDaiAmount);
 
         const adapterWethBalance = await weth.balanceOf(uniswapLiquiditySwapAdapter.address);
         const adapterDaiBalance = await dai.balanceOf(uniswapLiquiditySwapAdapter.address);
@@ -1847,7 +1833,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           )
         )
           .to.emit(uniswapLiquiditySwapAdapter, 'Swapped')
-          .withArgs(weth.address, dai.address, '10', expectedDaiAmount);
+          .withArgs(weth.address, dai.address, amountWETHtoSwap, expectedDaiAmount);
 
         const adapterWethBalance = await weth.balanceOf(uniswapLiquiditySwapAdapter.address);
         const adapterDaiBalance = await dai.balanceOf(uniswapLiquiditySwapAdapter.address);

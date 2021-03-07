@@ -3,12 +3,12 @@
   "description": "Test cases for the setUserUseReserveAsCollateral() function.",
   "stories": [
     {
-      "description": "User 0 Deposits 1000 DAI, disables DAI as collateral",
+      "description": "User 0 Deposits 1000 USDC, disables USDC as collateral",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "amount": "1000",
             "user": "0"
           },
@@ -17,7 +17,7 @@
         {
           "name": "approve",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "user": "0"
           },
           "expected": "success"
@@ -25,7 +25,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "amount": "1000",
             "user": "0"
           },
@@ -34,7 +34,7 @@
         {
           "name": "setUseAsCollateral",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "user": "0",
             "useAsCollateral": "false"
           },
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "description": "User 1 Deposits 2 WETH, disables WETH as collateral, borrows 400 DAI (revert expected)",
+      "description": "User 1 Deposits 2 WETH, disables WETH as collateral, borrows 400 USDC (revert expected)",
       "actions": [
         {
           "name": "mint",
@@ -85,7 +85,7 @@
         {
           "name": "borrow",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "amount": "400",
             "borrowRateMode": "variable",
             "user": "1"
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "description": "User 1 enables WETH as collateral, borrows 400 DAI",
+      "description": "User 1 enables WETH as collateral, borrows 400 USDC",
       "actions": [
         {
           "name": "setUseAsCollateral",
@@ -110,7 +110,7 @@
         {
           "name": "borrow",
           "args": {
-            "reserve": "DAI",
+            "reserve": "USDC",
             "amount": "400",
             "borrowRateMode": "variable",
             "user": "1"
@@ -136,12 +136,12 @@
       ]
     },
     {
-      "description": "User 1 Deposits 1000 AAVE, disables WETH as collateral. Should revert as 1000 AAVE are not enough to cover the debt (revert expected)",
+      "description": "User 1 Deposits 1000 AGVE, disables WETH as collateral. Should revert as 1000 AGVE are not enough to cover the debt (revert expected)",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
             "amount": "10",
             "user": "1"
           },
@@ -150,7 +150,7 @@
         {
           "name": "approve",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
             "user": "1"
           },
           "expected": "success"
@@ -158,7 +158,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
 
             "amount": "10",
             "user": "1"
@@ -178,12 +178,12 @@
       ]
     },
     {
-      "description": "User 1 Deposits 640 more AAVE (enough to cover the DAI debt), disables WETH as collateral",
+      "description": "User 1 Deposits 640 more AGVE (enough to cover the USDC debt), disables WETH as collateral",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
             "amount": "640",
             "user": "1"
           },
@@ -192,7 +192,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
 
             "amount": "640",
             "user": "1"
@@ -212,12 +212,12 @@
       ]
     },
     {
-      "description": "User 1 disables AAVE as collateral (revert expected)",
+      "description": "User 1 disables AGVE as collateral (revert expected)",
       "actions": [
         {
           "name": "setUseAsCollateral",
           "args": {
-            "reserve": "AAVE",
+            "reserve": "AGVE",
 
             "user": "1",
             "useAsCollateral": "false"

@@ -163,7 +163,7 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
   });
 
   it('Caller deposits 1000 DAI as collateral, Takes WETH flashloan with mode = 2, does not return the funds. A variable loan for caller is created', async () => {
-    const { dai, pool, weth, users, helpersContract } = testEnv;
+    const { weth, pool, wnative: dai, users, helpersContract } = testEnv;
 
     const caller = users[1];
 
@@ -252,8 +252,6 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
 
     await _mockFlashLoanReceiver.setFailExecutionTransfer(false);
 
-    const reserveDataBefore = await helpersContract.getReserveData(usdc.address);
-
     const flashloanAmount = await convertToCurrencyDecimals(usdc.address, '500');
 
     await pool.flashLoan(
@@ -275,14 +273,14 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
       .add(reserveData.totalStableDebt)
       .add(reserveData.totalVariableDebt)
       .toString();
-    const currentLiqudityRate = reserveData.liquidityRate.toString();
+    const currentLiquidityRate = reserveData.liquidityRate.toString();
     const currentLiquidityIndex = reserveData.liquidityIndex.toString();
     const currentUserBalance = userData.currentATokenBalance.toString();
 
     const expectedLiquidity = await convertToCurrencyDecimals(usdc.address, '1000.450');
 
     expect(totalLiquidity).to.be.equal(expectedLiquidity, 'Invalid total liquidity');
-    expect(currentLiqudityRate).to.be.equal('0', 'Invalid liquidity rate');
+    expect(currentLiquidityRate).to.be.equal('0', 'Invalid liquidity rate');
     expect(currentLiquidityIndex).to.be.equal(
       new BigNumber('1.00045').multipliedBy(oneRay).toFixed(),
       'Invalid liquidity index'
@@ -353,16 +351,16 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
   });
 
   it('Caller deposits 1000 DAI as collateral, Takes a WETH flashloan with mode = 0, does not approve the transfer of the funds', async () => {
-    const { dai, pool, weth, users } = testEnv;
+    const { usdc, pool, weth, users } = testEnv;
     const caller = users[3];
 
-    await dai.connect(caller.signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    await usdc.connect(caller.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
-    await dai.connect(caller.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.connect(caller.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    const amountToDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    const amountToDeposit = await convertToCurrencyDecimals(usdc.address, '1000');
 
-    await pool.connect(caller.signer).deposit(dai.address, amountToDeposit, caller.address, '0');
+    await pool.connect(caller.signer).deposit(usdc.address, amountToDeposit, caller.address, '0');
 
     const flashAmount = ethers.utils.parseEther('0.8');
 
@@ -385,7 +383,7 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
   });
 
   it('Caller takes a WETH flashloan with mode = 1', async () => {
-    const { dai, pool, weth, users, helpersContract } = testEnv;
+    const { usdc, pool, weth, users, helpersContract } = testEnv;
 
     const caller = users[3];
 
@@ -417,21 +415,21 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
   });
 
   it('Caller takes a WETH flashloan with mode = 1 onBehalfOf user without allowance', async () => {
-    const { dai, pool, weth, users, helpersContract } = testEnv;
+    const { usdc, pool, weth, users, helpersContract } = testEnv;
 
     const caller = users[5];
     const onBehalfOf = users[4];
 
     // Deposit 1000 dai for onBehalfOf user
-    await dai.connect(onBehalfOf.signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    await usdc.connect(onBehalfOf.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
-    await dai.connect(onBehalfOf.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.connect(onBehalfOf.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    const amountToDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    const amountToDeposit = await convertToCurrencyDecimals(usdc.address, '1000');
 
     await pool
       .connect(onBehalfOf.signer)
-      .deposit(dai.address, amountToDeposit, onBehalfOf.address, '0');
+      .deposit(usdc.address, amountToDeposit, onBehalfOf.address, '0');
 
     const flashAmount = ethers.utils.parseEther('0.8');
 
@@ -453,7 +451,7 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
   });
 
   it('Caller takes a WETH flashloan with mode = 1 onBehalfOf user with allowance. A loan for onBehalfOf is creatd.', async () => {
-    const { dai, pool, weth, users, helpersContract } = testEnv;
+    const { usdc, pool, weth, users, helpersContract } = testEnv;
 
     const caller = users[5];
     const onBehalfOf = users[4];

@@ -143,6 +143,7 @@
   ],
   "license": "AGPLv3",
   "dependencies": {
+    "escape-string-regexp": "^4.0.0",
     "tmp-promise": "^3.0.2"
   },
   "keywords": [

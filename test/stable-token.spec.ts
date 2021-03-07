@@ -7,9 +7,9 @@ makeSuite('Stable debt token tests', (testEnv: TestEnv) => {
   const { CT_CALLER_MUST_BE_LENDING_POOL } = ProtocolErrors;
 
   it('Tries to invoke mint not being the LendingPool', async () => {
-    const { deployer, pool, dai, helpersContract } = testEnv;
+    const { deployer, pool, usdc, helpersContract } = testEnv;
 
-    const daiStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(dai.address))
+    const daiStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(usdc.address))
       .stableDebtTokenAddress;
 
     const stableDebtContract = await getStableDebtToken(daiStableDebtTokenAddress);
@@ -20,16 +20,16 @@ makeSuite('Stable debt token tests', (testEnv: TestEnv) => {
   });
 
   it('Tries to invoke burn not being the LendingPool', async () => {
-    const { deployer, dai, helpersContract } = testEnv;
+    const { deployer, usdc, helpersContract } = testEnv;
 
-    const daiStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(dai.address))
+    const usdcStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(usdc.address))
       .stableDebtTokenAddress;
 
-    const stableDebtContract = await getStableDebtToken(daiStableDebtTokenAddress);
+    const stableDebtContract = await getStableDebtToken(usdcStableDebtTokenAddress);
 
     const name = await stableDebtContract.name();
 
-    expect(name).to.be.equal('Aave stable debt bearing DAI');
+    expect(name).to.be.equal('Aave stable debt bearing USDC');
     await expect(stableDebtContract.burn(deployer.address, '1')).to.be.revertedWith(
       CT_CALLER_MUST_BE_LENDING_POOL
     );

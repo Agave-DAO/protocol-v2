@@ -3,12 +3,12 @@
   "description": "withdraw function.",
   "stories": [
     {
-      "description": "User 0 Deposits 1000 DAI in an empty reserve",
+      "description": "User 0 Deposits 1000 WNATIVE in an empty reserve",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "0"
           },
@@ -17,7 +17,7 @@
         {
           "name": "approve",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "user": "0"
           },
           "expected": "success"
@@ -25,7 +25,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "0"
           },
@@ -34,12 +34,12 @@
       ]
     },
     {
-      "description": "User 0 withdraws half of the deposited DAI",
+      "description": "User 0 withdraws half of the deposited WNATIVE",
       "actions": [
         {
           "name": "withdraw",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "500",
             "user": "0"
           },
@@ -48,12 +48,12 @@
       ]
     },
     {
-      "description": "User 0 withdraws remaining half of the deposited DAI",
+      "description": "User 0 withdraws remaining half of the deposited WNATIVE",
       "actions": [
         {
           "name": "withdraw",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "-1",
             "user": "0"
           },
@@ -183,12 +183,12 @@
       ]
     },
     {
-      "description": "Users 0 and 1 Deposit 1000 DAI, both withdraw",
+      "description": "Users 0 and 1 Deposit 1000 WNATIVE, both withdraw",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "1"
           },
@@ -197,7 +197,7 @@
         {
           "name": "approve",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "user": "1"
           },
           "expected": "success"
@@ -205,7 +205,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "0"
           },
@@ -214,7 +214,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "1"
           },
@@ -223,7 +223,7 @@
         {
           "name": "withdraw",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "-1",
             "user": "0"
           },
@@ -232,7 +232,7 @@
         {
           "name": "withdraw",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "-1",
             "user": "1"
           },
@@ -241,12 +241,12 @@
       ]
     },
     {
-      "description": "Users 0 deposits 1000 DAI, user 1 Deposit 1000 USDC and 1 WETH, borrows 100 DAI. User 1 tries to withdraw all the USDC",
+      "description": "Users 0 deposits 1000 WNATIVE, user 1 Deposit 1000 USDC and 1 WETH, borrows 100 WNATIVE. User 1 tries to withdraw all the USDC",
       "actions": [
         {
           "name": "mint",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "1"
           },
@@ -255,7 +255,7 @@
         {
           "name": "approve",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "user": "1"
           },
           "expected": "success"
@@ -263,7 +263,7 @@
         {
           "name": "deposit",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "1000",
             "user": "0"
           },
@@ -325,7 +325,7 @@
         {
           "name": "borrow",
           "args": {
-            "reserve": "DAI",
+            "reserve": "WNATIVE",
             "amount": "100",
             "user": "1",
             "borrowRateMode": "stable"

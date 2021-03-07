@@ -172,10 +172,10 @@ export const getPairsTokenAggregator = (
   },
   aggregatorsAddresses: { [tokenSymbol: string]: tEthereumAddress }
 ): [string[], string[]] => {
-  const { ETH, USD, WETH, ...assetsAddressesWithoutEth } = allAssetsAddresses;
+  const { ETH, USD, ...assetsAddressesWithoutEth } = allAssetsAddresses;
 
   const pairs = Object.entries(assetsAddressesWithoutEth).map(([tokenSymbol, tokenAddress]) => {
-    if (tokenSymbol !== 'WETH' && tokenSymbol !== 'ETH') {
+    if (tokenSymbol !== 'ETH') {
       const aggregatorAddressIndex = Object.keys(aggregatorsAddresses).findIndex(
         (value) => value === tokenSymbol
       );

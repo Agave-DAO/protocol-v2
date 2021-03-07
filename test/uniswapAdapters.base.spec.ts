@@ -29,7 +29,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
   describe('BaseUniswapAdapter', () => {
     describe('getAmountsOut', () => {
       it('should return the estimated amountOut and prices for the asset swap', async () => {
-        const { weth, dai, uniswapLiquiditySwapAdapter, oracle } = testEnv;
+        const { weth, wnative: dai, uniswapLiquiditySwapAdapter, oracle } = testEnv;
 
         const amountIn = parseEther('1');
         const flashloanPremium = amountIn.mul(9).div(10000);
@@ -132,7 +132,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
     describe('getAmountsIn', () => {
       it('should return the estimated required amountIn for the asset swap', async () => {
-        const { weth, dai, uniswapLiquiditySwapAdapter, oracle } = testEnv;
+        const { weth, wnative: dai, uniswapLiquiditySwapAdapter, oracle } = testEnv;
 
         const amountIn = parseEther('1');
         const flashloanPremium = amountIn.mul(9).div(10000);

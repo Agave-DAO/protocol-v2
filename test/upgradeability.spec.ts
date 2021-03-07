@@ -25,29 +25,29 @@ makeSuite('Upgradeability', (testEnv: TestEnv) => {
   let newVariableTokenAddress: string;
 
   before('deploying instances', async () => {
-    const { dai, pool } = testEnv;
+    const { usdc, pool } = testEnv;
     const aTokenInstance = await deployMockAToken([
       pool.address,
-      dai.address,
+      usdc.address,
       ZERO_ADDRESS,
-      'Aave Interest bearing DAI updated',
-      'aDAI',
+      'Aave Interest bearing USDC updated',
+      'aUSDC',
       ZERO_ADDRESS,
     ]);
 
     const stableDebtTokenInstance = await deployMockStableDebtToken([
       pool.address,
-      dai.address,
-      'Aave stable debt bearing DAI updated',
-      'stableDebtDAI',
+      usdc.address,
+      'Aave stable debt bearing USDC updated',
+      'stableDebtUSDC',
       ZERO_ADDRESS,
     ]);
 
     const variableDebtTokenInstance = await deployMockVariableDebtToken([
       pool.address,
-      dai.address,
-      'Aave variable debt bearing DAI updated',
-      'variableDebtDAI',
+      usdc.address,
+      'Aave variable debt bearing USDC updated',
+      'variableDebtUSDC',
       ZERO_ADDRESS,
     ]);
 
@@ -56,77 +56,77 @@ makeSuite('Upgradeability', (testEnv: TestEnv) => {
     newStableTokenAddress = stableDebtTokenInstance.address;
   });
 
-  it('Tries to update the DAI Atoken implementation with a different address than the lendingPoolManager', async () => {
-    const { dai, configurator, users } = testEnv;
+  it('Tries to update the USDC Atoken implementation with a different address than the lendingPoolManager', async () => {
+    const { usdc, configurator, users } = testEnv;
 
     await expect(
-      configurator.connect(users[1].signer).updateAToken(dai.address, newATokenAddress)
+      configurator.connect(users[1].signer).updateAToken(usdc.address, newATokenAddress)
     ).to.be.revertedWith(CALLER_NOT_POOL_ADMIN);
   });
 
-  it('Upgrades the DAI Atoken implementation ', async () => {
-    const { dai, configurator, aDai } = testEnv;
+  it('Upgrades the USDC Atoken implementation ', async () => {
+    const { usdc, configurator, aUSDC } = testEnv;
 
     const name = await (await getAToken(newATokenAddress)).name();
 
-    await configurator.updateAToken(dai.address, newATokenAddress);
+    await configurator.updateAToken(usdc.address, newATokenAddress);
 
-    const tokenName = await aDai.name();
+    const tokenName = await aUSDC.name();
 
-    expect(tokenName).to.be.eq('Aave Interest bearing DAI updated', 'Invalid token name');
+    expect(tokenName).to.be.eq('Aave Interest bearing USDC updated', 'Invalid token name');
   });
 
-  it('Tries to update the DAI Stable debt token implementation with a different address than the lendingPoolManager', async () => {
-    const { dai, configurator, users } = testEnv;
+  it('Tries to update the USDC Stable debt token implementation with a different address than the lendingPoolManager', async () => {
+    const { usdc, configurator, users } = testEnv;
 
     await expect(
       configurator
         .connect(users[1].signer)
-        .updateStableDebtToken(dai.address, newStableTokenAddress)
+        .updateStableDebtToken(usdc.address, newStableTokenAddress)
     ).to.be.revertedWith(CALLER_NOT_POOL_ADMIN);
   });
 
-  it('Upgrades the DAI stable debt token implementation ', async () => {
-    const { dai, configurator, pool, helpersContract } = testEnv;
+  it('Upgrades the USDC stable debt token implementation ', async () => {
+    const { usdc, configurator, pool, helpersContract } = testEnv;
 
     const name = await (await getAToken(newATokenAddress)).name();
 
-    await configurator.updateStableDebtToken(dai.address, newStableTokenAddress);
+    await configurator.updateStableDebtToken(usdc.address, newStableTokenAddress);
 
-    const { stableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(dai.address);
+    const { stableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(usdc.address);
 
     const debtToken = await getMockStableDebtToken(stableDebtTokenAddress);
 
     const tokenName = await debtToken.name();
 
-    expect(tokenName).to.be.eq('Aave stable debt bearing DAI updated', 'Invalid token name');
+    expect(tokenName).to.be.eq('Aave stable debt bearing USDC updated', 'Invalid token name');
   });
 
-  it('Tries to update the DAI variable debt token implementation with a different address than the lendingPoolManager', async () => {
-    const { dai, configurator, users } = testEnv;
+  it('Tries to update the USDC variable debt token implementation with a different address than the lendingPoolManager', async () => {
+    const { usdc, configurator, users } = testEnv;
 
     await expect(
       configurator
         .connect(users[1].signer)
-        .updateVariableDebtToken(dai.address, newVariableTokenAddress)
+        .updateVariableDebtToken(usdc.address, newVariableTokenAddress)
     ).to.be.revertedWith(CALLER_NOT_POOL_ADMIN);
   });
 
-  it('Upgrades the DAI variable debt token implementation ', async () => {
-    const { dai, configurator, pool, helpersContract } = testEnv;
+  it('Upgrades the USDC variable debt token implementation ', async () => {
+    const { usdc, configurator, pool, helpersContract } = testEnv;
 
     const name = await (await getAToken(newATokenAddress)).name();
 
-    await configurator.updateVariableDebtToken(dai.address, newVariableTokenAddress);
+    await configurator.updateVariableDebtToken(usdc.address, newVariableTokenAddress);
 
     const { variableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(
-      dai.address
+      usdc.address
     );
 
     const debtToken = await getMockVariableDebtToken(variableDebtTokenAddress);
 
     const tokenName = await debtToken.name();
 
-    expect(tokenName).to.be.eq('Aave variable debt bearing DAI updated', 'Invalid token name');
+    expect(tokenName).to.be.eq('Aave variable debt bearing USDC updated', 'Invalid token name');
   });
 });

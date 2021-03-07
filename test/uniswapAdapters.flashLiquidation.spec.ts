@@ -25,22 +25,22 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
   });
 
   const depositAndHFBelowOne = async () => {
-    const { dai, weth, users, pool, oracle } = testEnv;
+    const { usdc, weth, users, pool, oracle } = testEnv;
     const depositor = users[0];
     const borrower = users[1];
 
-    //mints DAI to depositor
-    await dai.connect(depositor.signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    //mints USDC to depositor
+    await usdc.connect(depositor.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     //approve protocol to access depositor wallet
-    await dai.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    //user 1 deposits 1000 DAI
-    const amountDAItoDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    //user 1 deposits 1000 USDC
+    const amountUSDCtoDeposit = await convertToCurrencyDecimals(usdc.address, '1000');
 
     await pool
       .connect(depositor.signer)
-      .deposit(dai.address, amountDAItoDeposit, depositor.address, '0');
+      .deposit(usdc.address, amountUSDCtoDeposit, depositor.address, '0');
     //user 2 deposits 1 ETH
     const amountETHtoDeposit = await convertToCurrencyDecimals(weth.address, '1');
 
@@ -57,19 +57,19 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     //user 2 borrows
 
     const userGlobalDataBefore = await pool.getUserAccountData(borrower.address);
-    const daiPrice = await oracle.getAssetPrice(dai.address);
+    const usdcPrice = await oracle.getAssetPrice(usdc.address);
 
-    const amountDAIToBorrow = await convertToCurrencyDecimals(
-      dai.address,
+    const amountUSDCToBorrow = await convertToCurrencyDecimals(
+      usdc.address,
       new BigNumber(userGlobalDataBefore.availableBorrowsETH.toString())
-        .div(daiPrice.toString())
+        .div(usdcPrice.toString())
         .multipliedBy(0.95)
         .toFixed(0)
     );
 
     await pool
       .connect(borrower.signer)
-      .borrow(dai.address, amountDAIToBorrow, RateMode.Stable, '0', borrower.address);
+      .borrow(usdc.address, amountUSDCToBorrow, RateMode.Stable, '0', borrower.address);
 
     const userGlobalDataAfter = await pool.getUserAccountData(borrower.address);
 
@@ -79,8 +79,8 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     );
 
     await oracle.setAssetPrice(
-      dai.address,
-      new BigNumber(daiPrice.toString()).multipliedBy(1.18).toFixed(0)
+      usdc.address,
+      new BigNumber(usdcPrice.toString()).multipliedBy(1.18).toFixed(0)
     );
 
     const userGlobalData = await pool.getUserAccountData(borrower.address);
@@ -92,22 +92,22 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
   };
 
   const depositSameAssetAndHFBelowOne = async () => {
-    const { dai, weth, users, pool, oracle } = testEnv;
+    const { usdc, weth, users, pool, oracle } = testEnv;
     const depositor = users[0];
     const borrower = users[1];
 
-    //mints DAI to depositor
-    await dai.connect(depositor.signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    //mints USDC to depositor
+    await usdc.connect(depositor.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     //approve protocol to access depositor wallet
-    await dai.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    //user 1 deposits 1000 DAI
-    const amountDAItoDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    //user 1 deposits 1000 USDC
+    const amountUSDCtoDeposit = await convertToCurrencyDecimals(usdc.address, '1000');
 
     await pool
       .connect(depositor.signer)
-      .deposit(dai.address, amountDAItoDeposit, depositor.address, '0');
+      .deposit(usdc.address, amountUSDCtoDeposit, depositor.address, '0');
     //user 2 deposits 1 ETH
     const amountETHtoDeposit = await convertToCurrencyDecimals(weth.address, '1');
 
@@ -124,26 +124,33 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     //user 2 borrows
 
     const userGlobalDataBefore = await pool.getUserAccountData(borrower.address);
-    const daiPrice = await oracle.getAssetPrice(dai.address);
+    const usdcPrice = await oracle.getAssetPrice(usdc.address);
 
-    const amountDAIToBorrow = await convertToCurrencyDecimals(
-      dai.address,
+    const amountUSDCToBorrow = await convertToCurrencyDecimals(
+      usdc.address,
       new BigNumber(userGlobalDataBefore.availableBorrowsETH.toString())
-        .div(daiPrice.toString())
+        .div(usdcPrice.toString())
         .multipliedBy(0.8)
         .toFixed(0)
     );
     await waitForTx(
       await pool
         .connect(borrower.signer)
-        .borrow(dai.address, amountDAIToBorrow, RateMode.Stable, '0', borrower.address)
+        .borrow(usdc.address, amountUSDCToBorrow, RateMode.Stable, '0', borrower.address)
     );
 
     const userGlobalDataBefore2 = await pool.getUserAccountData(borrower.address);
 
-    const amountWETHToBorrow = new BigNumber(userGlobalDataBefore2.availableBorrowsETH.toString())
-      .multipliedBy(0.8)
-      .toFixed(0);
+    const wethPrice = await oracle.getAssetPrice(weth.address);
+
+    const amountWETHToBorrow = (await convertToCurrencyDecimals(
+      weth.address,
+      new BigNumber(userGlobalDataBefore2.availableBorrowsETH.toString())
+        .multipliedBy(10000)
+        .div(wethPrice.toString())
+        .multipliedBy(0.8)
+        .toString()))
+      .div(10000);
 
     await pool
       .connect(borrower.signer)
@@ -157,8 +164,8 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     );
 
     await oracle.setAssetPrice(
-      dai.address,
-      new BigNumber(daiPrice.toString()).multipliedBy(1.18).toFixed(0)
+      usdc.address,
+      new BigNumber(usdcPrice.toString()).multipliedBy(1.18).toFixed(0)
     );
 
     const userGlobalData = await pool.getUserAccountData(borrower.address);
@@ -214,7 +221,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         await increaseTime(100);
 
         const {
-          dai,
+          usdc,
           weth,
           users,
           pool,
@@ -229,17 +236,17 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
         const liquidatorWethBalanceBefore = await weth.balanceOf(liquidator.address);
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (await mockUniswapRouter.setAmountToSwap(weth.address, expectedSwap)).wait();
 
         const collateralPrice = await oracle.getAssetPrice(weth.address);
-        const principalPrice = await oracle.getAssetPrice(dai.address);
-        const daiReserveDataBefore = await helpersContract.getReserveData(dai.address);
+        const principalPrice = await oracle.getAssetPrice(usdc.address);
+        const usdcReserveDataBefore = await helpersContract.getReserveData(usdc.address);
         const ethReserveDataBefore = await helpersContract.getReserveData(weth.address);
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -247,7 +254,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           await helpersContract.getReserveConfigurationData(weth.address)
         ).decimals.toString();
         const principalDecimals = (
-          await helpersContract.getReserveConfigurationData(dai.address)
+          await helpersContract.getReserveConfigurationData(usdc.address)
         ).decimals.toString();
         const amountToLiquidate = userReserveDataBefore.currentStableDebt.div(2).toFixed(0);
 
@@ -272,7 +279,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
         const params = buildFlashLiquidationAdapterParams(
           weth.address,
-          dai.address,
+          usdc.address,
           borrower.address,
           amountToLiquidate,
           false
@@ -281,7 +288,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           .connect(liquidator.signer)
           .flashLoan(
             flashLiquidationAdapter.address,
-            [dai.address],
+            [usdc.address],
             [amountToLiquidate],
             [0],
             borrower.address,
@@ -298,12 +305,12 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const userReserveDataAfter = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
         const liquidatorWethBalanceAfter = await weth.balanceOf(liquidator.address);
 
-        const daiReserveDataAfter = await helpersContract.getReserveData(dai.address);
+        const usdcReserveDataAfter = await helpersContract.getReserveData(usdc.address);
         const ethReserveDataAfter = await helpersContract.getReserveData(weth.address);
 
         if (!tx.blockNumber) {
@@ -324,7 +331,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const collateralAssetContractBalance = await weth.balanceOf(
           flashLiquidationAdapter.address
         );
-        const borrowAssetContractBalance = await dai.balanceOf(flashLiquidationAdapter.address);
+        const borrowAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
 
         expect(collateralAssetContractBalance).to.be.equal(
           '0',
@@ -341,19 +348,19 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         );
 
         //the liquidity index of the principal reserve needs to be bigger than the index before
-        expect(daiReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
-          daiReserveDataBefore.liquidityIndex.toString(),
+        expect(usdcReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
+          usdcReserveDataBefore.liquidityIndex.toString(),
           'Invalid liquidity index'
         );
 
         //the principal APY after a liquidation needs to be lower than the APY before
-        expect(daiReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
-          daiReserveDataBefore.liquidityRate.toString(),
+        expect(usdcReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
+          usdcReserveDataBefore.liquidityRate.toString(),
           'Invalid liquidity APY'
         );
 
-        expect(daiReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
-          new BigNumber(daiReserveDataBefore.availableLiquidity.toString())
+        expect(usdcReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
+          new BigNumber(usdcReserveDataBefore.availableLiquidity.toString())
             .plus(flashLoanDebt)
             .toFixed(0),
           'Invalid principal available liquidity'
@@ -461,7 +468,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         await increaseTime(100);
 
         const {
-          dai,
+          usdc,
           weth,
           users,
           pool,
@@ -475,13 +482,13 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const liquidatorWethBalanceBefore = await weth.balanceOf(liquidator.address);
 
         const collateralPrice = await oracle.getAssetPrice(weth.address);
-        const principalPrice = await oracle.getAssetPrice(dai.address);
-        const daiReserveDataBefore = await helpersContract.getReserveData(dai.address);
+        const principalPrice = await oracle.getAssetPrice(usdc.address);
+        const usdcReserveDataBefore = await helpersContract.getReserveData(usdc.address);
         const ethReserveDataBefore = await helpersContract.getReserveData(weth.address);
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -489,7 +496,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           await helpersContract.getReserveConfigurationData(weth.address)
         ).decimals.toString();
         const principalDecimals = (
-          await helpersContract.getReserveConfigurationData(dai.address)
+          await helpersContract.getReserveConfigurationData(usdc.address)
         ).decimals.toString();
         const amountToLiquidate = userReserveDataBefore.currentStableDebt.div(2).toFixed(0);
 
@@ -508,7 +515,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           .multipliedBy(1.0009)
           .toFixed(0);
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (
           await mockUniswapRouter.setAmountToSwap(
             weth.address,
@@ -518,7 +525,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
         const params = buildFlashLiquidationAdapterParams(
           weth.address,
-          dai.address,
+          usdc.address,
           borrower.address,
           amountToLiquidate,
           false
@@ -527,7 +534,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           .connect(liquidator.signer)
           .flashLoan(
             flashLiquidationAdapter.address,
-            [dai.address],
+            [usdc.address],
             [flashLoanDebt],
             [0],
             borrower.address,
@@ -544,12 +551,12 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const userReserveDataAfter = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
         const liquidatorWethBalanceAfter = await weth.balanceOf(liquidator.address);
 
-        const daiReserveDataAfter = await helpersContract.getReserveData(dai.address);
+        const usdcReserveDataAfter = await helpersContract.getReserveData(usdc.address);
         const ethReserveDataAfter = await helpersContract.getReserveData(weth.address);
 
         if (!tx.blockNumber) {
@@ -567,7 +574,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           txTimestamp
         );
 
-        const collateralAssetContractBalance = await dai.balanceOf(flashLiquidationAdapter.address);
+        const collateralAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
         const borrowAssetContractBalance = await weth.balanceOf(flashLiquidationAdapter.address);
 
         expect(collateralAssetContractBalance).to.be.equal(
@@ -584,14 +591,14 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         );
 
         //the liquidity index of the principal reserve needs to be bigger than the index before
-        expect(daiReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
-          daiReserveDataBefore.liquidityIndex.toString(),
+        expect(usdcReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
+          usdcReserveDataBefore.liquidityIndex.toString(),
           'Invalid liquidity index'
         );
 
         //the principal APY after a liquidation needs to be lower than the APY before
-        expect(daiReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
-          daiReserveDataBefore.liquidityRate.toString(),
+        expect(usdcReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
+          usdcReserveDataBefore.liquidityRate.toString(),
           'Invalid liquidity APY'
         );
 
@@ -616,7 +623,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         await increaseTime(100);
 
         const {
-          dai,
+          usdc,
           weth,
           users,
           pool,
@@ -630,13 +637,13 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const liquidatorWethBalanceBefore = await weth.balanceOf(liquidator.address);
 
         const collateralPrice = await oracle.getAssetPrice(weth.address);
-        const principalPrice = await oracle.getAssetPrice(dai.address);
-        const daiReserveDataBefore = await helpersContract.getReserveData(dai.address);
+        const principalPrice = await oracle.getAssetPrice(usdc.address);
+        const usdcReserveDataBefore = await helpersContract.getReserveData(usdc.address);
         const ethReserveDataBefore = await helpersContract.getReserveData(weth.address);
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -644,7 +651,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           await helpersContract.getReserveConfigurationData(weth.address)
         ).decimals.toString();
         const principalDecimals = (
-          await helpersContract.getReserveConfigurationData(dai.address)
+          await helpersContract.getReserveConfigurationData(usdc.address)
         ).decimals.toString();
         const amountToLiquidate = userReserveDataBefore.currentStableDebt.div(2).toFixed(0);
         const extraAmount = new BigNumber(amountToLiquidate).times('1.15').toFixed(0);
@@ -664,7 +671,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           .multipliedBy(1.0009)
           .toFixed(0);
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (
           await mockUniswapRouter.setAmountToSwap(
             weth.address,
@@ -674,7 +681,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
         const params = buildFlashLiquidationAdapterParams(
           weth.address,
-          dai.address,
+          usdc.address,
           borrower.address,
           MAX_UINT_AMOUNT,
           false
@@ -683,7 +690,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           .connect(liquidator.signer)
           .flashLoan(
             flashLiquidationAdapter.address,
-            [dai.address],
+            [usdc.address],
             [extraAmount],
             [0],
             borrower.address,
@@ -697,8 +704,8 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         // Expect LiquidationCall event
         await expect(Promise.resolve(tx)).to.emit(pool, 'LiquidationCall');
 
-        const collateralAssetContractBalance = await dai.balanceOf(flashLiquidationAdapter.address);
-        const borrowAssetContractBalance = await dai.balanceOf(flashLiquidationAdapter.address);
+        const collateralAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
+        const borrowAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
 
         expect(collateralAssetContractBalance).to.be.equal(
           '0',
@@ -715,19 +722,19 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       it('Revert if debt asset is different than requested flash loan token', async () => {
         await depositAndHFBelowOne();
 
-        const { dai, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
+        const { usdc, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
 
         const liquidator = users[3];
         const borrower = users[1];
         const expectedSwap = ethers.utils.parseEther('0.4');
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (await mockUniswapRouter.setAmountToSwap(weth.address, expectedSwap)).wait();
 
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -746,7 +753,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
             .connect(liquidator.signer)
             .flashLoan(
               flashLiquidationAdapter.address,
-              [dai.address],
+              [usdc.address],
               [amountToLiquidate],
               [0],
               borrower.address,
@@ -759,19 +766,19 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       it('Revert if debt asset amount to liquidate is greater than requested flash loan', async () => {
         await depositAndHFBelowOne();
 
-        const { dai, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
+        const { usdc, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
 
         const liquidator = users[3];
         const borrower = users[1];
         const expectedSwap = ethers.utils.parseEther('0.4');
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (await mockUniswapRouter.setAmountToSwap(weth.address, expectedSwap)).wait();
 
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -780,18 +787,18 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         // Correct params
         const params = buildFlashLiquidationAdapterParams(
           weth.address,
-          dai.address,
+          usdc.address,
           borrower.address,
           amountToLiquidate.toString(),
           false
         );
-        // Bad flash loan params: requested DAI amount below amountToLiquidate
+        // Bad flash loan params: requested USDC amount below amountToLiquidate
         await expect(
           pool
             .connect(liquidator.signer)
             .flashLoan(
               flashLiquidationAdapter.address,
-              [dai.address],
+              [usdc.address],
               [amountToLiquidate.div(2).toString()],
               [0],
               borrower.address,
@@ -804,19 +811,19 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       it('Revert if requested multiple assets', async () => {
         await depositAndHFBelowOne();
 
-        const { dai, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
+        const { usdc, weth, users, pool, helpersContract, flashLiquidationAdapter } = testEnv;
 
         const liquidator = users[3];
         const borrower = users[1];
         const expectedSwap = ethers.utils.parseEther('0.4');
 
-        // Set how much ETH will be sold and swapped for DAI at Uniswap mock
+        // Set how much ETH will be sold and swapped for USDC at Uniswap mock
         await (await mockUniswapRouter.setAmountToSwap(weth.address, expectedSwap)).wait();
 
         const userReserveDataBefore = await getUserData(
           pool,
           helpersContract,
-          dai.address,
+          usdc.address,
           borrower.address
         );
 
@@ -825,7 +832,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         // Correct params
         const params = buildFlashLiquidationAdapterParams(
           weth.address,
-          dai.address,
+          usdc.address,
           borrower.address,
           amountToLiquidate.toString(),
           false
@@ -836,7 +843,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
             .connect(liquidator.signer)
             .flashLoan(
               flashLiquidationAdapter.address,
-              [dai.address, weth.address],
+              [usdc.address, weth.address],
               [10, 10],
               [0],
               borrower.address,

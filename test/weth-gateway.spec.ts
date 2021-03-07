@@ -6,6 +6,7 @@ import { DRE, waitForTx } from '../helpers/misc-utils';
 import { BigNumber } from 'ethers';
 import { getStableDebtToken, getVariableDebtToken } from '../helpers/contracts-getters';
 import { deploySelfdestructTransferMock } from '../helpers/contracts-deployments';
+import { AToken, ATokenFactory, LendingPool, LendingPoolFactory } from '../types';
 
 const { expect } = require('chai');
 
@@ -14,7 +15,7 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
   const depositSize = parseEther('5');
   const daiSize = parseEther('10000');
   it('Deposit WETH via WethGateway and DAI', async () => {
-    const { users, wethGateway, aWETH } = testEnv;
+    const { users, wethGateway, aWNATIVE } = testEnv;
 
     const user = users[1];
     const depositor = users[0];
@@ -27,26 +28,26 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     // Deposit with native ETH
     await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const aTokensBalance = await aWNATIVE.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero);
     expect(aTokensBalance).to.be.gte(depositSize);
   });
 
   it('Withdraw WETH - Partial', async () => {
-    const { users, wethGateway, aWETH, pool } = testEnv;
+    const { users, wethGateway, aWNATIVE, pool } = testEnv;
 
     const user = users[1];
     const priorEthersBalance = await user.signer.getBalance();
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const aTokensBalance = await aWNATIVE.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero, 'User should have aTokens.');
 
     // Partially withdraw native ETH
-    const partialWithdraw = await convertToCurrencyDecimals(aWETH.address, '2');
+    const partialWithdraw = await convertToCurrencyDecimals(aWNATIVE.address, '2');
 
     // Approve the aTokens to Gateway so Gateway can withdraw and convert to Ether
-    const approveTx = await aWETH
+    const approveTx = await aWNATIVE
       .connect(user.signer)
       .approve(wethGateway.address, MAX_UINT_AMOUNT);
     const { gasUsed: approveGas } = await waitForTx(approveTx);
@@ -57,30 +58,31 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     );
 
     const afterPartialEtherBalance = await user.signer.getBalance();
-    const afterPartialATokensBalance = await aWETH.balanceOf(user.address);
+    const afterPartialATokensBalance = await aWNATIVE.balanceOf(user.address);
     const gasCosts = approveGas.add(withdrawGas).mul(approveTx.gasPrice);
 
+    var acctData2 = await pool.getReservesList();
     expect(afterPartialEtherBalance).to.be.equal(
       priorEthersBalance.add(partialWithdraw).sub(gasCosts),
       'User ETHER balance should contain the partial withdraw'
     );
     expect(afterPartialATokensBalance).to.be.equal(
       aTokensBalance.sub(partialWithdraw),
-      'User aWETH balance should be substracted'
+      'User aWNATIVE balance should be substracted'
     );
   });
 
   it('Withdraw WETH - Full', async () => {
-    const { users, aWETH, wethGateway, pool } = testEnv;
+    const { users, aWNATIVE, wethGateway, pool } = testEnv;
 
     const user = users[1];
     const priorEthersBalance = await user.signer.getBalance();
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const aTokensBalance = await aWNATIVE.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero, 'User should have aTokens.');
 
     // Approve the aTokens to Gateway so Gateway can withdraw and convert to Ether
-    const approveTx = await aWETH
+    const approveTx = await aWNATIVE
       .connect(user.signer)
       .approve(wethGateway.address, MAX_UINT_AMOUNT);
     const { gasUsed: approveGas } = await waitForTx(approveTx);
@@ -91,18 +93,18 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     );
 
     const afterFullEtherBalance = await user.signer.getBalance();
-    const afterFullATokensBalance = await aWETH.balanceOf(user.address);
+    const afterFullATokensBalance = await aWNATIVE.balanceOf(user.address);
     const gasCosts = approveGas.add(withdrawGas).mul(approveTx.gasPrice);
 
     expect(afterFullEtherBalance).to.be.eq(
       priorEthersBalance.add(aTokensBalance).sub(gasCosts),
       'User ETHER balance should contain the full withdraw'
     );
-    expect(afterFullATokensBalance).to.be.eq(0, 'User aWETH balance should be zero');
+    expect(afterFullATokensBalance).to.be.eq(0, 'User aWNATIVE balance should be zero');
   });
 
   it('Borrow stable WETH and Full Repay with ETH', async () => {
-    const { users, wethGateway, aDai, weth, dai, pool, helpersContract } = testEnv;
+    const { users, wethGateway, aUSDC, wnative, usdc, pool, helpersContract } = testEnv;
     const borrowSize = parseEther('1');
     const repaySize = borrowSize.add(borrowSize.mul(5).div(100));
     const user = users[1];
@@ -114,24 +116,24 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
       .depositETH(depositor.address, '0', { value: depositSize });
 
     const { stableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(
-      weth.address
+      wnative.address
     );
 
     const stableDebtToken = await getStableDebtToken(stableDebtTokenAddress);
 
     // Deposit 10000 DAI
-    await dai.connect(user.signer).mint(daiSize);
-    await dai.connect(user.signer).approve(pool.address, daiSize);
-    await pool.connect(user.signer).deposit(dai.address, daiSize, user.address, '0');
+    await usdc.connect(user.signer).mint(daiSize);
+    await usdc.connect(user.signer).approve(pool.address, daiSize);
+    await pool.connect(user.signer).deposit(usdc.address, daiSize, user.address, '0');
 
-    const aTokensBalance = await aDai.balanceOf(user.address);
+    const aTokensBalance = await aUSDC.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero);
     expect(aTokensBalance).to.be.gte(daiSize);
 
     // Borrow WETH with WETH as collateral
     await waitForTx(
-      await pool.connect(user.signer).borrow(weth.address, borrowSize, '1', '0', user.address)
+      await pool.connect(user.signer).borrow(wnative.address, borrowSize, '1', '0', user.address)
     );
 
     const debtBalance = await stableDebtToken.balanceOf(user.address);
@@ -149,33 +151,41 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     expect(debtBalanceAfterRepay).to.be.eq(zero);
 
     // Withdraw DAI
-    await aDai.connect(user.signer).approve(pool.address, MAX_UINT_AMOUNT);
-    await pool.connect(user.signer).withdraw(dai.address, MAX_UINT_AMOUNT, user.address);
+    await aUSDC.connect(user.signer).approve(pool.address, MAX_UINT_AMOUNT);
+    await pool.connect(user.signer).withdraw(usdc.address, MAX_UINT_AMOUNT, user.address);
   });
 
   it('Borrow variable WETH and Full Repay with ETH', async () => {
-    const { users, wethGateway, aWETH, weth, pool, helpersContract } = testEnv;
+    const { users, wethGateway, aWNATIVE, wnative, pool, helpersContract } = testEnv;
     const borrowSize = parseEther('1');
     const repaySize = borrowSize.add(borrowSize.mul(5).div(100));
     const user = users[1];
 
     const { variableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(
-      weth.address
+      wnative.address
     );
+
 
     const varDebtToken = await getVariableDebtToken(variableDebtTokenAddress);
 
+    var acctData = await pool.getUserAccountData(user.address);
     // Deposit with native ETH
-    await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
+    await waitForTx(
+      await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize })
+    );
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const aTokensBalance = await aWNATIVE.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero);
     expect(aTokensBalance).to.be.gte(depositSize);
 
+    var acctData = await pool.getUserAccountData(user.address);
+
+    
+
     // Borrow WETH with WETH as collateral
     await waitForTx(
-      await pool.connect(user.signer).borrow(weth.address, borrowSize, '2', '0', user.address)
+      await pool.connect(user.signer).borrow(wnative.address, borrowSize, '2', '0', user.address)
     );
 
     const debtBalance = await varDebtToken.balanceOf(user.address);
@@ -204,11 +214,11 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
   });
 
   it('Borrow ETH via delegateApprove ETH and repays back', async () => {
-    const { users, wethGateway, aWETH, weth, helpersContract } = testEnv;
+    const { users, wethGateway, aWNATIVE, wnative, helpersContract } = testEnv;
     const borrowSize = parseEther('1');
     const user = users[2];
     const { variableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(
-      weth.address
+      wnative.address
     );
     const varDebtToken = await getVariableDebtToken(variableDebtTokenAddress);
 
@@ -218,7 +228,7 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     // Deposit WETH with native ETH
     await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const aTokensBalance = await aWNATIVE.balanceOf(user.address);
 
     expect(aTokensBalance).to.be.gt(zero);
     expect(aTokensBalance).to.be.gte(depositSize);
@@ -298,27 +308,27 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
   });
 
   it('Getters should retrieve correct state', async () => {
-    const { aWETH, weth, pool, wethGateway } = testEnv;
+    const { aWNATIVE, wnative, pool, wethGateway } = testEnv;
 
     const WETHAddress = await wethGateway.getWETHAddress();
     const aWETHAddress = await wethGateway.getAWETHAddress();
     const poolAddress = await wethGateway.getLendingPoolAddress();
 
-    expect(WETHAddress).to.be.equal(weth.address);
-    expect(aWETHAddress).to.be.equal(aWETH.address);
+    expect(WETHAddress).to.be.equal(wnative.address);
+    expect(aWETHAddress).to.be.equal(aWNATIVE.address);
     expect(poolAddress).to.be.equal(pool.address);
   });
 
   it('Owner can do emergency token recovery', async () => {
-    const { users, dai, wethGateway, deployer } = testEnv;
+    const { users, usdc, wethGateway, deployer } = testEnv;
     const user = users[0];
     const amount = parseEther('1');
 
-    await dai.connect(user.signer).mint(amount);
-    const daiBalanceAfterMint = await dai.balanceOf(user.address);
+    await usdc.connect(user.signer).mint(amount);
+    const daiBalanceAfterMint = await usdc.balanceOf(user.address);
 
-    await dai.connect(user.signer).transfer(wethGateway.address, amount);
-    const daiBalanceAfterBadTransfer = await dai.balanceOf(user.address);
+    await usdc.connect(user.signer).transfer(wethGateway.address, amount);
+    const daiBalanceAfterBadTransfer = await usdc.balanceOf(user.address);
     expect(daiBalanceAfterBadTransfer).to.be.eq(
       daiBalanceAfterMint.sub(amount),
       'User should have lost the funds here.'
@@ -326,8 +336,8 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
 
     await wethGateway
       .connect(deployer.signer)
-      .emergencyTokenTransfer(dai.address, user.address, amount);
-    const daiBalanceAfterRecovery = await dai.balanceOf(user.address);
+      .emergencyTokenTransfer(usdc.address, user.address, amount);
+    const daiBalanceAfterRecovery = await usdc.balanceOf(user.address);
 
     expect(daiBalanceAfterRecovery).to.be.eq(
       daiBalanceAfterMint,

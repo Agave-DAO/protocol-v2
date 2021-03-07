@@ -20,22 +20,23 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
     LP_IS_PAUSED,
   } = ProtocolErrors;
 
-  it('Deposits WETH, borrows DAI/Check liquidation fails because health factor is above 1', async () => {
-    const { dai, weth, users, pool, oracle } = testEnv;
+  it('Deposits WETH, borrows USDC/Check liquidation fails because health factor is above 1', async () => {
+    const { weth, usdc, users, pool, oracle } = testEnv;
     const depositor = users[0];
     const borrower = users[1];
 
-    //mints DAI to depositor
-    await dai.connect(depositor.signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    const initialUsdcReserve = await convertToCurrencyDecimals(usdc.address, '1000');
+
+    //mints USDC to depositor
+    await usdc.connect(depositor.signer).mint(initialUsdcReserve);
 
     //approve protocol to access depositor wallet
-    await dai.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    //user 1 deposits 1000 DAI
-    const amountDAItoDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    //user 1 deposits 10000 USDC
     await pool
       .connect(depositor.signer)
-      .deposit(dai.address, amountDAItoDeposit, depositor.address, '0');
+      .deposit(usdc.address, initialUsdcReserve, depositor.address, '0');
 
     const amountETHtoDeposit = await convertToCurrencyDecimals(weth.address, '1');
 
@@ -52,19 +53,19 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
 
     //user 2 borrows
     const userGlobalData = await pool.getUserAccountData(borrower.address);
-    const daiPrice = await oracle.getAssetPrice(dai.address);
 
-    const amountDAIToBorrow = await convertToCurrencyDecimals(
-      dai.address,
+    const usdcPrice = await oracle.getAssetPrice(usdc.address);
+    const amountUSDCToBorrow = await convertToCurrencyDecimals(
+      usdc.address,
       new BigNumber(userGlobalData.availableBorrowsETH.toString())
-        .div(daiPrice.toString())
+        .div(usdcPrice.toString())
         .multipliedBy(0.95)
         .toFixed(0)
     );
 
     await pool
       .connect(borrower.signer)
-      .borrow(dai.address, amountDAIToBorrow, RateMode.Variable, '0', borrower.address);
+      .borrow(usdc.address, amountUSDCToBorrow, RateMode.Variable, '0', borrower.address);
 
     const userGlobalDataAfter = await pool.getUserAccountData(borrower.address);
 
@@ -75,19 +76,19 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
 
     //someone tries to liquidate user 2
     await expect(
-      pool.liquidationCall(weth.address, dai.address, borrower.address, 1, true)
+      pool.liquidationCall(weth.address, usdc.address, borrower.address, 1, true)
     ).to.be.revertedWith(LPCM_HEALTH_FACTOR_NOT_BELOW_THRESHOLD);
   });
 
-  it('Drop the health factor below 1', async () => {
-    const { dai, users, pool, oracle } = testEnv;
+  it('Drop the health factor below 1 by breaking USDC peg', async () => {
+    const { usdc, users, pool, oracle } = testEnv;
     const borrower = users[1];
 
-    const daiPrice = await oracle.getAssetPrice(dai.address);
+    const usdcPrice = await oracle.getAssetPrice(usdc.address);
 
     await oracle.setAssetPrice(
-      dai.address,
-      new BigNumber(daiPrice.toString()).multipliedBy(1.15).toFixed(0)
+      usdc.address,
+      new BigNumber(usdcPrice.toString()).multipliedBy(1.15).toFixed(0)
     );
 
     const userGlobalData = await pool.getUserAccountData(borrower.address);
@@ -108,32 +109,32 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
   });
 
   it('Tries to liquidate a different collateral than the borrower collateral', async () => {
-    const { pool, dai, users } = testEnv;
+    const { pool, usdc, users } = testEnv;
     const borrower = users[1];
 
     await expect(
-      pool.liquidationCall(dai.address, dai.address, borrower.address, oneEther.toString(), true)
+      pool.liquidationCall(usdc.address, usdc.address, borrower.address, oneEther.toString(), true)
     ).revertedWith(LPCM_COLLATERAL_CANNOT_BE_LIQUIDATED);
   });
 
   it('Liquidates the borrow', async () => {
-    const { pool, dai, weth, aWETH, aDai, users, oracle, helpersContract, deployer } = testEnv;
+    const { pool, usdc, weth, aWETH, aUSDC, users, oracle, helpersContract, deployer } = testEnv;
     const borrower = users[1];
 
-    //mints dai to the caller
+    //mints usdc to the caller
 
-    await dai.mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    await usdc.mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     //approve protocol to access depositor wallet
-    await dai.approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await usdc.approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    const daiReserveDataBefore = await getReserveData(helpersContract, dai.address);
+    const usdcReserveDataBefore = await getReserveData(helpersContract, usdc.address);
     const ethReserveDataBefore = await helpersContract.getReserveData(weth.address);
 
     const userReserveDataBefore = await getUserData(
       pool,
       helpersContract,
-      dai.address,
+      usdc.address,
       borrower.address
     );
 
@@ -143,30 +144,30 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
 
     const tx = await pool.liquidationCall(
       weth.address,
-      dai.address,
+      usdc.address,
       borrower.address,
       amountToLiquidate,
       true
     );
 
     const userReserveDataAfter = await helpersContract.getUserReserveData(
-      dai.address,
+      usdc.address,
       borrower.address
     );
 
     const userGlobalDataAfter = await pool.getUserAccountData(borrower.address);
 
-    const daiReserveDataAfter = await helpersContract.getReserveData(dai.address);
+    const usdcReserveDataAfter = await helpersContract.getReserveData(usdc.address);
     const ethReserveDataAfter = await helpersContract.getReserveData(weth.address);
 
     const collateralPrice = (await oracle.getAssetPrice(weth.address)).toString();
-    const principalPrice = (await oracle.getAssetPrice(dai.address)).toString();
+    const principalPrice = (await oracle.getAssetPrice(usdc.address)).toString();
 
     const collateralDecimals = (
       await helpersContract.getReserveConfigurationData(weth.address)
     ).decimals.toString();
     const principalDecimals = (
-      await helpersContract.getReserveConfigurationData(dai.address)
+      await helpersContract.getReserveConfigurationData(usdc.address)
     ).decimals.toString();
 
     const expectedCollateralLiquidated = new BigNumber(principalPrice)
@@ -185,7 +186,7 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
     );
 
     const variableDebtBeforeTx = calcExpectedVariableDebtTokenBalance(
-      daiReserveDataBefore,
+      usdcReserveDataBefore,
       userReserveDataBefore,
       txTimestamp
     );
@@ -200,22 +201,22 @@ makeSuite('LendingPool liquidation - liquidator receiving aToken', (testEnv) => 
       'Invalid user borrow balance after liquidation'
     );
 
-    expect(daiReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
-      new BigNumber(daiReserveDataBefore.availableLiquidity.toString())
+    expect(usdcReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
+      new BigNumber(usdcReserveDataBefore.availableLiquidity.toString())
         .plus(amountToLiquidate)
         .toFixed(0),
       'Invalid principal available liquidity'
     );
 
     //the liquidity index of the principal reserve needs to be bigger than the index before
-    expect(daiReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
-      daiReserveDataBefore.liquidityIndex.toString(),
+    expect(usdcReserveDataAfter.liquidityIndex.toString()).to.be.bignumber.gte(
+      usdcReserveDataBefore.liquidityIndex.toString(),
       'Invalid liquidity index'
     );
 
     //the principal APY after a liquidation needs to be lower than the APY before
-    expect(daiReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
-      daiReserveDataBefore.liquidityRate.toString(),
+    expect(usdcReserveDataAfter.liquidityRate.toString()).to.be.bignumber.lt(
+      usdcReserveDataBefore.liquidityRate.toString(),
       'Invalid liquidity APY'
     );
 

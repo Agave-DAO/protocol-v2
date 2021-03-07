@@ -66,7 +66,7 @@ const deployAllMockTokens = async (deployer: Signer) => {
   const protoConfigData = getReservesConfigByPool(AavePools.proto);
 
   for (const tokenSymbol of Object.keys(TokenContractId)) {
-    if (tokenSymbol === 'WETH') {
+    if (tokenSymbol === 'WNATIVE') {
       tokens[tokenSymbol] = await deployWETHMocked();
       await registerContractInJsonDb(tokenSymbol.toUpperCase(), tokens[tokenSymbol]);
       continue;
@@ -145,9 +145,10 @@ const buildTestEnv = async (deployer: Signer, secondaryWallet: Signer) => {
   await setInitialAssetPricesInOracle(
     ALL_ASSETS_INITIAL_PRICES,
     {
-      AG: mockTokens.AG.address,
+      AGVE: mockTokens.AGVE.address,
+      USDC: mockTokens.USDC.address,
       WETH: mockTokens.WETH.address,
-      WXDAI: mockTokens.DAI.address,
+      WNATIVE: mockTokens.WNATIVE.address,
       HNY: mockTokens.HNY.address,
       WBTC: mockTokens.WBTC.address,
       USD: USD_ADDRESS,
@@ -225,7 +226,7 @@ const buildTestEnv = async (deployer: Signer, secondaryWallet: Signer) => {
   const adapterParams: [string, string, string] = [
     addressesProvider.address,
     mockUniswapRouter.address,
-    mockTokens.WETH.address,
+    mockTokens.WNATIVE.address,
   ];
 
   await deployUniswapLiquiditySwapAdapter(adapterParams);
@@ -234,7 +235,7 @@ const buildTestEnv = async (deployer: Signer, secondaryWallet: Signer) => {
 
   await deployWalletBalancerProvider();
 
-  await deployWETHGateway([mockTokens.WETH.address, lendingPoolAddress]);
+  await deployWETHGateway([mockTokens.WNATIVE.address, lendingPoolAddress]);
 
   console.timeEnd('setup');
 };

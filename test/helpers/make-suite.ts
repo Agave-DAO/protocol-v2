@@ -56,11 +56,12 @@ export interface TestEnv {
   configurator: LendingPoolConfigurator;
   oracle: PriceOracle;
   helpersContract: AaveProtocolDataProvider;
-  weth: WETH9Mocked;
+  wnative: WETH9Mocked;
+  aWNATIVE: AToken;
+  weth: MintableERC20;
   aWETH: AToken;
-  dai: MintableERC20;
-  aDai: AToken;
   usdc: MintableERC20;
+  aUSDC: AToken;
   aave: MintableERC20;
   addressesProvider: LendingPoolAddressesProvider;
   uniswapLiquiditySwapAdapter: UniswapLiquiditySwapAdapter;
@@ -82,11 +83,12 @@ const testEnv: TestEnv = {
   configurator: {} as LendingPoolConfigurator,
   helpersContract: {} as AaveProtocolDataProvider,
   oracle: {} as PriceOracle,
-  weth: {} as WETH9Mocked,
+  wnative: {} as WETH9Mocked,
+  aWNATIVE: {} as AToken,
+  weth: {} as MintableERC20,
   aWETH: {} as AToken,
-  dai: {} as MintableERC20,
-  aDai: {} as AToken,
   usdc: {} as MintableERC20,
+  aUSDC: {} as AToken,
   aave: {} as MintableERC20,
   addressesProvider: {} as LendingPoolAddressesProvider,
   uniswapLiquiditySwapAdapter: {} as UniswapLiquiditySwapAdapter,
@@ -128,31 +130,34 @@ export async function initializeMakeSuite() {
   testEnv.helpersContract = await getAaveProtocolDataProvider();
 
   const allTokens = await testEnv.helpersContract.getAllATokens();
-  const aDaiAddress = allTokens.find((aToken) => aToken.symbol === 'aDAI')?.tokenAddress;
-
-  const aWEthAddress = allTokens.find((aToken) => aToken.symbol === 'aWETH')?.tokenAddress;
+  const aWethAddress = allTokens.find((aToken) => aToken.symbol === 'aWETH')?.tokenAddress;
+  const aUSDCAddress = allTokens.find((aToken) => aToken.symbol === 'aUSDC')?.tokenAddress;
+  const aWNativeAddress = allTokens.find((aToken) => aToken.symbol === 'aWNATIVE')?.tokenAddress;
 
   const reservesTokens = await testEnv.helpersContract.getAllReservesTokens();
 
-  const daiAddress = reservesTokens.find((token) => token.symbol === 'DAI')?.tokenAddress;
-  const usdcAddress = reservesTokens.find((token) => token.symbol === 'USDC')?.tokenAddress;
-  const aaveAddress = reservesTokens.find((token) => token.symbol === 'AAVE')?.tokenAddress;
   const wethAddress = reservesTokens.find((token) => token.symbol === 'WETH')?.tokenAddress;
+  const usdcAddress = reservesTokens.find((token) => token.symbol === 'USDC')?.tokenAddress;
+  const aaveAddress = reservesTokens.find((token) => token.symbol === 'AGVE')?.tokenAddress;
+  const wnativeAddress = reservesTokens.find((token) => token.symbol === 'WNATIVE')?.tokenAddress;
 
-  if (!aDaiAddress || !aWEthAddress) {
+  if (!aWethAddress || !aWNativeAddress || !aUSDCAddress) {
+    console.log("Didn't find expected aTokens")
     process.exit(1);
   }
-  if (!daiAddress || !usdcAddress || !aaveAddress || !wethAddress) {
+  if (!wethAddress || !usdcAddress || !aaveAddress || !wnativeAddress) {
+    console.log("Didn't find expected reserve tokens")
     process.exit(1);
   }
 
-  testEnv.aDai = await getAToken(aDaiAddress);
-  testEnv.aWETH = await getAToken(aWEthAddress);
+  testEnv.aWETH = await getAToken(aWethAddress);
+  testEnv.aWNATIVE = await getAToken(aWNativeAddress);
+  testEnv.aUSDC = await getAToken(aUSDCAddress);
 
-  testEnv.dai = await getMintableERC20(daiAddress);
   testEnv.usdc = await getMintableERC20(usdcAddress);
   testEnv.aave = await getMintableERC20(aaveAddress);
-  testEnv.weth = await getWETHMocked(wethAddress);
+  testEnv.weth = await getMintableERC20(wethAddress);
+  testEnv.wnative = await getWETHMocked(wnativeAddress);
   testEnv.wethGateway = await getWETHGateway();
 
   testEnv.uniswapLiquiditySwapAdapter = await getUniswapLiquiditySwapAdapter();

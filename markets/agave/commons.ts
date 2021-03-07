@@ -3,12 +3,13 @@ import { oneEther, oneRay, RAY, ZERO_ADDRESS } from '../../helpers/constants';
 import { ICommonConfiguration, EthereumNetwork, eEthereumNetwork } from '../../helpers/types';
 
 const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
-  AG: oneEther.multipliedBy('0.003620948469').toFixed(),
-  WXDAI: oneEther.multipliedBy('0.00369068412860').toFixed(),
-  HNY: oneEther.multipliedBy('2.508581').toFixed(),
-  WETH: oneEther.toFixed(),
-  WBTC: oneEther.multipliedBy('47.332685').toFixed(),
-  USD: '5848466240000000',
+  AGVE: oneEther.multipliedBy('1.043620948469').toFixed(),
+  USDC: oneEther.multipliedBy('1.00133843').toFixed(),
+  WNATIVE: oneEther.toFixed(),
+  HNY: oneEther.multipliedBy('1002.508581').toFixed(),
+  WETH: oneEther.multipliedBy('271.04928').toFixed(),
+  WBTC: oneEther.multipliedBy('47332.685').toFixed(),
+  USD: oneEther.multipliedBy('0.9989384').toFixed(),
 };
 // ----------------
 // PROTOCOL GLOBAL PARAMS
@@ -19,7 +20,7 @@ export const CommonsConfig: ICommonConfiguration = {
   ProviderId: 0,
   ProtocolGlobalParams: {
     TokenDistributorPercentageBase: '10000',
-    MockUsdPriceInWei: '5848466240000000',
+    MockUsdPriceInWei: '998938400000000000',
     UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
@@ -45,7 +46,13 @@ export const CommonsConfig: ICommonConfiguration = {
     WETH: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
-    WXDAI: {
+    WNATIVE: {
+      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
+    },
+    USDC: {
+      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
+    },
+    AGVE: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
   },
@@ -142,18 +149,21 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.hardhat]: {},
     [eEthereumNetwork.buidlerevm]: {},
     [EthereumNetwork.kovan]: {
-      AG: '0xd04647B7CB523bb9f26730E9B6dE1174db7591Ad', // actually AAVE
-      WXDAI: '0x22B58f1EbEDfCA50feF632bD73368b2FdA96D541', // actually DAI
-      HNY: '0x0B156192e04bAD92B6C1C13cf8739d14D78D5701', // actually MKR
+      AGVE: '', // actually AAVE
+      WXDAI: '', // actually DAI
+      HNY: '', // actually MKR
       WBTC: '0xF7904a295A029a3aBDFFB6F12755974a958C7C25',
+      WETH: '',
       USD: '0x9326BFA02ADD2366b30bacB125260Af641031331',
     },
     [EthereumNetwork.rinkeby]: {
-      AG: '0x9c1946428f4f159dB4889aA6B218833f467e1BfD', // actually XAG (silver)
-      WXDAI: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF', // actually DAI
+      AGVE: '0x9c1946428f4f159dB4889aA6B218833f467e1BfD', // actually XAG (silver)
+      USDC: '0xa24de01df22b63d23Ebc1882a5E3d4ec0d907bFB',
       HNY: '0xd8bD0a1cB028a31AA859A21A3758685a95dE4623', // actually LINK
       WBTC: '0xECe365B379E1dD183B20fc5f022230C044d51404',
-      USD: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
+      WETH: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
+      WXDAI: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF', // actually DAI
+      USD: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF',
     },
     [EthereumNetwork.ropsten]: {
       BAT: '0xafd8186c962daf599f171b8600f3e19af7b52c92',
@@ -241,7 +251,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
   },
-  WETH: {
+  WNATIVE: {
     [eEthereumNetwork.coverage]: '', // deployed in local evm
     [eEthereumNetwork.hardhat]: '', // deployed in local evm
     [eEthereumNetwork.buidlerevm]: '', // deployed in local evm
@@ -252,9 +262,9 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   },
   ReserveFactorTreasuryAddress: {
-    [eEthereumNetwork.coverage]: '',
-    [eEthereumNetwork.hardhat]: '',
-    [eEthereumNetwork.buidlerevm]: '',
+    [eEthereumNetwork.coverage]: '0x2d206Fd0C7c76016234810232159b05562608A42',
+    [eEthereumNetwork.hardhat]: '0x2d206Fd0C7c76016234810232159b05562608A42',
+    [eEthereumNetwork.buidlerevm]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.kovan]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.rinkeby]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.ropsten]: '',

@@ -89,12 +89,12 @@ export const getATokenDomainSeparatorPerNetwork = (
 
 export const getWethAddress = async (config: ICommonConfiguration) => {
   const currentNetwork = process.env.MAINNET_FORK === 'true' ? 'main' : DRE.network.name;
-  const wethAddress = getParamPerNetwork(config.WETH, <eEthereumNetwork>currentNetwork);
+  const wethAddress = getParamPerNetwork(config.WNATIVE, <eEthereumNetwork>currentNetwork);
   if (wethAddress) {
     return wethAddress;
   }
   if (currentNetwork.includes('main')) {
-    throw new Error('WETH not set at mainnet configuration.');
+    throw new Error('WNATIVE not set at mainnet configuration.');
   }
   const weth = await deployWETHMocked();
   return weth.address;

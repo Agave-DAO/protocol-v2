@@ -185,10 +185,11 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
-  AG: T;
+  AGVE: T;
+  USDC: T;
   HNY: T;
   WETH: T;
-  WXDAI: T;
+  WNATIVE: T;
   WBTC: T;
   USD: T;
 }
@@ -199,9 +200,10 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'AG'
+  | 'AGVE'
+  | 'USDC'
   | 'HNY'
-  | 'WXDAI'
+  | 'WNATIVE'
   | 'WBTC'
   | 'WETH'
 >;
@@ -213,27 +215,13 @@ export type iAavePoolTokens<T> = Omit<iAavePoolAssets<T>, 'ETH'>;
 export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
 export enum TokenContractId {
-  DAI = 'DAI',
-  AAVE = 'AAVE',
-  TUSD = 'TUSD',
-  BAT = 'BAT',
+  AGVE = 'AGVE',
+  HNY = 'HNY',
   WETH = 'WETH',
+  WNATIVE = 'WNATIVE',
   USDC = 'USDC',
-  USDT = 'USDT',
-  SUSD = 'SUSD',
-  ZRX = 'ZRX',
-  MKR = 'MKR',
   WBTC = 'WBTC',
-  LINK = 'LINK',
-  KNC = 'KNC',
-  MANA = 'MANA',
-  REN = 'REN',
-  SNX = 'SNX',
-  BUSD = 'BUSD',
   USD = 'USD',
-  YFI = 'YFI',
-  UNI = 'UNI',
-  ENJ = 'ENJ',
 }
 
 export interface IReserveParams extends IReserveBorrowParams, IReserveCollateralParams {
@@ -343,7 +331,7 @@ export interface ICommonConfiguration {
   ReserveAssets: iParamsPerNetwork<SymbolMap<tEthereumAddress>>;
   ReservesConfig: iMultiPoolsAssets<IReserveParams>;
   ATokenDomainSeparator: iParamsPerNetwork<string>;
-  WETH: iParamsPerNetwork<tEthereumAddress>;
+  WNATIVE: iParamsPerNetwork<tEthereumAddress>;
   ReserveFactorTreasuryAddress: iParamsPerNetwork<tEthereumAddress>;
 }
 

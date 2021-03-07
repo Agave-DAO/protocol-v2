@@ -11,7 +11,7 @@ task(`deploy-${CONTRACT_NAME}`, `Deploys the ${CONTRACT_NAME} contract`)
   .addParam('router', 'Address of the uniswap router')
   .addParam('weth', 'Address of the weth token')
   .addFlag('verify', `Verify ${CONTRACT_NAME} contract via Etherscan API.`)
-  .setAction(async ({ provider, router, weth, verify }, localBRE) => {
+  .setAction(async ({ provider, router, wnative, verify }, localBRE) => {
     await localBRE.run('set-DRE');
 
     if (!localBRE.network.config.chainId) {
@@ -26,10 +26,10 @@ task(`deploy-${CONTRACT_NAME}`, `Deploys the ${CONTRACT_NAME} contract`)
     */
     const uniswapRepayAdapter = await new UniswapLiquiditySwapAdapterFactory(
       await getFirstSigner()
-    ).deploy(provider, router, weth);
+    ).deploy(provider, router, wnative);
     await uniswapRepayAdapter.deployTransaction.wait();
     console.log(`${CONTRACT_NAME}.address`, uniswapRepayAdapter.address);
-    await verifyContract(uniswapRepayAdapter.address, [provider, router, weth]);
+    await verifyContract(uniswapRepayAdapter.address, [provider, router, wnative]);
 
     console.log(`\tFinished ${CONTRACT_NAME} proxy and implementation deployment`);
   });

@@ -367,19 +367,19 @@ makeSuite('LendingPoolConfigurator', (testEnv: TestEnv) => {
   });
 
   it('Reverts when trying to disable the DAI reserve with liquidity on it', async () => {
-    const { dai, pool, configurator } = testEnv;
+    const { weth, pool, configurator } = testEnv;
     const userAddress = await pool.signer.getAddress();
-    await dai.mint(await convertToCurrencyDecimals(dai.address, '1000'));
+    await weth.mint(await convertToCurrencyDecimals(weth.address, '1000'));
 
     //approve protocol to access depositor wallet
-    await dai.approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
-    const amountDAItoDeposit = await convertToCurrencyDecimals(dai.address, '1000');
+    await weth.approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    const amountDAItoDeposit = await convertToCurrencyDecimals(weth.address, '1000');
 
     //user 1 deposits 1000 DAI
-    await pool.deposit(dai.address, amountDAItoDeposit, userAddress, '0');
+    await pool.deposit(weth.address, amountDAItoDeposit, userAddress, '0');
 
     await expect(
-      configurator.deactivateReserve(dai.address),
+      configurator.deactivateReserve(weth.address),
       LPC_RESERVE_LIQUIDITY_NOT_0
     ).to.be.revertedWith(LPC_RESERVE_LIQUIDITY_NOT_0);
   });

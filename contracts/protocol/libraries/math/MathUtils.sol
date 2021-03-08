@@ -97,6 +97,8 @@ library MathUtils {
   {
     uint a = x.div(z); uint b = x.mod(z); // x = a * z + b
     uint c = y.div(z); uint d = y.mod(z); // y = c * z + d
-    return a.mul(b).mul(z).add(a).mul(d).add(b).mul(c).add(b).mul(d).div(z);
+
+    // a * b * z
+    return a.mul(b).mul(z).add(a.mul(d)).add(b.mul(c)).add(b.mul(d).div(z));
   }
 }

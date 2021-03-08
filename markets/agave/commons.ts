@@ -109,7 +109,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
     [eEthereumNetwork.kovan]: '0xfA554E36eEfa3388704D01F5f3cf44aD62c826d6',
-    [eEthereumNetwork.rinkeby]: '',
+    [eEthereumNetwork.rinkeby]: '0x832ffb5F895A1EE46903FDcb59D179590A6A8a53',
     [eEthereumNetwork.ropsten]: '0x3c74d9795C35164D9d4c118437b46a34525faC01',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
@@ -128,9 +128,9 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [EthereumNetwork.kovan]: '0xa22db3b3Dd9B1206356a3E868cB2a603CBA68b1b',
-    [EthereumNetwork.rinkeby]: '',
-    [EthereumNetwork.ropsten]: '0x4Fa2b39aA593fc4c931C5db89DaBBF9083Bc855f',
+    [EthereumNetwork.kovan]: '',
+    [EthereumNetwork.rinkeby]: '0xBa63DC20F35467060924254D0013ED258743015c',
+    [EthereumNetwork.ropsten]: '',
     [EthereumNetwork.main]: '',
     [EthereumNetwork.tenderlyMain]: '',
   },
@@ -162,7 +162,7 @@ export const CommonsConfig: ICommonConfiguration = {
       HNY: '0xd8bD0a1cB028a31AA859A21A3758685a95dE4623', // actually LINK
       WBTC: '0xECe365B379E1dD183B20fc5f022230C044d51404',
       WETH: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
-      WXDAI: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF', // actually DAI
+      WNATIVE: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF', // actually DAI
       USD: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF',
     },
     [EthereumNetwork.ropsten]: {

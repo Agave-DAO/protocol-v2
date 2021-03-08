@@ -18,7 +18,7 @@ import '@tenderly/hardhat-tenderly';
 const SKIP_LOAD = process.env.SKIP_LOAD === 'true';
 const DEFAULT_BLOCK_GAS_LIMIT = 12450000;
 const DEFAULT_GAS_MUL = 5;
-const DEFAULT_GAS_PRICE = 65000000000;
+const DEFAULT_GAS_PRICE = 1000000000;
 const HARDFORK = 'istanbul';
 const INFURA_KEY = process.env.INFURA_KEY || '';
 const ALCHEMY_KEY = process.env.ALCHEMY_KEY || '';
@@ -101,7 +101,11 @@ const buidlerConfig: HardhatUserConfig = {
       chainId: COVERAGE_CHAINID,
     },
     kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
-    rinkeby: getCommonNetworkConfig(eEthereumNetwork.rinkeby, 4),
+    rinkeby: { 
+      ...getCommonNetworkConfig(eEthereumNetwork.rinkeby, 4),
+      gasPrice: 1000000000,
+      blockGasLimit: 10000000
+    },
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
     tenderlyMain: getCommonNetworkConfig(eEthereumNetwork.main, 1),

@@ -3,10 +3,11 @@ pragma solidity 0.6.12;
 
 import {Ownable} from '../dependencies/openzeppelin/contracts/Ownable.sol';
 import {IERC20} from '../dependencies/openzeppelin/contracts/IERC20.sol';
+import {IERC20Detailed} from '../dependencies/openzeppelin/contracts/IERC20Detailed.sol';
 
 import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
 import {IChainlinkAggregator} from '../interfaces/IChainlinkAggregator.sol';
-import {mulDiv} from '../libraries/math/MathUtils.sol';
+import {MathUtils} from '../protocol/libraries/math/MathUtils.sol';
 import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
 
 /// @title AaveOracle
@@ -42,7 +43,7 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
     _setFallbackOracle(fallbackOracle);
     _setAssetsSources(assets, sources);
     wrappedNative = _wrappedNative;
-    _wrappedNativeDecimals = IERC20(_wrappedNative).decimals();
+    _wrappedNativeDecimals = IERC20Detailed(_wrappedNative).decimals();
     emit WrappedNativeSet(_wrappedNative);
   }
 
@@ -104,7 +105,7 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
         // Now we have the price in USD. Dividing by the NATIVE/USD price gets us the value in our native token.
         // On mainnet, Aave and Chainlink price everything in ether, thus avoiding this double conversion.
         // Note that the NATIVE/* price includes NATIVE's decimals so we need to divide those back out here.
-        return muldiv(price, wrappedNativeUsdPrice, 10 ** _wrappedNativeDecimals);
+        return MathUtils.mulDiv(uint256(price), uint256(wrappedNativeUsdPrice), 10 ** _wrappedNativeDecimals);
       } else {
         return _fallbackOracle.getAssetPrice(asset);
       }

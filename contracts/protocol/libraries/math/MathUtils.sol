@@ -81,24 +81,4 @@ library MathUtils {
   {
     return calculateCompoundedInterest(rate, lastUpdateTimestamp, block.timestamp);
   }
-
-  /**
-   * @dev (x * y / z) Safe multiply & divide function for getting proportions
-   * To avoid overflow, ensure z <= 2^128.
-   * Pulled from https://medium.com/coinmonks/math-in-solidity-part-3-percents-and-proportions-4db014e080b1
-   * @param x The first multiply term
-   * @param y The second multiply term
-   * @param z The divisor
-   **/
-  function mulDiv (uint256 x, uint256 y, uint256 z)
-    internal 
-    pure 
-    returns (uint256)
-  {
-    uint a = x.div(z); uint b = x.mod(z); // x = a * z + b
-    uint c = y.div(z); uint d = y.mod(z); // y = c * z + d
-
-    // a * b * z
-    return a.mul(b).mul(z).add(a.mul(d)).add(b.mul(c)).add(b.mul(d).div(z));
-  }
 }

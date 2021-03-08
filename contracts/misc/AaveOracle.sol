@@ -7,7 +7,8 @@ import {IERC20Detailed} from '../dependencies/openzeppelin/contracts/IERC20Detai
 
 import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
 import {IChainlinkAggregator} from '../interfaces/IChainlinkAggregator.sol';
-import {MathUtils} from '../protocol/libraries/math/MathUtils.sol';
+
+import {SafeMath} from '../dependencies/openzeppelin/contracts/SafeMath.sol';
 import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
 
 /// @title AaveOracle
@@ -19,6 +20,7 @@ import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
 ///   and change the fallbackOracle
 contract AaveOracle is IPriceOracleGetter, Ownable {
   using SafeERC20 for IERC20;
+  using SafeMath for uint256;
 
   event WrappedNativeSet(address indexed wrappedNative);
   event AssetSourceUpdated(address indexed asset, address indexed source);
@@ -27,7 +29,8 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
   mapping(address => IChainlinkAggregator) private assetsSources;
   IPriceOracleGetter private _fallbackOracle;
   address public immutable wrappedNative;
-  uint256 private immutable _wrappedNativeDecimals;
+  uint8 private immutable _wrappedNativeDecimals;
+  uint8 private immutable _oracleDecimals;
 
   /// @notice Constructor
   /// @param assets The addresses of the assets
@@ -44,6 +47,7 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
     _setAssetsSources(assets, sources);
     wrappedNative = _wrappedNative;
     _wrappedNativeDecimals = IERC20Detailed(_wrappedNative).decimals();
+    _oracleDecimals = IChainlinkAggregator(assetsSources[_wrappedNative]).decimals();
     emit WrappedNativeSet(_wrappedNative);
   }
 
@@ -104,8 +108,10 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
       if (price > 0) {
         // Now we have the price in USD. Dividing by the NATIVE/USD price gets us the value in our native token.
         // On mainnet, Aave and Chainlink price everything in ether, thus avoiding this double conversion.
-        // Note that the NATIVE/* price includes NATIVE's decimals so we need to divide those back out here.
-        return MathUtils.mulDiv(uint256(price), uint256(wrappedNativeUsdPrice), 10 ** _wrappedNativeDecimals);
+        uint256 assetPriceInNative = uint256(price).mul(uint256(10)**_oracleDecimals).div(uint256(wrappedNativeUsdPrice));
+
+        // Asset price is still using the oracle's decimals. Convert it to native decimals.
+        return assetPriceInNative.mul(uint256(10)**_wrappedNativeDecimals).div(uint256(10)**_oracleDecimals);
       } else {
         return _fallbackOracle.getAssetPrice(asset);
       }

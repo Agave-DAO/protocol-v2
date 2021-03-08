@@ -129,7 +129,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
     [EthereumNetwork.kovan]: '',
-    [EthereumNetwork.rinkeby]: '0x463d23a9aA2A6B9Af8A539E351714dF544D1a539',
+    [EthereumNetwork.rinkeby]: '0x7f5351A94D81762B21f2e8907F4A3a07f8ad1ACc',
     [EthereumNetwork.ropsten]: '',
     [EthereumNetwork.main]: '',
     [EthereumNetwork.tenderlyMain]: '',

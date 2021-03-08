@@ -30,7 +30,6 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
   IPriceOracleGetter private _fallbackOracle;
   address public immutable wrappedNative;
   uint8 private immutable _wrappedNativeDecimals;
-  uint8 private immutable _oracleDecimals;
 
   /// @notice Constructor
   /// @param assets The addresses of the assets
@@ -47,7 +46,6 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
     _setAssetsSources(assets, sources);
     wrappedNative = _wrappedNative;
     _wrappedNativeDecimals = IERC20Detailed(_wrappedNative).decimals();
-    _oracleDecimals = IChainlinkAggregator(assetsSources[_wrappedNative]).decimals();
     emit WrappedNativeSet(_wrappedNative);
   }
 
@@ -108,10 +106,7 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
       if (price > 0) {
         // Now we have the price in USD. Dividing by the NATIVE/USD price gets us the value in our native token.
         // On mainnet, Aave and Chainlink price everything in ether, thus avoiding this double conversion.
-        uint256 assetPriceInNative = uint256(price).mul(uint256(10)**_oracleDecimals).div(uint256(wrappedNativeUsdPrice));
-
-        // Asset price is still using the oracle's decimals. Convert it to native decimals.
-        return assetPriceInNative.mul(uint256(10)**_wrappedNativeDecimals).div(uint256(10)**_oracleDecimals);
+        return uint256(price).mul(uint256(10)**_wrappedNativeDecimals).div(uint256(wrappedNativeUsdPrice));
       } else {
         return _fallbackOracle.getAssetPrice(asset);
       }

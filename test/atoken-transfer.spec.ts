@@ -15,28 +15,27 @@ makeSuite('AToken: Transfer', (testEnv: TestEnv) => {
     VL_TRANSFER_NOT_ALLOWED,
   } = ProtocolErrors;
 
-  it('User 0 deposits 1000 DAI, transfers to user 1', async () => {
-    const { users, pool, usdc, aUSDC } = testEnv;
+  it('User 0 deposits 1000 DAI, transfers to user 1, who reads the name of the token', async () => {
+    const { users, pool, wnative: dai, aWNATIVE: aDAI } = testEnv;
 
-    await usdc.connect(users[0].signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
+    await dai.connect(users[0].signer).mint(await convertToCurrencyDecimals(dai.address, '1000'));
 
-    await usdc.connect(users[0].signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await dai.connect(users[0].signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
     //user 1 deposits 1000 DAI
-    const amountDAItoDeposit = await convertToCurrencyDecimals(usdc.address, '1000');
+    const amountDAItoDeposit = await convertToCurrencyDecimals(dai.address, '1000');
 
     await pool
       .connect(users[0].signer)
-      .deposit(usdc.address, amountDAItoDeposit, users[0].address, '0');
+      .deposit(dai.address, amountDAItoDeposit, users[0].address, '0');
 
-    await aUSDC.connect(users[0].signer).transfer(users[1].address, amountDAItoDeposit);
+    await aDAI.connect(users[0].signer).transfer(users[1].address, amountDAItoDeposit);
 
-    const name = await aUSDC.name();
+    const name = await aDAI.name();
+    expect(name).to.be.equal('Agave interest bearing WXDAI');
 
-    expect(name).to.be.equal('Aave interest bearing USDC');
-
-    const fromBalance = await aUSDC.balanceOf(users[0].address);
-    const toBalance = await aUSDC.balanceOf(users[1].address);
+    const fromBalance = await aDAI.balanceOf(users[0].address);
+    const toBalance = await aDAI.balanceOf(users[1].address);
 
     expect(fromBalance.toString()).to.be.equal('0', INVALID_FROM_BALANCE_AFTER_TRANSFER);
     expect(toBalance.toString()).to.be.equal(
@@ -75,24 +74,24 @@ makeSuite('AToken: Transfer', (testEnv: TestEnv) => {
   });
 
   it('User 1 tries to transfer all the DAI used as collateral back to user 0 (revert expected)', async () => {
-    const { users, pool, aUSDC, usdc, wnative } = testEnv;
+    const { users, pool, aWNATIVE: aDAI, wnative: dai } = testEnv;
 
-    const aDAItoTransfer = await convertToCurrencyDecimals(usdc.address, '1000');
+    const aDAItoTransfer = await convertToCurrencyDecimals(dai.address, '1000');
 
     await expect(
-      aUSDC.connect(users[1].signer).transfer(users[0].address, aDAItoTransfer),
+      aDAI.connect(users[1].signer).transfer(users[0].address, aDAItoTransfer),
       VL_TRANSFER_NOT_ALLOWED
     ).to.be.revertedWith(VL_TRANSFER_NOT_ALLOWED);
   });
 
   it('User 1 tries to transfer a small amount of DAI used as collateral back to user 0', async () => {
-    const { users, pool, aUSDC, usdc, wnative } = testEnv;
+    const { users, pool, aWNATIVE: aDAI, wnative: dai } = testEnv;
 
-    const aDAItoTransfer = await convertToCurrencyDecimals(usdc.address, '100');
+    const aDAItoTransfer = await convertToCurrencyDecimals(dai.address, '100');
 
-    await aUSDC.connect(users[1].signer).transfer(users[0].address, aDAItoTransfer);
+    await aDAI.connect(users[1].signer).transfer(users[0].address, aDAItoTransfer);
 
-    const user0Balance = await aUSDC.balanceOf(users[0].address);
+    const user0Balance = await aDAI.balanceOf(users[0].address);
 
     expect(user0Balance.toString()).to.be.eq(aDAItoTransfer.toString());
   });

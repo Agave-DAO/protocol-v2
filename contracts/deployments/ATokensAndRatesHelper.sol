@@ -46,8 +46,8 @@ contract ATokensAndRatesHelper is Ownable {
             LendingPool(pool),
             assets[i],
             treasuryAddress,
-            StringLib.concat('Aave interest bearing ', symbols[i]),
-            StringLib.concat('a', symbols[i]),
+            StringLib.concat('Agave interest bearing ', symbols[i]),
+            StringLib.concat('ag', symbols[i]),
             incentivesController
           )
         ),

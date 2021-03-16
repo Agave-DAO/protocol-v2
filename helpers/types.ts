@@ -332,6 +332,7 @@ export interface ICommonConfiguration {
   ReservesConfig: iMultiPoolsAssets<IReserveParams>;
   ATokenDomainSeparator: iParamsPerNetwork<string>;
   WNATIVE: iParamsPerNetwork<tEthereumAddress>;
+  WNativeSymbol: string;
   ReserveFactorTreasuryAddress: iParamsPerNetwork<tEthereumAddress>;
 }
 

@@ -89,8 +89,8 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
           lendingPoolProxy.address,
           tokenAddress,
           treasuryAddress,
-          `Aave interest bearing ${token}`,
-          `a${token}`,
+          `Agave interest bearing ${token}`,
+          `ag${token}`,
           ZERO_ADDRESS,
         ]);
       } else {
@@ -101,7 +101,7 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
         await verifyContract(stableDebt, [
           lendingPoolProxy.address,
           tokenAddress,
-          `Aave stable debt bearing ${token}`,
+          `Agave stable debt bearing ${token}`,
           `stableDebt${token}`,
           ZERO_ADDRESS,
         ]);
@@ -113,7 +113,7 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
         await verifyContract(variableDebt, [
           lendingPoolProxy.address,
           tokenAddress,
-          `Aave variable debt bearing ${token}`,
+          `Agave variable debt bearing ${token}`,
           `variableDebt${token}`,
           ZERO_ADDRESS,
         ]);

@@ -261,6 +261,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   },
+  WNativeSymbol: 'WXDAI',
   ReserveFactorTreasuryAddress: {
     [eEthereumNetwork.coverage]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.hardhat]: '0x2d206Fd0C7c76016234810232159b05562608A42',

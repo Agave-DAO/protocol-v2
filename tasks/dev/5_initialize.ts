@@ -52,6 +52,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     await initReservesByHelper(
       reservesParams,
       protoPoolReservesAddresses,
+      poolConfig.WNativeSymbol,
       admin,
       treasuryAddress,
       ZERO_ADDRESS,

@@ -53,8 +53,8 @@ WRONG RESERVE ASSET SETUP:
         poolAddress,
         reserveAssetAddress,
         treasuryAddress,
-        `Aave interest bearing ${symbol}`,
-        `a${symbol}`,
+        `Agave interest bearing ${symbol}`,
+        `ag${symbol}`,
         ZERO_ADDRESS,
       ],
       verify
@@ -63,7 +63,7 @@ WRONG RESERVE ASSET SETUP:
       [
         poolAddress,
         reserveAssetAddress,
-        `Aave stable debt bearing ${symbol}`,
+        `Agave stable debt bearing ${symbol}`,
         `stableDebt${symbol}`,
         ZERO_ADDRESS,
       ],
@@ -73,7 +73,7 @@ WRONG RESERVE ASSET SETUP:
       [
         poolAddress,
         reserveAssetAddress,
-        `Aave variable debt bearing ${symbol}`,
+        `Agave variable debt bearing ${symbol}`,
         `variableDebt${symbol}`,
         ZERO_ADDRESS,
       ],
@@ -93,7 +93,7 @@ WRONG RESERVE ASSET SETUP:
     );
     console.log(`
     New interest bearing asset deployed on ${network}:
-    Interest bearing a${symbol} address: ${aToken.address}
+    Interest bearing ag${symbol} address: ${aToken.address}
     Variable Debt variableDebt${symbol} address: ${variableDebt.address}
     Stable Debt stableDebt${symbol} address: ${stableDebt.address}
     Strategy Implementation for ${symbol} address: ${rates.address}

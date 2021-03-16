@@ -208,6 +208,7 @@ const buildTestEnv = async (deployer: Signer, secondaryWallet: Signer) => {
   await initReservesByHelper(
     reservesParams,
     allReservesAddresses,
+    config.WNativeSymbol,
     admin,
     treasuryAddress,
     ZERO_ADDRESS,

@@ -30,7 +30,7 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       await localBRE.run('set-DRE');
       const network = <eEthereumNetwork>localBRE.network.name;
       const poolConfig = loadPoolConfig(pool);
-      const { ReserveAssets, ReservesConfig } = poolConfig as ICommonConfiguration;
+      const { ReserveAssets, ReservesConfig, WNativeSymbol } = poolConfig as ICommonConfiguration;
 
       const reserveAssets = await getParamPerNetwork(ReserveAssets, network);
 
@@ -48,6 +48,7 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       await initReservesByHelper(
         ReservesConfig,
         reserveAssets,
+        WNativeSymbol,
         admin,
         treasuryAddress,
         ZERO_ADDRESS,

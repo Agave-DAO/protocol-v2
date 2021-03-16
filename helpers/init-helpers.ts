@@ -40,6 +40,7 @@ export const chooseATokenDeployment = (id: eContractid) => {
 export const initReservesByHelper = async (
   reservesParams: iMultiPoolsAssets<IReserveParams>,
   tokenAddresses: { [symbol: string]: tEthereumAddress },
+  wnativeSymbol: string,
   admin: tEthereumAddress,
   treasuryAddress: tEthereumAddress,
   incentivesController: tEthereumAddress,
@@ -118,7 +119,8 @@ export const initReservesByHelper = async (
       ] = (Object.entries(reservesParams) as [string, IReserveParams][])[reserveParamIndex];
       // Add to lists
       tokens.push(tokenAddress);
-      symbols.push(assetSymbol);
+      // Rename WNATIVE to its real symbol
+      symbols.push(assetSymbol == 'WNATIVE' ? wnativeSymbol : assetSymbol);
       strategyRates.push([
         optimalUtilizationRate,
         baseVariableBorrowRate,
@@ -150,7 +152,7 @@ export const initReservesByHelper = async (
       )
     );
     tx2.events?.forEach((event, index) => {
-      rawInsertContractAddressInDb(`a${symbols[index]}`, event?.args?.aToken);
+      rawInsertContractAddressInDb(`ag${symbols[index]}`, event?.args?.aToken);
       rawInsertContractAddressInDb(`strategy${symbols[index]}`, event?.args?.strategy);
     });
 
@@ -194,8 +196,8 @@ export const initReservesByHelper = async (
         poolAddress,
         tokenAddresses[symbol],
         treasuryAddress,
-        `Aave interest bearing ${symbol}`,
-        `a${symbol}`,
+        `Agave interest bearing ${symbol}`,
+        `ag${symbol}`,
         ZERO_ADDRESS,
       ],
       verify
@@ -204,7 +206,7 @@ export const initReservesByHelper = async (
       [
         poolAddress,
         tokenAddresses[symbol],
-        `Aave stable debt bearing ${symbol}`,
+        `Agave stable debt bearing ${symbol}`,
         `stableDebt${symbol}`,
         ZERO_ADDRESS,
       ],
@@ -214,7 +216,7 @@ export const initReservesByHelper = async (
       [
         poolAddress,
         tokenAddresses[symbol],
-        `Aave variable debt bearing ${symbol}`,
+        `Agave variable debt bearing ${symbol}`,
         `variableDebt${symbol}`,
         ZERO_ADDRESS,
       ],
@@ -270,33 +272,6 @@ export const initReservesByHelper = async (
   // Set deployer back as admin
   await waitForTx(await addressProvider.setPoolAdmin(admin));
   return gasUsage;
-};
-
-export const getPairsTokenAggregator = (
-  allAssetsAddresses: {
-    [tokenSymbol: string]: tEthereumAddress;
-  },
-  aggregatorsAddresses: { [tokenSymbol: string]: tEthereumAddress }
-): [string[], string[]] => {
-  const { ETH, USD, WNATIVE, ...assetsAddressesWithoutEth } = allAssetsAddresses;
-
-  const pairs = Object.entries(assetsAddressesWithoutEth).map(([tokenSymbol, tokenAddress]) => {
-    if (tokenSymbol !== 'WNATIVE' && tokenSymbol !== 'ETH') {
-      const aggregatorAddressIndex = Object.keys(aggregatorsAddresses).findIndex(
-        (value) => value === tokenSymbol
-      );
-      const [, aggregatorAddress] = (Object.entries(aggregatorsAddresses) as [
-        string,
-        tEthereumAddress
-      ][])[aggregatorAddressIndex];
-      return [tokenAddress, aggregatorAddress];
-    }
-  }) as [string, string][];
-
-  const mappedPairs = pairs.map(([asset]) => asset);
-  const mappedAggregators = pairs.map(([, source]) => source);
-
-  return [mappedPairs, mappedAggregators];
 };
 
 export const configureReservesByHelper = async (
@@ -485,8 +460,8 @@ export const initTokenReservesByHelper = async (
           poolAddress,
           tokenAddresses[symbol],
           treasuryAddress,
-          `Aave interest bearing ${symbol}`,
-          `a${symbol}`,
+          `Agave interest bearing ${symbol}`,
+          `ag${symbol}`,
           ZERO_ADDRESS,
         ],
         verify

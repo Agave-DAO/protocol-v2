@@ -52,8 +52,8 @@ export const AaveConfig: IAaveConfiguration = {
       WETH: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
     },
     [EthereumNetwork.rinkeby]: {
-      AGVE: '0xaE88624C894668E1bBABc9AFE87E8CA0fb74eC2a',
-      USDC: '0xa24de01df22b63d23Ebc1882a5E3d4ec0d907bFB',
+      AGVE: '0x838341c70E1f02382AdA5e867DA7E5EC85fC47b7',
+      USDC: '0xc96Bb228C73FB09F9A2e26A840841f277D1cCC48',
       WETH: '0xdf032bc4b9dc2782bb09352007d4c57b75160b15',
       HNY: '0xa30CCf67b489d627De8F8c035F5b9676442646e0',
       WBTC: '0x64ed1291fe07ade7bb261c7aa8491e4bc0e8de1c',

@@ -22,6 +22,7 @@ import {
   strategyWBTC,
   strategyWETH,
   strategyYFI,
+  strategySTAKE,
 } from './reservesConfigs';
 
 // ----------------
@@ -33,10 +34,12 @@ export const AaveConfig: IAaveConfiguration = {
   MarketId: 'Agave genesis market',
   ProviderId: 1,
   ReservesConfig: {
-    AGVE: strategyAAVE,
+    // AGVE: strategyAAVE,
     USDC: strategyUSDC,
     WNATIVE: strategyDAI,
-    HNY: strategyMKR,
+    // LINK: strategyLINK,
+    // STAKE: strategySTAKE,
+    // HNY: strategyMKR,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
   },
@@ -56,6 +59,7 @@ export const AaveConfig: IAaveConfiguration = {
       USDC: '0xc96Bb228C73FB09F9A2e26A840841f277D1cCC48',
       WETH: '0xdf032bc4b9dc2782bb09352007d4c57b75160b15',
       HNY: '0xa30CCf67b489d627De8F8c035F5b9676442646e0',
+      LINK: '0xe2981a5D03449c76826e46Ac4D717e77479b9C07',
       WBTC: '0x64ed1291fe07ade7bb261c7aa8491e4bc0e8de1c',
       WNATIVE: '0xc778417e063141139fce010982780140aa0cd5ab',
     },
@@ -80,6 +84,16 @@ export const AaveConfig: IAaveConfiguration = {
       WETH: '0xc778417e063141139fce010982780140aa0cd5ab',
       YFI: ZERO_ADDRESS,
       ZRX: '0x02d7055704EfF050323A2E5ee4ba05DB2A588959',
+    },
+    [EthereumNetwork.xdai]: {
+      // AGVE: '0x3a97704a1b25F08aa230ae53B352e2e72ef52843',
+      // HNY: '0x71850b7E9Ee3f13Ab46d67167341E4bDc905Eef9',
+      // STAKE: '0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e',
+      // LINK: '0xE2e73A1c69ecF83F464EFCE6A5be353a37cA09b2',
+      USDC: '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83',
+      WETH: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1',
+      WBTC: '0x8e5bBbb09Ed1ebdE8674Cda39A0c169401db4252',
+      WNATIVE: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',

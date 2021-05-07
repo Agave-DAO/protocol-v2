@@ -348,8 +348,7 @@ export const configureReservesByHelper = async (
           chunkedliquidationThresholds[chunkIndex],
           chunkedliquidationBonuses[chunkIndex],
           chunkedReserveFactors[chunkIndex],
-          chunkedStableRatesEnabled[chunkIndex],
-          { gasLimit: 10000000 }
+          chunkedStableRatesEnabled[chunkIndex]
         )
       );
       console.log(`  - Init for: ${chunkedSymbols[chunkIndex].join(', ')}`);

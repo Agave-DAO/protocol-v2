@@ -2,7 +2,7 @@ import {
   AaveProtocolDataProviderFactory,
   ATokenFactory,
   ATokensAndRatesHelperFactory,
-  AaveOracleFactory,
+  AgaveOracleFactory,
   DefaultReserveInterestRateStrategyFactory,
   GenericLogicFactory,
   InitializableAdminUpgradeabilityProxyFactory,
@@ -328,7 +328,7 @@ export const getAddressById = async (id: string): Promise<tEthereumAddress | und
   (await getDb().get(`${id}.${DRE.network.name}`).value())?.address || undefined;
 
 export const getAaveOracle = async (address?: tEthereumAddress) =>
-  await AaveOracleFactory.connect(
+  await AgaveOracleFactory.connect(
     address || (await getDb().get(`${eContractid.AaveOracle}.${DRE.network.name}`).value()).address,
     await getFirstSigner()
   );

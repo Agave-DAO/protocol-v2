@@ -26,7 +26,7 @@ export const strategyDAI: IReserveParams = {
   variableRateSlope2: new BigNumber(0.75).multipliedBy(oneRay).toFixed(),
   stableRateSlope1: new BigNumber(0.02).multipliedBy(oneRay).toFixed(),
   stableRateSlope2: new BigNumber(0.75).multipliedBy(oneRay).toFixed(),
-  baseLTVAsCollateral: '7500',
+  baseLTVAsCollateral: '7750',
   liquidationThreshold: '8000',
   liquidationBonus: '10500',
   borrowingEnabled: true,
@@ -163,7 +163,7 @@ export const strategyWETH: IReserveParams = {
   stableRateSlope1: new BigNumber(0.1).multipliedBy(oneRay).toFixed(),
   stableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
   baseLTVAsCollateral: '8000',
-  liquidationThreshold: '8250',
+  liquidationThreshold: '8500',
   liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: true,
@@ -272,6 +272,23 @@ export const strategySNX: IReserveParams = {
   reserveDecimals: '18',
   aTokenImpl: eContractid.AToken,
   reserveFactor: '3500'
+};
+
+export const strategySTAKE: IReserveParams = {
+  optimalUtilizationRate: new BigNumber(0.8).multipliedBy(oneRay).toFixed(),
+  baseVariableBorrowRate: new BigNumber(0.03).multipliedBy(oneRay).toFixed(),
+  variableRateSlope1: new BigNumber(0.07).multipliedBy(oneRay).toFixed(),
+  variableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
+  stableRateSlope1: new BigNumber(0.1).multipliedBy(oneRay).toFixed(),
+  stableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
+  baseLTVAsCollateral: '3000',
+  liquidationThreshold: '4000',
+  liquidationBonus: '11000',
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: false,
+  reserveDecimals: '18',
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: '2000'
 };
 
 export const strategyUNI: IReserveParams = {

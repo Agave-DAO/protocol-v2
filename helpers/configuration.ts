@@ -7,7 +7,7 @@ import {
   eEthereumNetwork,
 } from './types';
 import { getParamPerPool } from './contracts-helpers';
-import AgaaveConfig from '../markets/agave';
+import AgaveConfig from '../markets/agave';
 import { CommonsConfig } from '../markets/agave/commons';
 import { DRE, filterMapBy } from './misc-utils';
 import { tEthereumAddress } from './types';
@@ -16,14 +16,14 @@ import { deployWETHMocked } from './contracts-deployments';
 
 export enum ConfigNames {
   Commons = 'Commons',
-  Agaave = 'Agaave',
+  Agave = 'Agave',
   Uniswap = 'Uniswap',
 }
 
 export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
   switch (configName) {
-    case ConfigNames.Agaave:
-      return AgaaveConfig;
+    case ConfigNames.Agave:
+      return AgaveConfig;
     case ConfigNames.Commons:
       return CommonsConfig;
     default:
@@ -39,7 +39,7 @@ export const getReservesConfigByPool = (pool: AavePools): iMultiPoolsAssets<IRes
   getParamPerPool<iMultiPoolsAssets<IReserveParams>>(
     {
       [AavePools.proto]: {
-        ...AgaaveConfig.ReservesConfig,
+        ...AgaveConfig.ReservesConfig,
       },
     },
     pool

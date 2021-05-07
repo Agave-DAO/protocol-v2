@@ -21,7 +21,7 @@ import {
   AaveProtocolDataProviderFactory,
   ATokenFactory,
   ATokensAndRatesHelperFactory,
-  AaveOracleFactory,
+  AgaveOracleFactory,
   DefaultReserveInterestRateStrategyFactory,
   DelegationAwareATokenFactory,
   InitializableAdminUpgradeabilityProxyFactory,
@@ -207,7 +207,7 @@ export const deployAaveOracle = async (
   verify?: boolean
 ) =>
   withSaveAndVerify(
-    await new AaveOracleFactory(await getFirstSigner()).deploy(...args),
+    await new AgaveOracleFactory(await getFirstSigner()).deploy(...args),
     eContractid.AaveOracle,
     args,
     verify

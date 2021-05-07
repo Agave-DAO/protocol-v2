@@ -201,7 +201,7 @@ const buildTestEnv = async (deployer: Signer, secondaryWallet: Signer) => {
 
   console.log('Initialize configuration');
 
-  const config = loadPoolConfig(ConfigNames.Agaave);
+  const config = loadPoolConfig(ConfigNames.Agave);
 
   const treasuryAddress = await getTreasuryAddress(config);
 

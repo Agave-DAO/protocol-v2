@@ -3,10 +3,10 @@ import { checkVerification } from '../../helpers/etherscan-verification';
 import { ConfigNames } from '../../helpers/configuration';
 import { printContracts } from '../../helpers/misc-utils';
 
-task('agaave:dev', 'Deploy development enviroment')
+task('agave:dev', 'Deploy development enviroment')
   .addOptionalParam('verify', 'Verify contracts at Etherscan')
   .setAction(async ({ verify }, localBRE) => {
-    const POOL_NAME = ConfigNames.Agaave;
+    const POOL_NAME = ConfigNames.Agave;
 
     await localBRE.run('set-DRE');
 

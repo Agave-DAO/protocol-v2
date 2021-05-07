@@ -9,6 +9,7 @@ export enum eEthereumNetwork {
   kovan = 'kovan',
   rinkeby = 'rinkeby',
   ropsten = 'ropsten',
+  xdai = 'xdai',
   main = 'main',
   coverage = 'coverage',
   hardhat = 'hardhat',
@@ -19,6 +20,7 @@ export enum EthereumNetworkNames {
   kovan = 'kovan',
   rinkeby = 'rinkeby',
   ropsten = 'ropsten',
+  xdai = 'xdai',
   main = 'main',
 }
 
@@ -42,7 +44,7 @@ export enum eContractid {
   Proxy = 'Proxy',
   MockAggregator = 'MockAggregator',
   LendingRateOracle = 'LendingRateOracle',
-  AaveOracle = 'AaveOracle',
+  AaveOracle = 'AgaveOracle',
   DefaultReserveInterestRateStrategy = 'DefaultReserveInterestRateStrategy',
   LendingPoolCollateralManager = 'LendingPoolCollateralManager',
   InitializableAdminUpgradeabilityProxy = 'InitializableAdminUpgradeabilityProxy',
@@ -185,9 +187,11 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
-  AGVE: T;
+  //AGVE: T;
   USDC: T;
-  HNY: T;
+  //HNY: T;
+  //STAKE: T;
+  //LINK: T;
   WETH: T;
   WNATIVE: T;
   WBTC: T;
@@ -200,12 +204,14 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'AGVE'
+//  | 'AGVE'
   | 'USDC'
-  | 'HNY'
+//  | 'HNY'
   | 'WNATIVE'
   | 'WBTC'
   | 'WETH'
+//  | 'LINK'
+//  | 'STAKE'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
@@ -219,6 +225,8 @@ export enum TokenContractId {
   HNY = 'HNY',
   WETH = 'WETH',
   WNATIVE = 'WNATIVE',
+  LINK = 'LINK',
+  STAKE = 'STAKE',
   USDC = 'USDC',
   WBTC = 'WBTC',
   USD = 'USD',
@@ -256,6 +264,7 @@ export interface iParamsPerNetwork<T> {
   [eEthereumNetwork.kovan]: T;
   [eEthereumNetwork.rinkeby]: T;
   [eEthereumNetwork.ropsten]: T;
+  [eEthereumNetwork.xdai]: T;
   [eEthereumNetwork.main]: T;
   [eEthereumNetwork.hardhat]: T;
   [eEthereumNetwork.tenderlyMain]: T;
@@ -285,6 +294,7 @@ export enum EthereumNetwork {
   rinkeby = 'rinkeby',
   ropsten = 'ropsten',
   development = 'development',
+  xdai = 'xdai',
   main = 'main',
   coverage = 'soliditycoverage',
   tenderlyMain = 'tenderlyMain',

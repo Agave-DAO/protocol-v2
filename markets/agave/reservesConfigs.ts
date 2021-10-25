@@ -275,14 +275,14 @@ export const strategySNX: IReserveParams = {
 };
 
 export const strategySTAKE: IReserveParams = {
-  optimalUtilizationRate: new BigNumber(0.8).multipliedBy(oneRay).toFixed(),
-  baseVariableBorrowRate: new BigNumber(0.03).multipliedBy(oneRay).toFixed(),
+  optimalUtilizationRate: new BigNumber(0.45).multipliedBy(oneRay).toFixed(),
+  baseVariableBorrowRate: '0',
   variableRateSlope1: new BigNumber(0.07).multipliedBy(oneRay).toFixed(),
   variableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
   stableRateSlope1: new BigNumber(0.1).multipliedBy(oneRay).toFixed(),
   stableRateSlope2: new BigNumber(3).multipliedBy(oneRay).toFixed(),
-  baseLTVAsCollateral: '3000',
-  liquidationThreshold: '4000',
+  baseLTVAsCollateral: '5000',
+  liquidationThreshold: '6000',
   liquidationBonus: '11000',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,

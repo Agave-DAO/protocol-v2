@@ -38,7 +38,7 @@ export const AaveConfig: IAaveConfiguration = {
     USDC: strategyUSDC,
     WNATIVE: strategyDAI,
     // LINK: strategyLINK,
-    // STAKE: strategySTAKE,
+    STAKE: strategySTAKE,
     // HNY: strategyMKR,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
@@ -88,7 +88,7 @@ export const AaveConfig: IAaveConfiguration = {
     [EthereumNetwork.xdai]: {
       // AGVE: '0x3a97704a1b25F08aa230ae53B352e2e72ef52843',
       // HNY: '0x71850b7E9Ee3f13Ab46d67167341E4bDc905Eef9',
-      // STAKE: '0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e',
+      STAKE: '0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e',
       // LINK: '0xE2e73A1c69ecF83F464EFCE6A5be353a37cA09b2',
       USDC: '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83',
       WETH: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1',

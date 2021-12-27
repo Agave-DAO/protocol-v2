@@ -16,6 +16,7 @@ import { ZERO_ADDRESS } from './../../helpers/constants';
 const LENDING_POOL_ADDRESS_PROVIDER = {
   main: '0xb53c1a33016b2dc2ff3653530bff1848a515c8c5',
   kovan: '0x652B2937Efd0B5beA1c8d54293FC1289672AFC6b',
+  xdai: '0x207E9def17B4bd1045F5Af2C651c081F9FDb0842',
 };
 
 const isSymbolValid = (symbol: string, network: EthereumNetwork) =>

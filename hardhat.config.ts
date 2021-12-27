@@ -100,19 +100,24 @@ const buidlerConfig: HardhatUserConfig = {
       url: 'http://localhost:8555',
       chainId: COVERAGE_CHAINID,
     },
-    kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
-    rinkeby: { 
+    kovan: {
+      ...getCommonNetworkConfig(eEthereumNetwork.rinkeby, 42),
+      url: 'https://kovan.poa.network',
+      gasPrice: 1000000000,
+      blockGasLimit: 10000000,
+    },
+    rinkeby: {
       ...getCommonNetworkConfig(eEthereumNetwork.rinkeby, 4),
       url: 'http://rinkeby:8558',
       gasPrice: 1000000000,
-      blockGasLimit: 10000000
+      blockGasLimit: 10000000,
     },
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     xdai: {
       ...getCommonNetworkConfig(eEthereumNetwork.xdai, 100),
-      url: 'http://xdai:8545',
-      gasPrice: 1000000000,
-      blockGasLimit: 7500000
+      url: 'https://rpc.xdaichain.com',
+      gasPrice: 10000000000,
+      blockGasLimit: 7500000,
     },
     main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
     tenderlyMain: getCommonNetworkConfig(eEthereumNetwork.main, 1),

@@ -191,7 +191,7 @@ export interface iAssetBase<T> {
   USDC: T;
   //HNY: T;
   STAKE: T;
-  //LINK: T;
+  LINK: T;
   WETH: T;
   WNATIVE: T;
   WBTC: T;
@@ -210,7 +210,7 @@ export type iAavePoolAssets<T> = Pick<
   | 'WNATIVE'
   | 'WBTC'
   | 'WETH'
-  //  | 'LINK'
+  | 'LINK'
   | 'STAKE'
 >;
 

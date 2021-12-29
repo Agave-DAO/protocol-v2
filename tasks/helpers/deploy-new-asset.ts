@@ -16,13 +16,12 @@ import { ZERO_ADDRESS } from './../../helpers/constants';
 const LENDING_POOL_ADDRESS_PROVIDER = {
   main: '0xb53c1a33016b2dc2ff3653530bff1848a515c8c5',
   kovan: '0x652B2937Efd0B5beA1c8d54293FC1289672AFC6b',
-  xdai: '0x207E9def17B4bd1045F5Af2C651c081F9FDb0842',
+  xdai: '0xa91b9095efa6c0568467562032202108e49c9ef8',
 };
 
 const isSymbolValid = (symbol: string, network: EthereumNetwork) =>
-  Object.keys(reserveConfigs).includes('strategy' + symbol) &&
   marketConfigs.AaveConfig.ReserveAssets[network][symbol] &&
-  marketConfigs.AaveConfig.ReservesConfig[symbol] === reserveConfigs['strategy' + symbol];
+  marketConfigs.AaveConfig.ReservesConfig[symbol] != null;
 
 task('external:deploy-new-asset', 'Deploy A token, Debt Tokens, Risk Parameters')
   .addParam('symbol', `Asset symbol, needs to have configuration ready`)
@@ -39,8 +38,9 @@ WRONG RESERVE ASSET SETUP:
         `
       );
     }
+
     setDRE(localBRE);
-    const strategyParams = reserveConfigs['strategy' + symbol];
+    const strategyParams = marketConfigs.AaveConfig.ReservesConfig[symbol];
     const reserveAssetAddress =
       marketConfigs.AaveConfig.ReserveAssets[localBRE.network.name][symbol];
     const deployCustomAToken = chooseATokenDeployment(strategyParams.aTokenImpl);
@@ -49,14 +49,16 @@ WRONG RESERVE ASSET SETUP:
     );
     const poolAddress = await addressProvider.getLendingPool();
     const treasuryAddress = await getTreasuryAddress(marketConfigs.AaveConfig);
+    const incentiveControllerAddress = '0xfa255f5104f129B78f477e9a6D050a02f31A5D86';
+    const displaySymbol = symbol != 'WNATIVE' ? symbol : marketConfigs.AaveConfig.WNativeSymbol;
     const aToken = await deployCustomAToken(
       [
         poolAddress,
         reserveAssetAddress,
         treasuryAddress,
-        `Agave interest bearing ${symbol}`,
-        `ag${symbol}`,
-        ZERO_ADDRESS,
+        `Agave interest bearing ${displaySymbol}`,
+        `ag${displaySymbol}`,
+        incentiveControllerAddress,
       ],
       verify
     );
@@ -64,9 +66,9 @@ WRONG RESERVE ASSET SETUP:
       [
         poolAddress,
         reserveAssetAddress,
-        `Agave stable debt bearing ${symbol}`,
-        `stableDebt${symbol}`,
-        ZERO_ADDRESS,
+        `Agave stable debt bearing ${displaySymbol}`,
+        `stableDebt${displaySymbol}`,
+        incentiveControllerAddress,
       ],
       verify
     );
@@ -74,9 +76,9 @@ WRONG RESERVE ASSET SETUP:
       [
         poolAddress,
         reserveAssetAddress,
-        `Agave variable debt bearing ${symbol}`,
-        `variableDebt${symbol}`,
-        ZERO_ADDRESS,
+        `Agave variable debt bearing ${displaySymbol}`,
+        `variableDebt${displaySymbol}`,
+        incentiveControllerAddress,
       ],
       verify
     );
@@ -94,9 +96,9 @@ WRONG RESERVE ASSET SETUP:
     );
     console.log(`
     New interest bearing asset deployed on ${network}:
-    Interest bearing ag${symbol} address: ${aToken.address}
-    Variable Debt variableDebt${symbol} address: ${variableDebt.address}
-    Stable Debt stableDebt${symbol} address: ${stableDebt.address}
-    Strategy Implementation for ${symbol} address: ${rates.address}
+    Interest bearing ag${displaySymbol} address: ${aToken.address}
+    Variable Debt variableDebt${displaySymbol} address: ${variableDebt.address}
+    Stable Debt stableDebt${displaySymbol} address: ${stableDebt.address}
+    Strategy Implementation for ${displaySymbol} address: ${rates.address}
     `);
   });

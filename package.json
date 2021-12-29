@@ -80,7 +80,7 @@
         "kovan:initialize-tokens": "npm run compile && hardhat --network kovan full:initialize-tokens --pool Agave",
         "external:deploy-assets-kovan": "npm run compile && hardhat --network kovan external:deploy-new-asset --symbol ${SYMBOL} --verify",
         "external:deploy-assets-main": "npm run compile && hardhat --network main external:deploy-new-asset --symbol ${SYMBOL} --verify",
-        "external:deploy-assets-xdai": "npm run compile && hardhat --network xdai external:deploy-new-asset --symbol ${SYMBOL} --verify",
+        "external:deploy-assets-xdai": "npm run compile && hardhat --network xdai external:deploy-new-asset --symbol ${SYMBOL}",
         "prepublishOnly": "npm run compile"
     },
     "devDependencies": {

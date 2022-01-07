@@ -8,6 +8,7 @@ const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   WNATIVE: oneEther.toFixed(),
   HNY: oneEther.multipliedBy('1002.508581').toFixed(),
   STAKE: oneEther.multipliedBy('12.58220000').toFixed(),
+  GNO: oneEther.multipliedBy('455.58220000').toFixed(),
   WETH: oneEther.multipliedBy('271.04928').toFixed(),
   LINK: oneEther.multipliedBy('24.28322').toFixed(),
   WBTC: oneEther.multipliedBy('47332.685').toFixed(),
@@ -61,6 +62,9 @@ export const CommonsConfig: ICommonConfiguration = {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
     STAKE: {
+      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
+    },
+    GNO: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
   },
@@ -205,7 +209,7 @@ export const CommonsConfig: ICommonConfiguration = {
       USDC: '0x26C31ac71010aF62E6B486D1132E266D6298857D',
       STAKE: '0x55f4b2d20d447db498bcccde60fa9a51a3df6d72',
       WETH: '0xa767f745331D267c7751297D982b050c93985627',
-      // HNY: '',
+      GNO: '0x22441d81416430A54336aB28765abd31a792Ad37',
       WBTC: '0x6C1d7e76EF7304a40e8456ce883BC56d3dEA3F7d',
       WNATIVE: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       USD: '0x678df3415fc31947dA4324eC63212874be5a82f8',

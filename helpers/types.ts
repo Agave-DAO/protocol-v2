@@ -189,7 +189,7 @@ export interface iAssetCommon<T> {
 export interface iAssetBase<T> {
   //AGVE: T;
   USDC: T;
-  //HNY: T;
+  GNO: T;
   STAKE: T;
   LINK: T;
   WETH: T;
@@ -205,13 +205,7 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   //  | 'AGVE'
-  | 'USDC'
-  //  | 'HNY'
-  | 'WNATIVE'
-  | 'WBTC'
-  | 'WETH'
-  | 'LINK'
-  | 'STAKE'
+  'USDC' | 'GNO' | 'WNATIVE' | 'WBTC' | 'WETH' | 'LINK' | 'STAKE'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;

@@ -8,6 +8,7 @@ build/
 .vscode
 .idea
 /types
+/ipfs
 
 deployed-contracts.json
 

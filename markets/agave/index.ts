@@ -24,6 +24,7 @@ import {
   strategyYFI,
   strategySTAKE,
   strategyGNO,
+  strategyFOX,
 } from './reservesConfigs';
 
 // ----------------
@@ -43,6 +44,7 @@ export const AaveConfig: IAaveConfiguration = {
     GNO: strategyGNO,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
+    FOX: strategyFOX,
   },
   ReserveAssets: {
     [eEthereumNetwork.buidlerevm]: {},
@@ -95,6 +97,7 @@ export const AaveConfig: IAaveConfiguration = {
       WETH: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1',
       WBTC: '0x8e5bBbb09Ed1ebdE8674Cda39A0c169401db4252',
       WNATIVE: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d',
+      FOX: '0x21a42669643f45Bc0e086b8Fc2ed70c23D67509d',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',

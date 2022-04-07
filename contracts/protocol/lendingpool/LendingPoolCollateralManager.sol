@@ -190,6 +190,13 @@ contract LendingPoolCollateralManager is
       0
     );
 
+    // If the collateral being liquidated is equal to the user balance,
+    // we set the currency as not being used as collateral anymore
+    if (vars.maxCollateralToLiquidate == vars.userCollateralBalance) {
+      userConfig.setUsingAsCollateral(collateralReserve.id, false);
+      emit ReserveUsedAsCollateralDisabled(collateralAsset, user);
+    }
+
     if (receiveAToken) {
       vars.liquidatorPreviousATokenBalance = IERC20(vars.collateralAtoken).balanceOf(msg.sender);
       vars.collateralAtoken.transferOnLiquidation(user, msg.sender, vars.maxCollateralToLiquidate);
@@ -215,13 +222,6 @@ contract LendingPoolCollateralManager is
         vars.maxCollateralToLiquidate,
         collateralReserve.liquidityIndex
       );
-    }
-
-    // If the collateral being liquidated is equal to the user balance,
-    // we set the currency as not being used as collateral anymore
-    if (vars.maxCollateralToLiquidate == vars.userCollateralBalance) {
-      userConfig.setUsingAsCollateral(collateralReserve.id, false);
-      emit ReserveUsedAsCollateralDisabled(collateralAsset, user);
     }
 
     // Transfers the debt asset being repaid to the aToken, where the liquidity is kept

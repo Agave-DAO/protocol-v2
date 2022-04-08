@@ -10,6 +10,7 @@ export enum eEthereumNetwork {
   rinkeby = 'rinkeby',
   ropsten = 'ropsten',
   xdai = 'xdai',
+  kava = 'kava',
   main = 'main',
   coverage = 'coverage',
   hardhat = 'hardhat',
@@ -20,6 +21,7 @@ export enum EthereumNetworkNames {
   kovan = 'kovan',
   rinkeby = 'rinkeby',
   ropsten = 'ropsten',
+  kava = 'kava',
   xdai = 'xdai',
   main = 'main',
 }
@@ -262,6 +264,7 @@ export interface iParamsPerNetwork<T> {
   [eEthereumNetwork.rinkeby]: T;
   [eEthereumNetwork.ropsten]: T;
   [eEthereumNetwork.xdai]: T;
+  [eEthereumNetwork.kava]: T;
   [eEthereumNetwork.main]: T;
   [eEthereumNetwork.hardhat]: T;
   [eEthereumNetwork.tenderlyMain]: T;
@@ -292,6 +295,7 @@ export enum EthereumNetwork {
   ropsten = 'ropsten',
   development = 'development',
   xdai = 'xdai',
+  kava = 'kava',
   main = 'main',
   coverage = 'soliditycoverage',
   tenderlyMain = 'tenderlyMain',

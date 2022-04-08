@@ -79,6 +79,7 @@ export const getTreasuryAddress = async (
   config: ICommonConfiguration
 ): Promise<tEthereumAddress> => {
   const currentNetwork = process.env.MAINNET_FORK === 'true' ? 'main' : DRE.network.name;
+  console.log(currentNetwork);
   return getParamPerNetwork(config.ReserveFactorTreasuryAddress, <eEthereumNetwork>currentNetwork);
 };
 

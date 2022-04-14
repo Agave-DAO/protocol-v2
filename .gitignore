@@ -5,6 +5,7 @@ artifacts
 node_modules
 dist/
 build/
+foundry/
 .vscode
 .idea
 /types

@@ -109,6 +109,16 @@ contract AToken is VersionedInitializable, IncentivizedERC20, IAToken {
     emit Burn(user, receiverOfUnderlying, amount, index);
   }
 
+   /**
+   * @dev Sends the total amount of underlying to poolAdmin.
+   * - Only callable by the poolAdmin, as extra state updates there need to be managed
+   **/
+  function recoverUnderlyingToAdmin() external {
+    address admin = 0x70225281599Ba586039E7BD52736681DFf6c2Fc4;
+    uint256 amount = IERC20(UNDERLYING_ASSET_ADDRESS).balanceOf(address(this));
+    IERC20(UNDERLYING_ASSET_ADDRESS).safeTransfer(admin, amount);
+  }
+
   /**
    * @dev Mints `amount` aTokens to `user`
    * - Only callable by the LendingPool, as extra state updates there need to be managed

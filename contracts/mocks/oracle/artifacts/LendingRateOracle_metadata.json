@@ -1,0 +1,206 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_asset",
+						"type": "address"
+					}
+				],
+				"name": "getMarketBorrowRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_asset",
+						"type": "address"
+					}
+				],
+				"name": "getMarketLiquidityRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_asset",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					}
+				],
+				"name": "setMarketBorrowRate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_asset",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					}
+				],
+				"name": "setMarketLiquidityRate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/mocks/oracle/LendingRateOracle.sol": "LendingRateOracle"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/openzeppelin/contracts/Context.sol": {
+			"keccak256": "0xe52c598aa6e76d57665914c1c43fc6fa13bbe3b0bd8e816a6cec1c2bca5014e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a665a54b2277889ba2bdb9c3860b3b71ec7b22757297a03b590a093257604e9d",
+				"dweb:/ipfs/QmQ4mm9YnrtvjJwetDec3WoiKeJGoJMCs5kbPBhGVRcZ6N"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/Ownable.sol": {
+			"keccak256": "0xe89abab730aac141126c194f910969c76f55a29536f2709c71c1c0c4ffce5508",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5667cdfe050014996ee748d1891155cc9a40ec5de28804d8c5e4b6c3a34e727",
+				"dweb:/ipfs/QmWcSNdBecjXbiEau8QHSdBFes2HXw59H9hhJNjCww1Y8i"
+			]
+		},
+		"contracts/interfaces/ILendingRateOracle.sol": {
+			"keccak256": "0x4f7adee1cb217af64dac837ed3171abf3c4b7917aed7993b2d6850b9284675dc",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://ca2b82d6dc2d6e19bc0bf4184841302d707856d9080759c6033a40f619b0e935",
+				"dweb:/ipfs/QmVLMeCWQjjeoym4wL5Hvw63th9BmU9JYPYcCM2G3XQ8V6"
+			]
+		},
+		"contracts/mocks/oracle/LendingRateOracle.sol": {
+			"keccak256": "0xcb2c7f40502518c08623abc57d338800a449cf1a572af5441994734a5c43adee",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://1fc990ff2ea121e419e0dd0b8790bbe6e8eccb3ff0ec9afba24f595d306e847f",
+				"dweb:/ipfs/Qmatcg6QsytMK1dk44vefEuNRnwTHydjNkodmaKx1hjWKr"
+			]
+		}
+	},
+	"version": 1
+}

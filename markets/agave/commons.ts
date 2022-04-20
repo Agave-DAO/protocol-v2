@@ -7,7 +7,6 @@ const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   USDC: oneEther.multipliedBy('1.00133843').toFixed(),
   WNATIVE: oneEther.toFixed(),
   HNY: oneEther.multipliedBy('1002.508581').toFixed(),
-  STAKE: oneEther.multipliedBy('12.58220000').toFixed(),
   GNO: oneEther.multipliedBy('455.58220000').toFixed(),
   FOX: oneEther.multipliedBy('0.35313437').toFixed(),
   WETH: oneEther.multipliedBy('271.04928').toFixed(),
@@ -62,9 +61,6 @@ export const CommonsConfig: ICommonConfiguration = {
     LINK: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
-    STAKE: {
-      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
-    },
     GNO: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
@@ -85,7 +81,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: undefined,
     [eEthereumNetwork.rinkeby]: undefined,
     [eEthereumNetwork.ropsten]: undefined,
-    [eEthereumNetwork.xdai]: '0x70225281599Ba586039E7BD52736681DFf6c2Fc4',
+    [eEthereumNetwork.xdai]: '0x50DF0d7676e31387827659bA7CfE03b563e8e6a1',
     [eEthereumNetwork.main]: undefined,
     [eEthereumNetwork.tenderlyMain]: undefined,
   },
@@ -106,7 +102,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: '0xaE88624C894668E1bBABc9AFE87E8CA0fb74eC2a',
     [eEthereumNetwork.rinkeby]: '0xDa731590C871b7025b86AE3f4D4aB6A1f5f73508',
     [eEthereumNetwork.ropsten]: '0xaE88624C894668E1bBABc9AFE87E8CA0fb74eC2a',
-    [eEthereumNetwork.xdai]: '0xa5E80AEAa020Ae41b1cBEe75dE7826297F7D803E',
+    [eEthereumNetwork.xdai]: '0x4BaacD04B13523D5e81f398510238E7444E11744',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
@@ -117,7 +113,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.rinkeby]: '0x32b1ca2182eE26F8c5A6CB6Ed285Ef3304a4F5BE',
     [eEthereumNetwork.ropsten]: '0x2d206Fd0C7c76016234810232159b05562608A42',
-    [eEthereumNetwork.xdai]: '0x79c815a50F2F0CB91772945d94fC65371f5d9881',
+    [eEthereumNetwork.xdai]: '0x50DF0d7676e31387827659bA7CfE03b563e8e6a1',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
@@ -131,7 +127,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: '0xfA554E36eEfa3388704D01F5f3cf44aD62c826d6',
     [eEthereumNetwork.rinkeby]: '0x3b1FD8722157e4e097E0251554a6A28Df39db088',
     [eEthereumNetwork.ropsten]: '0x3c74d9795C35164D9d4c118437b46a34525faC01',
-    [eEthereumNetwork.xdai]: '0x2B73F555A39c69D4a3947ae3B01470E1c1754B8e',
+    [eEthereumNetwork.xdai]: '',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
   },
@@ -153,7 +149,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [EthereumNetwork.kovan]: '',
     [EthereumNetwork.rinkeby]: '0xb42a48F27150469d8a55dA3ad258B73a37239451',
     [EthereumNetwork.ropsten]: '',
-    [EthereumNetwork.xdai]: '0x80E08A2042F4135f6cA72BA2fd0e7cAEb2Ee30ef',
+    [EthereumNetwork.xdai]: '',
     [EthereumNetwork.main]: '',
     [EthereumNetwork.tenderlyMain]: '',
   },
@@ -185,7 +181,6 @@ export const CommonsConfig: ICommonConfiguration = {
       USDC: '0xa24de01df22b63d23Ebc1882a5E3d4ec0d907bFB',
       HNY: '0xd8bD0a1cB028a31AA859A21A3758685a95dE4623', // actually LINK
       LINK: '0xd8bD0a1cB028a31AA859A21A3758685a95dE4623', // actually LINK
-      STAKE: '',
       WBTC: '0xECe365B379E1dD183B20fc5f022230C044d51404',
       WETH: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
       WNATIVE: '0x2bA49Aaa16E6afD2a993473cfB70Fa8559B523cF', // actually DAI
@@ -211,7 +206,6 @@ export const CommonsConfig: ICommonConfiguration = {
     [EthereumNetwork.xdai]: {
       // AGVE: '',
       USDC: '0x26C31ac71010aF62E6B486D1132E266D6298857D',
-      STAKE: '0x55f4b2d20d447db498bcccde60fa9a51a3df6d72',
       WETH: '0xa767f745331D267c7751297D982b050c93985627',
       GNO: '0x22441d81416430A54336aB28765abd31a792Ad37',
       WBTC: '0x6C1d7e76EF7304a40e8456ce883BC56d3dEA3F7d',
@@ -310,7 +304,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.rinkeby]: '0x2d206Fd0C7c76016234810232159b05562608A42',
     [eEthereumNetwork.ropsten]: '',
-    [eEthereumNetwork.xdai]: '0x70225281599Ba586039E7BD52736681DFf6c2Fc4',
+    [eEthereumNetwork.xdai]: '0xb4c575308221CAA398e0DD2cDEB6B2f10d7b000A',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
   },

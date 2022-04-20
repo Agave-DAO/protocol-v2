@@ -45,17 +45,18 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
 
       const treasuryAddress = await getTreasuryAddress(poolConfig);
 
+      const incentivesController = '0xfa255f5104f129B78f477e9a6D050a02f31A5D86';
+
       await initReservesByHelper(
         ReservesConfig,
         reserveAssets,
         WNativeSymbol,
         admin,
         treasuryAddress,
-        ZERO_ADDRESS,
+        incentivesController,
         verify
       );
       await configureReservesByHelper(ReservesConfig, reserveAssets, testHelpers, admin);
-
       const collateralManager = await deployLendingPoolCollateralManager(verify);
       await waitForTx(
         await addressesProvider.setLendingPoolCollateralManager(collateralManager.address)

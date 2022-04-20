@@ -218,7 +218,7 @@ export const CommonsConfig: ICommonConfiguration = {
       WNATIVE: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       USD: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       LINK: '0xed322a5ac55bae091190dff9066760b86751947b',
-      FOX: '0x22441d81416430A54336aB28765abd31a792Ad37',
+      FOX: '0x3190f6d277fea03a082eba20b136f95f0dccb3dd',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',

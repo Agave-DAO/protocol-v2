@@ -9,7 +9,7 @@ build/
 /types
 /ipfs
 
-deployed-contracts.json
+
 
 coverage
 .coverage_artifacts

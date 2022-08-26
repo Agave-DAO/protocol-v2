@@ -4,6 +4,7 @@ cache
 node_modules
 dist/
 build/
+artifacts/
 .vscode
 .idea
 /types

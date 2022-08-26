@@ -1,7 +1,7 @@
 .env
 #Buidler files
 cache
-artifacts
+/artifacts
 node_modules
 dist/
 build/

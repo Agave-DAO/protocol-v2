@@ -1,0 +1,429 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "assets",
+						"type": "address[]"
+					},
+					{
+						"internalType": "address[]",
+						"name": "sources",
+						"type": "address[]"
+					},
+					{
+						"internalType": "address",
+						"name": "fallbackOracle",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_wrappedNative",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "asset",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "source",
+						"type": "address"
+					}
+				],
+				"name": "AssetSourceUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "fallbackOracle",
+						"type": "address"
+					}
+				],
+				"name": "FallbackOracleUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "wrappedNative",
+						"type": "address"
+					}
+				],
+				"name": "WrappedNativeSet",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "asset",
+						"type": "address"
+					}
+				],
+				"name": "getAssetPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "assets",
+						"type": "address[]"
+					}
+				],
+				"name": "getAssetsPrices",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getFallbackOracle",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "asset",
+						"type": "address"
+					}
+				],
+				"name": "getSourceOfAsset",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "assets",
+						"type": "address[]"
+					},
+					{
+						"internalType": "address[]",
+						"name": "sources",
+						"type": "address[]"
+					}
+				],
+				"name": "setAssetSources",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "fallbackOracle",
+						"type": "address"
+					}
+				],
+				"name": "setFallbackOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "wrappedNative",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Aave",
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"assets": "The addresses of the assets",
+						"fallbackOracle": "The address of the fallback oracle to use if the data of an        aggregator is not consistent",
+						"sources": "The address of the source of each asset"
+					}
+				},
+				"getAssetPrice(address)": {
+					"params": {
+						"asset": "The asset address"
+					}
+				},
+				"getAssetsPrices(address[])": {
+					"params": {
+						"assets": "The list of assets addresses"
+					}
+				},
+				"getFallbackOracle()": {
+					"returns": {
+						"_0": "address The addres of the fallback oracle"
+					}
+				},
+				"getSourceOfAsset(address)": {
+					"params": {
+						"asset": "The address of the asset"
+					},
+					"returns": {
+						"_0": "address The address of the source"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"setAssetSources(address[],address[])": {
+					"params": {
+						"assets": "The addresses of the assets",
+						"sources": "The address of the source of each asset"
+					}
+				},
+				"setFallbackOracle(address)": {
+					"params": {
+						"fallbackOracle": "The address of the fallbackOracle"
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"title": "AgaveOracle",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": "Constructor",
+				"getAssetPrice(address)": {
+					"notice": "Gets an asset price by address"
+				},
+				"getAssetsPrices(address[])": {
+					"notice": "Gets a list of prices from a list of assets addresses"
+				},
+				"getFallbackOracle()": {
+					"notice": "Gets the address of the fallback oracle"
+				},
+				"getSourceOfAsset(address)": {
+					"notice": "Gets the address of the source for an asset address"
+				},
+				"setAssetSources(address[],address[])": {
+					"notice": "External function called by the Aave governance to set or replace sources of assets"
+				},
+				"setFallbackOracle(address)": {
+					"notice": "Sets the fallbackOracle - Callable only by the Aave governance"
+				}
+			},
+			"notice": "Proxy smart contract to get the price of an asset from a price source, with Chainlink Aggregator         smart contracts as primary option - If the returned price by a Chainlink aggregator is <= 0, the call is forwarded to a fallbackOracle - Owned by the Agave governance system, allowed to add sources for assets, replace them   and change the fallbackOracle - Modified for Agave deployment by adding free-based asset prices.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/misc/AgaveOracle.sol": "AgaveOracle"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/openzeppelin/contracts/Address.sol": {
+			"keccak256": "0xb7f2cd193efe93976d7b473fc4fa27dda83bd4db5b81889cbcd4701f3b7023ae",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://2275632637acd2f30d576612dcddc1c6ba78d81af4d044fafe870e6a809a8b6e",
+				"dweb:/ipfs/QmW3uMzrLbjzP45zVpP8e9V6o8WFSceHiHq8WDMJ8YjCeL"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/Context.sol": {
+			"keccak256": "0xe52c598aa6e76d57665914c1c43fc6fa13bbe3b0bd8e816a6cec1c2bca5014e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a665a54b2277889ba2bdb9c3860b3b71ec7b22757297a03b590a093257604e9d",
+				"dweb:/ipfs/QmQ4mm9YnrtvjJwetDec3WoiKeJGoJMCs5kbPBhGVRcZ6N"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
+			"keccak256": "0x6406b04abfeda2c8c80ea3faf797ce4501e66db41fb6ff4e299ebe0402879f44",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://33b0db81db37bd6fe20aa0b23581c6b0edef2f3c49d0bd88b4fe46c1164adb00",
+				"dweb:/ipfs/QmYn1zYwt3ahpkLYwHh6h5b1UJrzP2xy5G3at9oEVNw2c1"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol": {
+			"keccak256": "0x4dade975e9d49dcd7785b30f9e56f80ba9322f3b037a6e39912a32e49a6a817c",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://84b4c20094e95699e746ecf1fad83748139fadf844a548a09e4949840fb6232f",
+				"dweb:/ipfs/Qme51kM9jqbjEyd7wQ8DNRNRAt5hY7FZHsaRxTP3xvXi5D"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/Ownable.sol": {
+			"keccak256": "0xe89abab730aac141126c194f910969c76f55a29536f2709c71c1c0c4ffce5508",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5667cdfe050014996ee748d1891155cc9a40ec5de28804d8c5e4b6c3a34e727",
+				"dweb:/ipfs/QmWcSNdBecjXbiEau8QHSdBFes2HXw59H9hhJNjCww1Y8i"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/SafeERC20.sol": {
+			"keccak256": "0xd664a81c469ebd6c7b09ca8be499e6af30100e3e42be6bfea9f4a90c02a7cb1c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c9f8ac1ffeaaefc7685abd544813e31ebb46e81b393291d68b1a99a9c7550df2",
+				"dweb:/ipfs/QmP3xWkMNgDBbDn9HF6vVKpHTP5rW4j7dxWmhKsxicQ7Mg"
+			]
+		},
+		"contracts/dependencies/openzeppelin/contracts/SafeMath.sol": {
+			"keccak256": "0xfca35d11bafb85cf4f2203b41f1a98238dca59b6a9faa28b86ea3f9f63da8ec5",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://7019345b024afa93000c6b5a2b095be59c3c5352eb658619c941d23d0af5bc65",
+				"dweb:/ipfs/QmZLxJKSbM66Wd1Qd43jSdiXdg7JP6DQ9J6LuANUZummM4"
+			]
+		},
+		"contracts/interfaces/IChainlinkAggregator.sol": {
+			"keccak256": "0x72d140a3a8b2afb440d9c616114dbcf8548c83e18c94c1790db8644b9e3a03da",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://bab8cd78fad962c6cf89d4226bb4fcf4ab088744245bc55f7a44d6151fc704e4",
+				"dweb:/ipfs/QmeUBFNGxFspCHugoKv6mjPCjayujUD2P5ZoY2ev15ctZd"
+			]
+		},
+		"contracts/interfaces/IPriceOracleGetter.sol": {
+			"keccak256": "0xf81a1742c6cac8d98baeb7d6003cedc97eed9c362bc0156aa00033d04e673f3e",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://74eeb88f24e2375b5106b0e54987b564f2f9b7c753e8675997e326a29cdce154",
+				"dweb:/ipfs/QmV2TScQgnSDZV5W2WCtQUD3Yk3tmZE7XcW37FAz9sXvUe"
+			]
+		},
+		"contracts/misc/AgaveOracle.sol": {
+			"keccak256": "0xc54846f104f997e3d601725d7eec656fd082a420e1ab9891b2e1e80af982310a",
+			"license": "agpl-3.0",
+			"urls": [
+				"bzz-raw://784a50e6dfb9d6ac7c02535cba17e915e501c6076917a45048a37e76f856109d",
+				"dweb:/ipfs/QmSYqepzU8N5yVdV4c9ddYAxDDrqgjiS4tmXJeqef159WF"
+			]
+		}
+	},
+	"version": 1
+}

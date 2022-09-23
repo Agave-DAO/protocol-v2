@@ -77,7 +77,10 @@ contract AaveProtocolDataProvider {
       bool borrowingEnabled,
       bool stableBorrowRateEnabled,
       bool isActive,
-      bool isFrozen
+      bool isFrozen,
+      uint256 depositLimit,
+      uint256 borrowLimit,
+      uint256 collateralUsageLimit
     )
   {
     DataTypes.ReserveConfigurationMap memory configuration =
@@ -90,6 +93,11 @@ contract AaveProtocolDataProvider {
       .getFlagsMemory();
 
     usageAsCollateralEnabled = liquidationThreshold > 0;
+
+    DataTypes.ReserveLimits memory limits = ILendingPool(ADDRESSES_PROVIDER.getLendingPool()).getReserveLimits(asset);
+    depositLimit = limits.depositLimit;
+    borrowLimit = limits.borrowLimit;
+    collateralUsageLimit = limits.collateralUsageLimit;
   }
 
   function getReserveData(address asset)

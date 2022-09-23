@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
+import {IERC20} from '../dependencies/openzeppelin/contracts/IERC20.sol';
+
 /**
  * @title IStableDebtToken
  * @notice Defines the interface for the stable debt token
@@ -8,7 +10,7 @@ pragma solidity 0.6.12;
  * @author Aave
  **/
 
-interface IStableDebtToken {
+interface IStableDebtToken is IERC20 {
   /**
    * @dev Emitted when new stable debt is minted
    * @param user The address of the user who triggered the minting

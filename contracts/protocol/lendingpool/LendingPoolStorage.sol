@@ -23,4 +23,6 @@ contract LendingPoolStorage {
   uint256 internal _reservesCount;
 
   bool internal _paused;
+
+  mapping(address => DataTypes.ReserveLimits) internal _reserveLimits;
 }

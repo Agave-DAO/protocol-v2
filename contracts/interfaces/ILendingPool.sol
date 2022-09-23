@@ -135,6 +135,7 @@ interface ILendingPool {
    * @param liquidator The address of the liquidator
    * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
    * to receive the underlying collateral asset directly
+   * @param useAToken `true` if the liquidator wants to pay the debt in aTokens
    **/
   event LiquidationCall(
     address indexed collateralAsset,
@@ -143,7 +144,8 @@ interface ILendingPool {
     uint256 debtToCover,
     uint256 liquidatedCollateralAmount,
     address liquidator,
-    bool receiveAToken
+    bool receiveAToken,
+    bool useAToken
   );
 
   /**
@@ -235,13 +237,15 @@ interface ILendingPool {
    * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
    * user calling the function if he wants to reduce/remove his own debt, or the address of any other
    * other borrower whose debt should be removed
+   * @param useAToken Repay debt with AToken.
    * @return The final amount repaid
    **/
   function repay(
     address asset,
     uint256 amount,
     uint256 rateMode,
-    address onBehalfOf
+    address onBehalfOf,
+    bool useAToken
   ) external returns (uint256);
 
   /**
@@ -369,6 +373,13 @@ interface ILendingPool {
     external
     view
     returns (DataTypes.UserConfigurationMap memory);
+
+   /**
+   * @dev Returns the reserve limits for a specific reserve
+   * @param asset The asset address
+   * @return The reserve limits of the asset
+   **/
+  function getReserveLimits(address asset) external view returns (DataTypes.ReserveLimits memory);
 
   /**
    * @dev Returns the normalized income normalized income of the reserve

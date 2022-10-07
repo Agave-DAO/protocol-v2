@@ -165,7 +165,6 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
       wnative.address
     );
 
-
     const varDebtToken = await getVariableDebtToken(variableDebtTokenAddress);
 
     var acctData = await pool.getUserAccountData(user.address);
@@ -180,8 +179,6 @@ makeSuite('Use native ETH at LendingPool via WETHGateway', (testEnv: TestEnv) =>
     expect(aTokensBalance).to.be.gte(depositSize);
 
     var acctData = await pool.getUserAccountData(user.address);
-
-    
 
     // Borrow WETH with WETH as collateral
     await waitForTx(

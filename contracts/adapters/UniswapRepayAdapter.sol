@@ -144,7 +144,7 @@ contract UniswapRepayAdapter is BaseUniswapAdapter {
     // Repay debt. Approves 0 first to comply with tokens that implement the anti frontrunning approval fix
     IERC20(debtAsset).safeApprove(address(LENDING_POOL), 0);
     IERC20(debtAsset).safeApprove(address(LENDING_POOL), amountToRepay);
-    LENDING_POOL.repay(debtAsset, amountToRepay, debtRateMode, msg.sender);
+    LENDING_POOL.repay(debtAsset, amountToRepay, debtRateMode, msg.sender, false);
   }
 
   /**
@@ -176,7 +176,7 @@ contract UniswapRepayAdapter is BaseUniswapAdapter {
     IERC20(debtAsset).safeApprove(address(LENDING_POOL), 0);
     IERC20(debtAsset).safeApprove(address(LENDING_POOL), amount);
     uint256 repaidAmount = IERC20(debtAsset).balanceOf(address(this));
-    LENDING_POOL.repay(debtAsset, amount, rateMode, initiator);
+    LENDING_POOL.repay(debtAsset, amount, rateMode, initiator, false);
     repaidAmount = repaidAmount.sub(IERC20(debtAsset).balanceOf(address(this)));
 
     if (collateralAsset != debtAsset) {

@@ -108,14 +108,14 @@ const buidlerConfig: HardhatUserConfig = {
     },
     rinkeby: {
       ...getCommonNetworkConfig(eEthereumNetwork.rinkeby, 4),
-      url: 'http://rinkeby:8558',
+      url: 'https://rpc.ankr.com/eth_rinkeby',
       gasPrice: 1000000000,
       blockGasLimit: 10000000,
     },
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     xdai: {
       ...getCommonNetworkConfig(eEthereumNetwork.xdai, 100),
-      url: 'https://rpc.xdaichain.com',
+      url: 'https://rpc.gnosischain.com',
       gasPrice: 10000000000,
       blockGasLimit: 7500000,
     },

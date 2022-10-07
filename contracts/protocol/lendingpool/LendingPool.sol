@@ -265,9 +265,8 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
       variableDebt
     );
 
-    uint256 paybackAmount = interestRateMode == DataTypes.InterestRateMode.STABLE
-      ? stableDebt
-      : variableDebt;
+    uint256 paybackAmount =
+      interestRateMode == DataTypes.InterestRateMode.STABLE ? stableDebt : variableDebt;
 
     if (amount < paybackAmount) {
       paybackAmount = amount;
@@ -364,24 +363,22 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   function rebalanceStableBorrowRate(address asset, address user) external override whenNotPaused {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
-    IERC20 stableDebtToken = IERC20(reserve.stableDebtTokenAddress);
-    IERC20 variableDebtToken = IERC20(reserve.variableDebtTokenAddress);
     address aTokenAddress = reserve.aTokenAddress;
 
-    uint256 stableDebt = IERC20(stableDebtToken).balanceOf(user);
+    uint256 stableDebt = IERC20(reserve.stableDebtTokenAddress).balanceOf(user);
 
     ValidationLogic.validateRebalanceStableBorrowRate(
       reserve,
       asset,
-      stableDebtToken,
-      variableDebtToken,
+      IERC20(reserve.stableDebtTokenAddress),
+      IERC20(reserve.variableDebtTokenAddress),
       aTokenAddress
     );
 
     reserve.updateState();
 
-    IStableDebtToken(address(stableDebtToken)).burn(user, stableDebt);
-    IStableDebtToken(address(stableDebtToken)).mint(
+    IStableDebtToken(reserve.stableDebtTokenAddress).burn(user, stableDebt);
+    IStableDebtToken(reserve.stableDebtTokenAddress).mint(
       user,
       user,
       stableDebt,
@@ -447,17 +444,18 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   ) external override whenNotPaused {
     address collateralManager = _addressesProvider.getLendingPoolCollateralManager();
 
-    (bool success, bytes memory result) = collateralManager.delegatecall(
-      abi.encodeWithSignature(
-        'liquidationCallWithAToken(address,address,address,uint256,bool,bool)',
-        collateralAsset,
-        debtAsset,
-        user,
-        debtToCover,
-        receiveAToken,
-        useAToken
-      )
-    );
+    (bool success, bytes memory result) =
+      collateralManager.delegatecall(
+        abi.encodeWithSignature(
+          'liquidationCall(address,address,address,uint256,bool,bool)',
+          collateralAsset,
+          debtAsset,
+          user,
+          debtToCover,
+          receiveAToken,
+          useAToken
+        )
+      );
 
     require(success, Errors.LP_LIQUIDATION_CALL_FAILED);
 
@@ -670,7 +668,12 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
    * @param asset The asset address
    * @return The reserve limits of the asset
    **/
-  function getReserveLimits(address asset) external view override returns (DataTypes.ReserveLimits memory) {
+  function getReserveLimits(address asset)
+    external
+    view
+    override
+    returns (DataTypes.ReserveLimits memory)
+  {
     return _reserveLimits[asset];
   }
 
@@ -838,10 +841,12 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
    * @param borrowLimit The new borrow limit
    * @param collateralUsageLimit The new collateral usage limit
    **/
-  function setReserveLimits(address asset, uint256 depositLimit, uint256 borrowLimit, uint256 collateralUsageLimit)
-    external
-    onlyLendingPoolConfigurator
-  {
+  function setReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  ) external onlyLendingPoolConfigurator {
     _reserveLimits[asset].depositLimit = depositLimit;
     _reserveLimits[asset].borrowLimit = borrowLimit;
     _reserveLimits[asset].collateralUsageLimit = collateralUsageLimit;
@@ -878,9 +883,10 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
     address oracle = _addressesProvider.getPriceOracle();
 
-    uint256 amountInETH = IPriceOracleGetter(oracle).getAssetPrice(vars.asset).mul(vars.amount).div(
-      10**reserve.configuration.getDecimals()
-    );
+    uint256 amountInETH =
+      IPriceOracleGetter(oracle).getAssetPrice(vars.asset).mul(vars.amount).div(
+        10**reserve.configuration.getDecimals()
+      );
 
     ValidationLogic.validateBorrow(
       vars.asset,
@@ -904,12 +910,13 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     bool isFirstBorrowing = false;
 
     DataTypes.ReserveLimits storage limits = _reserveLimits[vars.asset];
-    IStableDebtToken stableDebtToken = IStableDebtToken(reserve.stableDebtTokenAddress);
-    IVariableDebtToken variableDebtToken = IVariableDebtToken(reserve.variableDebtTokenAddress);
 
     if (limits.borrowLimit > 0) {
       require(
-        stableDebtToken.totalSupply().add(variableDebtToken.totalSupply()).add(vars.amount) <=  limits.borrowLimit,
+        IERC20(reserve.stableDebtTokenAddress)
+          .totalSupply()
+          .add(IERC20(reserve.variableDebtTokenAddress).totalSupply())
+          .add(vars.amount) <= limits.borrowLimit,
         Errors.LP_MAX_BORROWED
       );
     }
@@ -917,14 +924,14 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     if (DataTypes.InterestRateMode(vars.interestRateMode) == DataTypes.InterestRateMode.STABLE) {
       currentStableRate = reserve.currentStableBorrowRate;
 
-      isFirstBorrowing = stableDebtToken.mint(
+      isFirstBorrowing = IStableDebtToken(reserve.stableDebtTokenAddress).mint(
         vars.user,
         vars.onBehalfOf,
         vars.amount,
         currentStableRate
       );
     } else {
-      isFirstBorrowing = variableDebtToken.mint(
+      isFirstBorrowing = IVariableDebtToken(reserve.variableDebtTokenAddress).mint(
         vars.user,
         vars.onBehalfOf,
         vars.amount,

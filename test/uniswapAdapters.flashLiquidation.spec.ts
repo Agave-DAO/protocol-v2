@@ -30,7 +30,9 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     const borrower = users[1];
 
     //mints USDC to depositor
-    await usdc.connect(depositor.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
+    await usdc
+      .connect(depositor.signer)
+      .mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     //approve protocol to access depositor wallet
     await usdc.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
@@ -97,7 +99,9 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
     const borrower = users[1];
 
     //mints USDC to depositor
-    await usdc.connect(depositor.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
+    await usdc
+      .connect(depositor.signer)
+      .mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     //approve protocol to access depositor wallet
     await usdc.connect(depositor.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
@@ -143,14 +147,16 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
 
     const wethPrice = await oracle.getAssetPrice(weth.address);
 
-    const amountWETHToBorrow = (await convertToCurrencyDecimals(
-      weth.address,
-      new BigNumber(userGlobalDataBefore2.availableBorrowsETH.toString())
-        .multipliedBy(10000)
-        .div(wethPrice.toString())
-        .multipliedBy(0.8)
-        .toString()))
-      .div(10000);
+    const amountWETHToBorrow = (
+      await convertToCurrencyDecimals(
+        weth.address,
+        new BigNumber(userGlobalDataBefore2.availableBorrowsETH.toString())
+          .multipliedBy(10000)
+          .div(wethPrice.toString())
+          .multipliedBy(0.8)
+          .toString()
+      )
+    ).div(10000);
 
     await pool
       .connect(borrower.signer)
@@ -574,7 +580,9 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           txTimestamp
         );
 
-        const collateralAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
+        const collateralAssetContractBalance = await usdc.balanceOf(
+          flashLiquidationAdapter.address
+        );
         const borrowAssetContractBalance = await weth.balanceOf(flashLiquidationAdapter.address);
 
         expect(collateralAssetContractBalance).to.be.equal(
@@ -704,7 +712,9 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         // Expect LiquidationCall event
         await expect(Promise.resolve(tx)).to.emit(pool, 'LiquidationCall');
 
-        const collateralAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
+        const collateralAssetContractBalance = await usdc.balanceOf(
+          flashLiquidationAdapter.address
+        );
         const borrowAssetContractBalance = await usdc.balanceOf(flashLiquidationAdapter.address);
 
         expect(collateralAssetContractBalance).to.be.equal(

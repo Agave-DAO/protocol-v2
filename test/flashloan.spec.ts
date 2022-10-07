@@ -421,7 +421,9 @@ makeSuite('LendingPool FlashLoan function', (testEnv: TestEnv) => {
     const onBehalfOf = users[4];
 
     // Deposit 1000 dai for onBehalfOf user
-    await usdc.connect(onBehalfOf.signer).mint(await convertToCurrencyDecimals(usdc.address, '1000'));
+    await usdc
+      .connect(onBehalfOf.signer)
+      .mint(await convertToCurrencyDecimals(usdc.address, '1000'));
 
     await usdc.connect(onBehalfOf.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 

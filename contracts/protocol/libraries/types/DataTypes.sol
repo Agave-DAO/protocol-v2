@@ -48,9 +48,9 @@ library DataTypes {
   enum InterestRateMode {NONE, STABLE, VARIABLE}
 
   struct ReserveLimits {
-    //The maximum amount allowed to be deposited 
+    //The maximum amount allowed to be deposited
     uint256 depositLimit;
-    //The maximum amount allowed to be borrowed 
+    //The maximum amount allowed to be borrowed
     uint256 borrowLimit;
     //The maximum amount of tokens allowed to be used as collateral for aggregate user borrowings
     uint256 collateralUsageLimit;

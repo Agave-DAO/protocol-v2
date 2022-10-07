@@ -95,21 +95,24 @@ contract AgaveOracle is IPriceOracleGetter, Ownable {
       // "ether" here refers to the unwrapped native asset of the chain
       return 1 ether;
     } else if (address(source) == address(0) || address(wrappedNativeUsdSource) == address(0)) {
-        revert("price feed not set");
+      revert('price feed not set');
     } else {
       // Get the price of our common base (USD) in our native token
       int256 wrappedNativeUsdPrice = wrappedNativeUsdSource.latestAnswer();
       if (wrappedNativeUsdPrice <= 0) {
-        revert("price feed failure");
+        revert('price feed failure');
       }
 
       int256 price = IChainlinkAggregator(source).latestAnswer();
       if (price > 0) {
         // Now we have the price in USD. Dividing by the NATIVE/USD price gets us the value in our native token.
         // On mainnet, Aave and Chainlink price everything in ether, thus avoiding this double conversion.
-        return uint256(price).mul(uint256(10)**_wrappedNativeDecimals).div(uint256(wrappedNativeUsdPrice));
+        return
+          uint256(price).mul(uint256(10)**_wrappedNativeDecimals).div(
+            uint256(wrappedNativeUsdPrice)
+          );
       } else {
-        revert("price feed failure");
+        revert('price feed failure');
       }
     }
   }

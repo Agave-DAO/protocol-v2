@@ -146,9 +146,9 @@ makeSuite('Pausable Pool', (testEnv: TestEnv) => {
     await configurator.connect(users[1].signer).setPoolPause(true);
 
     // Try to execute liquidation
-    await expect(pool.connect(user.signer).repay(usdc.address, '1', '1', user.address)).revertedWith(
-      LP_IS_PAUSED
-    );
+    await expect(
+      pool.connect(user.signer).repay(usdc.address, '1', '1', user.address)
+    ).revertedWith(LP_IS_PAUSED);
 
     // Unpause the pool
     await configurator.connect(users[1].signer).setPoolPause(false);

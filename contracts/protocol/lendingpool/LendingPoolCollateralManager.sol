@@ -152,9 +152,8 @@ contract LendingPoolCollateralManager is
     // If the liquidator reclaims the underlying asset, we make sure there is enough available liquidity in the
     // collateral reserve
     if (!receiveAToken) {
-      uint256 currentAvailableCollateral = IERC20(collateralAsset).balanceOf(
-        address(vars.collateralAtoken)
-      );
+      uint256 currentAvailableCollateral =
+        IERC20(collateralAsset).balanceOf(address(vars.collateralAtoken));
       if (currentAvailableCollateral < vars.maxCollateralToLiquidate) {
         return (
           uint256(Errors.CollateralManagerErrors.NOT_ENOUGH_LIQUIDITY),
@@ -228,9 +227,14 @@ contract LendingPoolCollateralManager is
     }
 
     if (useAToken) {
-      // Pays the debt by burning the debt asset AToken 
+      // Pays the debt by burning the debt asset AToken
       // while maintaining the same amount of the underlying reserve deposited.
-      IAToken(debtReserve.aTokenAddress).burn(msg.sender, debtReserve.aTokenAddress, vars.actualDebtToLiquidate, debtReserve.liquidityIndex);
+      IAToken(debtReserve.aTokenAddress).burn(
+        msg.sender,
+        debtReserve.aTokenAddress,
+        vars.actualDebtToLiquidate,
+        debtReserve.liquidityIndex
+      );
     } else {
       // Transfers the debt asset being repaid to the aToken, where the liquidity is kept
       IERC20(debtAsset).safeTransferFrom(

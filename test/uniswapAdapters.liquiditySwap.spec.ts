@@ -190,13 +190,11 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const principalDecimals = (await dai.decimals()).toString();
 
         const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
-            .times(
-              new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
-            )
-            .div(
-              new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
-            )
-            .toFixed(0);
+          .times(
+            new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
+          )
+          .div(new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals)))
+          .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -215,9 +213,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const userAUsdcBalanceBefore = await aUsdc.balanceOf(userAddress);
 
         // Subtract the FL fee from the amount to be swapped 0,09%
-        const wethFlashloanAmount = new BigNumber('10')
-          .div(1.0009)
-          .toFixed(0);
+        const wethFlashloanAmount = new BigNumber('10').div(1.0009).toFixed(0);
         const usdcFlashloanAmount = new BigNumber(amountUSDCtoSwap.toString())
           .div(1.0009)
           .toFixed(0);
@@ -310,13 +306,11 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const principalDecimals = (await dai.decimals()).toString();
 
         const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
-            .times(
-              new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
-            )
-            .div(
-              new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
-            )
-            .toFixed(0);
+          .times(
+            new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
+          )
+          .div(new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals)))
+          .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -332,9 +326,7 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const userAEthBalanceBefore = await aWETH.balanceOf(userAddress);
         const userAUsdcBalanceBefore = await aUsdc.balanceOf(userAddress);
 
-        const wethFlashloanAmount = new BigNumber('10')
-          .div(1.0009)
-          .toFixed(0);
+        const wethFlashloanAmount = new BigNumber('10').div(1.0009).toFixed(0);
 
         const usdcFlashloanAmount = new BigNumber(amountUSDCtoSwap.toString())
           .div(1.0009)
@@ -517,7 +509,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should revert if inconsistent params', async () => {
-        const { users, weth, oracle, wnative: dai, aWETH, pool, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWETH,
+          pool,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 
@@ -863,13 +863,11 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const principalDecimals = (await dai.decimals()).toString();
 
         const expectedDaiAmount = new BigNumber(amountUSDCtoSwap.toString())
-            .times(
-              new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
-            )
-            .div(
-              new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
-            )
-            .toFixed(0);
+          .times(
+            new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
+          )
+          .div(new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals)))
+          .toFixed(0);
 
         await mockUniswapRouter.connect(user).setAmountToReturn(usdc.address, expectedDaiAmount);
 
@@ -923,7 +921,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should revert when min amount to receive exceeds the max slippage amount', async () => {
-        const { users, weth, oracle, wnative: dai, aWETH, pool, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWETH,
+          pool,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 
@@ -1179,7 +1185,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should correctly swap tokens and deposit the out tokens in the pool', async () => {
-        const { users, weth, oracle, wnative: dai, aWNATIVE: aDai, aWETH, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWNATIVE: aDai,
+          aWETH,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 
@@ -1238,7 +1252,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should correctly swap tokens using permit', async () => {
-        const { users, weth, oracle, wnative: dai, aWNATIVE: aDai, aWETH, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWNATIVE: aDai,
+          aWETH,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 
@@ -1490,13 +1512,11 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const principalDecimals = (await dai.decimals()).toString();
 
         const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
-            .times(
-              new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
-            )
-            .div(
-              new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
-            )
-            .toFixed(0);
+          .times(
+            new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
+          )
+          .div(new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals)))
+          .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -1596,13 +1616,11 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
         const principalDecimals = (await dai.decimals()).toString();
 
         const expectedDaiAmountForUsdc = new BigNumber(amountUSDCtoSwap.toString())
-            .times(
-              new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
-            )
-            .div(
-              new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals))
-            )
-            .toFixed(0);
+          .times(
+            new BigNumber(usdcPrice.toString()).times(new BigNumber(10).pow(principalDecimals))
+          )
+          .div(new BigNumber(daiPrice.toString()).times(new BigNumber(10).pow(collateralDecimals)))
+          .toFixed(0);
 
         // Make a deposit for user
         await usdc.connect(user).mint(amountUSDCtoSwap);
@@ -1697,7 +1715,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should correctly swap all the balance when using a bigger amount', async () => {
-        const { users, weth, oracle, wnative: dai, aWNATIVE: aDai, aWETH, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWNATIVE: aDai,
+          aWETH,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 
@@ -1709,7 +1735,6 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
           dai.address,
           new BigNumber('10').times(ethPrice.toString()).div(daiPrice.toString()).toFixed(0)
         );
-
 
         await mockUniswapRouter.setAmountToReturn(weth.address, expectedDaiAmount);
 
@@ -1767,7 +1792,15 @@ makeSuite('Uniswap adapters', (testEnv: TestEnv) => {
       });
 
       it('should correctly swap all the balance when using permit', async () => {
-        const { users, weth, oracle, wnative: dai, aWNATIVE: aDai, aWETH, uniswapLiquiditySwapAdapter } = testEnv;
+        const {
+          users,
+          weth,
+          oracle,
+          wnative: dai,
+          aWNATIVE: aDai,
+          aWETH,
+          uniswapLiquiditySwapAdapter,
+        } = testEnv;
         const user = users[0].signer;
         const userAddress = users[0].address;
 

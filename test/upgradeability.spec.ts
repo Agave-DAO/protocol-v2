@@ -93,7 +93,9 @@ makeSuite('Upgradeability', (testEnv: TestEnv) => {
 
     await configurator.updateStableDebtToken(usdc.address, newStableTokenAddress);
 
-    const { stableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(usdc.address);
+    const { stableDebtTokenAddress } = await helpersContract.getReserveTokensAddresses(
+      usdc.address
+    );
 
     const debtToken = await getMockStableDebtToken(stableDebtTokenAddress);
 

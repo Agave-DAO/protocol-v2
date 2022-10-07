@@ -9,8 +9,9 @@ makeSuite('Stable debt token tests', (testEnv: TestEnv) => {
   it('Tries to invoke mint not being the LendingPool', async () => {
     const { deployer, pool, usdc, helpersContract } = testEnv;
 
-    const daiStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(usdc.address))
-      .stableDebtTokenAddress;
+    const daiStableDebtTokenAddress = (
+      await helpersContract.getReserveTokensAddresses(usdc.address)
+    ).stableDebtTokenAddress;
 
     const stableDebtContract = await getStableDebtToken(daiStableDebtTokenAddress);
 
@@ -22,8 +23,9 @@ makeSuite('Stable debt token tests', (testEnv: TestEnv) => {
   it('Tries to invoke burn not being the LendingPool', async () => {
     const { deployer, usdc, helpersContract } = testEnv;
 
-    const usdcStableDebtTokenAddress = (await helpersContract.getReserveTokensAddresses(usdc.address))
-      .stableDebtTokenAddress;
+    const usdcStableDebtTokenAddress = (
+      await helpersContract.getReserveTokensAddresses(usdc.address)
+    ).stableDebtTokenAddress;
 
     const stableDebtContract = await getStableDebtToken(usdcStableDebtTokenAddress);
 

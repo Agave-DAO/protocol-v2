@@ -142,11 +142,11 @@ export async function initializeMakeSuite() {
   const wnativeAddress = reservesTokens.find((token) => token.symbol === 'WNATIVE')?.tokenAddress;
 
   if (!aWethAddress || !aWNativeAddress || !aUSDCAddress) {
-    console.log("Didn't find expected aTokens")
+    console.log("Didn't find expected aTokens");
     process.exit(1);
   }
   if (!wethAddress || !usdcAddress || !aaveAddress || !wnativeAddress) {
-    console.log("Didn't find expected reserve tokens")
+    console.log("Didn't find expected reserve tokens");
     process.exit(1);
   }
 

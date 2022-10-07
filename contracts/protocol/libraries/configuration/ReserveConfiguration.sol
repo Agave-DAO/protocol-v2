@@ -371,7 +371,12 @@ library ReserveConfiguration {
    * @param _borrowLimit The new borrow limit
    * @param _collateralUsageLimit The new collateral usage limit
    **/
-  function setReserveLimits(DataTypes.ReserveLimits memory self, uint256 _depositLimit, uint256 _borrowLimit, uint256 _collateralUsageLimit) internal pure {
+  function setReserveLimits(
+    DataTypes.ReserveLimits memory self,
+    uint256 _depositLimit,
+    uint256 _borrowLimit,
+    uint256 _collateralUsageLimit
+  ) internal pure {
     self.depositLimit = _depositLimit;
     self.borrowLimit = _borrowLimit;
     self.collateralUsageLimit = _collateralUsageLimit;

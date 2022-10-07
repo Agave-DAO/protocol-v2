@@ -123,7 +123,7 @@ contract FlashLiquidationAdapter is BaseUniswapAdapter {
     IERC20(borrowedAsset).approve(address(LENDING_POOL), debtToCover);
 
     // Liquidate the user position and release the underlying collateral
-    LENDING_POOL.liquidationCall(collateralAsset, borrowedAsset, user, debtToCover, false);
+    LENDING_POOL.liquidationCall(collateralAsset, borrowedAsset, user, debtToCover, false, false);
 
     // Discover the liquidated tokens
     uint256 collateralBalanceAfter = IERC20(collateralAsset).balanceOf(address(this));

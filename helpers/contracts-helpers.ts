@@ -15,7 +15,7 @@ import {
 import { MintableERC20 } from '../types/MintableERC20';
 import { Artifact } from 'hardhat/types';
 import { Artifact as BuidlerArtifact } from '@nomiclabs/buidler/types';
-import { verifyContract } from './etherscan-verification';
+import { verifyContract as verifyEtherscanContract } from './etherscan-verification';
 import { getIErc20Detailed } from './contracts-getters';
 import { usingTenderly } from './tenderly-utils';
 
@@ -99,7 +99,7 @@ export const withSaveAndVerify = async <ContractType extends Contract>(
     });
   }
   if (verify) {
-    await verifyContract(instance.address, args);
+    await verifyEtherscanContract(instance.address, args);
   }
   return instance;
 };
@@ -304,4 +304,13 @@ export const buildFlashLiquidationAdapterParams = (
     ['address', 'address', 'address', 'uint256', 'bool'],
     [collateralAsset, debtAsset, user, debtToCover, useEthPath]
   );
+};
+
+export const verifyContract = async (
+  id: string,
+  instance: Contract,
+  args: (string | string[])[]
+) => {
+  await verifyEtherscanContract(instance.address, args);
+  return instance;
 };

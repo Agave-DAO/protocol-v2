@@ -289,7 +289,8 @@ interface ILendingPool {
     address debtAsset,
     address user,
     uint256 debtToCover,
-    bool receiveAToken
+    bool receiveAToken,
+    bool useAToken
   ) external;
 
   /**
@@ -374,7 +375,7 @@ interface ILendingPool {
     view
     returns (DataTypes.UserConfigurationMap memory);
 
-   /**
+  /**
    * @dev Returns the reserve limits for a specific reserve
    * @param asset The asset address
    * @return The reserve limits of the asset

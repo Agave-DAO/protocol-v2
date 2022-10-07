@@ -1,7 +1,7 @@
 {
   "name": "@aave/protocol-v2",
   "version": "1.0.1",
-  "description": "Aave Protocol V2 smart contracts",
+  "description": "Agave Protocol V2 smart contracts",
   "files": [
     "contracts",
     "artifacts"
@@ -38,14 +38,16 @@
     "dev:coverage": "buidler compile --force && buidler coverage --network coverage",
     "agave:evm:dev:migration": "npm run compile && hardhat agave:dev",
     "agave:docker:full:migration": "npm run compile && npm run hardhat:docker -- agave:mainnet",
-    "agave:kovan:full:migration": "npm run compile && npm run hardhat:kovan -- agave:mainnet --verify",
+    "agave:kovan:full:migration": "npm run compile && npm run hardhat:kovan -- agave:mainnet",
     "agave:kovan:full:initialize": "npm run hardhat:kovan -- full:initialize-lending-pool --verify --pool Agave",
-    "agave:rinkeby:full:migration": "npm run compile && npm run hardhat:rinkeby -- agave:mainnet --verify",
+    "agave:rinkeby:deploy-registry": "npm run hardhat:rinkeby -- full:deploy-address-provider-registry",
+    "agave:rinkeby:full:migration": "npm run hardhat:rinkeby -- agave:mainnet",
     "agave:rinkeby:full:initialize": "npm run hardhat:rinkeby -- full:initialize-lending-pool --verify --pool Agave",
     "agave:ropsten:full:migration": "npm run compile && npm run hardhat:ropsten -- agave:mainnet --verify",
     "agave:ropsten:full:initialize": "npm run hardhat:ropsten -- full:initialize-lending-pool --verify --pool Agave",
     "agave:xdai:deploy-registry": "npm run hardhat:xdai -- full:deploy-address-provider-registry",
     "agave:xdai:full:migration": "npm run compile && npm run hardhat:xdai -- agave:mainnet",
+    "agave:xdai:full:initialize": "npm run hardhat:xdai -- full:initialize-lending-pool --pool Agave",
     "agave:fork:main:tenderly": "npm run compile && npm run hardhat:tenderly-main -- agave:mainnet",
     "agave:fork:main": "npm run compile && MAINNET_FORK=true  hardhat agave:mainnet",
     "agave:main:full:migration": "npm run compile && npm run hardhat:main -- agave:mainnet --verify",

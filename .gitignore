@@ -9,7 +9,8 @@ build/
 .idea
 /types
 /ipfs
-
+old-test/
+out/
 
 
 coverage

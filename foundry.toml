@@ -1,0 +1,26 @@
+[default]
+src = 'contracts/'                                                   
+test = 'test/'                                                 
+out = 'out'                                                   
+libs = ['foundry/lib']                                                
+remappings = ['ds-test/=foundry/lib/ds-test/src/', 'forge-std/=foundry/lib/forge-std/src/']   
+evm_version = 'istanbul'                                        
+solc_version = '0.6.12'                                      
+sender = '0x1BEeEeeEEeeEeeeeEeeEEEEEeeEeEeEEeEeEeEEe'         
+tx_origin = '0x1BEeEeeEEeeEeeeeEeeEEEEEeeEeEeEEeEeEeEEe'      
+initial_balance = '0xffffffffffffffffffffffff'                
+gas_limit = 9223372036854775800                               
+gas_price = 0                                                 
+block_timestamp = 0                                           
+gas_reports = ["*"]
+eth_rpc_url = 'http://nethermind-xdai.dappnode:8545/'
+verbosity = 3
+
+[default.optimizer_details]
+constantOptimizer = true
+yul = true
+
+[default.optimizer_details.yulDetails]
+stackAllocation = true
+optimizerSteps = 'dhfoDgvulfnTUtnIf'
+optimizer_runs = 200 

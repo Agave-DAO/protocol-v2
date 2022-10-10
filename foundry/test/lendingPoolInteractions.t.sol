@@ -1,10 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.6.12;
+pragma experimental ABIEncoderV2;
+
 
 import 'forge-std/Test.sol';
 import 'forge-std/console2.sol';
 import {LendingPool} from '../../contracts/protocol/lendingpool/LendingPool.sol';
-import {InitializableAdminUpgradeabilityProxy as Proxy} from "../../contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol";
+import {
+  InitializableAdminUpgradeabilityProxy as Proxy
+} from '../../contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol';
 import {
   AaveProtocolDataProvider as DataProvider
 } from '../../contracts/misc/AaveProtocolDataProvider.sol';
@@ -57,13 +61,13 @@ contract lendingPoolInteractions is Test, setupUpgrade {
       uint256 currentATokenBalance,
       uint256 currentStableDebt,
       uint256 currentVariableDebt,
-      uint256 principalStableDebt,
-      uint256 scaledVariableDebt,
-      uint256 stableBorrowRate,
-      uint256 liquidityRate,
-      uint40 stableRateLastUpdated,
-      bool usageAsCollateralEnabled
-    ) = dataProvider.getUserReserveData(reserve, self);
+      ,
+      ,
+      ,
+      ,
+      ,
+    )
+ = dataProvider.getUserReserveData(reserve, self);
 
     IERC20(reserve).approve(address(pool), uint256(-1));
     pool.repay(reserve, currentVariableDebt, 2, self, false);
@@ -85,14 +89,14 @@ contract lendingPoolInteractions is Test, setupUpgrade {
       uint256 currentATokenBalance,
       uint256 currentStableDebt,
       uint256 currentVariableDebt,
-      uint256 principalStableDebt,
-      uint256 scaledVariableDebt,
-      uint256 stableBorrowRate,
-      uint256 liquidityRate,
-      uint40 stableRateLastUpdated,
-      bool usageAsCollateralEnabled
+      ,
+      ,
+      ,
+      ,
+      ,
     ) = dataProvider.getUserReserveData(reserve, self);
-    uint256 repayAmount = (currentVariableDebt > currentATokenBalance) ? currentATokenBalance : currentVariableDebt;
+    uint256 repayAmount =
+      (currentVariableDebt > currentATokenBalance) ? currentATokenBalance : currentVariableDebt;
 
     IERC20(agToken).approve(address(pool), uint256(-1));
     pool.repay(reserve, repayAmount, 2, self, true);
@@ -113,23 +117,24 @@ contract lendingPoolInteractions is Test, setupUpgrade {
     uint256 newBalanceMinted = IERC20(agToken).balanceOf(self);
     assertEq(newBalanceMinted, 0);
     vm.stopPrank();
-
   }
 
-  function testSetLimits() public{
+  function testSetLimits() public {
     vm.startPrank(addressesProvider.getLendingPoolConfigurator());
-    pool.setReserveLimits(reserve, 50000000000,1000000000, 10000000000);
+    pool.setReserveLimits(reserve, 50000000000, 1000000000, 10000000000);
     vm.stopPrank();
   }
 
   function testGetLimits() public {
-    //DataTypes.ReserveLimits memory limits = pool.getReserveLimits(reserve);
-    //uint256 dep = limits.depositLimit;
+    testSetLimits();
+    DataTypes.ReserveLimits memory pool_limits = pool.getReserveLimits(reserve);
+
+    console2.log(pool_limits.depositLimit, pool_limits.borrowLimit, pool_limits.collateralUsageLimit);
   }
 
   function testFailDepositMoreThanDepositLimits() public {
     vm.startPrank(addressesProvider.getLendingPoolConfigurator());
-    pool.setReserveLimits(reserve, 10,10, 10000000000);
+    pool.setReserveLimits(reserve, 10, 10, 10000000000);
     vm.stopPrank();
     testDeposit();
   }

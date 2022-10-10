@@ -157,4 +157,6 @@ const buidlerConfig: HardhatUserConfig = {
   },
 };
 
+console.log(getCommonNetworkConfig(eEthereumNetwork.xdai, 100))
+
 export default buidlerConfig;

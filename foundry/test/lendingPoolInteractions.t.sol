@@ -2,7 +2,6 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-
 import 'forge-std/Test.sol';
 import 'forge-std/console2.sol';
 import {LendingPool} from '../../contracts/protocol/lendingpool/LendingPool.sol';
@@ -18,9 +17,10 @@ import {
 import {IERC20} from '../../contracts/dependencies/openzeppelin/contracts/IERC20.sol';
 import {DataTypes} from '../../contracts/protocol/libraries/types/DataTypes.sol';
 import {Errors} from '../../contracts/protocol/libraries/helpers/Errors.sol';
-import {setupUpgrade} from './setup.t.sol';
+import {SetupUpgrade} from './setup.t.sol';
+import {PriceOracleTests} from './PriceOracle.t.sol';
 
-contract lendingPoolInteractions is Test, setupUpgrade {
+contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
   address self = 0x1beeDEeF63d7746D5A6589B0993f92c6A832f6ba;
   address reserve = usdc;
   address agToken = agUSDC;
@@ -66,8 +66,8 @@ contract lendingPoolInteractions is Test, setupUpgrade {
       ,
       ,
       ,
-    )
- = dataProvider.getUserReserveData(reserve, self);
+
+    ) = dataProvider.getUserReserveData(reserve, self);
 
     IERC20(reserve).approve(address(pool), uint256(-1));
     pool.repay(reserve, currentVariableDebt, 2, self, false);
@@ -94,6 +94,7 @@ contract lendingPoolInteractions is Test, setupUpgrade {
       ,
       ,
       ,
+
     ) = dataProvider.getUserReserveData(reserve, self);
     uint256 repayAmount =
       (currentVariableDebt > currentATokenBalance) ? currentATokenBalance : currentVariableDebt;
@@ -129,7 +130,11 @@ contract lendingPoolInteractions is Test, setupUpgrade {
     testSetLimits();
     DataTypes.ReserveLimits memory pool_limits = pool.getReserveLimits(reserve);
 
-    console2.log(pool_limits.depositLimit, pool_limits.borrowLimit, pool_limits.collateralUsageLimit);
+    console2.log(
+      pool_limits.depositLimit,
+      pool_limits.borrowLimit,
+      pool_limits.collateralUsageLimit
+    );
   }
 
   function testFailDepositMoreThanDepositLimits() public {
@@ -137,6 +142,48 @@ contract lendingPoolInteractions is Test, setupUpgrade {
     pool.setReserveLimits(reserve, 10, 10, 10000000000);
     vm.stopPrank();
     testDeposit();
+  }
+
+  function testFailVariableBorrowtMoreThanLimits() public {
+    testDeposit();
+    vm.startPrank(addressesProvider.getLendingPoolConfigurator());
+    pool.setReserveLimits(reserve, 10, 10, 10000000000);
+    vm.stopPrank();
+    vm.startPrank(self);
+    pool.borrow(reserve, 10000000, 2, 0, self);
+    vm.stopPrank();
+  }
+
+  function testFailStableBorrowtMoreThanLimits() public {
+    testDeposit();
+    vm.startPrank(addressesProvider.getLendingPoolConfigurator());
+    pool.setReserveLimits(reserve, 10, 10, 10000000000);
+    vm.stopPrank();
+    vm.startPrank(self);
+    pool.borrow(reserve, 10000000, 1, 0, self);
+    vm.stopPrank();
+  }
+
+  function testLiquidationCall() public {
+    testIncreaseMockPrices();
+    (
+      uint256 totalCollateralETH,
+      uint256 totalDebtETH,
+      uint256 availableBorrowsETH,
+      uint256 currentLiquidationThreshold,
+      uint256 ltv,
+      uint256 healthFactor
+    ) = pool.getUserAccountData(self);
+
+    console2.log( ltv, healthFactor);
+
+    vm.startPrank(self);
+    IERC20(wxdai).approve(address(pool), uint256(-1));
+    pool.liquidationCall(gno, wxdai, self, 10000, false, false);
+    pool.liquidationCall(gno, wxdai, self, 10000, true, false);
+    pool.liquidationCall(gno, wxdai, self, 10000, true, true);
+    pool.liquidationCall(gno, wxdai, self, 10000, false, true);
+    vm.stopPrank();
   }
 }
 

@@ -2,5 +2,5 @@
 	path = foundry/lib/forge-std
 	url = https://github.com/foundry/forge-std
 [submodule "lib/ds-test"]
-	path = lib/ds-test
+	path = foundry/lib/ds-test
 	url = https://github.com/dapphub/ds-test

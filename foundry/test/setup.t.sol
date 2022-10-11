@@ -11,7 +11,7 @@ import {WETHGateway} from "../../contracts/misc/WETHGateway.sol";
 import {AToken} from "../../contracts/protocol/tokenization/AToken.sol";
 
 
-contract setupUpgrade is Test {
+contract SetupUpgrade is Test {
 
     AddressesProvider addressesProvider = AddressesProvider(0x3673C22153E363B1da69732c4E0aA71872Bbb87F);
     LendingPool pool = LendingPool(addressesProvider.getLendingPool());

@@ -13,6 +13,7 @@ const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   LINK: oneEther.multipliedBy('24.28322').toFixed(),
   WBTC: oneEther.multipliedBy('47332.685').toFixed(),
   USD: oneEther.multipliedBy('0.9989384').toFixed(),
+  USDT: oneEther.multipliedBy('0.9989384').toFixed(),
 };
 // ----------------
 // PROTOCOL GLOBAL PARAMS
@@ -208,11 +209,12 @@ export const CommonsConfig: ICommonConfiguration = {
       USDC: '0x26C31ac71010aF62E6B486D1132E266D6298857D',
       WETH: '0xa767f745331D267c7751297D982b050c93985627',
       GNO: '0x22441d81416430A54336aB28765abd31a792Ad37',
-      WBTC: '0x6C1d7e76EF7304a40e8456ce883BC56d3dEA3F7d',
+      WBTC: '0x00288135bE38B83249F380e9b6b9a04c90EC39eE',
       WNATIVE: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       USD: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       LINK: '0xed322a5ac55bae091190dff9066760b86751947b',
       FOX: '0x22441d81416430A54336aB28765abd31a792Ad37',
+      USDT: '0x68811D7DF835B1c33e6EEae8E7C141eF48d48cc7',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',

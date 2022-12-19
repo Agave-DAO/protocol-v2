@@ -21,8 +21,11 @@ interface IInitializableStaticATokenLM {
     address indexed pool,
     address aToken,
     string staticATokenName,
-    string staticATokenSymbol
+    string staticATokenSymbol,
+		address initialIncentivesController
   );
+
+	event UpdatedIncentivesController(address newIncentivesController);
 
   /**
    * @dev Initializes the StaticATokenLM
@@ -35,6 +38,7 @@ interface IInitializableStaticATokenLM {
     ILendingPool pool,
     address aToken,
     string calldata staticATokenName,
-    string calldata staticATokenSymbol
+    string calldata staticATokenSymbol,
+		address initialIncentivesController
   ) external;
 }

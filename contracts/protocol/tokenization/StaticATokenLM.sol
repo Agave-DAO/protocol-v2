@@ -91,7 +91,8 @@ contract StaticATokenLM is
     ILendingPool pool,
     address aToken,
     string calldata staticATokenName,
-    string calldata staticATokenSymbol
+    string calldata staticATokenSymbol,
+		address initialIncentivesController
   ) external override initializer {
     LENDING_POOL = pool;
     ATOKEN = IERC20(aToken);
@@ -103,17 +104,18 @@ contract StaticATokenLM is
     ASSET = IERC20(IAToken(aToken).UNDERLYING_ASSET_ADDRESS());
     ASSET.safeApprove(address(pool), type(uint256).max);
 
-    try IAToken(aToken).getIncentivesController() returns (
-      IAaveIncentivesController incentivesController
-    ) {
-      if (address(incentivesController) != address(0)) {
-        INCENTIVES_CONTROLLER = incentivesController;
-        REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
-      }
-    } catch {}
+		INCENTIVES_CONTROLLER = IAaveIncentivesController(initialIncentivesController);
+		REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
 
-    emit Initialized(address(pool), aToken, staticATokenName, staticATokenSymbol);
+    emit Initialized(address(pool), aToken, staticATokenName, staticATokenSymbol, initialIncentivesController);
   }
+
+	function updateIncentivesController(address newIncentivesController) external initializer {
+		INCENTIVES_CONTROLLER = IAaveIncentivesController(newIncentivesController);
+		REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
+
+		emit UpdatedIncentivesController(newIncentivesController);
+	}
 
   ///@inheritdoc IStaticATokenLM
   function deposit(

@@ -92,7 +92,7 @@ contract StaticATokenLM is
     address aToken,
     string calldata staticATokenName,
     string calldata staticATokenSymbol,
-		address initialIncentivesController
+    address initialIncentivesController
   ) external override initializer {
     LENDING_POOL = pool;
     ATOKEN = IERC20(aToken);
@@ -104,18 +104,25 @@ contract StaticATokenLM is
     ASSET = IERC20(IAToken(aToken).UNDERLYING_ASSET_ADDRESS());
     ASSET.safeApprove(address(pool), type(uint256).max);
 
-		INCENTIVES_CONTROLLER = IAaveIncentivesController(initialIncentivesController);
-		REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
+    INCENTIVES_CONTROLLER = IAaveIncentivesController(initialIncentivesController);
+    REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
 
-    emit Initialized(address(pool), aToken, staticATokenName, staticATokenSymbol, initialIncentivesController);
+    emit Initialized(
+      address(pool),
+      aToken,
+      staticATokenName,
+      staticATokenSymbol,
+      initialIncentivesController
+    );
   }
 
-	function updateIncentivesController(address newIncentivesController) external initializer {
-		INCENTIVES_CONTROLLER = IAaveIncentivesController(newIncentivesController);
-		REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
+  function updateIncentivesController(address newIncentivesController) external {
+    require(msg.sender == INCENTIVES_CONTROLLER.PROXY_ADMIN(), 'Not Allowed');
+    INCENTIVES_CONTROLLER = IAaveIncentivesController(newIncentivesController);
+    REWARD_TOKEN = IERC20(INCENTIVES_CONTROLLER.REWARD_TOKEN());
 
-		emit UpdatedIncentivesController(newIncentivesController);
-	}
+    emit UpdatedIncentivesController(newIncentivesController);
+  }
 
   ///@inheritdoc IStaticATokenLM
   function deposit(

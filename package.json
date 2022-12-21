@@ -19,6 +19,7 @@
     "hardhat:docker": "hardhat --network hardhatevm_docker",
     "hardhat:mumbai": "hardhat --network mumbai",
     "hardhat:matic": "hardhat --network matic",
+    "hardhat:xdai": "hardhat --network xdai",
     "compile": "SKIP_LOAD=true hardhat compile",
     "console:fork": "FORK=main hardhat console",
     "test": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-aave/*.spec.ts",
@@ -92,7 +93,8 @@
     "print-config:kovan": "hardhat --network kovan print-config --pool Aave --data-provider 0xA1901785c29cBd48bfA74e46b67C736b26054fa4",
     "external:deploy-assets-kovan": "npm run compile && hardhat --network kovan external:deploy-new-asset --symbol ${SYMBOL} --verify",
     "external:deploy-assets-main": "npm run compile && hardhat --network main external:deploy-new-asset --symbol ${SYMBOL} --verify",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "deploy-static-wrapper": "npm run compile && hardhat --network xdai deploy-atoken-wrapper --atokenaddress ${ADDRESS}"
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.7",
@@ -112,7 +114,7 @@
     "@types/lowdb": "1.0.9",
     "@types/mocha": "7.0.2",
     "@types/node": "14.0.5",
-    "bignumber.js": "9.0.0",
+    "bignumber.js": "^9.0.0",
     "buidler-typechain": "0.1.1",
     "chai": "4.3.4",
     "chai-bignumber": "3.0.0",

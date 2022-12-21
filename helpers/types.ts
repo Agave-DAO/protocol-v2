@@ -90,6 +90,8 @@ export enum eContractid {
   StaticAToken = 'StaticAToken',
   StaticATokenLM = 'StaticATokenLM',
   StaticATokenLMProxy = 'StaticATokenLMProxy',
+  StaticATokenFactory = 'StaticATokenFactory',
+  StaticATokenLMFactory = 'StaticATokenLMFactory',
 }
 
 /*

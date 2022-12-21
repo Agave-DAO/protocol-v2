@@ -125,4 +125,9 @@ interface IAaveIncentivesController {
    * @dev for backward compatibility with previous implementation of the Incentives controller
    */
   function PRECISION() external view returns (uint8);
+
+  /**
+   * @dev address of proxy admin that has the permissions to update the incentives proxy contract
+   */
+  function PROXY_ADMIN() external view returns (address);
 }

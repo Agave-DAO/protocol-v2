@@ -1,5 +1,5 @@
 import { task } from 'hardhat/config';
-import { deployStaticAToken, deployStaticATokenLM } from '../../helpers/contracts-deployments';
+import { deployStaticATokenLM } from '../../helpers/contracts-deployments';
 import { getFirstSigner } from '../../helpers/contracts-getters';
 import { IERC20Detailed } from '../../types/IERC20Detailed';
 import { IERC20DetailedFactory } from '../../types/IERC20DetailedFactory';
@@ -8,36 +8,32 @@ task(
   `deploy-atoken-wrapper`,
   `Deploy AToken Wrapper proxied with InitializableImmutableAdminUpgradeabilityProxy`
 )
-  .addParam('pool', 'Lending Pool address')
-  .addParam('aTokenAddress', 'AToken proxy address')
-  .addParam('proxyAdmin', 'Ethereum address of the proxy admin')
+  .addParam('atokenaddress', 'AToken proxy address')
   .addFlag('verify', 'Verify UiPoolDataProvider contract via Etherscan API.')
   .setAction(
     async (
       {
-        pool,
-        aTokenAddress,
-        proxyAdmin,
+        atokenaddress,
         verify,
       }: {
-        pool: string;
-        aTokenAddress: string;
+        atokenaddress: string;
         verify: boolean;
-        proxyAdmin: string;
       },
       localBRE
     ) => {
       await localBRE.run('set-DRE');
 
-      // Load symbol from AToken proxy contract
+      const pool = '0x5E15d5E33d318dCEd84Bfe3F4EACe07909bE6d9c';
+      const proxyAdmin = '0xb4c575308221CAA398e0DD2cDEB6B2f10d7b000A';
+      const incentivesController = '0xfa255f5104f129B78f477e9a6D050a02f31A5D86';
+
       const symbol = await IERC20DetailedFactory.connect(
-        aTokenAddress,
+        atokenaddress,
         await getFirstSigner()
       ).symbol();
 
-      console.log('- Deploying Static Wrapper for', symbol);
       const { proxy, implementation } = await deployStaticATokenLM(
-        [pool, aTokenAddress, symbol, proxyAdmin],
+        [pool, atokenaddress, symbol, proxyAdmin, incentivesController],
         verify
       );
 

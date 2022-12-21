@@ -48,7 +48,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eEthereumNetwork.tenderlyMain]: `https://rpc.tenderly.co/fork/${TENDERLY_FORK_ID}`,
   [ePolygonNetwork.mumbai]: 'https://rpc-mumbai.maticvigil.com',
   [ePolygonNetwork.matic]: 'https://rpc-mainnet.matic.network',
-  [eXDaiNetwork.xdai]: 'https://rpc.xdaichain.com/',
+  [eXDaiNetwork.xdai]: 'https://rpc.gnosischain.com/',
 };
 
 export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
@@ -61,7 +61,7 @@ export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
   [eEthereumNetwork.tenderlyMain]: 0.01 * GWEI,
   [ePolygonNetwork.mumbai]: 1 * GWEI,
   [ePolygonNetwork.matic]: 1 * GWEI,
-  [eXDaiNetwork.xdai]: 1 * GWEI,
+  [eXDaiNetwork.xdai]: 2 * GWEI,
 };
 
 export const BLOCK_TO_FORK: iParamsPerNetwork<number | undefined> = {

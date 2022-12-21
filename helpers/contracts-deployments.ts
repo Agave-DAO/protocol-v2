@@ -49,7 +49,6 @@ import {
   WETH9MockedFactory,
   WETHGatewayFactory,
   FlashLiquidationAdapterFactory,
-  StaticATokenFactory,
   StaticATokenLMFactory,
 } from '../types';
 import {
@@ -640,30 +639,23 @@ export const deployFlashLiquidationAdapter = async (
     verify
   );
 
-export const deployStaticAToken = async (
-  [pool, aTokenAddress, symbol]: [tEthereumAddress, tEthereumAddress, string],
-  verify?: boolean
-) => {
-  const args: [string, string, string, string] = [pool, aTokenAddress, `Wrapped ${symbol}`, symbol];
-
-  withSaveAndVerify(
-    await new StaticATokenFactory(await getFirstSigner()).deploy(...args),
-    eContractid.StaticAToken,
-    args,
-    verify
-  );
-};
-
 export const deployStaticATokenLM = async (
-  [pool, aTokenAddress, symbol, proxyAdmin]: [
+  [pool, aTokenAddress, symbol, proxyAdmin, incentivesController]: [
     tEthereumAddress,
     tEthereumAddress,
     string,
+    tEthereumAddress,
     tEthereumAddress
   ],
   verify?: boolean
 ) => {
-  const args: [string, string, string, string] = [pool, aTokenAddress, `Wrapped ${symbol}`, symbol];
+  const args: [string, string, string, string, string] = [
+    pool,
+    aTokenAddress,
+    `Wrapped ${symbol}`,
+    symbol,
+    incentivesController,
+  ];
 
   const staticATokenImplementation = await withSaveAndVerify(
     await new StaticATokenLMFactory(await getFirstSigner()).deploy(),

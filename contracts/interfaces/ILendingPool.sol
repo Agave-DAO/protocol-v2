@@ -135,7 +135,7 @@ interface ILendingPool {
    */
 
   event SetReserveLimits(
-    address asset,
+    address indexed asset,
     uint256 depositLimit,
     uint256 borrowLimit,
     uint256 collateralUsageLimit

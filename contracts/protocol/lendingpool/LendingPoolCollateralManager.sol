@@ -251,7 +251,8 @@ contract LendingPoolCollateralManager is
       vars.actualDebtToLiquidate,
       vars.maxCollateralToLiquidate,
       msg.sender,
-      receiveAToken
+      receiveAToken,
+      useAToken
     );
 
     return (uint256(Errors.CollateralManagerErrors.NO_ERROR), Errors.LPCM_NO_ERRORS);

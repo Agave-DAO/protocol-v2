@@ -21,7 +21,7 @@ import {SetupUpgrade} from './setup.t.sol';
 import {PriceOracleTests} from './PriceOracle.t.sol';
 
 contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
-  address self = 0x1beeDEeF63d7746D5A6589B0993f92c6A832f6ba;
+  address self = 0xb15279129c7e412e6002ED6EDC282b1c8a184195;
   address reserve = usdc;
   address agToken = agUSDC;
 
@@ -40,7 +40,8 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     testDeposit();
     vm.startPrank(self);
     uint256 balanceMinted = IERC20(agToken).balanceOf(self);
-    pool.borrow(reserve, 10000000, 2, 0, self);
+    assertGe(balanceMinted, 10000);
+    pool.borrow(reserve, 1000000, 2, 0, self);
     vm.stopPrank();
   }
 
@@ -48,7 +49,7 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     testDeposit();
     vm.startPrank(self);
     uint256 balanceMinted = IERC20(agToken).balanceOf(self);
-    pool.borrow(reserve, 10000000, 1, 0, self);
+    pool.borrow(reserve, 1000000, 1, 0, self);
     vm.stopPrank();
   }
 
@@ -150,7 +151,7 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     pool.setReserveLimits(reserve, 10, 10, 10000000000);
     vm.stopPrank();
     vm.startPrank(self);
-    pool.borrow(reserve, 10000000, 2, 0, self);
+    pool.borrow(reserve, 1000000, 2, 0, self);
     vm.stopPrank();
   }
 
@@ -160,11 +161,12 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     pool.setReserveLimits(reserve, 10, 10, 10000000000);
     vm.stopPrank();
     vm.startPrank(self);
-    pool.borrow(reserve, 10000000, 1, 0, self);
+    pool.borrow(reserve, 1000000, 1, 0, self);
     vm.stopPrank();
   }
 
-  function testLiquidationCall() public {
+  function testLiquidationCallReceiveUnderlyingPayUnderlying() public {
+    testVariableBorrow();
     testIncreaseMockPrices();
     (
       uint256 totalCollateralETH,
@@ -175,15 +177,77 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
       uint256 healthFactor
     ) = pool.getUserAccountData(self);
 
-    console2.log( ltv, healthFactor);
+    vm.startPrank(self);
+    IERC20(reserve).approve(address(pool), uint256(-1));
+    pool.liquidationCall(gno, reserve, self, 10000, false, false);
+    vm.stopPrank();
+  }
+
+  function testLiquidationCallReceiveAgTokenPayUnderlying() public {
+    testVariableBorrow();
+    testIncreaseMockPrices();
+    (
+      uint256 totalCollateralETH,
+      uint256 totalDebtETH,
+      uint256 availableBorrowsETH,
+      uint256 currentLiquidationThreshold,
+      uint256 ltv,
+      uint256 healthFactor
+    ) = pool.getUserAccountData(self);
 
     vm.startPrank(self);
-    IERC20(wxdai).approve(address(pool), uint256(-1));
-    pool.liquidationCall(gno, wxdai, self, 10000, false, false);
-    pool.liquidationCall(gno, wxdai, self, 10000, true, false);
-    pool.liquidationCall(gno, wxdai, self, 10000, true, true);
-    pool.liquidationCall(gno, wxdai, self, 10000, false, true);
+    IERC20(reserve).approve(address(pool), uint256(-1));
+    pool.liquidationCall(gno, reserve, self, 10000, true, false);
     vm.stopPrank();
+  }
+
+  function testLiquidationCallReceiveUnderlyingPayAgToken() public {
+    testVariableBorrow();
+    testIncreaseMockPrices();
+    (
+      uint256 totalCollateralETH,
+      uint256 totalDebtETH,
+      uint256 availableBorrowsETH,
+      uint256 currentLiquidationThreshold,
+      uint256 ltv,
+      uint256 healthFactor
+    ) = pool.getUserAccountData(self);
+
+    vm.startPrank(self);
+    IERC20(reserve).approve(address(pool), uint256(-1));
+    pool.liquidationCall(gno, reserve, self, 10000, false, true);
+    vm.stopPrank();
+  }
+
+  function testLiquidationCallReceiveAgTokenPayAgToken() public {
+    testVariableBorrow();
+    testIncreaseMockPrices();
+    uint256 balanceBorrowedBefore = IERC20(usdc).balanceOf(self);
+    uint256 balanceBorrowedAgBefore = IERC20(agUSDC).balanceOf(self);
+    uint256 balanceCollateralAgBefore = IERC20(agGNO).balanceOf(self);
+    uint256 balanceCollateralUnderlyingBefore = IERC20(gno).balanceOf(self);
+    (
+      uint256 totalCollateralETH,
+      uint256 totalDebtETH,
+      uint256 availableBorrowsETH,
+      uint256 currentLiquidationThreshold,
+      uint256 ltv,
+      uint256 healthFactor
+    ) = pool.getUserAccountData(self);
+
+    vm.startPrank(self);
+    IERC20(reserve).approve(address(pool), uint256(-1));
+    pool.liquidationCall(gno, reserve, self, 10000, true, true);
+    uint256 balanceBorrowedAfter = IERC20(usdc).balanceOf(self);
+    uint256 balanceBorrowedAgAfter = IERC20(agUSDC).balanceOf(self);
+    uint256 balanceCollateralAgAfter = IERC20(agGNO).balanceOf(self);
+    uint256 balanceCollateralUnderlyingAfter = IERC20(gno).balanceOf(self);
+    vm.stopPrank();
+
+    console2.log("BorrowedReserve", balanceBorrowedBefore, balanceBorrowedAfter);
+    console2.log("BorrowedAg", balanceBorrowedAgBefore, balanceBorrowedAgAfter);
+    console2.log("CollateralReserve", balanceCollateralUnderlyingBefore, balanceCollateralUnderlyingAfter);
+    console2.log("CollateralAg", balanceCollateralAgBefore, balanceCollateralAgAfter);
   }
 }
 

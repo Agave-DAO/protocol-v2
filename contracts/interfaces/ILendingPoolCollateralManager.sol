@@ -16,6 +16,7 @@ interface ILendingPoolCollateralManager {
    * @param liquidatedCollateralAmount The amount of collateral being liquidated
    * @param liquidator The address of the liquidator
    * @param receiveAToken true if the liquidator wants to receive aTokens, false otherwise
+   * @param useAToken true if the liquidators wants to pay the debt in aTokens
    **/
   event LiquidationCall(
     address indexed collateral,
@@ -24,7 +25,8 @@ interface ILendingPoolCollateralManager {
     uint256 debtToCover,
     uint256 liquidatedCollateralAmount,
     address liquidator,
-    bool receiveAToken
+    bool receiveAToken,
+    bool useAToken
   );
 
   /**

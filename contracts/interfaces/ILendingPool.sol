@@ -58,12 +58,14 @@ interface ILendingPool {
    * @param user The beneficiary of the repayment, getting his debt reduced
    * @param repayer The address of the user initiating the repay(), providing the funds
    * @param amount The amount repaid
+   * @param useAToken Repay debt with AToken.
    **/
   event Repay(
     address indexed reserve,
     address indexed user,
     address indexed repayer,
-    uint256 amount
+    uint256 amount,
+    bool useAToken
   );
 
   /**
@@ -122,6 +124,22 @@ interface ILendingPool {
    * @dev Emitted when the pause is lifted.
    */
   event Unpaused();
+
+  /**
+   * @dev Emitted when reserve limits for an asset are updated
+   * - Only callable by the LendingPoolConfigurator contract
+   * @param asset The address of the underlying asset of the reserve
+   * @param depositLimit The new deposit limit
+   * @param borrowLimit The new borrow limit
+   * @param collateralUsageLimit The new collateral usage limit
+   */
+
+  event SetReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  );
 
   /**
    * @dev Emitted when a borrower is liquidated. This event is emitted by the LendingPool via

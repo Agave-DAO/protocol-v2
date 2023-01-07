@@ -13,7 +13,7 @@ gas_limit = 9223372036854775800
 gas_price = 0                                                 
 block_timestamp = 0                                           
 gas_reports = ["*"]
-eth_rpc_url = 'https://rpc.gnosischain.com/'
+eth_rpc_url = 'https://rpc.gnosis.gateway.fm'
 verbosity = 3
 
 [default.optimizer_details]

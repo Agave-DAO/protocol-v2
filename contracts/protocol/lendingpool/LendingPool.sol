@@ -297,7 +297,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
       IERC20(asset).safeTransferFrom(msg.sender, aToken, paybackAmount);
     }
 
-    emit Repay(asset, onBehalfOf, msg.sender, paybackAmount);
+    emit Repay(asset, onBehalfOf, msg.sender, paybackAmount, useAToken);
 
     return paybackAmount;
   }
@@ -850,6 +850,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     _reserveLimits[asset].depositLimit = depositLimit;
     _reserveLimits[asset].borrowLimit = borrowLimit;
     _reserveLimits[asset].collateralUsageLimit = collateralUsageLimit;
+    emit SetReserveLimits(asset, depositLimit, borrowLimit, collateralUsageLimit);
   }
 
   /**
@@ -890,7 +891,6 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
     ValidationLogic.validateBorrow(
       vars.asset,
-      reserve,
       vars.onBehalfOf,
       vars.amount,
       amountInETH,

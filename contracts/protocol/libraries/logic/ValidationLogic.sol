@@ -105,7 +105,6 @@ library ValidationLogic {
   /**
    * @dev Validates a borrow action
    * @param asset The address of the asset to borrow
-   * @param reserve The reserve state from which the user is borrowing
    * @param userAddress The address of the user
    * @param amount The amount to be borrowed
    * @param amountInETH The amount to be borrowed, in ETH
@@ -119,7 +118,6 @@ library ValidationLogic {
 
   function validateBorrow(
     address asset,
-    DataTypes.ReserveData storage reserve,
     address userAddress,
     uint256 amount,
     uint256 amountInETH,
@@ -132,7 +130,7 @@ library ValidationLogic {
     address oracle
   ) external view {
     ValidateBorrowLocalVars memory vars;
-
+    DataTypes.ReserveData storage reserve = reservesData[asset];
     (vars.isActive, vars.isFrozen, vars.borrowingEnabled, vars.stableRateBorrowingEnabled) = reserve
       .configuration
       .getFlags();

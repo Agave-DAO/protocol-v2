@@ -9,8 +9,8 @@ import {
   InitializableAdminUpgradeabilityProxy as Proxy
 } from '../../contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol';
 import {
-  AaveProtocolDataProvider as DataProvider
-} from '../../contracts/misc/AaveProtocolDataProvider.sol';
+  AgaveProtocolDataProvider as DataProvider
+} from '../../contracts/misc/AgaveProtocolDataProvider.sol';
 import {
   LendingPoolAddressesProvider as AddressesProvider
 } from '../../contracts/protocol/configuration/LendingPoolAddressesProvider.sol';
@@ -49,6 +49,7 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     testDeposit();
     vm.startPrank(self);
     uint256 balanceMinted = IERC20(agToken).balanceOf(self);
+    assertGe(balanceMinted, 10000);
     pool.borrow(reserve, 1000000, 1, 0, self);
     vm.stopPrank();
   }
@@ -60,7 +61,7 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     uint256 balanceReserve = IERC20(reserve).balanceOf(self);
     (
       uint256 currentATokenBalance,
-      uint256 currentStableDebt,
+      ,
       uint256 currentVariableDebt,
       ,
       ,
@@ -88,7 +89,7 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     uint256 balanceReserve = IERC20(reserve).balanceOf(self);
     (
       uint256 currentATokenBalance,
-      uint256 currentStableDebt,
+      ,
       uint256 currentVariableDebt,
       ,
       ,
@@ -168,14 +169,6 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
   function testLiquidationCallReceiveUnderlyingPayUnderlying() public {
     testVariableBorrow();
     testIncreaseMockPrices();
-    (
-      uint256 totalCollateralETH,
-      uint256 totalDebtETH,
-      uint256 availableBorrowsETH,
-      uint256 currentLiquidationThreshold,
-      uint256 ltv,
-      uint256 healthFactor
-    ) = pool.getUserAccountData(self);
 
     vm.startPrank(self);
     IERC20(reserve).approve(address(pool), uint256(-1));
@@ -186,14 +179,6 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
   function testLiquidationCallReceiveAgTokenPayUnderlying() public {
     testVariableBorrow();
     testIncreaseMockPrices();
-    (
-      uint256 totalCollateralETH,
-      uint256 totalDebtETH,
-      uint256 availableBorrowsETH,
-      uint256 currentLiquidationThreshold,
-      uint256 ltv,
-      uint256 healthFactor
-    ) = pool.getUserAccountData(self);
 
     vm.startPrank(self);
     IERC20(reserve).approve(address(pool), uint256(-1));
@@ -204,14 +189,6 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
   function testLiquidationCallReceiveUnderlyingPayAgToken() public {
     testVariableBorrow();
     testIncreaseMockPrices();
-    (
-      uint256 totalCollateralETH,
-      uint256 totalDebtETH,
-      uint256 availableBorrowsETH,
-      uint256 currentLiquidationThreshold,
-      uint256 ltv,
-      uint256 healthFactor
-    ) = pool.getUserAccountData(self);
 
     vm.startPrank(self);
     IERC20(reserve).approve(address(pool), uint256(-1));
@@ -226,14 +203,6 @@ contract lendingPoolInteractions is Test, SetupUpgrade, PriceOracleTests {
     uint256 balanceBorrowedAgBefore = IERC20(agUSDC).balanceOf(self);
     uint256 balanceCollateralAgBefore = IERC20(agGNO).balanceOf(self);
     uint256 balanceCollateralUnderlyingBefore = IERC20(gno).balanceOf(self);
-    (
-      uint256 totalCollateralETH,
-      uint256 totalDebtETH,
-      uint256 availableBorrowsETH,
-      uint256 currentLiquidationThreshold,
-      uint256 ltv,
-      uint256 healthFactor
-    ) = pool.getUserAccountData(self);
 
     vm.startPrank(self);
     IERC20(reserve).approve(address(pool), uint256(-1));

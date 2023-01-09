@@ -846,7 +846,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 depositLimit,
     uint256 borrowLimit,
     uint256 collateralUsageLimit
-  ) external onlyLendingPoolConfigurator {
+  ) external override onlyLendingPoolConfigurator {
     _reserveLimits[asset].depositLimit = depositLimit;
     _reserveLimits[asset].borrowLimit = borrowLimit;
     _reserveLimits[asset].collateralUsageLimit = collateralUsageLimit;

@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "forge-std/console2.sol";
 import {LendingPool} from "../../contracts/protocol/lendingpool/LendingPool.sol";
 import {InitializableAdminUpgradeabilityProxy as Proxy} from "../../contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol";
-import {AaveProtocolDataProvider as DataProvider} from "../../contracts/misc/AaveProtocolDataProvider.sol";
+import {AgaveProtocolDataProvider as DataProvider} from "../../contracts/misc/AgaveProtocolDataProvider.sol";
 import {LendingPoolAddressesProvider as AddressesProvider} from "../../contracts/protocol/configuration/LendingPoolAddressesProvider.sol";
 import {AgaveOracle} from "../../contracts/misc/AgaveOracle.sol";
 import {SetupUpgrade} from './setup.t.sol';

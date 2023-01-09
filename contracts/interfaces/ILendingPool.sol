@@ -371,6 +371,13 @@ interface ILendingPool {
   function setReserveInterestRateStrategyAddress(address reserve, address rateStrategyAddress)
     external;
 
+  function setReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  ) external;
+
   function setConfiguration(address reserve, uint256 configuration) external;
 
   /**

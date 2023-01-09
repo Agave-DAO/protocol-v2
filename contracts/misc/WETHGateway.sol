@@ -88,7 +88,7 @@ contract WETHGateway is IWETHGateway, Ownable {
     }
     require(msg.value >= paybackAmount, 'msg.value is less than repayment amount');
     WETH.deposit{value: paybackAmount}();
-    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf, false);
+    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf);
 
     // refund remaining dust eth
     if (msg.value > paybackAmount) _safeTransferETH(msg.sender, msg.value - paybackAmount);

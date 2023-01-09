@@ -246,7 +246,7 @@ interface ILendingPool {
   ) external;
 
   /**
-   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using the reserve token
    * - E.g. User repays 100 USDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
    * @param asset The address of the borrowed underlying asset previously borrowed
    * @param amount The amount to repay
@@ -255,15 +255,32 @@ interface ILendingPool {
    * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
    * user calling the function if he wants to reduce/remove his own debt, or the address of any other
    * other borrower whose debt should be removed
-   * @param useAToken Repay debt with AToken.
    * @return The final amount repaid
    **/
   function repay(
     address asset,
     uint256 amount,
     uint256 rateMode,
-    address onBehalfOf,
-    bool useAToken
+    address onBehalfOf
+  ) external returns (uint256);
+
+  /**
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using deposited balance of the same asset
+   * - E.g. User repays 100 agUSDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
+   * @param asset The address of the borrowed underlying asset previously borrowed
+   * @param amount The amount to repay
+   * - Send the value type(uint256).max in order to repay the whole debt for `asset` on the specific `debtMode`
+   * @param rateMode The interest rate mode at of the debt the user wants to repay: 1 for Stable, 2 for Variable
+   * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
+   * user calling the function if he wants to reduce/remove his own debt, or the address of any other
+   * other borrower whose debt should be removed
+   * @return The final amount repaid
+   **/
+  function repayUsingAgToken(
+    address asset,
+    uint256 amount,
+    uint256 rateMode,
+    address onBehalfOf
   ) external returns (uint256);
 
   /**
@@ -293,8 +310,8 @@ interface ILendingPool {
 
   /**
    * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
-   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated, and receives
-   *   a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the reserve asset,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
    * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
    * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
    * @param user The address of the borrower getting liquidated
@@ -307,8 +324,26 @@ interface ILendingPool {
     address debtAsset,
     address user,
     uint256 debtToCover,
-    bool receiveAToken,
-    bool useAToken
+    bool receiveAToken
+  ) external;
+
+  /**
+   * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the corresponding agToken,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
+   * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
+   * @param user The address of the borrower getting liquidated
+   * @param debtToCover The debt amount of borrowed `asset` the liquidator wants to cover
+   * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
+   * to receive the underlying collateral asset directly
+   **/
+  function liquidationCallUsingAgToken(
+    address collateralAsset,
+    address debtAsset,
+    address user,
+    uint256 debtToCover,
+    bool receiveAToken
   ) external;
 
   /**

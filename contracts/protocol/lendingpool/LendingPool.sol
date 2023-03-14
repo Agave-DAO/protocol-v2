@@ -41,7 +41,7 @@ import {LendingPoolStorage} from './LendingPoolStorage.sol';
  * - To be covered by a proxy contract, owned by the LendingPoolAddressesProvider of the specific market
  * - All admin functions are callable by the LendingPoolConfigurator contract defined also in the
  *   LendingPoolAddressesProvider
- * @author Aave
+ * @author Agave
  **/
 contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage {
   using SafeMath for uint256;
@@ -53,7 +53,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   uint256 public constant MAX_STABLE_RATE_BORROW_SIZE_PERCENT = 2500;
   uint256 public constant FLASHLOAN_PREMIUM_TOTAL = 9;
   uint256 public constant MAX_NUMBER_RESERVES = 128;
-  uint256 public constant LENDINGPOOL_REVISION = 0x1;
+  uint256 public constant LENDINGPOOL_REVISION = 0x2;
 
   modifier whenNotPaused() {
     _whenNotPaused();
@@ -112,7 +112,15 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
     ValidationLogic.validateDeposit(reserve, amount);
 
+    DataTypes.ReserveLimits storage limits = _reserveLimits[asset];
     address aToken = reserve.aTokenAddress;
+
+    if (limits.depositLimit > 0) {
+      require(
+        IAToken(aToken).totalSupply().add(amount) <= limits.depositLimit,
+        Errors.LP_MAX_DEPOSITED
+      );
+    }
 
     reserve.updateState();
     reserve.updateInterestRates(asset, aToken, amount, 0);
@@ -223,7 +231,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
-   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using the reserve token
    * - E.g. User repays 100 USDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
    * @param asset The address of the borrowed underlying asset previously borrowed
    * @param amount The amount to repay
@@ -239,7 +247,51 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 amount,
     uint256 rateMode,
     address onBehalfOf
-  ) external override whenNotPaused returns (uint256) {
+  ) external override returns (uint256) {
+    return _repay(asset, amount, rateMode, onBehalfOf, false);
+  }
+
+  /**
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using deposited balance of the same asset
+   * - E.g. User repays 100 agUSDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
+   * @param asset The address of the borrowed underlying asset previously borrowed
+   * @param amount The amount to repay
+   * - Send the value type(uint256).max in order to repay the whole debt for `asset` on the specific `debtMode`
+   * @param rateMode The interest rate mode at of the debt the user wants to repay: 1 for Stable, 2 for Variable
+   * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
+   * user calling the function if he wants to reduce/remove his own debt, or the address of any other
+   * other borrower whose debt should be removed
+   * @return The final amount repaid
+   **/
+  function repayUsingAgToken(
+    address asset,
+    uint256 amount,
+    uint256 rateMode,
+    address onBehalfOf
+  ) external override returns (uint256) {
+    return _repay(asset, amount, rateMode, onBehalfOf, true);
+  }
+
+  /**
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned
+   * - E.g. User repays 100 USDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
+   * @param asset The address of the borrowed underlying asset previously borrowed
+   * @param amount The amount to repay
+   * - Send the value type(uint256).max in order to repay the whole debt for `asset` on the specific `debtMode`
+   * @param rateMode The interest rate mode at of the debt the user wants to repay: 1 for Stable, 2 for Variable
+   * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
+   * user calling the function if he wants to reduce/remove his own debt, or the address of any other
+   * other borrower whose debt should be removed
+   * @param useAToken Repay debt with AToken.
+   * @return The final amount repaid
+   **/
+  function _repay(
+    address asset,
+    uint256 amount,
+    uint256 rateMode,
+    address onBehalfOf,
+    bool useAToken
+  ) internal whenNotPaused returns (uint256) {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     (uint256 stableDebt, uint256 variableDebt) = Helpers.getUserCurrentDebt(onBehalfOf, reserve);
@@ -281,9 +333,13 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
       _usersConfig[onBehalfOf].setBorrowing(reserve.id, false);
     }
 
-    IERC20(asset).safeTransferFrom(msg.sender, aToken, paybackAmount);
+    if (useAToken) {
+      IAToken(aToken).burn(msg.sender, aToken, paybackAmount, reserve.liquidityIndex);
+    } else {
+      IERC20(asset).safeTransferFrom(msg.sender, aToken, paybackAmount);
+    }
 
-    emit Repay(asset, onBehalfOf, msg.sender, paybackAmount);
+    emit Repay(asset, onBehalfOf, msg.sender, paybackAmount, useAToken);
 
     return paybackAmount;
   }
@@ -349,24 +405,22 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   function rebalanceStableBorrowRate(address asset, address user) external override whenNotPaused {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
-    IERC20 stableDebtToken = IERC20(reserve.stableDebtTokenAddress);
-    IERC20 variableDebtToken = IERC20(reserve.variableDebtTokenAddress);
     address aTokenAddress = reserve.aTokenAddress;
 
-    uint256 stableDebt = IERC20(stableDebtToken).balanceOf(user);
+    uint256 stableDebt = IERC20(reserve.stableDebtTokenAddress).balanceOf(user);
 
     ValidationLogic.validateRebalanceStableBorrowRate(
       reserve,
       asset,
-      stableDebtToken,
-      variableDebtToken,
+      IERC20(reserve.stableDebtTokenAddress),
+      IERC20(reserve.variableDebtTokenAddress),
       aTokenAddress
     );
 
     reserve.updateState();
 
-    IStableDebtToken(address(stableDebtToken)).burn(user, stableDebt);
-    IStableDebtToken(address(stableDebtToken)).mint(
+    IStableDebtToken(reserve.stableDebtTokenAddress).burn(user, stableDebt);
+    IStableDebtToken(reserve.stableDebtTokenAddress).mint(
       user,
       user,
       stableDebt,
@@ -412,8 +466,8 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
   /**
    * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
-   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated, and receives
-   *   a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the reserve asset,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
    * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
    * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
    * @param user The address of the borrower getting liquidated
@@ -427,19 +481,63 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     address user,
     uint256 debtToCover,
     bool receiveAToken
-  ) external override whenNotPaused {
+  ) external override {
+    _liquidationCall(collateralAsset, debtAsset, user, debtToCover, receiveAToken, false);
+  }
+
+  /**
+   * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the corresponding agToken,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
+   * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
+   * @param user The address of the borrower getting liquidated
+   * @param debtToCover The debt amount of borrowed `asset` the liquidator wants to cover
+   * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
+   * to receive the underlying collateral asset directly
+   **/
+  function liquidationCallUsingAgToken(
+    address collateralAsset,
+    address debtAsset,
+    address user,
+    uint256 debtToCover,
+    bool receiveAToken
+  ) external override {
+    _liquidationCall(collateralAsset, debtAsset, user, debtToCover, receiveAToken, true);
+  }
+
+  /**
+   * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated, and receives
+   *   a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
+   * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
+   * @param user The address of the borrower getting liquidated
+   * @param debtToCover The debt amount of borrowed `asset` the liquidator wants to cover
+   * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
+   * to receive the underlying collateral asset directly
+   * @param useAToken `true` if the liquidators wants to pay the debt in aTokens
+   **/
+  function _liquidationCall(
+    address collateralAsset,
+    address debtAsset,
+    address user,
+    uint256 debtToCover,
+    bool receiveAToken,
+    bool useAToken
+  ) internal whenNotPaused {
     address collateralManager = _addressesProvider.getLendingPoolCollateralManager();
 
-    //solium-disable-next-line
     (bool success, bytes memory result) =
       collateralManager.delegatecall(
         abi.encodeWithSignature(
-          'liquidationCall(address,address,address,uint256,bool)',
+          'liquidationCall(address,address,address,uint256,bool,bool)',
           collateralAsset,
           debtAsset,
           user,
           debtToCover,
-          receiveAToken
+          receiveAToken,
+          useAToken
         )
       );
 
@@ -650,6 +748,20 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
+   * @dev Returns the reserve limits for a specific reserve
+   * @param asset The asset address
+   * @return The reserve limits of the asset
+   **/
+  function getReserveLimits(address asset)
+    external
+    view
+    override
+    returns (DataTypes.ReserveLimits memory)
+  {
+    return _reserveLimits[asset];
+  }
+
+  /**
    * @dev Returns the normalized income per unit of asset
    * @param asset The address of the underlying asset of the reserve
    * @return The reserve's normalized income
@@ -806,6 +918,26 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
+   * @dev Sets the reserve limits
+   * - Only callable by the LendingPoolConfigurator contract
+   * @param asset The address of the underlying asset of the reserve
+   * @param depositLimit The new deposit limit
+   * @param borrowLimit The new borrow limit
+   * @param collateralUsageLimit The new collateral usage limit
+   **/
+  function setReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  ) external override onlyLendingPoolConfigurator {
+    _reserveLimits[asset].depositLimit = depositLimit;
+    _reserveLimits[asset].borrowLimit = borrowLimit;
+    _reserveLimits[asset].collateralUsageLimit = collateralUsageLimit;
+    emit SetReserveLimits(asset, depositLimit, borrowLimit, collateralUsageLimit);
+  }
+
+  /**
    * @dev Set the _pause state of a reserve
    * - Only callable by the LendingPoolConfigurator contract
    * @param val `true` to pause the reserve, `false` to un-pause it
@@ -843,7 +975,6 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
     ValidationLogic.validateBorrow(
       vars.asset,
-      reserve,
       vars.onBehalfOf,
       vars.amount,
       amountInETH,
@@ -861,6 +992,19 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 currentStableRate = 0;
 
     bool isFirstBorrowing = false;
+
+    DataTypes.ReserveLimits storage limits = _reserveLimits[vars.asset];
+
+    if (limits.borrowLimit > 0) {
+      require(
+        IERC20(reserve.stableDebtTokenAddress)
+          .totalSupply()
+          .add(IERC20(reserve.variableDebtTokenAddress).totalSupply())
+          .add(vars.amount) <= limits.borrowLimit,
+        Errors.LP_MAX_BORROWED
+      );
+    }
+
     if (DataTypes.InterestRateMode(vars.interestRateMode) == DataTypes.InterestRateMode.STABLE) {
       currentStableRate = reserve.currentStableBorrowRate;
 

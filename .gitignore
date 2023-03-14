@@ -1,6 +1,7 @@
 .env
 #Buidler files
 cache
+artifacts
 node_modules
 dist/
 build/
@@ -8,7 +9,8 @@ build/
 .idea
 /types
 /ipfs
-
+old-test/
+out/
 
 
 coverage

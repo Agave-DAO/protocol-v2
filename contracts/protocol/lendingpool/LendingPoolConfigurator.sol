@@ -18,7 +18,7 @@ import {DataTypes} from '../libraries/types/DataTypes.sol';
 
 /**
  * @title LendingPoolConfigurator contract
- * @author Aave
+ * @author Agave
  * @dev Implements the configuration methods for the Aave protocol
  **/
 
@@ -179,7 +179,7 @@ contract LendingPoolConfigurator is VersionedInitializable {
     _;
   }
 
-  uint256 internal constant CONFIGURATOR_REVISION = 0x1;
+  uint256 internal constant CONFIGURATOR_REVISION = 0x2;
 
   function getRevision() internal pure override returns (uint256) {
     return CONFIGURATOR_REVISION;
@@ -499,6 +499,23 @@ contract LendingPoolConfigurator is VersionedInitializable {
   {
     pool.setReserveInterestRateStrategyAddress(asset, rateStrategyAddress);
     emit ReserveInterestRateStrategyChanged(asset, rateStrategyAddress);
+  }
+
+  /**
+   * @dev Sets the reserve limits
+   * - Only callable by the PoolAdmin
+   * @param asset The address of the underlying asset of the reserve
+   * @param depositLimit The new deposit limit
+   * @param borrowLimit The new borrow limit
+   * @param collateralUsageLimit The new collateral usage limit
+   **/
+  function setReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  ) external onlyPoolAdmin {
+    pool.setReserveLimits(asset, depositLimit, borrowLimit, collateralUsageLimit);
   }
 
   /**

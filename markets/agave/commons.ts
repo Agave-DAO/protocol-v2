@@ -82,7 +82,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: undefined,
     [eEthereumNetwork.rinkeby]: undefined,
     [eEthereumNetwork.ropsten]: undefined,
-    [eEthereumNetwork.xdai]: '0x50DF0d7676e31387827659bA7CfE03b563e8e6a1',
+    [eEthereumNetwork.xdai]: '0xb4c575308221caa398e0dd2cdeb6b2f10d7b000a',
     [eEthereumNetwork.main]: undefined,
     [eEthereumNetwork.tenderlyMain]: undefined,
   },
@@ -101,7 +101,7 @@ export const CommonsConfig: ICommonConfiguration = {
   EmergencyAdminIndex: 1,
   ProviderRegistry: {
     [eEthereumNetwork.kovan]: '0xaE88624C894668E1bBABc9AFE87E8CA0fb74eC2a',
-    [eEthereumNetwork.rinkeby]: '0xDa731590C871b7025b86AE3f4D4aB6A1f5f73508',
+    [eEthereumNetwork.rinkeby]: '0xe1e670667ba891B8aF6E7998D8f45A07175415Aa',
     [eEthereumNetwork.ropsten]: '0xaE88624C894668E1bBABc9AFE87E8CA0fb74eC2a',
     [eEthereumNetwork.xdai]: '0x4BaacD04B13523D5e81f398510238E7444E11744',
     [eEthereumNetwork.main]: '',
@@ -112,9 +112,9 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   ProviderRegistryOwner: {
     [eEthereumNetwork.kovan]: '0x2d206Fd0C7c76016234810232159b05562608A42',
-    [eEthereumNetwork.rinkeby]: '0x32b1ca2182eE26F8c5A6CB6Ed285Ef3304a4F5BE',
+    [eEthereumNetwork.rinkeby]: '0xbaBf238430d13245BBf04BC50f44d533d308AD59',
     [eEthereumNetwork.ropsten]: '0x2d206Fd0C7c76016234810232159b05562608A42',
-    [eEthereumNetwork.xdai]: '0x50DF0d7676e31387827659bA7CfE03b563e8e6a1',
+    [eEthereumNetwork.xdai]: '0x70225281599ba586039e7bd52736681dff6c2fc4',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
@@ -143,7 +143,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [EthereumNetwork.main]: '',
     [EthereumNetwork.tenderlyMain]: '',
   },
-  AaveOracle: {
+  AgaveOracle: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',

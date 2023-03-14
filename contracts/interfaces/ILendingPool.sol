@@ -58,12 +58,14 @@ interface ILendingPool {
    * @param user The beneficiary of the repayment, getting his debt reduced
    * @param repayer The address of the user initiating the repay(), providing the funds
    * @param amount The amount repaid
+   * @param useAToken Repay debt with AToken.
    **/
   event Repay(
     address indexed reserve,
     address indexed user,
     address indexed repayer,
-    uint256 amount
+    uint256 amount,
+    bool useAToken
   );
 
   /**
@@ -124,6 +126,22 @@ interface ILendingPool {
   event Unpaused();
 
   /**
+   * @dev Emitted when reserve limits for an asset are updated
+   * - Only callable by the LendingPoolConfigurator contract
+   * @param asset The address of the underlying asset of the reserve
+   * @param depositLimit The new deposit limit
+   * @param borrowLimit The new borrow limit
+   * @param collateralUsageLimit The new collateral usage limit
+   */
+
+  event SetReserveLimits(
+    address indexed asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  );
+
+  /**
    * @dev Emitted when a borrower is liquidated. This event is emitted by the LendingPool via
    * LendingPoolCollateral manager using a DELEGATECALL
    * This allows to have the events in the generated ABI for LendingPool.
@@ -135,6 +153,7 @@ interface ILendingPool {
    * @param liquidator The address of the liquidator
    * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
    * to receive the underlying collateral asset directly
+   * @param useAToken `true` if the liquidator wants to pay the debt in aTokens
    **/
   event LiquidationCall(
     address indexed collateralAsset,
@@ -143,7 +162,8 @@ interface ILendingPool {
     uint256 debtToCover,
     uint256 liquidatedCollateralAmount,
     address liquidator,
-    bool receiveAToken
+    bool receiveAToken,
+    bool useAToken
   );
 
   /**
@@ -226,7 +246,7 @@ interface ILendingPool {
   ) external;
 
   /**
-   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using the reserve token
    * - E.g. User repays 100 USDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
    * @param asset The address of the borrowed underlying asset previously borrowed
    * @param amount The amount to repay
@@ -238,6 +258,25 @@ interface ILendingPool {
    * @return The final amount repaid
    **/
   function repay(
+    address asset,
+    uint256 amount,
+    uint256 rateMode,
+    address onBehalfOf
+  ) external returns (uint256);
+
+  /**
+   * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned using deposited balance of the same asset
+   * - E.g. User repays 100 agUSDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
+   * @param asset The address of the borrowed underlying asset previously borrowed
+   * @param amount The amount to repay
+   * - Send the value type(uint256).max in order to repay the whole debt for `asset` on the specific `debtMode`
+   * @param rateMode The interest rate mode at of the debt the user wants to repay: 1 for Stable, 2 for Variable
+   * @param onBehalfOf Address of the user who will get his debt reduced/removed. Should be the address of the
+   * user calling the function if he wants to reduce/remove his own debt, or the address of any other
+   * other borrower whose debt should be removed
+   * @return The final amount repaid
+   **/
+  function repayUsingAgToken(
     address asset,
     uint256 amount,
     uint256 rateMode,
@@ -271,8 +310,8 @@ interface ILendingPool {
 
   /**
    * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
-   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated, and receives
-   *   a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the reserve asset,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
    * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
    * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
    * @param user The address of the borrower getting liquidated
@@ -281,6 +320,25 @@ interface ILendingPool {
    * to receive the underlying collateral asset directly
    **/
   function liquidationCall(
+    address collateralAsset,
+    address debtAsset,
+    address user,
+    uint256 debtToCover,
+    bool receiveAToken
+  ) external;
+
+  /**
+   * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
+   * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated using the corresponding agToken,
+   *   and receives a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
+   * @param collateralAsset The address of the underlying asset used as collateral, to receive as result of the liquidation
+   * @param debtAsset The address of the underlying borrowed asset to be repaid with the liquidation
+   * @param user The address of the borrower getting liquidated
+   * @param debtToCover The debt amount of borrowed `asset` the liquidator wants to cover
+   * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
+   * to receive the underlying collateral asset directly
+   **/
+  function liquidationCallUsingAgToken(
     address collateralAsset,
     address debtAsset,
     address user,
@@ -348,6 +406,13 @@ interface ILendingPool {
   function setReserveInterestRateStrategyAddress(address reserve, address rateStrategyAddress)
     external;
 
+  function setReserveLimits(
+    address asset,
+    uint256 depositLimit,
+    uint256 borrowLimit,
+    uint256 collateralUsageLimit
+  ) external;
+
   function setConfiguration(address reserve, uint256 configuration) external;
 
   /**
@@ -369,6 +434,13 @@ interface ILendingPool {
     external
     view
     returns (DataTypes.UserConfigurationMap memory);
+
+  /**
+   * @dev Returns the reserve limits for a specific reserve
+   * @param asset The asset address
+   * @return The reserve limits of the asset
+   **/
+  function getReserveLimits(address asset) external view returns (DataTypes.ReserveLimits memory);
 
   /**
    * @dev Returns the normalized income normalized income of the reserve

@@ -47,6 +47,16 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
 
       const incentivesController = '0xfa255f5104f129B78f477e9a6D050a02f31A5D86';
 
+      const collateralManager = await deployLendingPoolCollateralManager(verify);
+      await waitForTx(
+        await addressesProvider.setLendingPoolCollateralManager(collateralManager.address)
+      );
+
+      const wethAddress = await getWethAddress(poolConfig);
+      const lendingPoolAddress = await addressesProvider.getLendingPool();
+
+      await deployWETHGateway([wethAddress, lendingPoolAddress]);
+
       await initReservesByHelper(
         ReservesConfig,
         reserveAssets,
@@ -57,17 +67,8 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
         verify
       );
       await configureReservesByHelper(ReservesConfig, reserveAssets, testHelpers, admin);
-      const collateralManager = await deployLendingPoolCollateralManager(verify);
-      await waitForTx(
-        await addressesProvider.setLendingPoolCollateralManager(collateralManager.address)
-      );
 
       await deployWalletBalancerProvider(verify);
-
-      const wethAddress = await getWethAddress(poolConfig);
-      const lendingPoolAddress = await addressesProvider.getLendingPool();
-
-      await deployWETHGateway([wethAddress, lendingPoolAddress]);
     } catch (err) {
       console.error(err);
       exit(1);

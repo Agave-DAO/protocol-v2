@@ -202,13 +202,13 @@ export const deployMockAggregator = async (price: tStringTokenSmallUnits, verify
     verify
   );
 
-export const deployAaveOracle = async (
+export const deployAgaveOracle = async (
   args: [tEthereumAddress[], tEthereumAddress[], tEthereumAddress, tEthereumAddress],
   verify?: boolean
 ) =>
   withSaveAndVerify(
     await new AgaveOracleFactory(await getFirstSigner()).deploy(...args),
-    eContractid.AaveOracle,
+    eContractid.AgaveOracle,
     args,
     verify
   );

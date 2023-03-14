@@ -77,13 +77,15 @@ contract LendingPoolCollateralManager is
    * @param debtToCover The debt amount of borrowed `asset` the liquidator wants to cover
    * @param receiveAToken `true` if the liquidators wants to receive the collateral aTokens, `false` if he wants
    * to receive the underlying collateral asset directly
+   * @param useAToken `true` if the liquidator wants to pay the debt in aTokens
    **/
   function liquidationCall(
     address collateralAsset,
     address debtAsset,
     address user,
     uint256 debtToCover,
-    bool receiveAToken
+    bool receiveAToken,
+    bool useAToken
   ) external override returns (uint256, string memory) {
     DataTypes.ReserveData storage collateralReserve = _reserves[collateralAsset];
     DataTypes.ReserveData storage debtReserve = _reserves[debtAsset];
@@ -224,12 +226,23 @@ contract LendingPoolCollateralManager is
       );
     }
 
-    // Transfers the debt asset being repaid to the aToken, where the liquidity is kept
-    IERC20(debtAsset).safeTransferFrom(
-      msg.sender,
-      debtReserve.aTokenAddress,
-      vars.actualDebtToLiquidate
-    );
+    if (useAToken) {
+      // Pays the debt by burning the debt asset AToken
+      // while maintaining the same amount of the underlying reserve deposited.
+      IAToken(debtReserve.aTokenAddress).burn(
+        msg.sender,
+        debtReserve.aTokenAddress,
+        vars.actualDebtToLiquidate,
+        debtReserve.liquidityIndex
+      );
+    } else {
+      // Transfers the debt asset being repaid to the aToken, where the liquidity is kept
+      IERC20(debtAsset).safeTransferFrom(
+        msg.sender,
+        debtReserve.aTokenAddress,
+        vars.actualDebtToLiquidate
+      );
+    }
 
     emit LiquidationCall(
       collateralAsset,
@@ -238,7 +251,8 @@ contract LendingPoolCollateralManager is
       vars.actualDebtToLiquidate,
       vars.maxCollateralToLiquidate,
       msg.sender,
-      receiveAToken
+      receiveAToken,
+      useAToken
     );
 
     return (uint256(Errors.CollateralManagerErrors.NO_ERROR), Errors.LPCM_NO_ERRORS);

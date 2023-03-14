@@ -190,13 +190,13 @@ export interface iAssetBase<T> {
   //AGVE: T;
   USDC: T;
   GNO: T;
-  STAKE: T;
   LINK: T;
   WETH: T;
   WNATIVE: T;
   WBTC: T;
   USD: T;
   FOX: T;
+  USDT: T;
 }
 
 export type iAssetsWithoutETH<T> = Omit<iAssetBase<T>, 'ETH'>;
@@ -206,7 +206,7 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   //  | 'AGVE'
-  'USDC' | 'GNO' | 'WNATIVE' | 'WBTC' | 'WETH' | 'LINK' | 'STAKE' | 'FOX'
+  'USDC' | 'GNO' | 'WNATIVE' | 'WBTC' | 'WETH' | 'LINK' | 'FOX' | 'USDT'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
@@ -221,12 +221,12 @@ export enum TokenContractId {
   WETH = 'WETH',
   WNATIVE = 'WNATIVE',
   LINK = 'LINK',
-  STAKE = 'STAKE',
   USDC = 'USDC',
   WBTC = 'WBTC',
   USD = 'USD',
   FOX = 'FOX',
   GNO = 'GNO',
+  USDT = 'USDT',
 }
 
 export interface IReserveParams extends IReserveBorrowParams, IReserveCollateralParams {

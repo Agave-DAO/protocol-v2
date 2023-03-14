@@ -1,0 +1,1276 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "name": "getMarketBorrowRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        }
+      ],
+      "name": "getMarketLiquidityRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_rate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMarketBorrowRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_rate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMarketLiquidityRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x608060405234801561001057600080fd5b50600061001b61006a565b600080546001600160a01b0319166001600160a01b0383169081178255604051929350917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a35061006e565b3390565b6104d38061007d6000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c80639f86a0ee1161005b5780639f86a0ee146100dc578063bb85c0bb14610108578063f2fde38b14610140578063fbe5ba1e146101665761007d565b8063715018a61461008257806372eb293d1461008c5780638da5cb5b146100b8575b600080fd5b61008a61018c565b005b61008a600480360360408110156100a257600080fd5b506001600160a01b03813516906020013561022e565b6100c06102a2565b604080516001600160a01b039092168252519081900360200190f35b61008a600480360360408110156100f257600080fd5b506001600160a01b0381351690602001356102b1565b61012e6004803603602081101561011e57600080fd5b50356001600160a01b0316610325565b60408051918252519081900360200190f35b61008a6004803603602081101561015657600080fd5b50356001600160a01b0316610340565b61012e6004803603602081101561017c57600080fd5b50356001600160a01b0316610438565b610194610453565b6000546001600160a01b039081169116146101e4576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b610236610453565b6000546001600160a01b03908116911614610286576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b03909116600090815260016020526040902055565b6000546001600160a01b031690565b6102b9610453565b6000546001600160a01b03908116911614610309576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b03909116600090815260026020526040902055565b6001600160a01b031660009081526001602052604090205490565b610348610453565b6000546001600160a01b03908116911614610398576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b0381166103dd5760405162461bcd60e51b81526004018080602001828103825260268152602001806104586026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b6001600160a01b031660009081526002602052604090205490565b339056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f20616464726573734f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572a264697066735822122055aa0c8c3b20ee6c3d2c55ff094113d2d0ea4224038cc27700d461f20b495a2e64736f6c634300060c0033",
+    "sourceMap": "218:658:65:-:0;;;;;;;;;;;;-1:-1:-1;844:17:10;864:12;:10;:12::i;:::-;882:6;:18;;-1:-1:-1;;;;;;882:18:10;-1:-1:-1;;;;;882:18:10;;;;;;;911:43;;882:18;;-1:-1:-1;882:18:10;911:43;;882:6;;911:43;815:144;218:658:65;;587:98:6;670:10;587:98;:::o;218:658:65:-;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c80639f86a0ee1161005b5780639f86a0ee146100dc578063bb85c0bb14610108578063f2fde38b14610140578063fbe5ba1e146101665761007d565b8063715018a61461008257806372eb293d1461008c5780638da5cb5b146100b8575b600080fd5b61008a61018c565b005b61008a600480360360408110156100a257600080fd5b506001600160a01b03813516906020013561022e565b6100c06102a2565b604080516001600160a01b039092168252519081900360200190f35b61008a600480360360408110156100f257600080fd5b506001600160a01b0381351690602001356102b1565b61012e6004803603602081101561011e57600080fd5b50356001600160a01b0316610325565b60408051918252519081900360200190f35b61008a6004803603602081101561015657600080fd5b50356001600160a01b0316610340565b61012e6004803603602081101561017c57600080fd5b50356001600160a01b0316610438565b610194610453565b6000546001600160a01b039081169116146101e4576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b610236610453565b6000546001600160a01b03908116911614610286576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b03909116600090815260016020526040902055565b6000546001600160a01b031690565b6102b9610453565b6000546001600160a01b03908116911614610309576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b03909116600090815260026020526040902055565b6001600160a01b031660009081526001602052604090205490565b610348610453565b6000546001600160a01b03908116911614610398576040805162461bcd60e51b8152602060048201819052602482015260008051602061047e833981519152604482015290519081900360640190fd5b6001600160a01b0381166103dd5760405162461bcd60e51b81526004018080602001828103825260268152602001806104586026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b6001600160a01b031660009081526002602052604090205490565b339056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f20616464726573734f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572a264697066735822122055aa0c8c3b20ee6c3d2c55ff094113d2d0ea4224038cc27700d461f20b495a2e64736f6c634300060c0033",
+    "sourceMap": "218:658:65:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1610:135:10;;;:::i;:::-;;497:126:65;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;497:126:65;;;;;;;;:::i;1027:71:10:-;;;:::i;:::-;;;;-1:-1:-1;;;;;1027:71:10;;;;;;;;;;;;;;751:123:65;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;751:123:65;;;;;;;;:::i;370:::-;;;;;;;;;;;;;;;;-1:-1:-1;370:123:65;-1:-1:-1;;;;;370:123:65;;:::i;:::-;;;;;;;;;;;;;;;;1884:226:10;;;;;;;;;;;;;;;;-1:-1:-1;1884:226:10;-1:-1:-1;;;;;1884:226:10;;:::i;627:120:65:-;;;;;;;;;;;;;;;;-1:-1:-1;627:120:65;-1:-1:-1;;;;;627:120:65;;:::i;1610:135:10:-;1223:12;:10;:12::i;:::-;1213:6;;-1:-1:-1;;;;;1213:6:10;;;:22;;;1205:67;;;;;-1:-1:-1;;;1205:67:10;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1205:67:10;;;;;;;;;;;;;;;1712:1:::1;1696:6:::0;;1675:40:::1;::::0;-1:-1:-1;;;;;1696:6:10;;::::1;::::0;1675:40:::1;::::0;1712:1;;1675:40:::1;1738:1;1721:19:::0;;-1:-1:-1;;;;;;1721:19:10::1;::::0;;1610:135::o;497:126:65:-;1223:12:10;:10;:12::i;:::-;1213:6;;-1:-1:-1;;;;;1213:6:10;;;:22;;;1205:67;;;;;-1:-1:-1;;;1205:67:10;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1205:67:10;;;;;;;;;;;;;;;-1:-1:-1;;;;;591:19:65;;::::1;;::::0;;;:11:::1;:19;::::0;;;;:27;497:126::o;1027:71:10:-;1065:7;1087:6;-1:-1:-1;;;;;1087:6:10;1027:71;:::o;751:123:65:-;1223:12:10;:10;:12::i;:::-;1213:6;;-1:-1:-1;;;;;1213:6:10;;;:22;;;1205:67;;;;;-1:-1:-1;;;1205:67:10;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1205:67:10;;;;;;;;;;;;;;;-1:-1:-1;;;;;839:22:65;;::::1;;::::0;;;:14:::1;:22;::::0;;;;:30;751:123::o;370:::-;-1:-1:-1;;;;;469:19:65;447:7;469:19;;;:11;:19;;;;;;;370:123::o;1884:226:10:-;1223:12;:10;:12::i;:::-;1213:6;;-1:-1:-1;;;;;1213:6:10;;;:22;;;1205:67;;;;;-1:-1:-1;;;1205:67:10;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1205:67:10;;;;;;;;;;;;;;;-1:-1:-1;;;;;1968:22:10;::::1;1960:73;;;;-1:-1:-1::0;;;1960:73:10::1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2065:6;::::0;;2044:38:::1;::::0;-1:-1:-1;;;;;2044:38:10;;::::1;::::0;2065:6;::::1;::::0;2044:38:::1;::::0;::::1;2088:6;:17:::0;;-1:-1:-1;;;;;;2088:17:10::1;-1:-1:-1::0;;;;;2088:17:10;;;::::1;::::0;;;::::1;::::0;;1884:226::o;627:120:65:-;-1:-1:-1;;;;;720:22:65;698:7;720:22;;;:14;:22;;;;;;;627:120::o;587:98:6:-;670:10;587:98;:::o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getMarketBorrowRate(address)": "bb85c0bb",
+    "getMarketLiquidityRate(address)": "fbe5ba1e",
+    "owner()": "8da5cb5b",
+    "renounceOwnership()": "715018a6",
+    "setMarketBorrowRate(address,uint256)": "72eb293d",
+    "setMarketLiquidityRate(address,uint256)": "9f86a0ee",
+    "transferOwnership(address)": "f2fde38b"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getMarketBorrowRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getMarketLiquidityRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_rate\",\"type\":\"uint256\"}],\"name\":\"setMarketBorrowRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_rate\",\"type\":\"uint256\"}],\"name\":\"setMarketLiquidityRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/oracle/LendingRateOracle.sol\":\"LendingRateOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@ensdomains/=node_modules/@ensdomains/\",\":@nomiclabs/=node_modules/@nomiclabs/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@solidity-parser/=node_modules/@solidity-parser/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"contracts/dependencies/openzeppelin/contracts/Context.sol\":{\"keccak256\":\"0xe52c598aa6e76d57665914c1c43fc6fa13bbe3b0bd8e816a6cec1c2bca5014e1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a665a54b2277889ba2bdb9c3860b3b71ec7b22757297a03b590a093257604e9d\",\"dweb:/ipfs/QmQ4mm9YnrtvjJwetDec3WoiKeJGoJMCs5kbPBhGVRcZ6N\"]},\"contracts/dependencies/openzeppelin/contracts/Ownable.sol\":{\"keccak256\":\"0xe89abab730aac141126c194f910969c76f55a29536f2709c71c1c0c4ffce5508\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f5667cdfe050014996ee748d1891155cc9a40ec5de28804d8c5e4b6c3a34e727\",\"dweb:/ipfs/QmWcSNdBecjXbiEau8QHSdBFes2HXw59H9hhJNjCww1Y8i\"]},\"contracts/interfaces/ILendingRateOracle.sol\":{\"keccak256\":\"0x4f7adee1cb217af64dac837ed3171abf3c4b7917aed7993b2d6850b9284675dc\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://ca2b82d6dc2d6e19bc0bf4184841302d707856d9080759c6033a40f619b0e935\",\"dweb:/ipfs/QmVLMeCWQjjeoym4wL5Hvw63th9BmU9JYPYcCM2G3XQ8V6\"]},\"contracts/mocks/oracle/LendingRateOracle.sol\":{\"keccak256\":\"0xcb2c7f40502518c08623abc57d338800a449cf1a572af5441994734a5c43adee\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://1fc990ff2ea121e419e0dd0b8790bbe6e8eccb3ff0ec9afba24f595d306e847f\",\"dweb:/ipfs/Qmatcg6QsytMK1dk44vefEuNRnwTHydjNkodmaKx1hjWKr\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.6.12+commit.27d51765"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "OwnershipTransferred",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_asset",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getMarketBorrowRate",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_asset",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getMarketLiquidityRate",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "renounceOwnership"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_asset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_rate",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "setMarketBorrowRate"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_asset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_rate",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "setMarketLiquidityRate"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "transferOwnership"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "owner()": {
+            "details": "Returns the address of the current owner."
+          },
+          "renounceOwnership()": {
+            "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+          },
+          "transferOwnership(address)": {
+            "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=node_modules/@ensdomains/",
+        ":@nomiclabs/=node_modules/@nomiclabs/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@solidity-parser/=node_modules/@solidity-parser/",
+        ":eth-gas-reporter/=node_modules/eth-gas-reporter/",
+        ":hardhat/=node_modules/hardhat/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/mocks/oracle/LendingRateOracle.sol": "LendingRateOracle"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/dependencies/openzeppelin/contracts/Context.sol": {
+        "keccak256": "0xe52c598aa6e76d57665914c1c43fc6fa13bbe3b0bd8e816a6cec1c2bca5014e1",
+        "urls": [
+          "bzz-raw://a665a54b2277889ba2bdb9c3860b3b71ec7b22757297a03b590a093257604e9d",
+          "dweb:/ipfs/QmQ4mm9YnrtvjJwetDec3WoiKeJGoJMCs5kbPBhGVRcZ6N"
+        ],
+        "license": "MIT"
+      },
+      "contracts/dependencies/openzeppelin/contracts/Ownable.sol": {
+        "keccak256": "0xe89abab730aac141126c194f910969c76f55a29536f2709c71c1c0c4ffce5508",
+        "urls": [
+          "bzz-raw://f5667cdfe050014996ee748d1891155cc9a40ec5de28804d8c5e4b6c3a34e727",
+          "dweb:/ipfs/QmWcSNdBecjXbiEau8QHSdBFes2HXw59H9hhJNjCww1Y8i"
+        ],
+        "license": "MIT"
+      },
+      "contracts/interfaces/ILendingRateOracle.sol": {
+        "keccak256": "0x4f7adee1cb217af64dac837ed3171abf3c4b7917aed7993b2d6850b9284675dc",
+        "urls": [
+          "bzz-raw://ca2b82d6dc2d6e19bc0bf4184841302d707856d9080759c6033a40f619b0e935",
+          "dweb:/ipfs/QmVLMeCWQjjeoym4wL5Hvw63th9BmU9JYPYcCM2G3XQ8V6"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/mocks/oracle/LendingRateOracle.sol": {
+        "keccak256": "0xcb2c7f40502518c08623abc57d338800a449cf1a572af5441994734a5c43adee",
+        "urls": [
+          "bzz-raw://1fc990ff2ea121e419e0dd0b8790bbe6e8eccb3ff0ec9afba24f595d306e847f",
+          "dweb:/ipfs/Qmatcg6QsytMK1dk44vefEuNRnwTHydjNkodmaKx1hjWKr"
+        ],
+        "license": "agpl-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/mocks/oracle/LendingRateOracle.sol",
+    "id": 10439,
+    "exportedSymbols": {
+      "LendingRateOracle": [
+        10438
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:840:65",
+    "nodes": [
+      {
+        "id": 10363,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:65",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ]
+      },
+      {
+        "id": 10365,
+        "nodeType": "ImportDirective",
+        "src": "62:75:65",
+        "nodes": [],
+        "absolutePath": "contracts/interfaces/ILendingRateOracle.sol",
+        "file": "../../interfaces/ILendingRateOracle.sol",
+        "scope": 10439,
+        "sourceUnit": 6624,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 10364,
+              "name": "ILendingRateOracle",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "70:18:65",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 10367,
+        "nodeType": "ImportDirective",
+        "src": "138:78:65",
+        "nodes": [],
+        "absolutePath": "contracts/dependencies/openzeppelin/contracts/Ownable.sol",
+        "file": "../../dependencies/openzeppelin/contracts/Ownable.sol",
+        "scope": 10439,
+        "sourceUnit": 4066,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 10366,
+              "name": "Ownable",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "146:7:65",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 10438,
+        "nodeType": "ContractDefinition",
+        "src": "218:658:65",
+        "nodes": [
+          {
+            "id": 10375,
+            "nodeType": "VariableDeclaration",
+            "src": "280:39:65",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "borrowRates",
+            "overrides": null,
+            "scope": 10438,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 10374,
+              "keyType": {
+                "id": 10372,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "288:7:65",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "280:27:65",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 10373,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "299:7:65",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 10379,
+            "nodeType": "VariableDeclaration",
+            "src": "323:42:65",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "liquidityRates",
+            "overrides": null,
+            "scope": 10438,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 10378,
+              "keyType": {
+                "id": 10376,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "331:7:65",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "323:27:65",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 10377,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "342:7:65",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 10392,
+            "nodeType": "FunctionDefinition",
+            "src": "370:123:65",
+            "nodes": [],
+            "body": {
+              "id": 10391,
+              "nodeType": "Block",
+              "src": "456:37:65",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 10387,
+                      "name": "borrowRates",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10375,
+                      "src": "469:11:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                        "typeString": "mapping(address => uint256)"
+                      }
+                    },
+                    "id": 10389,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 10388,
+                      "name": "_asset",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10381,
+                      "src": "481:6:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "469:19:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 10386,
+                  "id": 10390,
+                  "nodeType": "Return",
+                  "src": "462:26:65"
+                }
+              ]
+            },
+            "baseFunctions": [
+              6614
+            ],
+            "documentation": null,
+            "functionSelector": "bb85c0bb",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMarketBorrowRate",
+            "overrides": {
+              "id": 10383,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "429:8:65"
+            },
+            "parameters": {
+              "id": 10382,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10381,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10392,
+                  "src": "399:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10380,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "398:16:65"
+            },
+            "returnParameters": {
+              "id": 10386,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10385,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10392,
+                  "src": "447:7:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10384,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "447:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "446:9:65"
+            },
+            "scope": 10438,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10409,
+            "nodeType": "FunctionDefinition",
+            "src": "497:126:65",
+            "nodes": [],
+            "body": {
+              "id": 10408,
+              "nodeType": "Block",
+              "src": "585:38:65",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10406,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 10402,
+                        "name": "borrowRates",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10375,
+                        "src": "591:11:65",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                          "typeString": "mapping(address => uint256)"
+                        }
+                      },
+                      "id": 10404,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 10403,
+                        "name": "_asset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10394,
+                        "src": "603:6:65",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "591:19:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10405,
+                      "name": "_rate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10396,
+                      "src": "613:5:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "591:27:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 10407,
+                  "nodeType": "ExpressionStatement",
+                  "src": "591:27:65"
+                }
+              ]
+            },
+            "baseFunctions": [
+              6622
+            ],
+            "documentation": null,
+            "functionSelector": "72eb293d",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 10400,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 10399,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4014,
+                  "src": "575:9:65",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "575:9:65"
+              }
+            ],
+            "name": "setMarketBorrowRate",
+            "overrides": {
+              "id": 10398,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "566:8:65"
+            },
+            "parameters": {
+              "id": 10397,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10394,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10409,
+                  "src": "526:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10393,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "526:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10396,
+                  "mutability": "mutable",
+                  "name": "_rate",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10409,
+                  "src": "542:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10395,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "542:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "525:31:65"
+            },
+            "returnParameters": {
+              "id": 10401,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "585:0:65"
+            },
+            "scope": 10438,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10421,
+            "nodeType": "FunctionDefinition",
+            "src": "627:120:65",
+            "nodes": [],
+            "body": {
+              "id": 10420,
+              "nodeType": "Block",
+              "src": "707:40:65",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 10416,
+                      "name": "liquidityRates",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10379,
+                      "src": "720:14:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                        "typeString": "mapping(address => uint256)"
+                      }
+                    },
+                    "id": 10418,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 10417,
+                      "name": "_asset",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10411,
+                      "src": "735:6:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "720:22:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 10415,
+                  "id": 10419,
+                  "nodeType": "Return",
+                  "src": "713:29:65"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "fbe5ba1e",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMarketLiquidityRate",
+            "overrides": null,
+            "parameters": {
+              "id": 10412,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10411,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10421,
+                  "src": "659:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10410,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "658:16:65"
+            },
+            "returnParameters": {
+              "id": 10415,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10414,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10421,
+                  "src": "698:7:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10413,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "698:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "697:9:65"
+            },
+            "scope": 10438,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10437,
+            "nodeType": "FunctionDefinition",
+            "src": "751:123:65",
+            "nodes": [],
+            "body": {
+              "id": 10436,
+              "nodeType": "Block",
+              "src": "833:41:65",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10434,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 10430,
+                        "name": "liquidityRates",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10379,
+                        "src": "839:14:65",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                          "typeString": "mapping(address => uint256)"
+                        }
+                      },
+                      "id": 10432,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 10431,
+                        "name": "_asset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10423,
+                        "src": "854:6:65",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "839:22:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10433,
+                      "name": "_rate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10425,
+                      "src": "864:5:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "839:30:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 10435,
+                  "nodeType": "ExpressionStatement",
+                  "src": "839:30:65"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "9f86a0ee",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 10428,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 10427,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 4014,
+                  "src": "823:9:65",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "823:9:65"
+              }
+            ],
+            "name": "setMarketLiquidityRate",
+            "overrides": null,
+            "parameters": {
+              "id": 10426,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10423,
+                  "mutability": "mutable",
+                  "name": "_asset",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10437,
+                  "src": "783:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10422,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "783:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10425,
+                  "mutability": "mutable",
+                  "name": "_rate",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 10437,
+                  "src": "799:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10424,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "799:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "782:31:65"
+            },
+            "returnParameters": {
+              "id": 10429,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "833:0:65"
+            },
+            "scope": 10438,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 10368,
+              "name": "ILendingRateOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6623,
+              "src": "248:18:65",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ILendingRateOracle_$6623",
+                "typeString": "contract ILendingRateOracle"
+              }
+            },
+            "id": 10369,
+            "nodeType": "InheritanceSpecifier",
+            "src": "248:18:65"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 10370,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 4065,
+              "src": "268:7:65",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$4065",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 10371,
+            "nodeType": "InheritanceSpecifier",
+            "src": "268:7:65"
+          }
+        ],
+        "contractDependencies": [
+          3349,
+          4065,
+          6623
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          10438,
+          4065,
+          3349,
+          6623
+        ],
+        "name": "LendingRateOracle",
+        "scope": 10439
+      }
+    ],
+    "license": "agpl-3.0"
+  },
+  "id": 65
+}

@@ -115,7 +115,7 @@ const buidlerConfig: HardhatUserConfig = {
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     xdai: {
       ...getCommonNetworkConfig(eEthereumNetwork.xdai, 100),
-      url: 'https://rpc.xdaichain.com',
+      url: 'https://rpc.gnosischain.com',
       gasPrice: 10000000000,
       blockGasLimit: 7500000,
     },

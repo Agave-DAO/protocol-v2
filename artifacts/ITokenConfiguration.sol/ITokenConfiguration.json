@@ -1,0 +1,291 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "POOL",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "UNDERLYING_ASSET_ADDRESS",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "POOL()": "7535d246",
+    "UNDERLYING_ASSET_ADDRESS()": "b16a19de"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"POOL\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UNDERLYING_ASSET_ADDRESS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"details\":\"Common interface between aTokens and debt tokens to fetch the token configuration*\",\"kind\":\"dev\",\"methods\":{},\"title\":\"ITokenConfiguration\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ITokenConfiguration.sol\":\"ITokenConfiguration\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@ensdomains/=node_modules/@ensdomains/\",\":@nomiclabs/=node_modules/@nomiclabs/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@solidity-parser/=node_modules/@solidity-parser/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"contracts/interfaces/ITokenConfiguration.sol\":{\"keccak256\":\"0x4bf4297a79fd3df0188936e75dfb1bb5781f8362e49fbf8924d48b106c5ce4bb\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://79246fdb266dc097179d5c1b8b101047d163cbc157bacdb7bd57975e8fff93b6\",\"dweb:/ipfs/QmeTMM1mA1vjeDeoF9oWiKZgbqXrnCy9C4yitDqGJbeyMP\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.6.12+commit.27d51765"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "POOL",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "UNDERLYING_ASSET_ADDRESS",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=node_modules/@ensdomains/",
+        ":@nomiclabs/=node_modules/@nomiclabs/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@solidity-parser/=node_modules/@solidity-parser/",
+        ":eth-gas-reporter/=node_modules/eth-gas-reporter/",
+        ":hardhat/=node_modules/hardhat/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/ITokenConfiguration.sol": "ITokenConfiguration"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/ITokenConfiguration.sol": {
+        "keccak256": "0x4bf4297a79fd3df0188936e75dfb1bb5781f8362e49fbf8924d48b106c5ce4bb",
+        "urls": [
+          "bzz-raw://79246fdb266dc097179d5c1b8b101047d163cbc157bacdb7bd57975e8fff93b6",
+          "dweb:/ipfs/QmeTMM1mA1vjeDeoF9oWiKZgbqXrnCy9C4yitDqGJbeyMP"
+        ],
+        "license": "agpl-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/ITokenConfiguration.sol",
+    "id": 6845,
+    "exportedSymbols": {
+      "ITokenConfiguration": [
+        6844
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:331:43",
+    "nodes": [
+      {
+        "id": 6832,
+        "nodeType": "PragmaDirective",
+        "src": "37:24:43",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".12"
+        ]
+      },
+      {
+        "id": 6844,
+        "nodeType": "ContractDefinition",
+        "src": "211:156:43",
+        "nodes": [
+          {
+            "id": 6838,
+            "nodeType": "FunctionDefinition",
+            "src": "245:68:43",
+            "nodes": [],
+            "documentation": null,
+            "functionSelector": "b16a19de",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "UNDERLYING_ASSET_ADDRESS",
+            "overrides": null,
+            "parameters": {
+              "id": 6834,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "278:2:43"
+            },
+            "returnParameters": {
+              "id": 6837,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6836,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 6838,
+                  "src": "304:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6835,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "304:7:43",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "303:9:43"
+            },
+            "scope": 6844,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 6843,
+            "nodeType": "FunctionDefinition",
+            "src": "317:48:43",
+            "nodes": [],
+            "documentation": null,
+            "functionSelector": "7535d246",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "POOL",
+            "overrides": null,
+            "parameters": {
+              "id": 6839,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:2:43"
+            },
+            "returnParameters": {
+              "id": 6842,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6841,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 6843,
+                  "src": "356:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6840,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "356:7:43",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "355:9:43"
+            },
+            "scope": 6844,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 6833,
+          "nodeType": "StructuredDocumentation",
+          "src": "63:147:43",
+          "text": " @title ITokenConfiguration\n @author Aave\n @dev Common interface between aTokens and debt tokens to fetch the\n token configuration*"
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          6844
+        ],
+        "name": "ITokenConfiguration",
+        "scope": 6845
+      }
+    ],
+    "license": "agpl-3.0"
+  },
+  "id": 43
+}

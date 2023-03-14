@@ -22,7 +22,6 @@ import {
   strategyWBTC,
   strategyWETH,
   strategyYFI,
-  strategySTAKE,
   strategyGNO,
   strategyFOX,
 } from './reservesConfigs';
@@ -40,11 +39,11 @@ export const AaveConfig: IAaveConfiguration = {
     USDC: strategyUSDC,
     WNATIVE: strategyDAI,
     LINK: strategyLINK,
-    STAKE: strategySTAKE,
     GNO: strategyGNO,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     FOX: strategyFOX,
+    USDT: strategyUSDT,
   },
   ReserveAssets: {
     [eEthereumNetwork.buidlerevm]: {},
@@ -91,13 +90,13 @@ export const AaveConfig: IAaveConfiguration = {
     [EthereumNetwork.xdai]: {
       // AGVE: '0x3a97704a1b25F08aa230ae53B352e2e72ef52843',
       GNO: '0x9C58BAcC331c9aa871AFD802DB6379a98e80CEdb',
-      STAKE: '0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e',
       LINK: '0xE2e73A1c69ecF83F464EFCE6A5be353a37cA09b2',
       USDC: '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83',
       WETH: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1',
       WBTC: '0x8e5bBbb09Ed1ebdE8674Cda39A0c169401db4252',
       WNATIVE: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d',
       FOX: '0x21a42669643f45Bc0e086b8Fc2ed70c23D67509d',
+      USDT: '0x4ECaBa5870353805a9F068101A40E0f32ed605C6',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',

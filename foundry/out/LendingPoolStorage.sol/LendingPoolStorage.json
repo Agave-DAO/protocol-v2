@@ -1,0 +1,789 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212206f2506d2e65660df3737b49f8f59a583c5df72c3f96f07da92029ec6cddbef5964736f6c634300060c0033",
+    "sourceMap": "461:690:72:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea26469706673582212206f2506d2e65660df3737b49f8f59a583c5df72c3f96f07da92029ec6cddbef5964736f6c634300060c0033",
+    "sourceMap": "461:690:72:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/protocol/lendingpool/LendingPoolStorage.sol\":\"LendingPoolStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/dependencies/openzeppelin/contracts/Address.sol\":{\"keccak256\":\"0xb7f2cd193efe93976d7b473fc4fa27dda83bd4db5b81889cbcd4701f3b7023ae\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://2275632637acd2f30d576612dcddc1c6ba78d81af4d044fafe870e6a809a8b6e\",\"dweb:/ipfs/QmW3uMzrLbjzP45zVpP8e9V6o8WFSceHiHq8WDMJ8YjCeL\"]},\"contracts/dependencies/openzeppelin/contracts/IERC20.sol\":{\"keccak256\":\"0x6406b04abfeda2c8c80ea3faf797ce4501e66db41fb6ff4e299ebe0402879f44\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://33b0db81db37bd6fe20aa0b23581c6b0edef2f3c49d0bd88b4fe46c1164adb00\",\"dweb:/ipfs/QmYn1zYwt3ahpkLYwHh6h5b1UJrzP2xy5G3at9oEVNw2c1\"]},\"contracts/dependencies/openzeppelin/contracts/SafeERC20.sol\":{\"keccak256\":\"0xd664a81c469ebd6c7b09ca8be499e6af30100e3e42be6bfea9f4a90c02a7cb1c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c9f8ac1ffeaaefc7685abd544813e31ebb46e81b393291d68b1a99a9c7550df2\",\"dweb:/ipfs/QmP3xWkMNgDBbDn9HF6vVKpHTP5rW4j7dxWmhKsxicQ7Mg\"]},\"contracts/dependencies/openzeppelin/contracts/SafeMath.sol\":{\"keccak256\":\"0xfca35d11bafb85cf4f2203b41f1a98238dca59b6a9faa28b86ea3f9f63da8ec5\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://7019345b024afa93000c6b5a2b095be59c3c5352eb658619c941d23d0af5bc65\",\"dweb:/ipfs/QmZLxJKSbM66Wd1Qd43jSdiXdg7JP6DQ9J6LuANUZummM4\"]},\"contracts/interfaces/IAToken.sol\":{\"keccak256\":\"0x75298f98d270973cc1a469a0d72a184c0d9bbc0ae279a05ebcfa248138576681\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://2c92a428d2b9ac20aaadffc0300fd1448635d1a8d57a04f38a41ea116a51d162\",\"dweb:/ipfs/QmPd9qvveX85kcqGcyuZQzz39Y6uPvYohyFaBWJhTpUPk1\"]},\"contracts/interfaces/ILendingPoolAddressesProvider.sol\":{\"keccak256\":\"0xcb0e2c4c19c0bde86907b6ab45b6a1db4932d3642fc51410d56c9411a65b9f1d\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://38d01c9e664c64d46a15bbbda2933b5fb877d33f6746d2db32563962beea9119\",\"dweb:/ipfs/QmajEmcQZz3E6GzmLpeGvnEswuwCjVYy8svqdx8bxi4PuG\"]},\"contracts/interfaces/IReserveInterestRateStrategy.sol\":{\"keccak256\":\"0x3a9950a7a40e4c7e25d4e99dd9da6fbe578b8d7c177f25046ce496f1d4cb96c4\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://695a267915f439626fbc6e0c21421611c3fc0a845a104ac63e95ecfde7545868\",\"dweb:/ipfs/QmNrWXZSMLmtkxeMEMpeTVNyP1hDXJN1vJHArKvNetghSf\"]},\"contracts/interfaces/IScaledBalanceToken.sol\":{\"keccak256\":\"0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98\",\"dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd\"]},\"contracts/interfaces/IStableDebtToken.sol\":{\"keccak256\":\"0x687158da06cadc361ca7d1847cf11258fc98c0aea82a07174ef6a4cfe5a4bddf\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e26e5dd0c77eedafbaec0d17384770c6182a4f75464650a3496e6cde5d1f000d\",\"dweb:/ipfs/QmW2PmbJdE2v1pPFg7MZzHHsPWVnexKGRRDH9ZsBBARu6U\"]},\"contracts/interfaces/IVariableDebtToken.sol\":{\"keccak256\":\"0x1d19593a7d04c2a395c1f35f10baee4167624268d6e891cdc70c376e0a7e6062\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e72f581ef2fe7bb5e69d2948663b1e49158d7aeaff7d84150cd5a7a93134aa4e\",\"dweb:/ipfs/QmaLhSGdBZotKRZQth8bMRZrJmCsFNus22zT4ka3yR7Zj2\"]},\"contracts/protocol/lendingpool/LendingPoolStorage.sol\":{\"keccak256\":\"0xbc63340ae5fab7c193e840dce680543c68fb510ba886aac623e45e1052676dd6\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://f95b035b87e15adbb5c86849482112411e596a4f80b05b3a1b980d8e333b4607\",\"dweb:/ipfs/QmQhrXMnC52oEdYZFBHirnLSRaYktiTFU2FpjoSBhvwBJa\"]},\"contracts/protocol/libraries/configuration/ReserveConfiguration.sol\":{\"keccak256\":\"0xd67f1eb1c27ebb2c6ecb89ff943b481d901dacc81dc1ce35bcd746236f946f5b\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e1e6193fc9d69f9910d19498487ef95494341e770588ca5d0af9a7b7c3d1c554\",\"dweb:/ipfs/QmVHdSpKxMVv1gyHX1x7W68eYVQWUuzLwBJg2DqhdNnVbs\"]},\"contracts/protocol/libraries/configuration/UserConfiguration.sol\":{\"keccak256\":\"0xa17b77c331710ab7373cc905810f3b6861f865c59e06c8c929d9ffbe58d05c6f\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://6e6faf6aa17a2f0590d0acbe833b36dd46d9e29029e9e556dc56e6f415b07fc2\",\"dweb:/ipfs/QmdKrRVC6Lr2rAwRfJB855PqJKjHjPDFFKnqJwCidFtBm5\"]},\"contracts/protocol/libraries/helpers/Errors.sol\":{\"keccak256\":\"0x30ce044dd47f8bbb960fa7dceed26f2f74b74280d535b232c64b30e4b269fdf5\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://ae801b4908336774aa957508cda5b32c09b1df5e465f17b9c6e87409f84aafac\",\"dweb:/ipfs/QmWdprv5DE9P3JH824wuevCV3ZBE7a4Vc4XgzEa8r4MPNW\"]},\"contracts/protocol/libraries/logic/ReserveLogic.sol\":{\"keccak256\":\"0xed0089befe19375a961a36260e0cc7c686df28f1d30aeee0b05775f96a98e0ae\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://94b777403df9ca19edd6368efec219f2ff8342ba41f6291feef2c9182e6dcc8d\",\"dweb:/ipfs/Qmb3raGwg6vgAu18e7twzWbNkwToQ2hjx9HQgUjADoHY1z\"]},\"contracts/protocol/libraries/math/MathUtils.sol\":{\"keccak256\":\"0x631117c7e70631fc5b25b25f49bdcff11b53209c5c664567223cf59ea4a6c019\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://3761796e1a827d1ca020aa26a8ffcd7b6adf372d6f8313994321893bf70c5ea4\",\"dweb:/ipfs/QmZdjWvbESv62bShCnm7CRoajAUU9MbphHVb3qYEVxVBKp\"]},\"contracts/protocol/libraries/math/PercentageMath.sol\":{\"keccak256\":\"0x3cc3b08aeee5b82a5f7b3958bae578e69f1b03a32fb9760ec21bdd1a9b109337\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://90b676cb885d38e6d47f11846c0c56166d28a95b4f90566b6230d2038f9f7c20\",\"dweb:/ipfs/QmPayXnuBpmkx5Y1ToShC9f8gjpFwgf2GWv9ngnvPPaBU7\"]},\"contracts/protocol/libraries/math/WadRayMath.sol\":{\"keccak256\":\"0xf66b7e208da18d12ca2b6a5c9d58f8091819da1524c028f30a36304993039c72\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://75519c3d78ad40da70a1d24cf10557068d6726c894bbc6674531c73302ecc610\",\"dweb:/ipfs/Qmea7Q6ysFm9WH69EZLak7wCeT7Fcw4H9qMZGAUA52QoRf\"]},\"contracts/protocol/libraries/types/DataTypes.sol\":{\"keccak256\":\"0x4f48e01401904fb285f259b115d3b90918036ee6ea88ff623ad1692cd68bef88\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://483f38e22eca36698fb9ee5cc4480b7053e22915addc4523ffc5ccf1a506c584\",\"dweb:/ipfs/QmQ9SKZBBAKmhckKmzxVq8FAVHRjhKpp31QCrET2vGPBk3\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.6.12+commit.27d51765"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":ds-test/=foundry/lib/ds-test/src/",
+        ":forge-std/=foundry/lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "runs": 200,
+        "details": {
+          "peephole": true,
+          "jumpdestRemover": true,
+          "orderLiterals": true,
+          "deduplicate": true,
+          "cse": true,
+          "constantOptimizer": true,
+          "yul": true,
+          "yulDetails": {
+            "stackAllocation": true,
+            "optimizerSteps": "dhfoDgvulfnTUtnIf"
+          }
+        }
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/protocol/lendingpool/LendingPoolStorage.sol": "LendingPoolStorage"
+      },
+      "libraries": {
+        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
+        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
+      }
+    },
+    "sources": {
+      "contracts/dependencies/openzeppelin/contracts/Address.sol": {
+        "keccak256": "0xb7f2cd193efe93976d7b473fc4fa27dda83bd4db5b81889cbcd4701f3b7023ae",
+        "urls": [
+          "bzz-raw://2275632637acd2f30d576612dcddc1c6ba78d81af4d044fafe870e6a809a8b6e",
+          "dweb:/ipfs/QmW3uMzrLbjzP45zVpP8e9V6o8WFSceHiHq8WDMJ8YjCeL"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
+        "keccak256": "0x6406b04abfeda2c8c80ea3faf797ce4501e66db41fb6ff4e299ebe0402879f44",
+        "urls": [
+          "bzz-raw://33b0db81db37bd6fe20aa0b23581c6b0edef2f3c49d0bd88b4fe46c1164adb00",
+          "dweb:/ipfs/QmYn1zYwt3ahpkLYwHh6h5b1UJrzP2xy5G3at9oEVNw2c1"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/dependencies/openzeppelin/contracts/SafeERC20.sol": {
+        "keccak256": "0xd664a81c469ebd6c7b09ca8be499e6af30100e3e42be6bfea9f4a90c02a7cb1c",
+        "urls": [
+          "bzz-raw://c9f8ac1ffeaaefc7685abd544813e31ebb46e81b393291d68b1a99a9c7550df2",
+          "dweb:/ipfs/QmP3xWkMNgDBbDn9HF6vVKpHTP5rW4j7dxWmhKsxicQ7Mg"
+        ],
+        "license": "MIT"
+      },
+      "contracts/dependencies/openzeppelin/contracts/SafeMath.sol": {
+        "keccak256": "0xfca35d11bafb85cf4f2203b41f1a98238dca59b6a9faa28b86ea3f9f63da8ec5",
+        "urls": [
+          "bzz-raw://7019345b024afa93000c6b5a2b095be59c3c5352eb658619c941d23d0af5bc65",
+          "dweb:/ipfs/QmZLxJKSbM66Wd1Qd43jSdiXdg7JP6DQ9J6LuANUZummM4"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/IAToken.sol": {
+        "keccak256": "0x75298f98d270973cc1a469a0d72a184c0d9bbc0ae279a05ebcfa248138576681",
+        "urls": [
+          "bzz-raw://2c92a428d2b9ac20aaadffc0300fd1448635d1a8d57a04f38a41ea116a51d162",
+          "dweb:/ipfs/QmPd9qvveX85kcqGcyuZQzz39Y6uPvYohyFaBWJhTpUPk1"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/ILendingPoolAddressesProvider.sol": {
+        "keccak256": "0xcb0e2c4c19c0bde86907b6ab45b6a1db4932d3642fc51410d56c9411a65b9f1d",
+        "urls": [
+          "bzz-raw://38d01c9e664c64d46a15bbbda2933b5fb877d33f6746d2db32563962beea9119",
+          "dweb:/ipfs/QmajEmcQZz3E6GzmLpeGvnEswuwCjVYy8svqdx8bxi4PuG"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/IReserveInterestRateStrategy.sol": {
+        "keccak256": "0x3a9950a7a40e4c7e25d4e99dd9da6fbe578b8d7c177f25046ce496f1d4cb96c4",
+        "urls": [
+          "bzz-raw://695a267915f439626fbc6e0c21421611c3fc0a845a104ac63e95ecfde7545868",
+          "dweb:/ipfs/QmNrWXZSMLmtkxeMEMpeTVNyP1hDXJN1vJHArKvNetghSf"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/IScaledBalanceToken.sol": {
+        "keccak256": "0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491",
+        "urls": [
+          "bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98",
+          "dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/IStableDebtToken.sol": {
+        "keccak256": "0x687158da06cadc361ca7d1847cf11258fc98c0aea82a07174ef6a4cfe5a4bddf",
+        "urls": [
+          "bzz-raw://e26e5dd0c77eedafbaec0d17384770c6182a4f75464650a3496e6cde5d1f000d",
+          "dweb:/ipfs/QmW2PmbJdE2v1pPFg7MZzHHsPWVnexKGRRDH9ZsBBARu6U"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/interfaces/IVariableDebtToken.sol": {
+        "keccak256": "0x1d19593a7d04c2a395c1f35f10baee4167624268d6e891cdc70c376e0a7e6062",
+        "urls": [
+          "bzz-raw://e72f581ef2fe7bb5e69d2948663b1e49158d7aeaff7d84150cd5a7a93134aa4e",
+          "dweb:/ipfs/QmaLhSGdBZotKRZQth8bMRZrJmCsFNus22zT4ka3yR7Zj2"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/lendingpool/LendingPoolStorage.sol": {
+        "keccak256": "0xbc63340ae5fab7c193e840dce680543c68fb510ba886aac623e45e1052676dd6",
+        "urls": [
+          "bzz-raw://f95b035b87e15adbb5c86849482112411e596a4f80b05b3a1b980d8e333b4607",
+          "dweb:/ipfs/QmQhrXMnC52oEdYZFBHirnLSRaYktiTFU2FpjoSBhvwBJa"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/configuration/ReserveConfiguration.sol": {
+        "keccak256": "0xd67f1eb1c27ebb2c6ecb89ff943b481d901dacc81dc1ce35bcd746236f946f5b",
+        "urls": [
+          "bzz-raw://e1e6193fc9d69f9910d19498487ef95494341e770588ca5d0af9a7b7c3d1c554",
+          "dweb:/ipfs/QmVHdSpKxMVv1gyHX1x7W68eYVQWUuzLwBJg2DqhdNnVbs"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/configuration/UserConfiguration.sol": {
+        "keccak256": "0xa17b77c331710ab7373cc905810f3b6861f865c59e06c8c929d9ffbe58d05c6f",
+        "urls": [
+          "bzz-raw://6e6faf6aa17a2f0590d0acbe833b36dd46d9e29029e9e556dc56e6f415b07fc2",
+          "dweb:/ipfs/QmdKrRVC6Lr2rAwRfJB855PqJKjHjPDFFKnqJwCidFtBm5"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/helpers/Errors.sol": {
+        "keccak256": "0x30ce044dd47f8bbb960fa7dceed26f2f74b74280d535b232c64b30e4b269fdf5",
+        "urls": [
+          "bzz-raw://ae801b4908336774aa957508cda5b32c09b1df5e465f17b9c6e87409f84aafac",
+          "dweb:/ipfs/QmWdprv5DE9P3JH824wuevCV3ZBE7a4Vc4XgzEa8r4MPNW"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/logic/ReserveLogic.sol": {
+        "keccak256": "0xed0089befe19375a961a36260e0cc7c686df28f1d30aeee0b05775f96a98e0ae",
+        "urls": [
+          "bzz-raw://94b777403df9ca19edd6368efec219f2ff8342ba41f6291feef2c9182e6dcc8d",
+          "dweb:/ipfs/Qmb3raGwg6vgAu18e7twzWbNkwToQ2hjx9HQgUjADoHY1z"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/math/MathUtils.sol": {
+        "keccak256": "0x631117c7e70631fc5b25b25f49bdcff11b53209c5c664567223cf59ea4a6c019",
+        "urls": [
+          "bzz-raw://3761796e1a827d1ca020aa26a8ffcd7b6adf372d6f8313994321893bf70c5ea4",
+          "dweb:/ipfs/QmZdjWvbESv62bShCnm7CRoajAUU9MbphHVb3qYEVxVBKp"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/math/PercentageMath.sol": {
+        "keccak256": "0x3cc3b08aeee5b82a5f7b3958bae578e69f1b03a32fb9760ec21bdd1a9b109337",
+        "urls": [
+          "bzz-raw://90b676cb885d38e6d47f11846c0c56166d28a95b4f90566b6230d2038f9f7c20",
+          "dweb:/ipfs/QmPayXnuBpmkx5Y1ToShC9f8gjpFwgf2GWv9ngnvPPaBU7"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/math/WadRayMath.sol": {
+        "keccak256": "0xf66b7e208da18d12ca2b6a5c9d58f8091819da1524c028f30a36304993039c72",
+        "urls": [
+          "bzz-raw://75519c3d78ad40da70a1d24cf10557068d6726c894bbc6674531c73302ecc610",
+          "dweb:/ipfs/Qmea7Q6ysFm9WH69EZLak7wCeT7Fcw4H9qMZGAUA52QoRf"
+        ],
+        "license": "agpl-3.0"
+      },
+      "contracts/protocol/libraries/types/DataTypes.sol": {
+        "keccak256": "0x4f48e01401904fb285f259b115d3b90918036ee6ea88ff623ad1692cd68bef88",
+        "urls": [
+          "bzz-raw://483f38e22eca36698fb9ee5cc4480b7053e22915addc4523ffc5ccf1a506c584",
+          "dweb:/ipfs/QmQ9SKZBBAKmhckKmzxVq8FAVHRjhKpp31QCrET2vGPBk3"
+        ],
+        "license": "agpl-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/protocol/lendingpool/LendingPoolStorage.sol",
+    "id": 12672,
+    "exportedSymbols": {
+      "LendingPoolStorage": [
+        12671
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:1115:72",
+    "nodes": [
+      {
+        "id": 12629,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:72",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ]
+      },
+      {
+        "id": 12631,
+        "nodeType": "ImportDirective",
+        "src": "62:83:72",
+        "nodes": [],
+        "absolutePath": "contracts/protocol/libraries/configuration/UserConfiguration.sol",
+        "file": "../libraries/configuration/UserConfiguration.sol",
+        "scope": 12672,
+        "sourceUnit": 13895,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 12630,
+              "name": "UserConfiguration",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "70:17:72",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 12633,
+        "nodeType": "ImportDirective",
+        "src": "146:89:72",
+        "nodes": [],
+        "absolutePath": "contracts/protocol/libraries/configuration/ReserveConfiguration.sol",
+        "file": "../libraries/configuration/ReserveConfiguration.sol",
+        "scope": 12672,
+        "sourceUnit": 13652,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 12632,
+              "name": "ReserveConfiguration",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "154:20:72",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 12635,
+        "nodeType": "ImportDirective",
+        "src": "236:65:72",
+        "nodes": [],
+        "absolutePath": "contracts/protocol/libraries/logic/ReserveLogic.sol",
+        "file": "../libraries/logic/ReserveLogic.sol",
+        "scope": 12672,
+        "sourceUnit": 15704,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 12634,
+              "name": "ReserveLogic",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "244:12:72",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 12637,
+        "nodeType": "ImportDirective",
+        "src": "302:97:72",
+        "nodes": [],
+        "absolutePath": "contracts/interfaces/ILendingPoolAddressesProvider.sol",
+        "file": "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "scope": 12672,
+        "sourceUnit": 3317,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 12636,
+              "name": "ILendingPoolAddressesProvider",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "310:29:72",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 12639,
+        "nodeType": "ImportDirective",
+        "src": "400:59:72",
+        "nodes": [],
+        "absolutePath": "contracts/protocol/libraries/types/DataTypes.sol",
+        "file": "../libraries/types/DataTypes.sol",
+        "scope": 12672,
+        "sourceUnit": 17453,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "argumentTypes": null,
+              "id": 12638,
+              "name": "DataTypes",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": null,
+              "src": "408:9:72",
+              "typeDescriptions": {
+                "typeIdentifier": null,
+                "typeString": null
+              }
+            },
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 12671,
+        "nodeType": "ContractDefinition",
+        "src": "461:690:72",
+        "nodes": [
+          {
+            "id": 12642,
+            "nodeType": "UsingForDirective",
+            "src": "493:45:72",
+            "nodes": [],
+            "libraryName": {
+              "contractScope": null,
+              "id": 12640,
+              "name": "ReserveLogic",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 15703,
+              "src": "499:12:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReserveLogic_$15703",
+                "typeString": "library ReserveLogic"
+              }
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 12641,
+              "name": "DataTypes.ReserveData",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 17434,
+              "src": "516:21:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ReserveData_$17434_storage_ptr",
+                "typeString": "struct DataTypes.ReserveData"
+              }
+            }
+          },
+          {
+            "id": 12645,
+            "nodeType": "UsingForDirective",
+            "src": "541:65:72",
+            "nodes": [],
+            "libraryName": {
+              "contractScope": null,
+              "id": 12643,
+              "name": "ReserveConfiguration",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 13651,
+              "src": "547:20:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReserveConfiguration_$13651",
+                "typeString": "library ReserveConfiguration"
+              }
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 12644,
+              "name": "DataTypes.ReserveConfigurationMap",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 17437,
+              "src": "572:33:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ReserveConfigurationMap_$17437_storage_ptr",
+                "typeString": "struct DataTypes.ReserveConfigurationMap"
+              }
+            }
+          },
+          {
+            "id": 12648,
+            "nodeType": "UsingForDirective",
+            "src": "609:59:72",
+            "nodes": [],
+            "libraryName": {
+              "contractScope": null,
+              "id": 12646,
+              "name": "UserConfiguration",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 13894,
+              "src": "615:17:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_UserConfiguration_$13894",
+                "typeString": "library UserConfiguration"
+              }
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 12647,
+              "name": "DataTypes.UserConfigurationMap",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 17440,
+              "src": "637:30:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_UserConfigurationMap_$17440_storage_ptr",
+                "typeString": "struct DataTypes.UserConfigurationMap"
+              }
+            }
+          },
+          {
+            "id": 12650,
+            "nodeType": "VariableDeclaration",
+            "src": "672:57:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_addressesProvider",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ILendingPoolAddressesProvider_$3316",
+              "typeString": "contract ILendingPoolAddressesProvider"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 12649,
+              "name": "ILendingPoolAddressesProvider",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3316,
+              "src": "672:29:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ILendingPoolAddressesProvider_$3316",
+                "typeString": "contract ILendingPoolAddressesProvider"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12654,
+            "nodeType": "VariableDeclaration",
+            "src": "734:60:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_reserves",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ReserveData_$17434_storage_$",
+              "typeString": "mapping(address => struct DataTypes.ReserveData)"
+            },
+            "typeName": {
+              "id": 12653,
+              "keyType": {
+                "id": 12651,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "742:7:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "734:41:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ReserveData_$17434_storage_$",
+                "typeString": "mapping(address => struct DataTypes.ReserveData)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 12652,
+                "name": "DataTypes.ReserveData",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 17434,
+                "src": "753:21:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ReserveData_$17434_storage_ptr",
+                  "typeString": "struct DataTypes.ReserveData"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12658,
+            "nodeType": "VariableDeclaration",
+            "src": "798:72:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_usersConfig",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserConfigurationMap_$17440_storage_$",
+              "typeString": "mapping(address => struct DataTypes.UserConfigurationMap)"
+            },
+            "typeName": {
+              "id": 12657,
+              "keyType": {
+                "id": 12655,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "806:7:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "798:50:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserConfigurationMap_$17440_storage_$",
+                "typeString": "mapping(address => struct DataTypes.UserConfigurationMap)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 12656,
+                "name": "DataTypes.UserConfigurationMap",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 17440,
+                "src": "817:30:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_UserConfigurationMap_$17440_storage_ptr",
+                  "typeString": "struct DataTypes.UserConfigurationMap"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12662,
+            "nodeType": "VariableDeclaration",
+            "src": "964:50:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_reservesList",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+              "typeString": "mapping(uint256 => address)"
+            },
+            "typeName": {
+              "id": 12661,
+              "keyType": {
+                "id": 12659,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "972:7:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "964:27:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                "typeString": "mapping(uint256 => address)"
+              },
+              "valueType": {
+                "id": 12660,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "983:7:72",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12664,
+            "nodeType": "VariableDeclaration",
+            "src": "1019:31:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_reservesCount",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 12663,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "1019:7:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12666,
+            "nodeType": "VariableDeclaration",
+            "src": "1055:21:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_paused",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 12665,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "1055:4:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "id": 12670,
+            "nodeType": "VariableDeclaration",
+            "src": "1081:67:72",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_reserveLimits",
+            "overrides": null,
+            "scope": 12671,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ReserveLimits_$17451_storage_$",
+              "typeString": "mapping(address => struct DataTypes.ReserveLimits)"
+            },
+            "typeName": {
+              "id": 12669,
+              "keyType": {
+                "id": 12667,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1089:7:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1081:43:72",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ReserveLimits_$17451_storage_$",
+                "typeString": "mapping(address => struct DataTypes.ReserveLimits)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 12668,
+                "name": "DataTypes.ReserveLimits",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 17451,
+                "src": "1100:23:72",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ReserveLimits_$17451_storage_ptr",
+                  "typeString": "struct DataTypes.ReserveLimits"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          12671
+        ],
+        "name": "LendingPoolStorage",
+        "scope": 12672
+      }
+    ],
+    "license": "agpl-3.0"
+  },
+  "id": 72
+}

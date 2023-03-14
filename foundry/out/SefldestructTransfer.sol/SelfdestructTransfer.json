@@ -1,0 +1,273 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "destroyAndTransfer",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe608060405260043610601c5760003560e01c8063785e07b3146021575b600080fd5b604460048036036020811015603557600080fd5b50356001600160a01b03166046565b005b806001600160a01b0316fffea2646970667358221220011baa24641e1309e5661d51384973ee62b2d56fba51b36bac206bfc1fcdc55d64736f6c634300060c0033",
+    "sourceMap": "62:128:51:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405260043610601c5760003560e01c8063785e07b3146021575b600080fd5b604460048036036020811015603557600080fd5b50356001600160a01b03166046565b005b806001600160a01b0316fffea2646970667358221220011baa24641e1309e5661d51384973ee62b2d56fba51b36bac206bfc1fcdc55d64736f6c634300060c0033",
+    "sourceMap": "62:128:51:-:0;;;;;;;;;;;;;;;;;;;;;96:92;;;;;;;;;;;;;;;;-1:-1:-1;96:92:51;-1:-1:-1;;;;;96:92:51;;:::i;:::-;;;180:2;-1:-1:-1;;;;;167:16:51;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "destroyAndTransfer(address)": "785e07b3"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"destroyAndTransfer\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/attacks/SefldestructTransfer.sol\":\"SelfdestructTransfer\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/mocks/attacks/SefldestructTransfer.sol\":{\"keccak256\":\"0xa42606aff474cb3d16e1da2bfe928503fa4504d33f95fdbbae6850f8bd85049a\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://feff17b65e6bb59704720e1988fb0e5133b9f9b7291f908be15d42f0cd4eccc4\",\"dweb:/ipfs/QmVJgKypwzWDraxLcpfipKMp3ZnYz6inaq5ANri73SXRJY\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.6.12+commit.27d51765"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address payable",
+              "name": "to",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "destroyAndTransfer"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":ds-test/=foundry/lib/ds-test/src/",
+        ":forge-std/=foundry/lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "runs": 200,
+        "details": {
+          "peephole": true,
+          "jumpdestRemover": true,
+          "orderLiterals": true,
+          "deduplicate": true,
+          "cse": true,
+          "constantOptimizer": true,
+          "yul": true,
+          "yulDetails": {
+            "stackAllocation": true,
+            "optimizerSteps": "dhfoDgvulfnTUtnIf"
+          }
+        }
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/mocks/attacks/SefldestructTransfer.sol": "SelfdestructTransfer"
+      },
+      "libraries": {
+        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
+        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
+      }
+    },
+    "sources": {
+      "contracts/mocks/attacks/SefldestructTransfer.sol": {
+        "keccak256": "0xa42606aff474cb3d16e1da2bfe928503fa4504d33f95fdbbae6850f8bd85049a",
+        "urls": [
+          "bzz-raw://feff17b65e6bb59704720e1988fb0e5133b9f9b7291f908be15d42f0cd4eccc4",
+          "dweb:/ipfs/QmVJgKypwzWDraxLcpfipKMp3ZnYz6inaq5ANri73SXRJY"
+        ],
+        "license": "agpl-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/mocks/attacks/SefldestructTransfer.sol",
+    "id": 6486,
+    "exportedSymbols": {
+      "SelfdestructTransfer": [
+        6485
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:154:51",
+    "nodes": [
+      {
+        "id": 6474,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:51",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ]
+      },
+      {
+        "id": 6485,
+        "nodeType": "ContractDefinition",
+        "src": "62:128:51",
+        "nodes": [
+          {
+            "id": 6484,
+            "nodeType": "FunctionDefinition",
+            "src": "96:92:51",
+            "nodes": [],
+            "body": {
+              "id": 6483,
+              "nodeType": "Block",
+              "src": "161:27:51",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6480,
+                        "name": "to",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6476,
+                        "src": "180:2:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 6479,
+                      "name": "selfdestruct",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": -21,
+                      "src": "167:12:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_payable_$returns$__$",
+                        "typeString": "function (address payable)"
+                      }
+                    },
+                    "id": 6481,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "167:16:51",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6482,
+                  "nodeType": "ExpressionStatement",
+                  "src": "167:16:51"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "785e07b3",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "destroyAndTransfer",
+            "overrides": null,
+            "parameters": {
+              "id": 6477,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6476,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 6484,
+                  "src": "124:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 6475,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "124:15:51",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "123:20:51"
+            },
+            "returnParameters": {
+              "id": 6478,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "161:0:51"
+            },
+            "scope": 6485,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          6485
+        ],
+        "name": "SelfdestructTransfer",
+        "scope": 6486
+      }
+    ],
+    "license": "agpl-3.0"
+  },
+  "id": 51
+}

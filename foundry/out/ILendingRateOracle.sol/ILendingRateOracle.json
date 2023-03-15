@@ -52,7 +52,7 @@
     "getMarketBorrowRate(address)": "bb85c0bb",
     "setMarketBorrowRate(address,uint256)": "72eb293d"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"getMarketBorrowRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"setMarketBorrowRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getMarketBorrowRate(address)\":{\"details\":\"returns the market borrow rate in ray*\"},\"setMarketBorrowRate(address,uint256)\":{\"details\":\"sets the market borrow rate. Rate value must be in ray*\"}},\"title\":\"ILendingRateOracle interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingRateOracle.sol\":\"ILendingRateOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingRateOracle.sol\":{\"keccak256\":\"0x4f7adee1cb217af64dac837ed3171abf3c4b7917aed7993b2d6850b9284675dc\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://ca2b82d6dc2d6e19bc0bf4184841302d707856d9080759c6033a40f619b0e935\",\"dweb:/ipfs/QmVLMeCWQjjeoym4wL5Hvw63th9BmU9JYPYcCM2G3XQ8V6\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"getMarketBorrowRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"setMarketBorrowRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getMarketBorrowRate(address)\":{\"details\":\"returns the market borrow rate in ray*\"},\"setMarketBorrowRate(address,uint256)\":{\"details\":\"sets the market borrow rate. Rate value must be in ray*\"}},\"title\":\"ILendingRateOracle interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingRateOracle.sol\":\"ILendingRateOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingRateOracle.sol\":{\"keccak256\":\"0x4f7adee1cb217af64dac837ed3171abf3c4b7917aed7993b2d6850b9284675dc\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://ca2b82d6dc2d6e19bc0bf4184841302d707856d9080759c6033a40f619b0e935\",\"dweb:/ipfs/QmVLMeCWQjjeoym4wL5Hvw63th9BmU9JYPYcCM2G3XQ8V6\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -143,10 +143,7 @@
       "compilationTarget": {
         "contracts/interfaces/ILendingRateOracle.sol": "ILendingRateOracle"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/ILendingRateOracle.sol": {
@@ -162,17 +159,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/ILendingRateOracle.sol",
-    "id": 3431,
+    "id": 3427,
     "exportedSymbols": {
       "ILendingRateOracle": [
-        3430
+        3426
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:551:32",
     "nodes": [
       {
-        "id": 3412,
+        "id": 3408,
         "nodeType": "PragmaDirective",
         "src": "37:23:32",
         "nodes": [],
@@ -183,17 +180,17 @@
         ]
       },
       {
-        "id": 3430,
+        "id": 3426,
         "nodeType": "ContractDefinition",
         "src": "266:321:32",
         "nodes": [
           {
-            "id": 3421,
+            "id": 3417,
             "nodeType": "FunctionDefinition",
             "src": "360:76:32",
             "nodes": [],
             "documentation": {
-              "id": 3414,
+              "id": 3410,
               "nodeType": "StructuredDocumentation",
               "src": "299:58:32",
               "text": "@dev returns the market borrow rate in ray*"
@@ -205,17 +202,17 @@
             "name": "getMarketBorrowRate",
             "overrides": null,
             "parameters": {
-              "id": 3417,
+              "id": 3413,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3416,
+                  "id": 3412,
                   "mutability": "mutable",
                   "name": "asset",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3421,
+                  "scope": 3417,
                   "src": "389:13:32",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -224,7 +221,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3415,
+                    "id": 3411,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "389:7:32",
@@ -241,17 +238,17 @@
               "src": "388:15:32"
             },
             "returnParameters": {
-              "id": 3420,
+              "id": 3416,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3419,
+                  "id": 3415,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3421,
+                  "scope": 3417,
                   "src": "427:7:32",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -260,7 +257,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3418,
+                    "id": 3414,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "427:7:32",
@@ -275,18 +272,18 @@
               ],
               "src": "426:9:32"
             },
-            "scope": 3430,
+            "scope": 3426,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3429,
+            "id": 3425,
             "nodeType": "FunctionDefinition",
             "src": "518:67:32",
             "nodes": [],
             "documentation": {
-              "id": 3422,
+              "id": 3418,
               "nodeType": "StructuredDocumentation",
               "src": "440:75:32",
               "text": "@dev sets the market borrow rate. Rate value must be in ray*"
@@ -298,17 +295,17 @@
             "name": "setMarketBorrowRate",
             "overrides": null,
             "parameters": {
-              "id": 3427,
+              "id": 3423,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3424,
+                  "id": 3420,
                   "mutability": "mutable",
                   "name": "asset",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3429,
+                  "scope": 3425,
                   "src": "547:13:32",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -317,7 +314,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3423,
+                    "id": 3419,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "547:7:32",
@@ -332,12 +329,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3426,
+                  "id": 3422,
                   "mutability": "mutable",
                   "name": "rate",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3429,
+                  "scope": 3425,
                   "src": "562:12:32",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -346,7 +343,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3425,
+                    "id": 3421,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "562:7:32",
@@ -362,12 +359,12 @@
               "src": "546:29:32"
             },
             "returnParameters": {
-              "id": 3428,
+              "id": 3424,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "584:0:32"
             },
-            "scope": 3430,
+            "scope": 3426,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -378,17 +375,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3413,
+          "id": 3409,
           "nodeType": "StructuredDocumentation",
           "src": "62:202:32",
           "text": " @title ILendingRateOracle interface\n @notice Interface for the Aave borrow rate oracle. Provides the average market borrow rate to be used as a base for the stable borrow rate calculations*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3430
+          3426
         ],
         "name": "ILendingRateOracle",
-        "scope": 3431
+        "scope": 3427
       }
     ],
     "license": "agpl-3.0"

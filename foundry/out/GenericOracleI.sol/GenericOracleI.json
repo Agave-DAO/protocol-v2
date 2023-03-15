@@ -122,7 +122,7 @@
     "getAssetPrice(address)": "b3596f07",
     "getEthUsdPrice()": "a0a8045e"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"AssetPriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"EthPriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_sybil\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"_sybilProphecy\",\"type\":\"uint96\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"_oracleProphecy\",\"type\":\"uint96\"}],\"name\":\"ProphecySubmitted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getAssetPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEthUsdPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/oracle/GenericOracleI.sol\":\"GenericOracleI\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/mocks/oracle/GenericOracleI.sol\":{\"keccak256\":\"0xe15ead8660614a9588404b6f38481a99e2185b87be7fd8f494a29960bc115520\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://09b7264ae799721e59fdb9c8f7b0cfc98fbbc2d0fb04762a843398d4fbd50ddf\",\"dweb:/ipfs/QmQw3ZxSnC8M8nVdHjQm9LZEWeZ7yKmLVkccydjNAa8teZ\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"AssetPriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"EthPriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_sybil\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"_sybilProphecy\",\"type\":\"uint96\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"_oracleProphecy\",\"type\":\"uint96\"}],\"name\":\"ProphecySubmitted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getAssetPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEthUsdPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/oracle/GenericOracleI.sol\":\"GenericOracleI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/mocks/oracle/GenericOracleI.sol\":{\"keccak256\":\"0xe15ead8660614a9588404b6f38481a99e2185b87be7fd8f494a29960bc115520\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://09b7264ae799721e59fdb9c8f7b0cfc98fbbc2d0fb04762a843398d4fbd50ddf\",\"dweb:/ipfs/QmQw3ZxSnC8M8nVdHjQm9LZEWeZ7yKmLVkccydjNAa8teZ\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -277,10 +277,7 @@
       "compilationTarget": {
         "contracts/mocks/oracle/GenericOracleI.sol": "GenericOracleI"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/mocks/oracle/GenericOracleI.sol": {
@@ -296,17 +293,17 @@
   },
   "ast": {
     "absolutePath": "contracts/mocks/oracle/GenericOracleI.sol",
-    "id": 7054,
+    "id": 7050,
     "exportedSymbols": {
       "GenericOracleI": [
-        7053
+        7049
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:496:56",
     "nodes": [
       {
-        "id": 7016,
+        "id": 7012,
         "nodeType": "PragmaDirective",
         "src": "37:23:56",
         "nodes": [],
@@ -317,12 +314,12 @@
         ]
       },
       {
-        "id": 7053,
+        "id": 7049,
         "nodeType": "ContractDefinition",
         "src": "62:470:56",
         "nodes": [
           {
-            "id": 7024,
+            "id": 7020,
             "nodeType": "EventDefinition",
             "src": "104:75:56",
             "nodes": [],
@@ -330,18 +327,18 @@
             "documentation": null,
             "name": "AssetPriceUpdated",
             "parameters": {
-              "id": 7023,
+              "id": 7019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7018,
+                  "id": 7014,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_asset",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7024,
+                  "scope": 7020,
                   "src": "128:14:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -350,7 +347,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7017,
+                    "id": 7013,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "128:7:56",
@@ -365,13 +362,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7020,
+                  "id": 7016,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_price",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7024,
+                  "scope": 7020,
                   "src": "144:14:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -380,7 +377,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7019,
+                    "id": 7015,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "144:7:56",
@@ -394,13 +391,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7022,
+                  "id": 7018,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7024,
+                  "scope": 7020,
                   "src": "160:17:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -409,7 +406,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7021,
+                    "id": 7017,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "160:7:56",
@@ -426,7 +423,7 @@
             }
           },
           {
-            "id": 7030,
+            "id": 7026,
             "nodeType": "EventDefinition",
             "src": "182:57:56",
             "nodes": [],
@@ -434,18 +431,18 @@
             "documentation": null,
             "name": "EthPriceUpdated",
             "parameters": {
-              "id": 7029,
+              "id": 7025,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7026,
+                  "id": 7022,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_price",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7030,
+                  "scope": 7026,
                   "src": "204:14:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -454,7 +451,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7025,
+                    "id": 7021,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:56",
@@ -468,13 +465,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7028,
+                  "id": 7024,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7030,
+                  "scope": 7026,
                   "src": "220:17:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -483,7 +480,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7027,
+                    "id": 7023,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "220:7:56",
@@ -500,7 +497,7 @@
             }
           },
           {
-            "id": 7040,
+            "id": 7036,
             "nodeType": "EventDefinition",
             "src": "254:139:56",
             "nodes": [],
@@ -508,18 +505,18 @@
             "documentation": null,
             "name": "ProphecySubmitted",
             "parameters": {
-              "id": 7039,
+              "id": 7035,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7032,
+                  "id": 7028,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_sybil",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7040,
+                  "scope": 7036,
                   "src": "283:22:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -528,7 +525,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7031,
+                    "id": 7027,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "283:7:56",
@@ -543,13 +540,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7034,
+                  "id": 7030,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_asset",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7040,
+                  "scope": 7036,
                   "src": "311:22:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -558,7 +555,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7033,
+                    "id": 7029,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "311:7:56",
@@ -573,13 +570,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7036,
+                  "id": 7032,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_sybilProphecy",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7040,
+                  "scope": 7036,
                   "src": "339:21:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -588,7 +585,7 @@
                     "typeString": "uint96"
                   },
                   "typeName": {
-                    "id": 7035,
+                    "id": 7031,
                     "name": "uint96",
                     "nodeType": "ElementaryTypeName",
                     "src": "339:6:56",
@@ -602,13 +599,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7038,
+                  "id": 7034,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_oracleProphecy",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7040,
+                  "scope": 7036,
                   "src": "366:22:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -617,7 +614,7 @@
                     "typeString": "uint96"
                   },
                   "typeName": {
-                    "id": 7037,
+                    "id": 7033,
                     "name": "uint96",
                     "nodeType": "ElementaryTypeName",
                     "src": "366:6:56",
@@ -634,7 +631,7 @@
             }
           },
           {
-            "id": 7047,
+            "id": 7043,
             "nodeType": "FunctionDefinition",
             "src": "397:71:56",
             "nodes": [],
@@ -646,17 +643,17 @@
             "name": "getAssetPrice",
             "overrides": null,
             "parameters": {
-              "id": 7043,
+              "id": 7039,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7042,
+                  "id": 7038,
                   "mutability": "mutable",
                   "name": "_asset",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7047,
+                  "scope": 7043,
                   "src": "420:14:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -665,7 +662,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7041,
+                    "id": 7037,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "420:7:56",
@@ -682,17 +679,17 @@
               "src": "419:16:56"
             },
             "returnParameters": {
-              "id": 7046,
+              "id": 7042,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7045,
+                  "id": 7041,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7047,
+                  "scope": 7043,
                   "src": "459:7:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -701,7 +698,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7044,
+                    "id": 7040,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "459:7:56",
@@ -716,13 +713,13 @@
               ],
               "src": "458:9:56"
             },
-            "scope": 7053,
+            "scope": 7049,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 7052,
+            "id": 7048,
             "nodeType": "FunctionDefinition",
             "src": "472:58:56",
             "nodes": [],
@@ -734,23 +731,23 @@
             "name": "getEthUsdPrice",
             "overrides": null,
             "parameters": {
-              "id": 7048,
+              "id": 7044,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "495:2:56"
             },
             "returnParameters": {
-              "id": 7051,
+              "id": 7047,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7050,
+                  "id": 7046,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7052,
+                  "scope": 7048,
                   "src": "521:7:56",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -759,7 +756,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7049,
+                    "id": 7045,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "521:7:56",
@@ -774,7 +771,7 @@
               ],
               "src": "520:9:56"
             },
-            "scope": 7053,
+            "scope": 7049,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -787,10 +784,10 @@
         "documentation": null,
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          7053
+          7049
         ],
         "name": "GenericOracleI",
-        "scope": 7054
+        "scope": 7050
       }
     ],
     "license": "agpl-3.0"

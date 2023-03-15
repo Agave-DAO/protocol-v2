@@ -156,7 +156,7 @@
   "methodIdentifiers": {
     "liquidationCall(address,address,address,uint256,bool,bool)": "8c1624d8"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"collateral\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"principal\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"debtToCover\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"liquidatedCollateralAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"liquidator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"receiveAToken\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"useAToken\",\"type\":\"bool\"}],\"name\":\"LiquidationCall\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"reserve\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"ReserveUsedAsCollateralDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"reserve\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"ReserveUsedAsCollateralEnabled\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"collateral\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"principal\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"debtToCover\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"receiveAToken\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useAToken\",\"type\":\"bool\"}],\"name\":\"liquidationCall\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"events\":{\"LiquidationCall(address,address,address,uint256,uint256,address,bool,bool)\":{\"details\":\"Emitted when a borrower is liquidated\",\"params\":{\"collateral\":\"The address of the collateral being liquidated\",\"debtToCover\":\"The total amount liquidated\",\"liquidatedCollateralAmount\":\"The amount of collateral being liquidated\",\"liquidator\":\"The address of the liquidator\",\"principal\":\"The address of the reserve\",\"receiveAToken\":\"true if the liquidator wants to receive aTokens, false otherwise\",\"useAToken\":\"true if the liquidators wants to pay the debt in aTokens*\",\"user\":\"The address of the user being liquidated\"}},\"ReserveUsedAsCollateralDisabled(address,address)\":{\"details\":\"Emitted when a reserve is disabled as collateral for an user\",\"params\":{\"reserve\":\"The address of the reserve\",\"user\":\"The address of the user*\"}},\"ReserveUsedAsCollateralEnabled(address,address)\":{\"details\":\"Emitted when a reserve is enabled as collateral for an user\",\"params\":{\"reserve\":\"The address of the reserve\",\"user\":\"The address of the user*\"}}},\"kind\":\"dev\",\"methods\":{\"liquidationCall(address,address,address,uint256,bool,bool)\":{\"details\":\"Users can invoke this function to liquidate an undercollateralized position.\",\"params\":{\"collateral\":\"The address of the collateral to liquidated\",\"debtToCover\":\"The amount of principal that the liquidator wants to repay\",\"principal\":\"The address of the principal reserve\",\"receiveAToken\":\"true if the liquidators wants to receive the aTokens, false if he wants to receive the underlying asset directly\",\"useAToken\":\"`true` if the liquidators wants to pay the debt in aTokens*\",\"user\":\"The address of the borrower\"}}},\"title\":\"ILendingPoolCollateralManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the actions involving management of collateral in the protocol.*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingPoolCollateralManager.sol\":\"ILendingPoolCollateralManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingPoolCollateralManager.sol\":{\"keccak256\":\"0xdfcfac9426f378bd2adf2e70ef1aeb8f3ea9c2fa374f339443aa5599e22295b2\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://3ecf9a27365d3e817eead27fd58f4ff71629f09b1c8e6fb009c5fe7fdc9fb2f2\",\"dweb:/ipfs/QmcYKRW9HR8pV1Ae4kv6CUozB3ESQYWZjGLNbZiNivf7Ps\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"collateral\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"principal\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"debtToCover\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"liquidatedCollateralAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"liquidator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"receiveAToken\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"useAToken\",\"type\":\"bool\"}],\"name\":\"LiquidationCall\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"reserve\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"ReserveUsedAsCollateralDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"reserve\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"ReserveUsedAsCollateralEnabled\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"collateral\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"principal\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"debtToCover\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"receiveAToken\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useAToken\",\"type\":\"bool\"}],\"name\":\"liquidationCall\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"events\":{\"LiquidationCall(address,address,address,uint256,uint256,address,bool,bool)\":{\"details\":\"Emitted when a borrower is liquidated\",\"params\":{\"collateral\":\"The address of the collateral being liquidated\",\"debtToCover\":\"The total amount liquidated\",\"liquidatedCollateralAmount\":\"The amount of collateral being liquidated\",\"liquidator\":\"The address of the liquidator\",\"principal\":\"The address of the reserve\",\"receiveAToken\":\"true if the liquidator wants to receive aTokens, false otherwise\",\"useAToken\":\"true if the liquidators wants to pay the debt in aTokens*\",\"user\":\"The address of the user being liquidated\"}},\"ReserveUsedAsCollateralDisabled(address,address)\":{\"details\":\"Emitted when a reserve is disabled as collateral for an user\",\"params\":{\"reserve\":\"The address of the reserve\",\"user\":\"The address of the user*\"}},\"ReserveUsedAsCollateralEnabled(address,address)\":{\"details\":\"Emitted when a reserve is enabled as collateral for an user\",\"params\":{\"reserve\":\"The address of the reserve\",\"user\":\"The address of the user*\"}}},\"kind\":\"dev\",\"methods\":{\"liquidationCall(address,address,address,uint256,bool,bool)\":{\"details\":\"Users can invoke this function to liquidate an undercollateralized position.\",\"params\":{\"collateral\":\"The address of the collateral to liquidated\",\"debtToCover\":\"The amount of principal that the liquidator wants to repay\",\"principal\":\"The address of the principal reserve\",\"receiveAToken\":\"true if the liquidators wants to receive the aTokens, false if he wants to receive the underlying asset directly\",\"useAToken\":\"`true` if the liquidators wants to pay the debt in aTokens*\",\"user\":\"The address of the borrower\"}}},\"title\":\"ILendingPoolCollateralManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the actions involving management of collateral in the protocol.*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingPoolCollateralManager.sol\":\"ILendingPoolCollateralManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingPoolCollateralManager.sol\":{\"keccak256\":\"0xf270b6ef05750d1bb1c84f547e61d3692c70ee5d5604967c05b89280062f0c7a\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://d14223c2e89f951fb6bf937e28c0d0e4d8df1410916307054860996c9aa74f69\",\"dweb:/ipfs/QmT8BHuR2yfWSwFCpTc5HFvASJbKwTXaxtnY2GBWc8mD5U\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -358,17 +358,14 @@
       "compilationTarget": {
         "contracts/interfaces/ILendingPoolCollateralManager.sol": "ILendingPoolCollateralManager"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/ILendingPoolCollateralManager.sol": {
-        "keccak256": "0xdfcfac9426f378bd2adf2e70ef1aeb8f3ea9c2fa374f339443aa5599e22295b2",
+        "keccak256": "0xf270b6ef05750d1bb1c84f547e61d3692c70ee5d5604967c05b89280062f0c7a",
         "urls": [
-          "bzz-raw://3ecf9a27365d3e817eead27fd58f4ff71629f09b1c8e6fb009c5fe7fdc9fb2f2",
-          "dweb:/ipfs/QmcYKRW9HR8pV1Ae4kv6CUozB3ESQYWZjGLNbZiNivf7Ps"
+          "bzz-raw://d14223c2e89f951fb6bf937e28c0d0e4d8df1410916307054860996c9aa74f69",
+          "dweb:/ipfs/QmT8BHuR2yfWSwFCpTc5HFvASJbKwTXaxtnY2GBWc8mD5U"
         ],
         "license": "agpl-3.0"
       }
@@ -377,19 +374,19 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/ILendingPoolCollateralManager.sol",
-    "id": 3411,
+    "id": 3407,
     "exportedSymbols": {
       "ILendingPoolCollateralManager": [
-        3410
+        3406
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "37:2370:31",
+    "src": "38:2433:31",
     "nodes": [
       {
-        "id": 3355,
+        "id": 3351,
         "nodeType": "PragmaDirective",
-        "src": "37:23:31",
+        "src": "38:23:31",
         "nodes": [],
         "literals": [
           "solidity",
@@ -398,37 +395,97 @@
         ]
       },
       {
-        "id": 3410,
+        "id": 3406,
         "nodeType": "ContractDefinition",
-        "src": "210:2196:31",
+        "src": "218:2251:31",
         "nodes": [
           {
-            "id": 3375,
+            "id": 3371,
             "nodeType": "EventDefinition",
-            "src": "848:248:31",
+            "src": "868:257:31",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3357,
+              "id": 3353,
               "nodeType": "StructuredDocumentation",
-              "src": "254:591:31",
+              "src": "263:601:31",
               "text": " @dev Emitted when a borrower is liquidated\n @param collateral The address of the collateral being liquidated\n @param principal The address of the reserve\n @param user The address of the user being liquidated\n @param debtToCover The total amount liquidated\n @param liquidatedCollateralAmount The amount of collateral being liquidated\n @param liquidator The address of the liquidator\n @param receiveAToken true if the liquidator wants to receive aTokens, false otherwise\n @param useAToken true if the liquidators wants to pay the debt in aTokens*"
             },
             "name": "LiquidationCall",
             "parameters": {
-              "id": 3374,
+              "id": 3370,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3359,
+                  "id": 3355,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "collateral",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "875:26:31",
+                  "scope": 3371,
+                  "src": "896:26:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3354,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "896:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3357,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "principal",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3371,
+                  "src": "929:25:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3356,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "929:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3359,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3371,
+                  "src": "961:20:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -439,7 +496,7 @@
                     "id": 3358,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "875:7:31",
+                    "src": "961:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -452,28 +509,27 @@
                 {
                   "constant": false,
                   "id": 3361,
-                  "indexed": true,
+                  "indexed": false,
                   "mutability": "mutable",
-                  "name": "principal",
+                  "name": "debtToCover",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "907:25:31",
+                  "scope": 3371,
+                  "src": "988:19:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 3360,
-                    "name": "address",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "907:7:31",
-                    "stateMutability": "nonpayable",
+                    "src": "988:7:31",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
@@ -482,28 +538,27 @@
                 {
                   "constant": false,
                   "id": 3363,
-                  "indexed": true,
+                  "indexed": false,
                   "mutability": "mutable",
-                  "name": "user",
+                  "name": "liquidatedCollateralAmount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "938:20:31",
+                  "scope": 3371,
+                  "src": "1014:34:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 3362,
-                    "name": "address",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "938:7:31",
-                    "stateMutability": "nonpayable",
+                    "src": "1014:7:31",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
@@ -514,25 +569,26 @@
                   "id": 3365,
                   "indexed": false,
                   "mutability": "mutable",
-                  "name": "debtToCover",
+                  "name": "liquidator",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "964:19:31",
+                  "scope": 3371,
+                  "src": "1055:18:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
                   },
                   "typeName": {
                     "id": 3364,
-                    "name": "uint256",
+                    "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "964:7:31",
+                    "src": "1055:7:31",
+                    "stateMutability": "nonpayable",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
                     }
                   },
                   "value": null,
@@ -543,25 +599,25 @@
                   "id": 3367,
                   "indexed": false,
                   "mutability": "mutable",
-                  "name": "liquidatedCollateralAmount",
+                  "name": "receiveAToken",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "989:34:31",
+                  "scope": 3371,
+                  "src": "1080:18:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
                   },
                   "typeName": {
                     "id": 3366,
-                    "name": "uint256",
+                    "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "989:7:31",
+                    "src": "1080:4:31",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
                     }
                   },
                   "value": null,
@@ -572,70 +628,11 @@
                   "id": 3369,
                   "indexed": false,
                   "mutability": "mutable",
-                  "name": "liquidator",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3375,
-                  "src": "1029:18:31",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 3368,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1029:7:31",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3371,
-                  "indexed": false,
-                  "mutability": "mutable",
-                  "name": "receiveAToken",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3375,
-                  "src": "1053:18:31",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 3370,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1053:4:31",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3373,
-                  "indexed": false,
-                  "mutability": "mutable",
                   "name": "useAToken",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3375,
-                  "src": "1077:14:31",
+                  "scope": 3371,
+                  "src": "1105:14:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -643,10 +640,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3372,
+                    "id": 3368,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1077:4:31",
+                    "src": "1105:4:31",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -656,36 +653,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "869:226:31"
+              "src": "889:235:31"
             }
           },
           {
-            "id": 3382,
+            "id": 3378,
             "nodeType": "EventDefinition",
-            "src": "1272:85:31",
+            "src": "1308:85:31",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3376,
+              "id": 3372,
               "nodeType": "StructuredDocumentation",
-              "src": "1100:169:31",
+              "src": "1131:173:31",
               "text": " @dev Emitted when a reserve is disabled as collateral for an user\n @param reserve The address of the reserve\n @param user The address of the user*"
             },
             "name": "ReserveUsedAsCollateralDisabled",
             "parameters": {
-              "id": 3381,
+              "id": 3377,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3378,
+                  "id": 3374,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "reserve",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3382,
-                  "src": "1310:23:31",
+                  "scope": 3378,
+                  "src": "1346:23:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -693,10 +690,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3377,
+                    "id": 3373,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1310:7:31",
+                    "src": "1346:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -708,14 +705,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 3380,
+                  "id": 3376,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3382,
-                  "src": "1335:20:31",
+                  "scope": 3378,
+                  "src": "1371:20:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -723,10 +720,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3379,
+                    "id": 3375,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1335:7:31",
+                    "src": "1371:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -737,36 +734,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1309:47:31"
+              "src": "1345:47:31"
             }
           },
           {
-            "id": 3389,
+            "id": 3385,
             "nodeType": "EventDefinition",
-            "src": "1532:84:31",
+            "src": "1575:84:31",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3383,
+              "id": 3379,
               "nodeType": "StructuredDocumentation",
-              "src": "1361:168:31",
+              "src": "1399:172:31",
               "text": " @dev Emitted when a reserve is enabled as collateral for an user\n @param reserve The address of the reserve\n @param user The address of the user*"
             },
             "name": "ReserveUsedAsCollateralEnabled",
             "parameters": {
-              "id": 3388,
+              "id": 3384,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3385,
+                  "id": 3381,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "reserve",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3389,
-                  "src": "1569:23:31",
+                  "scope": 3385,
+                  "src": "1612:23:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -774,10 +771,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3384,
+                    "id": 3380,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1569:7:31",
+                    "src": "1612:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -789,14 +786,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 3387,
+                  "id": 3383,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3389,
-                  "src": "1594:20:31",
+                  "scope": 3385,
+                  "src": "1637:20:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -804,10 +801,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3386,
+                    "id": 3382,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1594:7:31",
+                    "src": "1637:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -818,18 +815,18 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1568:47:31"
+              "src": "1611:47:31"
             }
           },
           {
-            "id": 3409,
+            "id": 3405,
             "nodeType": "FunctionDefinition",
-            "src": "2199:205:31",
+            "src": "2254:212:31",
             "nodes": [],
             "documentation": {
-              "id": 3390,
+              "id": 3386,
               "nodeType": "StructuredDocumentation",
-              "src": "1620:576:31",
+              "src": "1665:585:31",
               "text": " @dev Users can invoke this function to liquidate an undercollateralized position.\n @param collateral The address of the collateral to liquidated\n @param principal The address of the principal reserve\n @param user The address of the borrower\n @param debtToCover The amount of principal that the liquidator wants to repay\n @param receiveAToken true if the liquidators wants to receive the aTokens, false if\n he wants to receive the underlying asset directly\n @param useAToken `true` if the liquidators wants to pay the debt in aTokens*"
             },
             "functionSelector": "8c1624d8",
@@ -839,18 +836,76 @@
             "name": "liquidationCall",
             "overrides": null,
             "parameters": {
-              "id": 3403,
+              "id": 3399,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3392,
+                  "id": 3388,
                   "mutability": "mutable",
                   "name": "collateral",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2229:18:31",
+                  "scope": 3405,
+                  "src": "2285:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3387,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2285:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3390,
+                  "mutability": "mutable",
+                  "name": "principal",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3405,
+                  "src": "2310:17:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3389,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2310:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3392,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3405,
+                  "src": "2334:12:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -861,7 +916,7 @@
                     "id": 3391,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2229:7:31",
+                    "src": "2334:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -875,26 +930,25 @@
                   "constant": false,
                   "id": 3394,
                   "mutability": "mutable",
-                  "name": "principal",
+                  "name": "debtToCover",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2253:17:31",
+                  "scope": 3405,
+                  "src": "2353:19:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 3393,
-                    "name": "address",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2253:7:31",
-                    "stateMutability": "nonpayable",
+                    "src": "2353:7:31",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
@@ -904,26 +958,25 @@
                   "constant": false,
                   "id": 3396,
                   "mutability": "mutable",
-                  "name": "user",
+                  "name": "receiveAToken",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2276:12:31",
+                  "scope": 3405,
+                  "src": "2379:18:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
                   },
                   "typeName": {
                     "id": 3395,
-                    "name": "address",
+                    "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2276:7:31",
-                    "stateMutability": "nonpayable",
+                    "src": "2379:4:31",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
                     }
                   },
                   "value": null,
@@ -933,67 +986,11 @@
                   "constant": false,
                   "id": 3398,
                   "mutability": "mutable",
-                  "name": "debtToCover",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3409,
-                  "src": "2294:19:31",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3397,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2294:7:31",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3400,
-                  "mutability": "mutable",
-                  "name": "receiveAToken",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3409,
-                  "src": "2319:18:31",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 3399,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2319:4:31",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3402,
-                  "mutability": "mutable",
                   "name": "useAToken",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2343:14:31",
+                  "scope": 3405,
+                  "src": "2404:14:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1001,10 +998,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3401,
+                    "id": 3397,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2343:4:31",
+                    "src": "2404:4:31",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1014,21 +1011,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2223:138:31"
+              "src": "2278:145:31"
             },
             "returnParameters": {
-              "id": 3408,
+              "id": 3404,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3405,
+                  "id": 3401,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2380:7:31",
+                  "scope": 3405,
+                  "src": "2442:7:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1036,10 +1033,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3404,
+                    "id": 3400,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2380:7:31",
+                    "src": "2442:7:31",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1050,13 +1047,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3407,
+                  "id": 3403,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3409,
-                  "src": "2389:13:31",
+                  "scope": 3405,
+                  "src": "2451:13:31",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1064,10 +1061,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 3406,
+                    "id": 3402,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2389:6:31",
+                    "src": "2451:6:31",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1077,9 +1074,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2379:24:31"
+              "src": "2441:24:31"
             },
-            "scope": 3410,
+            "scope": 3406,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1090,17 +1087,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3356,
+          "id": 3352,
           "nodeType": "StructuredDocumentation",
-          "src": "62:147:31",
+          "src": "65:151:31",
           "text": " @title ILendingPoolCollateralManager\n @author Aave\n @notice Defines the actions involving management of collateral in the protocol.*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3410
+          3406
         ],
         "name": "ILendingPoolCollateralManager",
-        "scope": 3411
+        "scope": 3407
       }
     ],
     "license": "agpl-3.0"

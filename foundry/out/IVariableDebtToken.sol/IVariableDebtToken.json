@@ -187,7 +187,7 @@
     "scaledBalanceOf(address)": "1da24f3e",
     "scaledTotalSupply()": "b1bf962d"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getScaledUserBalanceAndSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"scaledBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"scaledTotalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"events\":{\"Burn(address,uint256,uint256)\":{\"details\":\"Emitted when variable debt is burnt\",\"params\":{\"amount\":\"The amount of debt being burned\",\"index\":\"The index of the user*\",\"user\":\"The user which debt has been burned\"}},\"Mint(address,address,uint256,uint256)\":{\"details\":\"Emitted after the mint action\",\"params\":{\"from\":\"The address performing the mint\",\"index\":\"The last index of the reserve*\",\"onBehalfOf\":\"The address of the user on which behalf minting has been performed\",\"value\":\"The amount to be minted\"}}},\"kind\":\"dev\",\"methods\":{\"burn(address,uint256,uint256)\":{\"details\":\"Burns user variable debt\",\"params\":{\"index\":\"The variable debt index of the reserve*\",\"user\":\"The user which debt is burnt\"}},\"getScaledUserBalanceAndSupply(address)\":{\"details\":\"Returns the scaled balance of the user and the scaled total supply.\",\"params\":{\"user\":\"The address of the user\"},\"returns\":{\"_0\":\"The scaled balance of the user\",\"_1\":\"The scaled balance and the scaled total supply*\"}},\"mint(address,address,uint256,uint256)\":{\"details\":\"Mints debt token to the `onBehalfOf` address\",\"params\":{\"amount\":\"The amount of debt being minted\",\"index\":\"The variable debt index of the reserve\",\"onBehalfOf\":\"The address receiving the debt tokens\",\"user\":\"The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise\"},\"returns\":{\"_0\":\"`true` if the the previous balance of the user is 0*\"}},\"scaledBalanceOf(address)\":{\"details\":\"Returns the scaled balance of the user. The scaled balance is the sum of all the updated stored balance divided by the reserve's liquidity index at the moment of the update\",\"params\":{\"user\":\"The user whose balance is calculated\"},\"returns\":{\"_0\":\"The scaled balance of the user*\"}},\"scaledTotalSupply()\":{\"details\":\"Returns the scaled total supply of the variable debt token. Represents sum(debt/index)\",\"returns\":{\"_0\":\"The scaled total supply*\"}}},\"title\":\"IVariableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the basic interface for a variable debt token.*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IVariableDebtToken.sol\":\"IVariableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IScaledBalanceToken.sol\":{\"keccak256\":\"0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98\",\"dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd\"]},\"contracts/interfaces/IVariableDebtToken.sol\":{\"keccak256\":\"0x1d19593a7d04c2a395c1f35f10baee4167624268d6e891cdc70c376e0a7e6062\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e72f581ef2fe7bb5e69d2948663b1e49158d7aeaff7d84150cd5a7a93134aa4e\",\"dweb:/ipfs/QmaLhSGdBZotKRZQth8bMRZrJmCsFNus22zT4ka3yR7Zj2\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getScaledUserBalanceAndSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"scaledBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"scaledTotalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"events\":{\"Burn(address,uint256,uint256)\":{\"details\":\"Emitted when variable debt is burnt\",\"params\":{\"amount\":\"The amount of debt being burned\",\"index\":\"The index of the user*\",\"user\":\"The user which debt has been burned\"}},\"Mint(address,address,uint256,uint256)\":{\"details\":\"Emitted after the mint action\",\"params\":{\"from\":\"The address performing the mint\",\"index\":\"The last index of the reserve*\",\"onBehalfOf\":\"The address of the user on which behalf minting has been performed\",\"value\":\"The amount to be minted\"}}},\"kind\":\"dev\",\"methods\":{\"burn(address,uint256,uint256)\":{\"details\":\"Burns user variable debt\",\"params\":{\"index\":\"The variable debt index of the reserve*\",\"user\":\"The user which debt is burnt\"}},\"getScaledUserBalanceAndSupply(address)\":{\"details\":\"Returns the scaled balance of the user and the scaled total supply.\",\"params\":{\"user\":\"The address of the user\"},\"returns\":{\"_0\":\"The scaled balance of the user\",\"_1\":\"The scaled balance and the scaled total supply*\"}},\"mint(address,address,uint256,uint256)\":{\"details\":\"Mints debt token to the `onBehalfOf` address\",\"params\":{\"amount\":\"The amount of debt being minted\",\"index\":\"The variable debt index of the reserve\",\"onBehalfOf\":\"The address receiving the debt tokens\",\"user\":\"The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise\"},\"returns\":{\"_0\":\"`true` if the the previous balance of the user is 0*\"}},\"scaledBalanceOf(address)\":{\"details\":\"Returns the scaled balance of the user. The scaled balance is the sum of all the updated stored balance divided by the reserve's liquidity index at the moment of the update\",\"params\":{\"user\":\"The user whose balance is calculated\"},\"returns\":{\"_0\":\"The scaled balance of the user*\"}},\"scaledTotalSupply()\":{\"details\":\"Returns the scaled total supply of the variable debt token. Represents sum(debt/index)\",\"returns\":{\"_0\":\"The scaled total supply*\"}}},\"title\":\"IVariableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the basic interface for a variable debt token.*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IVariableDebtToken.sol\":\"IVariableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IScaledBalanceToken.sol\":{\"keccak256\":\"0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98\",\"dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd\"]},\"contracts/interfaces/IVariableDebtToken.sol\":{\"keccak256\":\"0x1d19593a7d04c2a395c1f35f10baee4167624268d6e891cdc70c376e0a7e6062\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e72f581ef2fe7bb5e69d2948663b1e49158d7aeaff7d84150cd5a7a93134aa4e\",\"dweb:/ipfs/QmaLhSGdBZotKRZQth8bMRZrJmCsFNus22zT4ka3yR7Zj2\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -448,10 +448,7 @@
       "compilationTarget": {
         "contracts/interfaces/IVariableDebtToken.sol": "IVariableDebtToken"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/IScaledBalanceToken.sol": {
@@ -475,17 +472,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/IVariableDebtToken.sol",
-    "id": 3704,
+    "id": 3700,
     "exportedSymbols": {
       "IVariableDebtToken": [
-        3703
+        3699
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:1731:39",
     "nodes": [
       {
-        "id": 3653,
+        "id": 3649,
         "nodeType": "PragmaDirective",
         "src": "37:23:39",
         "nodes": [],
@@ -496,19 +493,19 @@
         ]
       },
       {
-        "id": 3655,
+        "id": 3651,
         "nodeType": "ImportDirective",
         "src": "62:62:39",
         "nodes": [],
         "absolutePath": "contracts/interfaces/IScaledBalanceToken.sol",
         "file": "./IScaledBalanceToken.sol",
-        "scope": 3704,
-        "sourceUnit": 3522,
+        "scope": 3700,
+        "sourceUnit": 3518,
         "symbolAliases": [
           {
             "foreign": {
               "argumentTypes": null,
-              "id": 3654,
+              "id": 3650,
               "name": "IScaledBalanceToken",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -525,36 +522,36 @@
         "unitAlias": ""
       },
       {
-        "id": 3703,
+        "id": 3699,
         "nodeType": "ContractDefinition",
         "src": "246:1521:39",
         "nodes": [
           {
-            "id": 3669,
+            "id": 3665,
             "nodeType": "EventDefinition",
             "src": "584:91:39",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3659,
+              "id": 3655,
               "nodeType": "StructuredDocumentation",
               "src": "302:279:39",
               "text": " @dev Emitted after the mint action\n @param from The address performing the mint\n @param onBehalfOf The address of the user on which behalf minting has been performed\n @param value The amount to be minted\n @param index The last index of the reserve*"
             },
             "name": "Mint",
             "parameters": {
-              "id": 3668,
+              "id": 3664,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3661,
+                  "id": 3657,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "from",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3669,
+                  "scope": 3665,
                   "src": "595:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -563,7 +560,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3660,
+                    "id": 3656,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "595:7:39",
@@ -578,13 +575,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3663,
+                  "id": 3659,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "onBehalfOf",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3669,
+                  "scope": 3665,
                   "src": "617:26:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -593,7 +590,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3662,
+                    "id": 3658,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "617:7:39",
@@ -608,13 +605,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3665,
+                  "id": 3661,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "value",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3669,
+                  "scope": 3665,
                   "src": "645:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -623,7 +620,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3664,
+                    "id": 3660,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "645:7:39",
@@ -637,13 +634,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3667,
+                  "id": 3663,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "index",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3669,
+                  "scope": 3665,
                   "src": "660:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -652,7 +649,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3666,
+                    "id": 3662,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "660:7:39",
@@ -669,12 +666,12 @@
             }
           },
           {
-            "id": 3683,
+            "id": 3679,
             "nodeType": "FunctionDefinition",
             "src": "1132:123:39",
             "nodes": [],
             "documentation": {
-              "id": 3670,
+              "id": 3666,
               "nodeType": "StructuredDocumentation",
               "src": "679:450:39",
               "text": " @dev Mints debt token to the `onBehalfOf` address\n @param user The address receiving the borrowed underlying, being the delegatee in case\n of credit delegate, or same as `onBehalfOf` otherwise\n @param onBehalfOf The address receiving the debt tokens\n @param amount The amount of debt being minted\n @param index The variable debt index of the reserve\n @return `true` if the the previous balance of the user is 0*"
@@ -686,17 +683,17 @@
             "name": "mint",
             "overrides": null,
             "parameters": {
-              "id": 3679,
+              "id": 3675,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3672,
+                  "id": 3668,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3683,
+                  "scope": 3679,
                   "src": "1151:12:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -705,7 +702,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3671,
+                    "id": 3667,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1151:7:39",
@@ -720,12 +717,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3674,
+                  "id": 3670,
                   "mutability": "mutable",
                   "name": "onBehalfOf",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3683,
+                  "scope": 3679,
                   "src": "1169:18:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -734,7 +731,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3673,
+                    "id": 3669,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1169:7:39",
@@ -749,12 +746,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3676,
+                  "id": 3672,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3683,
+                  "scope": 3679,
                   "src": "1193:14:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -763,7 +760,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3675,
+                    "id": 3671,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1193:7:39",
@@ -777,12 +774,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3678,
+                  "id": 3674,
                   "mutability": "mutable",
                   "name": "index",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3683,
+                  "scope": 3679,
                   "src": "1213:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -791,7 +788,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3677,
+                    "id": 3673,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1213:7:39",
@@ -807,17 +804,17 @@
               "src": "1145:85:39"
             },
             "returnParameters": {
-              "id": 3682,
+              "id": 3678,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3681,
+                  "id": 3677,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3683,
+                  "scope": 3679,
                   "src": "1249:4:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -826,7 +823,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3680,
+                    "id": 3676,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1249:4:39",
@@ -841,37 +838,37 @@
               ],
               "src": "1248:6:39"
             },
-            "scope": 3703,
+            "scope": 3699,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3692,
+            "id": 3688,
             "nodeType": "EventDefinition",
             "src": "1462:64:39",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3684,
+              "id": 3680,
               "nodeType": "StructuredDocumentation",
               "src": "1259:200:39",
               "text": " @dev Emitted when variable debt is burnt\n @param user The user which debt has been burned\n @param amount The amount of debt being burned\n @param index The index of the user*"
             },
             "name": "Burn",
             "parameters": {
-              "id": 3691,
+              "id": 3687,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3686,
+                  "id": 3682,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3692,
+                  "scope": 3688,
                   "src": "1473:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -880,7 +877,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3685,
+                    "id": 3681,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1473:7:39",
@@ -895,13 +892,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3688,
+                  "id": 3684,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3692,
+                  "scope": 3688,
                   "src": "1495:14:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -910,7 +907,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3687,
+                    "id": 3683,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1495:7:39",
@@ -924,13 +921,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3690,
+                  "id": 3686,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "index",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3692,
+                  "scope": 3688,
                   "src": "1511:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -939,7 +936,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3689,
+                    "id": 3685,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1511:7:39",
@@ -956,12 +953,12 @@
             }
           },
           {
-            "id": 3702,
+            "id": 3698,
             "nodeType": "FunctionDefinition",
             "src": "1681:84:39",
             "nodes": [],
             "documentation": {
-              "id": 3693,
+              "id": 3689,
               "nodeType": "StructuredDocumentation",
               "src": "1530:148:39",
               "text": " @dev Burns user variable debt\n @param user The user which debt is burnt\n @param index The variable debt index of the reserve*"
@@ -973,17 +970,17 @@
             "name": "burn",
             "overrides": null,
             "parameters": {
-              "id": 3700,
+              "id": 3696,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3695,
+                  "id": 3691,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3702,
+                  "scope": 3698,
                   "src": "1700:12:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -992,7 +989,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3694,
+                    "id": 3690,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1700:7:39",
@@ -1007,12 +1004,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3697,
+                  "id": 3693,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3702,
+                  "scope": 3698,
                   "src": "1718:14:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1021,7 +1018,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3696,
+                    "id": 3692,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1718:7:39",
@@ -1035,12 +1032,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3699,
+                  "id": 3695,
                   "mutability": "mutable",
                   "name": "index",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3702,
+                  "scope": 3698,
                   "src": "1738:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1049,7 +1046,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3698,
+                    "id": 3694,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1738:7:39",
@@ -1065,12 +1062,12 @@
               "src": "1694:61:39"
             },
             "returnParameters": {
-              "id": 3701,
+              "id": 3697,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1764:0:39"
             },
-            "scope": 3703,
+            "scope": 3699,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1082,38 +1079,38 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3657,
+              "id": 3653,
               "name": "IScaledBalanceToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3521,
+              "referencedDeclaration": 3517,
               "src": "278:19:39",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IScaledBalanceToken_$3521",
+                "typeIdentifier": "t_contract$_IScaledBalanceToken_$3517",
                 "typeString": "contract IScaledBalanceToken"
               }
             },
-            "id": 3658,
+            "id": 3654,
             "nodeType": "InheritanceSpecifier",
             "src": "278:19:39"
           }
         ],
         "contractDependencies": [
-          3521
+          3517
         ],
         "contractKind": "interface",
         "documentation": {
-          "id": 3656,
+          "id": 3652,
           "nodeType": "StructuredDocumentation",
           "src": "126:119:39",
           "text": " @title IVariableDebtToken\n @author Aave\n @notice Defines the basic interface for a variable debt token.*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3703,
-          3521
+          3699,
+          3517
         ],
         "name": "IVariableDebtToken",
-        "scope": 3704
+        "scope": 3700
       }
     ],
     "license": "agpl-3.0"

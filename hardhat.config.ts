@@ -48,7 +48,7 @@ const getCommonNetworkConfig = (networkName: eEthereumNetwork, networkId: number
   return {
     url: ALCHEMY_KEY
       ? `https://eth-${net}.alchemyapi.io/v2/${ALCHEMY_KEY}`
-      : `https://${net}.infura.io/v3/${INFURA_KEY}`,
+      : `https://gnosischain-rpc.gateway.pokt.network`,
     hardfork: HARDFORK,
     blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
     gasMultiplier: DEFAULT_GAS_MUL,
@@ -86,6 +86,16 @@ const buidlerConfig: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: ETHERSCAN_KEY,
+    /*customChains: [
+      {
+        network: "xdai",
+        chainId: 5,
+        urls: {
+          apiURL: "https://api.gnosisscan.io/api",
+          browserURL: "https://gnosisscan.io"
+        }
+      }
+    ]*/
   },
   mocha: {
     timeout: 0,
@@ -115,7 +125,7 @@ const buidlerConfig: HardhatUserConfig = {
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     xdai: {
       ...getCommonNetworkConfig(eEthereumNetwork.xdai, 100),
-      url: 'https://rpc.gnosis.gateway.fm',
+      url: 'https://gnosischain-rpc.gateway.pokt.network',
       gasPrice: 10000000000,
       blockGasLimit: 7500000,
     },

@@ -31,7 +31,7 @@
     "linkReferences": {}
   },
   "methodIdentifiers": {},
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"int256\",\"name\":\"current\",\"type\":\"int256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"answerId\",\"type\":\"uint256\"}],\"name\":\"AnswerUpdated\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol\":\"ChainlinkUSDETHOracleI\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol\":{\"keccak256\":\"0xf5051e65fedf4fa19ca30380cdd75f3b17163d893ddacf066fd8eaef4190b450\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://60be52634badd5949f033aecbc5b1eb178fefab4c167d1b18b05efdc5c89a89e\",\"dweb:/ipfs/QmcKyyqyPGGnXyL5pa9YU6SfD1Gdg2eR1mnueVKeMFdUuw\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"int256\",\"name\":\"current\",\"type\":\"int256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"answerId\",\"type\":\"uint256\"}],\"name\":\"AnswerUpdated\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol\":\"ChainlinkUSDETHOracleI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol\":{\"keccak256\":\"0xf5051e65fedf4fa19ca30380cdd75f3b17163d893ddacf066fd8eaef4190b450\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://60be52634badd5949f033aecbc5b1eb178fefab4c167d1b18b05efdc5c89a89e\",\"dweb:/ipfs/QmcKyyqyPGGnXyL5pa9YU6SfD1Gdg2eR1mnueVKeMFdUuw\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -98,10 +98,7 @@
       "compilationTarget": {
         "contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol": "ChainlinkUSDETHOracleI"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol": {
@@ -117,17 +114,17 @@
   },
   "ast": {
     "absolutePath": "contracts/mocks/oracle/ChainlinkUSDETHOracleI.sol",
-    "id": 7015,
+    "id": 7011,
     "exportedSymbols": {
       "ChainlinkUSDETHOracleI": [
-        7014
+        7010
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:135:55",
     "nodes": [
       {
-        "id": 7007,
+        "id": 7003,
         "nodeType": "PragmaDirective",
         "src": "37:23:55",
         "nodes": [],
@@ -138,12 +135,12 @@
         ]
       },
       {
-        "id": 7014,
+        "id": 7010,
         "nodeType": "ContractDefinition",
         "src": "62:109:55",
         "nodes": [
           {
-            "id": 7013,
+            "id": 7009,
             "nodeType": "EventDefinition",
             "src": "99:70:55",
             "nodes": [],
@@ -151,18 +148,18 @@
             "documentation": null,
             "name": "AnswerUpdated",
             "parameters": {
-              "id": 7012,
+              "id": 7008,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7009,
+                  "id": 7005,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "current",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7013,
+                  "scope": 7009,
                   "src": "119:22:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -171,7 +168,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 7008,
+                    "id": 7004,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
                     "src": "119:6:55",
@@ -185,13 +182,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7011,
+                  "id": 7007,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "answerId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 7013,
+                  "scope": 7009,
                   "src": "143:24:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -200,7 +197,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7010,
+                    "id": 7006,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "143:7:55",
@@ -224,10 +221,10 @@
         "documentation": null,
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          7014
+          7010
         ],
         "name": "ChainlinkUSDETHOracleI",
-        "scope": 7015
+        "scope": 7011
       }
     ],
     "license": "agpl-3.0"

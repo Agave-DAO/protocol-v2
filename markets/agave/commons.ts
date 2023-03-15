@@ -14,6 +14,7 @@ const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   WBTC: oneEther.multipliedBy('47332.685').toFixed(),
   USD: oneEther.multipliedBy('0.9989384').toFixed(),
   USDT: oneEther.multipliedBy('0.9989384').toFixed(),
+  EURe: oneEther.multipliedBy('1.0989384').toFixed(),
 };
 // ----------------
 // PROTOCOL GLOBAL PARAMS
@@ -66,6 +67,9 @@ export const CommonsConfig: ICommonConfiguration = {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
     FOX: {
+      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
+    },
+    EURe:{
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
   },
@@ -215,6 +219,7 @@ export const CommonsConfig: ICommonConfiguration = {
       LINK: '0xed322a5ac55bae091190dff9066760b86751947b',
       FOX: '0x22441d81416430A54336aB28765abd31a792Ad37',
       USDT: '0x68811D7DF835B1c33e6EEae8E7C141eF48d48cc7',
+      EURe: '0xab70BCB260073d036d1660201e9d5405F5829b7a', //TODO: USE NEW ORACLE IMPLEMENTATION
     },
     [EthereumNetwork.main]: {
       AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',

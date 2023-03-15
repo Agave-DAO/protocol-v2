@@ -106,7 +106,7 @@
     "registerAddressesProvider(address,uint256)": "d258191e",
     "unregisterAddressesProvider(address)": "0de26707"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAddress\",\"type\":\"address\"}],\"name\":\"AddressesProviderRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAddress\",\"type\":\"address\"}],\"name\":\"AddressesProviderUnregistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addressesProvider\",\"type\":\"address\"}],\"name\":\"getAddressesProviderIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAddressesProvidersList\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"registerAddressesProvider\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"unregisterAddressesProvider\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"Main registry of LendingPoolAddressesProvider of multiple Aave protocol's markets - Used for indexing purposes of Aave protocol's markets - The id assigned to a LendingPoolAddressesProvider refers to the market it is connected with,   for example with `0` for the Aave main market and `1` for the next created\",\"kind\":\"dev\",\"methods\":{},\"title\":\"LendingPoolAddressesProviderRegistry contract\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol\":\"ILendingPoolAddressesProviderRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol\":{\"keccak256\":\"0xd730bacab093ef3f723668d8857d04f63c79bd6cd126405ca319dc714c0682c3\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://d6edf23512beaf02216829dcc31e857edf8c8c555c8e2b522752a10da8296865\",\"dweb:/ipfs/QmU4V1hSXqPR4bsiZnP8RRTj1qBxkk43Up6Pch18xPcCC4\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAddress\",\"type\":\"address\"}],\"name\":\"AddressesProviderRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAddress\",\"type\":\"address\"}],\"name\":\"AddressesProviderUnregistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addressesProvider\",\"type\":\"address\"}],\"name\":\"getAddressesProviderIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAddressesProvidersList\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"registerAddressesProvider\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"unregisterAddressesProvider\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"Main registry of LendingPoolAddressesProvider of multiple Aave protocol's markets - Used for indexing purposes of Aave protocol's markets - The id assigned to a LendingPoolAddressesProvider refers to the market it is connected with,   for example with `0` for the Aave main market and `1` for the next created\",\"kind\":\"dev\",\"methods\":{},\"title\":\"LendingPoolAddressesProviderRegistry contract\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol\":\"ILendingPoolAddressesProviderRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol\":{\"keccak256\":\"0xd730bacab093ef3f723668d8857d04f63c79bd6cd126405ca319dc714c0682c3\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://d6edf23512beaf02216829dcc31e857edf8c8c555c8e2b522752a10da8296865\",\"dweb:/ipfs/QmU4V1hSXqPR4bsiZnP8RRTj1qBxkk43Up6Pch18xPcCC4\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -241,10 +241,7 @@
       "compilationTarget": {
         "contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol": "ILendingPoolAddressesProviderRegistry"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol": {
@@ -260,17 +257,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol",
-    "id": 3354,
+    "id": 3350,
     "exportedSymbols": {
       "ILendingPoolAddressesProviderRegistry": [
-        3353
+        3349
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:961:30",
     "nodes": [
       {
-        "id": 3318,
+        "id": 3314,
         "nodeType": "PragmaDirective",
         "src": "37:23:30",
         "nodes": [],
@@ -281,12 +278,12 @@
         ]
       },
       {
-        "id": 3353,
+        "id": 3349,
         "nodeType": "ContractDefinition",
         "src": "470:527:30",
         "nodes": [
           {
-            "id": 3323,
+            "id": 3319,
             "nodeType": "EventDefinition",
             "src": "522:62:30",
             "nodes": [],
@@ -294,18 +291,18 @@
             "documentation": null,
             "name": "AddressesProviderRegistered",
             "parameters": {
-              "id": 3322,
+              "id": 3318,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3321,
+                  "id": 3317,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "newAddress",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3323,
+                  "scope": 3319,
                   "src": "556:26:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -314,7 +311,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3320,
+                    "id": 3316,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "556:7:30",
@@ -332,7 +329,7 @@
             }
           },
           {
-            "id": 3327,
+            "id": 3323,
             "nodeType": "EventDefinition",
             "src": "587:64:30",
             "nodes": [],
@@ -340,18 +337,18 @@
             "documentation": null,
             "name": "AddressesProviderUnregistered",
             "parameters": {
-              "id": 3326,
+              "id": 3322,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3325,
+                  "id": 3321,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "newAddress",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3327,
+                  "scope": 3323,
                   "src": "623:26:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -360,7 +357,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3324,
+                    "id": 3320,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "623:7:30",
@@ -378,7 +375,7 @@
             }
           },
           {
-            "id": 3333,
+            "id": 3329,
             "nodeType": "FunctionDefinition",
             "src": "655:78:30",
             "nodes": [],
@@ -390,23 +387,23 @@
             "name": "getAddressesProvidersList",
             "overrides": null,
             "parameters": {
-              "id": 3328,
+              "id": 3324,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "689:2:30"
             },
             "returnParameters": {
-              "id": 3332,
+              "id": 3328,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3331,
+                  "id": 3327,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3333,
+                  "scope": 3329,
                   "src": "715:16:30",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -416,7 +413,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 3329,
+                      "id": 3325,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "715:7:30",
@@ -426,7 +423,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 3330,
+                    "id": 3326,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "715:9:30",
@@ -441,13 +438,13 @@
               ],
               "src": "714:18:30"
             },
-            "scope": 3353,
+            "scope": 3349,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3340,
+            "id": 3336,
             "nodeType": "FunctionDefinition",
             "src": "737:112:30",
             "nodes": [],
@@ -459,17 +456,17 @@
             "name": "getAddressesProviderIdByAddress",
             "overrides": null,
             "parameters": {
-              "id": 3336,
+              "id": 3332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3335,
+                  "id": 3331,
                   "mutability": "mutable",
                   "name": "addressesProvider",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3340,
+                  "scope": 3336,
                   "src": "778:25:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -478,7 +475,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3334,
+                    "id": 3330,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "778:7:30",
@@ -495,17 +492,17 @@
               "src": "777:27:30"
             },
             "returnParameters": {
-              "id": 3339,
+              "id": 3335,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3338,
+                  "id": 3334,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3340,
+                  "scope": 3336,
                   "src": "840:7:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -514,7 +511,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3337,
+                    "id": 3333,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "840:7:30",
@@ -529,13 +526,13 @@
               ],
               "src": "839:9:30"
             },
-            "scope": 3353,
+            "scope": 3349,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3347,
+            "id": 3343,
             "nodeType": "FunctionDefinition",
             "src": "853:74:30",
             "nodes": [],
@@ -547,17 +544,17 @@
             "name": "registerAddressesProvider",
             "overrides": null,
             "parameters": {
-              "id": 3345,
+              "id": 3341,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3342,
+                  "id": 3338,
                   "mutability": "mutable",
                   "name": "provider",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3347,
+                  "scope": 3343,
                   "src": "888:16:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -566,7 +563,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3341,
+                    "id": 3337,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "888:7:30",
@@ -581,12 +578,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3344,
+                  "id": 3340,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3347,
+                  "scope": 3343,
                   "src": "906:10:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -595,7 +592,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3343,
+                    "id": 3339,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "906:7:30",
@@ -611,18 +608,18 @@
               "src": "887:30:30"
             },
             "returnParameters": {
-              "id": 3346,
+              "id": 3342,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "926:0:30"
             },
-            "scope": 3353,
+            "scope": 3349,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3352,
+            "id": 3348,
             "nodeType": "FunctionDefinition",
             "src": "931:64:30",
             "nodes": [],
@@ -634,17 +631,17 @@
             "name": "unregisterAddressesProvider",
             "overrides": null,
             "parameters": {
-              "id": 3350,
+              "id": 3346,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3349,
+                  "id": 3345,
                   "mutability": "mutable",
                   "name": "provider",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3352,
+                  "scope": 3348,
                   "src": "968:16:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -653,7 +650,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3348,
+                    "id": 3344,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "968:7:30",
@@ -670,12 +667,12 @@
               "src": "967:18:30"
             },
             "returnParameters": {
-              "id": 3351,
+              "id": 3347,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "994:0:30"
             },
-            "scope": 3353,
+            "scope": 3349,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -686,17 +683,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3319,
+          "id": 3315,
           "nodeType": "StructuredDocumentation",
           "src": "62:407:30",
           "text": " @title LendingPoolAddressesProviderRegistry contract\n @dev Main registry of LendingPoolAddressesProvider of multiple Aave protocol's markets\n - Used for indexing purposes of Aave protocol's markets\n - The id assigned to a LendingPoolAddressesProvider refers to the market it is connected with,\n   for example with `0` for the Aave main market and `1` for the next created\n @author Aave*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3353
+          3349
         ],
         "name": "ILendingPoolAddressesProviderRegistry",
-        "scope": 3354
+        "scope": 3350
       }
     ],
     "license": "agpl-3.0"

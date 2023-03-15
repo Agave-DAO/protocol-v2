@@ -301,7 +301,7 @@
     "mint(address,address,uint256,uint256)": "b3f1c93d",
     "principalBalanceOf(address)": "c634dfaa"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAverageStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSupplyData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyAndAvgRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"principalBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"It does not inherit from IERC20 to save in code size\",\"events\":{\"Burn(address,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is burned\",\"params\":{\"amount\":\"The amount being burned\",\"avgStableRate\":\"The new average stable rate after the burning\",\"balanceIncrease\":\"The the increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"user\":\"The address of the user\"}},\"Mint(address,address,uint256,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is minted\",\"params\":{\"amount\":\"The amount minted\",\"avgStableRate\":\"The new average stable rate after the minting\",\"balanceIncrease\":\"The increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newRate\":\"The rate of the debt after the minting\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"onBehalfOf\":\"The recipient of stable debt tokens\",\"user\":\"The address of the user who triggered the minting\"}}},\"kind\":\"dev\",\"methods\":{\"burn(address,uint256)\":{\"details\":\"Burns debt of `user` - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens getting burned*\",\"user\":\"The address of the user getting his debt burned\"}},\"getAverageStableRate()\":{\"details\":\"Returns the average rate of all the stable rate loans.\",\"returns\":{\"_0\":\"The average stable rate*\"}},\"getSupplyData()\":{\"details\":\"Returns the principal, the total supply and the average stable rate*\"},\"getTotalSupplyAndAvgRate()\":{\"details\":\"Returns the total supply and the average stable rate*\"},\"getTotalSupplyLastUpdated()\":{\"details\":\"Returns the timestamp of the last update of the total supply\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserLastUpdated(address)\":{\"details\":\"Returns the timestamp of the last update of the user\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserStableRate(address)\":{\"details\":\"Returns the stable rate of the user debt\",\"returns\":{\"_0\":\"The stable rate of the user*\"}},\"mint(address,address,uint256,uint256)\":{\"details\":\"Mints debt token to the `onBehalfOf` address. - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens to mint\",\"onBehalfOf\":\"The address receiving the debt tokens\",\"rate\":\"The rate of the debt being minted*\",\"user\":\"The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise\"}},\"principalBalanceOf(address)\":{\"details\":\"Returns the principal debt balance of the user\",\"returns\":{\"_0\":\"The debt balance of the user since the last burn/mint action*\"}}},\"title\":\"IStableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the interface for the stable debt token\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IStableDebtToken.sol\":\"IStableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IStableDebtToken.sol\":{\"keccak256\":\"0x687158da06cadc361ca7d1847cf11258fc98c0aea82a07174ef6a4cfe5a4bddf\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e26e5dd0c77eedafbaec0d17384770c6182a4f75464650a3496e6cde5d1f000d\",\"dweb:/ipfs/QmW2PmbJdE2v1pPFg7MZzHHsPWVnexKGRRDH9ZsBBARu6U\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAverageStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSupplyData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyAndAvgRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"principalBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"It does not inherit from IERC20 to save in code size\",\"events\":{\"Burn(address,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is burned\",\"params\":{\"amount\":\"The amount being burned\",\"avgStableRate\":\"The new average stable rate after the burning\",\"balanceIncrease\":\"The the increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"user\":\"The address of the user\"}},\"Mint(address,address,uint256,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is minted\",\"params\":{\"amount\":\"The amount minted\",\"avgStableRate\":\"The new average stable rate after the minting\",\"balanceIncrease\":\"The increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newRate\":\"The rate of the debt after the minting\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"onBehalfOf\":\"The recipient of stable debt tokens\",\"user\":\"The address of the user who triggered the minting\"}}},\"kind\":\"dev\",\"methods\":{\"burn(address,uint256)\":{\"details\":\"Burns debt of `user` - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens getting burned*\",\"user\":\"The address of the user getting his debt burned\"}},\"getAverageStableRate()\":{\"details\":\"Returns the average rate of all the stable rate loans.\",\"returns\":{\"_0\":\"The average stable rate*\"}},\"getSupplyData()\":{\"details\":\"Returns the principal, the total supply and the average stable rate*\"},\"getTotalSupplyAndAvgRate()\":{\"details\":\"Returns the total supply and the average stable rate*\"},\"getTotalSupplyLastUpdated()\":{\"details\":\"Returns the timestamp of the last update of the total supply\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserLastUpdated(address)\":{\"details\":\"Returns the timestamp of the last update of the user\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserStableRate(address)\":{\"details\":\"Returns the stable rate of the user debt\",\"returns\":{\"_0\":\"The stable rate of the user*\"}},\"mint(address,address,uint256,uint256)\":{\"details\":\"Mints debt token to the `onBehalfOf` address. - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens to mint\",\"onBehalfOf\":\"The address receiving the debt tokens\",\"rate\":\"The rate of the debt being minted*\",\"user\":\"The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise\"}},\"principalBalanceOf(address)\":{\"details\":\"Returns the principal debt balance of the user\",\"returns\":{\"_0\":\"The debt balance of the user since the last burn/mint action*\"}}},\"title\":\"IStableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the interface for the stable debt token\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IStableDebtToken.sol\":\"IStableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IStableDebtToken.sol\":{\"keccak256\":\"0x687158da06cadc361ca7d1847cf11258fc98c0aea82a07174ef6a4cfe5a4bddf\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://e26e5dd0c77eedafbaec0d17384770c6182a4f75464650a3496e6cde5d1f000d\",\"dweb:/ipfs/QmW2PmbJdE2v1pPFg7MZzHHsPWVnexKGRRDH9ZsBBARu6U\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -680,10 +680,7 @@
       "compilationTarget": {
         "contracts/interfaces/IStableDebtToken.sol": "IStableDebtToken"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/IStableDebtToken.sol": {
@@ -699,17 +696,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/IStableDebtToken.sol",
-    "id": 3638,
+    "id": 3634,
     "exportedSymbols": {
       "IStableDebtToken": [
-        3637
+        3633
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:3991:37",
     "nodes": [
       {
-        "id": 3523,
+        "id": 3519,
         "nodeType": "PragmaDirective",
         "src": "37:23:37",
         "nodes": [],
@@ -720,36 +717,36 @@
         ]
       },
       {
-        "id": 3637,
+        "id": 3633,
         "nodeType": "ContractDefinition",
         "src": "235:3792:37",
         "nodes": [
           {
-            "id": 3543,
+            "id": 3539,
             "nodeType": "EventDefinition",
             "src": "857:226:37",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3525,
+              "id": 3521,
               "nodeType": "StructuredDocumentation",
               "src": "266:588:37",
               "text": " @dev Emitted when new stable debt is minted\n @param user The address of the user who triggered the minting\n @param onBehalfOf The recipient of stable debt tokens\n @param amount The amount minted\n @param currentBalance The current balance of the user\n @param balanceIncrease The increase in balance since the last action of the user\n @param newRate The rate of the debt after the minting\n @param avgStableRate The new average stable rate after the minting\n @param newTotalSupply The new total supply of the stable debt token after the action*"
             },
             "name": "Mint",
             "parameters": {
-              "id": 3542,
+              "id": 3538,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3527,
+                  "id": 3523,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "873:20:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -758,7 +755,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3526,
+                    "id": 3522,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "873:7:37",
@@ -773,13 +770,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3529,
+                  "id": 3525,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "onBehalfOf",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "899:26:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -788,7 +785,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3528,
+                    "id": 3524,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "899:7:37",
@@ -803,13 +800,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3531,
+                  "id": 3527,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "931:14:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -818,7 +815,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3530,
+                    "id": 3526,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "931:7:37",
@@ -832,13 +829,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3533,
+                  "id": 3529,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "currentBalance",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "951:22:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -847,7 +844,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3532,
+                    "id": 3528,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "951:7:37",
@@ -861,13 +858,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3535,
+                  "id": 3531,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "balanceIncrease",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "979:23:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -876,7 +873,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3534,
+                    "id": 3530,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "979:7:37",
@@ -890,13 +887,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3537,
+                  "id": 3533,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newRate",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "1008:15:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -905,7 +902,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3536,
+                    "id": 3532,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1008:7:37",
@@ -919,13 +916,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3539,
+                  "id": 3535,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "avgStableRate",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "1029:21:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -934,7 +931,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3538,
+                    "id": 3534,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1029:7:37",
@@ -948,13 +945,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3541,
+                  "id": 3537,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newTotalSupply",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3543,
+                  "scope": 3539,
                   "src": "1056:22:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -963,7 +960,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3540,
+                    "id": 3536,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1056:7:37",
@@ -980,31 +977,31 @@
             }
           },
           {
-            "id": 3558,
+            "id": 3554,
             "nodeType": "EventDefinition",
             "src": "1544:173:37",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 3544,
+              "id": 3540,
               "nodeType": "StructuredDocumentation",
               "src": "1087:454:37",
               "text": " @dev Emitted when new stable debt is burned\n @param user The address of the user\n @param amount The amount being burned\n @param currentBalance The current balance of the user\n @param balanceIncrease The the increase in balance since the last action of the user\n @param avgStableRate The new average stable rate after the burning\n @param newTotalSupply The new total supply of the stable debt token after the action*"
             },
             "name": "Burn",
             "parameters": {
-              "id": 3557,
+              "id": 3553,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3546,
+                  "id": 3542,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1560:20:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1013,7 +1010,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3545,
+                    "id": 3541,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1560:7:37",
@@ -1028,13 +1025,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3548,
+                  "id": 3544,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1586:14:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1043,7 +1040,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3547,
+                    "id": 3543,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1586:7:37",
@@ -1057,13 +1054,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3550,
+                  "id": 3546,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "currentBalance",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1606:22:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1072,7 +1069,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3549,
+                    "id": 3545,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1606:7:37",
@@ -1086,13 +1083,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3552,
+                  "id": 3548,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "balanceIncrease",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1634:23:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1101,7 +1098,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3551,
+                    "id": 3547,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1634:7:37",
@@ -1115,13 +1112,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3554,
+                  "id": 3550,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "avgStableRate",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1663:21:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1130,7 +1127,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3553,
+                    "id": 3549,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1663:7:37",
@@ -1144,13 +1141,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3556,
+                  "id": 3552,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newTotalSupply",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3558,
+                  "scope": 3554,
                   "src": "1690:22:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1159,7 +1156,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3555,
+                    "id": 3551,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1690:7:37",
@@ -1176,12 +1173,12 @@
             }
           },
           {
-            "id": 3572,
+            "id": 3568,
             "nodeType": "FunctionDefinition",
             "src": "2228:122:37",
             "nodes": [],
             "documentation": {
-              "id": 3559,
+              "id": 3555,
               "nodeType": "StructuredDocumentation",
               "src": "1721:504:37",
               "text": " @dev Mints debt token to the `onBehalfOf` address.\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address receiving the borrowed underlying, being the delegatee in case\n of credit delegate, or same as `onBehalfOf` otherwise\n @param onBehalfOf The address receiving the debt tokens\n @param amount The amount of debt tokens to mint\n @param rate The rate of the debt being minted*"
@@ -1193,17 +1190,17 @@
             "name": "mint",
             "overrides": null,
             "parameters": {
-              "id": 3568,
+              "id": 3564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3561,
+                  "id": 3557,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3572,
+                  "scope": 3568,
                   "src": "2247:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1212,7 +1209,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3560,
+                    "id": 3556,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2247:7:37",
@@ -1227,12 +1224,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3563,
+                  "id": 3559,
                   "mutability": "mutable",
                   "name": "onBehalfOf",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3572,
+                  "scope": 3568,
                   "src": "2265:18:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1241,7 +1238,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3562,
+                    "id": 3558,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2265:7:37",
@@ -1256,12 +1253,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3565,
+                  "id": 3561,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3572,
+                  "scope": 3568,
                   "src": "2289:14:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1270,7 +1267,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3564,
+                    "id": 3560,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2289:7:37",
@@ -1284,12 +1281,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3567,
+                  "id": 3563,
                   "mutability": "mutable",
                   "name": "rate",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3572,
+                  "scope": 3568,
                   "src": "2309:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1298,7 +1295,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3566,
+                    "id": 3562,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2309:7:37",
@@ -1314,17 +1311,17 @@
               "src": "2241:84:37"
             },
             "returnParameters": {
-              "id": 3571,
+              "id": 3567,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3570,
+                  "id": 3566,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3572,
+                  "scope": 3568,
                   "src": "2344:4:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1333,7 +1330,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3569,
+                    "id": 3565,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2344:4:37",
@@ -1348,18 +1345,18 @@
               ],
               "src": "2343:6:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3580,
+            "id": 3576,
             "nodeType": "FunctionDefinition",
             "src": "2645:53:37",
             "nodes": [],
             "documentation": {
-              "id": 3573,
+              "id": 3569,
               "nodeType": "StructuredDocumentation",
               "src": "2354:288:37",
               "text": " @dev Burns debt of `user`\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address of the user getting his debt burned\n @param amount The amount of debt tokens getting burned*"
@@ -1371,17 +1368,17 @@
             "name": "burn",
             "overrides": null,
             "parameters": {
-              "id": 3578,
+              "id": 3574,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3575,
+                  "id": 3571,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3580,
+                  "scope": 3576,
                   "src": "2659:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1390,7 +1387,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3574,
+                    "id": 3570,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2659:7:37",
@@ -1405,12 +1402,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3577,
+                  "id": 3573,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3580,
+                  "scope": 3576,
                   "src": "2673:14:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1419,7 +1416,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3576,
+                    "id": 3572,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2673:7:37",
@@ -1435,23 +1432,23 @@
               "src": "2658:30:37"
             },
             "returnParameters": {
-              "id": 3579,
+              "id": 3575,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2697:0:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3586,
+            "id": 3582,
             "nodeType": "FunctionDefinition",
             "src": "2817:64:37",
             "nodes": [],
             "documentation": {
-              "id": 3581,
+              "id": 3577,
               "nodeType": "StructuredDocumentation",
               "src": "2702:112:37",
               "text": " @dev Returns the average rate of all the stable rate loans.\n @return The average stable rate*"
@@ -1463,23 +1460,23 @@
             "name": "getAverageStableRate",
             "overrides": null,
             "parameters": {
-              "id": 3582,
+              "id": 3578,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2846:2:37"
             },
             "returnParameters": {
-              "id": 3585,
+              "id": 3581,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3584,
+                  "id": 3580,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3586,
+                  "scope": 3582,
                   "src": "2872:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1488,7 +1485,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3583,
+                    "id": 3579,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2872:7:37",
@@ -1503,18 +1500,18 @@
               ],
               "src": "2871:9:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3594,
+            "id": 3590,
             "nodeType": "FunctionDefinition",
             "src": "2990:73:37",
             "nodes": [],
             "documentation": {
-              "id": 3587,
+              "id": 3583,
               "nodeType": "StructuredDocumentation",
               "src": "2885:102:37",
               "text": " @dev Returns the stable rate of the user debt\n @return The stable rate of the user*"
@@ -1526,17 +1523,17 @@
             "name": "getUserStableRate",
             "overrides": null,
             "parameters": {
-              "id": 3590,
+              "id": 3586,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3589,
+                  "id": 3585,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3594,
+                  "scope": 3590,
                   "src": "3017:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1545,7 +1542,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3588,
+                    "id": 3584,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3017:7:37",
@@ -1562,17 +1559,17 @@
               "src": "3016:14:37"
             },
             "returnParameters": {
-              "id": 3593,
+              "id": 3589,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3592,
+                  "id": 3588,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3594,
+                  "scope": 3590,
                   "src": "3054:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1581,7 +1578,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3591,
+                    "id": 3587,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "3054:7:37",
@@ -1596,18 +1593,18 @@
               ],
               "src": "3053:9:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3602,
+            "id": 3598,
             "nodeType": "FunctionDefinition",
             "src": "3170:73:37",
             "nodes": [],
             "documentation": {
-              "id": 3595,
+              "id": 3591,
               "nodeType": "StructuredDocumentation",
               "src": "3067:100:37",
               "text": " @dev Returns the timestamp of the last update of the user\n @return The timestamp*"
@@ -1619,17 +1616,17 @@
             "name": "getUserLastUpdated",
             "overrides": null,
             "parameters": {
-              "id": 3598,
+              "id": 3594,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3597,
+                  "id": 3593,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3602,
+                  "scope": 3598,
                   "src": "3198:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1638,7 +1635,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3596,
+                    "id": 3592,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3198:7:37",
@@ -1655,17 +1652,17 @@
               "src": "3197:14:37"
             },
             "returnParameters": {
-              "id": 3601,
+              "id": 3597,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3600,
+                  "id": 3596,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3602,
+                  "scope": 3598,
                   "src": "3235:6:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1674,7 +1671,7 @@
                     "typeString": "uint40"
                   },
                   "typeName": {
-                    "id": 3599,
+                    "id": 3595,
                     "name": "uint40",
                     "nodeType": "ElementaryTypeName",
                     "src": "3235:6:37",
@@ -1689,18 +1686,18 @@
               ],
               "src": "3234:8:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3614,
+            "id": 3610,
             "nodeType": "FunctionDefinition",
             "src": "3338:125:37",
             "nodes": [],
             "documentation": {
-              "id": 3603,
+              "id": 3599,
               "nodeType": "StructuredDocumentation",
               "src": "3247:88:37",
               "text": " @dev Returns the principal, the total supply and the average stable rate*"
@@ -1712,15 +1709,71 @@
             "name": "getSupplyData",
             "overrides": null,
             "parameters": {
-              "id": 3604,
+              "id": 3600,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3360:2:37"
             },
             "returnParameters": {
-              "id": 3613,
+              "id": 3609,
               "nodeType": "ParameterList",
               "parameters": [
+                {
+                  "constant": false,
+                  "id": 3602,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3610,
+                  "src": "3405:7:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3601,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3405:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3604,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3610,
+                  "src": "3420:7:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3603,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3420:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
                 {
                   "constant": false,
                   "id": 3606,
@@ -1728,8 +1781,8 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3614,
-                  "src": "3405:7:37",
+                  "scope": 3610,
+                  "src": "3435:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1740,7 +1793,7 @@
                     "id": 3605,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3405:7:37",
+                    "src": "3435:7:37",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1756,63 +1809,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3614,
-                  "src": "3420:7:37",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3607,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "3420:7:37",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3610,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3614,
-                  "src": "3435:7:37",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3609,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "3435:7:37",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3612,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 3614,
+                  "scope": 3610,
                   "src": "3450:6:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1821,7 +1818,7 @@
                     "typeString": "uint40"
                   },
                   "typeName": {
-                    "id": 3611,
+                    "id": 3607,
                     "name": "uint40",
                     "nodeType": "ElementaryTypeName",
                     "src": "3450:6:37",
@@ -1836,18 +1833,18 @@
               ],
               "src": "3397:65:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3620,
+            "id": 3616,
             "nodeType": "FunctionDefinition",
             "src": "3578:68:37",
             "nodes": [],
             "documentation": {
-              "id": 3615,
+              "id": 3611,
               "nodeType": "StructuredDocumentation",
               "src": "3467:108:37",
               "text": " @dev Returns the timestamp of the last update of the total supply\n @return The timestamp*"
@@ -1859,23 +1856,23 @@
             "name": "getTotalSupplyLastUpdated",
             "overrides": null,
             "parameters": {
-              "id": 3616,
+              "id": 3612,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3612:2:37"
             },
             "returnParameters": {
-              "id": 3619,
+              "id": 3615,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3618,
+                  "id": 3614,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3620,
+                  "scope": 3616,
                   "src": "3638:6:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1884,7 +1881,7 @@
                     "typeString": "uint40"
                   },
                   "typeName": {
-                    "id": 3617,
+                    "id": 3613,
                     "name": "uint40",
                     "nodeType": "ElementaryTypeName",
                     "src": "3638:6:37",
@@ -1899,18 +1896,18 @@
               ],
               "src": "3637:8:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3628,
+            "id": 3624,
             "nodeType": "FunctionDefinition",
             "src": "3726:77:37",
             "nodes": [],
             "documentation": {
-              "id": 3621,
+              "id": 3617,
               "nodeType": "StructuredDocumentation",
               "src": "3650:73:37",
               "text": " @dev Returns the total supply and the average stable rate*"
@@ -1922,23 +1919,23 @@
             "name": "getTotalSupplyAndAvgRate",
             "overrides": null,
             "parameters": {
-              "id": 3622,
+              "id": 3618,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3759:2:37"
             },
             "returnParameters": {
-              "id": 3627,
+              "id": 3623,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3624,
+                  "id": 3620,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3628,
+                  "scope": 3624,
                   "src": "3785:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1947,7 +1944,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3623,
+                    "id": 3619,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "3785:7:37",
@@ -1961,12 +1958,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3626,
+                  "id": 3622,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3628,
+                  "scope": 3624,
                   "src": "3794:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1975,7 +1972,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3625,
+                    "id": 3621,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "3794:7:37",
@@ -1990,18 +1987,18 @@
               ],
               "src": "3784:18:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3636,
+            "id": 3632,
             "nodeType": "FunctionDefinition",
             "src": "3951:74:37",
             "nodes": [],
             "documentation": {
-              "id": 3629,
+              "id": 3625,
               "nodeType": "StructuredDocumentation",
               "src": "3807:141:37",
               "text": " @dev Returns the principal debt balance of the user\n @return The debt balance of the user since the last burn/mint action*"
@@ -2013,17 +2010,17 @@
             "name": "principalBalanceOf",
             "overrides": null,
             "parameters": {
-              "id": 3632,
+              "id": 3628,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3631,
+                  "id": 3627,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3636,
+                  "scope": 3632,
                   "src": "3979:12:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2032,7 +2029,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3630,
+                    "id": 3626,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3979:7:37",
@@ -2049,17 +2046,17 @@
               "src": "3978:14:37"
             },
             "returnParameters": {
-              "id": 3635,
+              "id": 3631,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3634,
+                  "id": 3630,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3636,
+                  "scope": 3632,
                   "src": "4016:7:37",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2068,7 +2065,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3633,
+                    "id": 3629,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "4016:7:37",
@@ -2083,7 +2080,7 @@
               ],
               "src": "4015:9:37"
             },
-            "scope": 3637,
+            "scope": 3633,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -2094,17 +2091,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3524,
+          "id": 3520,
           "nodeType": "StructuredDocumentation",
           "src": "62:171:37",
           "text": " @title IStableDebtToken\n @notice Defines the interface for the stable debt token\n @dev It does not inherit from IERC20 to save in code size\n @author Aave*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3637
+          3633
         ],
         "name": "IStableDebtToken",
-        "scope": 3638
+        "scope": 3634
       }
     ],
     "license": "agpl-3.0"

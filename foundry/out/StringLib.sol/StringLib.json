@@ -1,17 +1,17 @@
 {
   "abi": [],
   "bytecode": {
-    "object": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f459f77ff2bdfd35093d2eaeb145d18d155ff83976c66fb467803408d1d4828d64736f6c634300060c0033",
+    "object": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220064cfd7bd16bfd83dcb41491898808aadd3c913d51048234d4c18f5122a0098664736f6c634300060c0033",
     "sourceMap": "62:160:18:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
-    "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f459f77ff2bdfd35093d2eaeb145d18d155ff83976c66fb467803408d1d4828d64736f6c634300060c0033",
+    "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220064cfd7bd16bfd83dcb41491898808aadd3c913d51048234d4c18f5122a0098664736f6c634300060c0033",
     "sourceMap": "62:160:18:-:0;;;;;;;;",
     "linkReferences": {}
   },
   "methodIdentifiers": {},
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/deployments/StringLib.sol\":\"StringLib\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/deployments/StringLib.sol\":{\"keccak256\":\"0xc68a3438cbff04f73d42a86fd1e7cdc44aa5913014723971a1c971d177156091\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://dccb278c012dd8f51ad9b7514e64c85edc2e4c1affb88c0b649c23c7ae160609\",\"dweb:/ipfs/QmfTuPqnzPoXZ8wbG3MFV3p7RdxfGMM7PPJ7ZHr9RpRnJd\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/deployments/StringLib.sol\":\"StringLib\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/deployments/StringLib.sol\":{\"keccak256\":\"0xc68a3438cbff04f73d42a86fd1e7cdc44aa5913014723971a1c971d177156091\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://dccb278c012dd8f51ad9b7514e64c85edc2e4c1affb88c0b649c23c7ae160609\",\"dweb:/ipfs/QmfTuPqnzPoXZ8wbG3MFV3p7RdxfGMM7PPJ7ZHr9RpRnJd\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -58,10 +58,7 @@
       "compilationTarget": {
         "contracts/deployments/StringLib.sol": "StringLib"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/deployments/StringLib.sol": {

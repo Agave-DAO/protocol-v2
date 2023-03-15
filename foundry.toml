@@ -15,7 +15,7 @@ block_timestamp = 0
 gas_reports = ["*"]
 eth_rpc_url = 'https://rpc.gnosis.gateway.fm'
 verbosity = 3
-libraries=["contracts/protocol/libraries/logic/ReserveLogic.sol:ReserveLogic:0x1B0348c67D01a46627CE1d8f9e2E218c9eaE9966","contracts/protocol/libraries/logic/ValidationLogic.sol:ValidationLogic:0x09bf5d4dff196c000fb735f94e4b22340b25e678"]
+# libraries=["contracts/protocol/libraries/logic/ReserveLogic.sol:ReserveLogic:0x1B0348c67D01a46627CE1d8f9e2E218c9eaE9966","contracts/protocol/libraries/logic/ValidationLogic.sol:ValidationLogic:0x09bf5d4dff196c000fb735f94e4b22340b25e678"]
 
 [profile.default.optimizer_details]
 constantOptimizer = true
@@ -24,4 +24,4 @@ yul = true
 [profile.default.optimizer_details.yulDetails]
 stackAllocation = true
 optimizerSteps = 'dhfoDgvulfnTUtnIf'
-optimizer_runs = 200 
+optimizer_runs = 200  

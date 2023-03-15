@@ -41,7 +41,7 @@
     "POOL()": "7535d246",
     "UNDERLYING_ASSET_ADDRESS()": "b16a19de"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"POOL\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UNDERLYING_ASSET_ADDRESS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"details\":\"Common interface between aTokens and debt tokens to fetch the token configuration*\",\"kind\":\"dev\",\"methods\":{},\"title\":\"ITokenConfiguration\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ITokenConfiguration.sol\":\"ITokenConfiguration\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ITokenConfiguration.sol\":{\"keccak256\":\"0x4bf4297a79fd3df0188936e75dfb1bb5781f8362e49fbf8924d48b106c5ce4bb\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://79246fdb266dc097179d5c1b8b101047d163cbc157bacdb7bd57975e8fff93b6\",\"dweb:/ipfs/QmeTMM1mA1vjeDeoF9oWiKZgbqXrnCy9C4yitDqGJbeyMP\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"POOL\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UNDERLYING_ASSET_ADDRESS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave\",\"details\":\"Common interface between aTokens and debt tokens to fetch the token configuration*\",\"kind\":\"dev\",\"methods\":{},\"title\":\"ITokenConfiguration\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ITokenConfiguration.sol\":\"ITokenConfiguration\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ITokenConfiguration.sol\":{\"keccak256\":\"0x4bf4297a79fd3df0188936e75dfb1bb5781f8362e49fbf8924d48b106c5ce4bb\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://79246fdb266dc097179d5c1b8b101047d163cbc157bacdb7bd57975e8fff93b6\",\"dweb:/ipfs/QmeTMM1mA1vjeDeoF9oWiKZgbqXrnCy9C4yitDqGJbeyMP\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -115,10 +115,7 @@
       "compilationTarget": {
         "contracts/interfaces/ITokenConfiguration.sol": "ITokenConfiguration"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/ITokenConfiguration.sol": {
@@ -134,17 +131,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/ITokenConfiguration.sol",
-    "id": 3652,
+    "id": 3648,
     "exportedSymbols": {
       "ITokenConfiguration": [
-        3651
+        3647
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:331:38",
     "nodes": [
       {
-        "id": 3639,
+        "id": 3635,
         "nodeType": "PragmaDirective",
         "src": "37:24:38",
         "nodes": [],
@@ -156,12 +153,12 @@
         ]
       },
       {
-        "id": 3651,
+        "id": 3647,
         "nodeType": "ContractDefinition",
         "src": "211:156:38",
         "nodes": [
           {
-            "id": 3645,
+            "id": 3641,
             "nodeType": "FunctionDefinition",
             "src": "245:68:38",
             "nodes": [],
@@ -173,23 +170,23 @@
             "name": "UNDERLYING_ASSET_ADDRESS",
             "overrides": null,
             "parameters": {
-              "id": 3641,
+              "id": 3637,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "278:2:38"
             },
             "returnParameters": {
-              "id": 3644,
+              "id": 3640,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3643,
+                  "id": 3639,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3645,
+                  "scope": 3641,
                   "src": "304:7:38",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -198,7 +195,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3642,
+                    "id": 3638,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "304:7:38",
@@ -214,13 +211,13 @@
               ],
               "src": "303:9:38"
             },
-            "scope": 3651,
+            "scope": 3647,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3650,
+            "id": 3646,
             "nodeType": "FunctionDefinition",
             "src": "317:48:38",
             "nodes": [],
@@ -232,23 +229,23 @@
             "name": "POOL",
             "overrides": null,
             "parameters": {
-              "id": 3646,
+              "id": 3642,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "330:2:38"
             },
             "returnParameters": {
-              "id": 3649,
+              "id": 3645,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3648,
+                  "id": 3644,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3650,
+                  "scope": 3646,
                   "src": "356:7:38",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -257,7 +254,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3647,
+                    "id": 3643,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "356:7:38",
@@ -273,7 +270,7 @@
               ],
               "src": "355:9:38"
             },
-            "scope": 3651,
+            "scope": 3647,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -284,17 +281,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3640,
+          "id": 3636,
           "nodeType": "StructuredDocumentation",
           "src": "63:147:38",
           "text": " @title ITokenConfiguration\n @author Aave\n @dev Common interface between aTokens and debt tokens to fetch the\n token configuration*"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3651
+          3647
         ],
         "name": "ITokenConfiguration",
-        "scope": 3652
+        "scope": 3648
       }
     ],
     "license": "agpl-3.0"

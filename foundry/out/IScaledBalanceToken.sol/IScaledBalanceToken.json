@@ -72,7 +72,7 @@
     "scaledBalanceOf(address)": "1da24f3e",
     "scaledTotalSupply()": "b1bf962d"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getScaledUserBalanceAndSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"scaledBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"scaledTotalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getScaledUserBalanceAndSupply(address)\":{\"details\":\"Returns the scaled balance of the user and the scaled total supply.\",\"params\":{\"user\":\"The address of the user\"},\"returns\":{\"_0\":\"The scaled balance of the user\",\"_1\":\"The scaled balance and the scaled total supply*\"}},\"scaledBalanceOf(address)\":{\"details\":\"Returns the scaled balance of the user. The scaled balance is the sum of all the updated stored balance divided by the reserve's liquidity index at the moment of the update\",\"params\":{\"user\":\"The user whose balance is calculated\"},\"returns\":{\"_0\":\"The scaled balance of the user*\"}},\"scaledTotalSupply()\":{\"details\":\"Returns the scaled total supply of the variable debt token. Represents sum(debt/index)\",\"returns\":{\"_0\":\"The scaled total supply*\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IScaledBalanceToken.sol\":\"IScaledBalanceToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IScaledBalanceToken.sol\":{\"keccak256\":\"0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98\",\"dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getScaledUserBalanceAndSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"scaledBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"scaledTotalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getScaledUserBalanceAndSupply(address)\":{\"details\":\"Returns the scaled balance of the user and the scaled total supply.\",\"params\":{\"user\":\"The address of the user\"},\"returns\":{\"_0\":\"The scaled balance of the user\",\"_1\":\"The scaled balance and the scaled total supply*\"}},\"scaledBalanceOf(address)\":{\"details\":\"Returns the scaled balance of the user. The scaled balance is the sum of all the updated stored balance divided by the reserve's liquidity index at the moment of the update\",\"params\":{\"user\":\"The user whose balance is calculated\"},\"returns\":{\"_0\":\"The scaled balance of the user*\"}},\"scaledTotalSupply()\":{\"details\":\"Returns the scaled total supply of the variable debt token. Represents sum(debt/index)\",\"returns\":{\"_0\":\"The scaled total supply*\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IScaledBalanceToken.sol\":\"IScaledBalanceToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IScaledBalanceToken.sol\":{\"keccak256\":\"0x03f77c8f37be8f08723b82ccc7c000da0152839632a5c3952c292a2ea0b1b491\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c8cbe31d5cd705ef15b40c0d9a48dace17797a314fa1d8d93edd412537e8ac98\",\"dweb:/ipfs/QmYuKD5D5NVakZ41XRxHvMUXUG4Hn83E9YyxJMrMCjPZxd\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -202,10 +202,7 @@
       "compilationTarget": {
         "contracts/interfaces/IScaledBalanceToken.sol": "IScaledBalanceToken"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/interfaces/IScaledBalanceToken.sol": {
@@ -221,17 +218,17 @@
   },
   "ast": {
     "absolutePath": "contracts/interfaces/IScaledBalanceToken.sol",
-    "id": 3522,
+    "id": 3518,
     "exportedSymbols": {
       "IScaledBalanceToken": [
-        3521
+        3517
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:978:36",
     "nodes": [
       {
-        "id": 3496,
+        "id": 3492,
         "nodeType": "PragmaDirective",
         "src": "37:23:36",
         "nodes": [],
@@ -242,17 +239,17 @@
         ]
       },
       {
-        "id": 3521,
+        "id": 3517,
         "nodeType": "ContractDefinition",
         "src": "62:952:36",
         "nodes": [
           {
-            "id": 3504,
+            "id": 3500,
             "nodeType": "FunctionDefinition",
             "src": "395:71:36",
             "nodes": [],
             "documentation": {
-              "id": 3497,
+              "id": 3493,
               "nodeType": "StructuredDocumentation",
               "src": "96:296:36",
               "text": " @dev Returns the scaled balance of the user. The scaled balance is the sum of all the\n updated stored balance divided by the reserve's liquidity index at the moment of the update\n @param user The user whose balance is calculated\n @return The scaled balance of the user*"
@@ -264,17 +261,17 @@
             "name": "scaledBalanceOf",
             "overrides": null,
             "parameters": {
-              "id": 3500,
+              "id": 3496,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3499,
+                  "id": 3495,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3504,
+                  "scope": 3500,
                   "src": "420:12:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -283,7 +280,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3498,
+                    "id": 3494,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "420:7:36",
@@ -300,17 +297,17 @@
               "src": "419:14:36"
             },
             "returnParameters": {
-              "id": 3503,
+              "id": 3499,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3502,
+                  "id": 3498,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3504,
+                  "scope": 3500,
                   "src": "457:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -319,7 +316,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3501,
+                    "id": 3497,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "457:7:36",
@@ -334,18 +331,18 @@
               ],
               "src": "456:9:36"
             },
-            "scope": 3521,
+            "scope": 3517,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3514,
+            "id": 3510,
             "nodeType": "FunctionDefinition",
             "src": "706:94:36",
             "nodes": [],
             "documentation": {
-              "id": 3505,
+              "id": 3501,
               "nodeType": "StructuredDocumentation",
               "src": "470:233:36",
               "text": " @dev Returns the scaled balance of the user and the scaled total supply.\n @param user The address of the user\n @return The scaled balance of the user\n @return The scaled balance and the scaled total supply*"
@@ -357,17 +354,17 @@
             "name": "getScaledUserBalanceAndSupply",
             "overrides": null,
             "parameters": {
-              "id": 3508,
+              "id": 3504,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3507,
+                  "id": 3503,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3514,
+                  "scope": 3510,
                   "src": "745:12:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -376,7 +373,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3506,
+                    "id": 3502,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "745:7:36",
@@ -393,17 +390,17 @@
               "src": "744:14:36"
             },
             "returnParameters": {
-              "id": 3513,
+              "id": 3509,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3510,
+                  "id": 3506,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3514,
+                  "scope": 3510,
                   "src": "782:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -412,7 +409,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3509,
+                    "id": 3505,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "782:7:36",
@@ -426,12 +423,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3512,
+                  "id": 3508,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3514,
+                  "scope": 3510,
                   "src": "791:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -440,7 +437,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3511,
+                    "id": 3507,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "791:7:36",
@@ -455,18 +452,18 @@
               ],
               "src": "781:18:36"
             },
-            "scope": 3521,
+            "scope": 3517,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 3520,
+            "id": 3516,
             "nodeType": "FunctionDefinition",
             "src": "951:61:36",
             "nodes": [],
             "documentation": {
-              "id": 3515,
+              "id": 3511,
               "nodeType": "StructuredDocumentation",
               "src": "804:144:36",
               "text": " @dev Returns the scaled total supply of the variable debt token. Represents sum(debt/index)\n @return The scaled total supply*"
@@ -478,23 +475,23 @@
             "name": "scaledTotalSupply",
             "overrides": null,
             "parameters": {
-              "id": 3516,
+              "id": 3512,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "977:2:36"
             },
             "returnParameters": {
-              "id": 3519,
+              "id": 3515,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3518,
+                  "id": 3514,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3520,
+                  "scope": 3516,
                   "src": "1003:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -503,7 +500,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3517,
+                    "id": 3513,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1003:7:36",
@@ -518,7 +515,7 @@
               ],
               "src": "1002:9:36"
             },
-            "scope": 3521,
+            "scope": 3517,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -531,10 +528,10 @@
         "documentation": null,
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          3521
+          3517
         ],
         "name": "IScaledBalanceToken",
-        "scope": 3522
+        "scope": 3518
       }
     ],
     "license": "agpl-3.0"

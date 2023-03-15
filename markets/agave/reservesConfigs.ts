@@ -375,3 +375,20 @@ export const strategyFOX: IReserveParams = {
   aTokenImpl: eContractid.AToken,
   reserveFactor: '2000',
 };
+
+export const strategyEURe: IReserveParams = {
+  optimalUtilizationRate: new BigNumber(0.45).multipliedBy(oneRay).toFixed(),
+  baseVariableBorrowRate: new BigNumber(0).multipliedBy(oneRay).toFixed(),
+  variableRateSlope1: new BigNumber(0.07).multipliedBy(oneRay).toFixed(),
+  variableRateSlope2: new BigNumber(0.5).multipliedBy(oneRay).toFixed(),
+  stableRateSlope1: new BigNumber(0.08).multipliedBy(oneRay).toFixed(),
+  stableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
+  baseLTVAsCollateral: '6500',
+  liquidationThreshold: '7000',
+  liquidationBonus: '11500',
+  borrowingEnabled: false,
+  stableBorrowRateEnabled: true,
+  reserveDecimals: '18',
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: '1500',
+};

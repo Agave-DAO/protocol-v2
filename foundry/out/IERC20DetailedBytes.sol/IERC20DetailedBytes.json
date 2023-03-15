@@ -41,12 +41,12 @@
     }
   ],
   "bytecode": {
-    "object": "0x608060405234801561001057600080fd5b5060ad8061001f6000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c806306fdde03146041578063313ce56714605957806395d89b4114605f575b600080fd5b60476065565b60408051918252519081900360200190f35b6047606b565b60476071565b60005481565b60025481565b6001548156fea26469706673582212209f78ca9bc96e09ac7022f8c6371097913523d280e93674becb476e2627a9062b64736f6c634300060c0033",
+    "object": "0x608060405234801561001057600080fd5b5060ad8061001f6000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c806306fdde03146041578063313ce56714605957806395d89b4114605f575b600080fd5b60476065565b60408051918252519081900360200190f35b6047606b565b60476071565b60005481565b60025481565b6001548156fea264697066735822122080b07c6ad030396059f208909c31fe66dc55055bd797cf9878972bce80a08e2c64736f6c634300060c0033",
     "sourceMap": "62:107:45:-:0;;;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
-    "object": "0x6080604052348015600f57600080fd5b5060043610603c5760003560e01c806306fdde03146041578063313ce56714605957806395d89b4114605f575b600080fd5b60476065565b60408051918252519081900360200190f35b6047606b565b60476071565b60005481565b60025481565b6001548156fea26469706673582212209f78ca9bc96e09ac7022f8c6371097913523d280e93674becb476e2627a9062b64736f6c634300060c0033",
+    "object": "0x6080604052348015600f57600080fd5b5060043610603c5760003560e01c806306fdde03146041578063313ce56714605957806395d89b4114605f575b600080fd5b60476065565b60408051918252519081900360200190f35b6047606b565b60476071565b60005481565b60025481565b6001548156fea264697066735822122080b07c6ad030396059f208909c31fe66dc55055bd797cf9878972bce80a08e2c64736f6c634300060c0033",
     "sourceMap": "62:107:45:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;95:19;;;:::i;:::-;;;;;;;;;;;;;;;;143:23;;;:::i;118:21::-;;;:::i;95:19::-;;;;:::o;143:23::-;;;;:::o;118:21::-;;;;:::o",
     "linkReferences": {}
   },
@@ -55,7 +55,7 @@
     "name()": "06fdde03",
     "symbol()": "95d89b41"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/misc/interfaces/IERC20DetailedBytes.sol\":\"IERC20DetailedBytes\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"ReserveLogic\":\"0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966\",\"ValidationLogic\":\"0x09bf5d4dff196c000fb735f94e4b22340b25e678\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/misc/interfaces/IERC20DetailedBytes.sol\":{\"keccak256\":\"0x9c4e726f58c389e0540605654a60e82211092af34ef52404767fe3efffbb63d6\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://90e66a79fb58cc179d15fd2a97518fb86084c9edf2917842d539c5b8a48ae37c\",\"dweb:/ipfs/QmRN5th4jY4eU6UUwSt4E8Y2uNStimkTjcLbrkdJguhNGf\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/misc/interfaces/IERC20DetailedBytes.sol\":\"IERC20DetailedBytes\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=foundry/lib/ds-test/src/\",\":forge-std/=foundry/lib/forge-std/src/\"]},\"sources\":{\"contracts/misc/interfaces/IERC20DetailedBytes.sol\":{\"keccak256\":\"0x9c4e726f58c389e0540605654a60e82211092af34ef52404767fe3efffbb63d6\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://90e66a79fb58cc179d15fd2a97518fb86084c9edf2917842d539c5b8a48ae37c\",\"dweb:/ipfs/QmRN5th4jY4eU6UUwSt4E8Y2uNStimkTjcLbrkdJguhNGf\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.6.12+commit.27d51765"
@@ -142,10 +142,7 @@
       "compilationTarget": {
         "contracts/misc/interfaces/IERC20DetailedBytes.sol": "IERC20DetailedBytes"
       },
-      "libraries": {
-        "ReserveLogic": "0x1b0348c67d01a46627ce1d8f9e2e218c9eae9966",
-        "ValidationLogic": "0x09bf5d4dff196c000fb735f94e4b22340b25e678"
-      }
+      "libraries": {}
     },
     "sources": {
       "contracts/misc/interfaces/IERC20DetailedBytes.sol": {
@@ -161,17 +158,17 @@
   },
   "ast": {
     "absolutePath": "contracts/misc/interfaces/IERC20DetailedBytes.sol",
-    "id": 5908,
+    "id": 5904,
     "exportedSymbols": {
       "IERC20DetailedBytes": [
-        5907
+        5903
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:133:45",
     "nodes": [
       {
-        "id": 5900,
+        "id": 5896,
         "nodeType": "PragmaDirective",
         "src": "37:23:45",
         "nodes": [],
@@ -182,12 +179,12 @@
         ]
       },
       {
-        "id": 5907,
+        "id": 5903,
         "nodeType": "ContractDefinition",
         "src": "62:107:45",
         "nodes": [
           {
-            "id": 5902,
+            "id": 5898,
             "nodeType": "VariableDeclaration",
             "src": "95:19:45",
             "nodes": [],
@@ -196,7 +193,7 @@
             "mutability": "mutable",
             "name": "name",
             "overrides": null,
-            "scope": 5907,
+            "scope": 5903,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -204,7 +201,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 5901,
+              "id": 5897,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "95:7:45",
@@ -217,7 +214,7 @@
             "visibility": "public"
           },
           {
-            "id": 5904,
+            "id": 5900,
             "nodeType": "VariableDeclaration",
             "src": "118:21:45",
             "nodes": [],
@@ -226,7 +223,7 @@
             "mutability": "mutable",
             "name": "symbol",
             "overrides": null,
-            "scope": 5907,
+            "scope": 5903,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -234,7 +231,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 5903,
+              "id": 5899,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "118:7:45",
@@ -247,7 +244,7 @@
             "visibility": "public"
           },
           {
-            "id": 5906,
+            "id": 5902,
             "nodeType": "VariableDeclaration",
             "src": "143:23:45",
             "nodes": [],
@@ -256,7 +253,7 @@
             "mutability": "mutable",
             "name": "decimals",
             "overrides": null,
-            "scope": 5907,
+            "scope": 5903,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -264,7 +261,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 5905,
+              "id": 5901,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
               "src": "143:7:45",
@@ -284,10 +281,10 @@
         "documentation": null,
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          5907
+          5903
         ],
         "name": "IERC20DetailedBytes",
-        "scope": 5908
+        "scope": 5904
       }
     ],
     "license": "agpl-3.0"

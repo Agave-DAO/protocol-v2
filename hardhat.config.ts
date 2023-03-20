@@ -145,9 +145,6 @@ const buidlerConfig: HardhatUserConfig = {
         balance,
       })),
       forking: mainnetFork,
-      mining: {
-        auto: true,
-      },
     },
     buidlerevm_docker: {
       hardfork: 'berlin',

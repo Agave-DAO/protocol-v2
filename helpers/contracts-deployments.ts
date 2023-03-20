@@ -652,8 +652,8 @@ export const deployStaticATokenLM = async (
   const args: [string, string, string, string, string] = [
     pool,
     aTokenAddress,
-    `Wrapped ${symbol}`,
-    symbol,
+    `Compounding ${symbol}`,
+    `c${symbol}`,
     incentivesController,
   ];
 

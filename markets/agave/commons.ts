@@ -9,12 +9,13 @@ const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   HNY: oneEther.multipliedBy('1002.508581').toFixed(),
   GNO: oneEther.multipliedBy('455.58220000').toFixed(),
   FOX: oneEther.multipliedBy('0.35313437').toFixed(),
-  WETH: oneEther.multipliedBy('271.04928').toFixed(),
+  WETH: oneEther.multipliedBy('1871.04928').toFixed(),
   LINK: oneEther.multipliedBy('24.28322').toFixed(),
   WBTC: oneEther.multipliedBy('47332.685').toFixed(),
   USD: oneEther.multipliedBy('0.9989384').toFixed(),
   USDT: oneEther.multipliedBy('0.9989384').toFixed(),
   EURe: oneEther.multipliedBy('1.0989384').toFixed(),
+  wstETH: oneEther.multipliedBy('1871.09890').toFixed(),
 };
 // ----------------
 // PROTOCOL GLOBAL PARAMS
@@ -42,9 +43,6 @@ export const CommonsConfig: ICommonConfiguration = {
     },
   },
   LendingRateOracleRatesCommon: {
-    HNY: {
-      borrowRate: oneRay.multipliedBy(0.03).toFixed(),
-    },
     WBTC: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
@@ -57,20 +55,17 @@ export const CommonsConfig: ICommonConfiguration = {
     USDC: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
-    AGVE: {
-      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
-    },
     LINK: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
     GNO: {
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
     },
-    FOX: {
-      borrowRate: oneRay.multipliedBy(0.039).toFixed(),
-    },
     EURe:{
       borrowRate: oneRay.multipliedBy(0.039).toFixed(),
+    },
+    wstETH: {
+      borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
   },
   // ----------------
@@ -220,6 +215,7 @@ export const CommonsConfig: ICommonConfiguration = {
       FOX: '0x22441d81416430A54336aB28765abd31a792Ad37',
       USDT: '0x68811D7DF835B1c33e6EEae8E7C141eF48d48cc7',
       EURe: '0xab70BCB260073d036d1660201e9d5405F5829b7a', //TODO: USE NEW ORACLE IMPLEMENTATION
+      wstETH: '0xae27e63307963850c4d30BFba78FC1116d7b48C3',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',

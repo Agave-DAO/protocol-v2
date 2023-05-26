@@ -3,28 +3,16 @@ import { IAaveConfiguration, EthereumNetwork, eEthereumNetwork } from '../../hel
 
 import { CommonsConfig } from './commons';
 import {
-  strategyBUSD,
   strategyDAI,
-  strategySUSD,
-  strategyTUSD,
   strategyUSDC,
   strategyUSDT,
-  strategyAAVE,
-  strategyBAT,
-  strategyZRX,
-  strategyKNC,
   strategyLINK,
-  strategyMANA,
-  strategyMKR,
-  strategyREN,
-  strategySNX,
-  strategyUNI,
   strategyWBTC,
   strategyWETH,
-  strategyYFI,
   strategyGNO,
   strategyFOX,
   strategyEURe,
+  strategywstETH,
 } from './reservesConfigs';
 
 // ----------------
@@ -46,6 +34,7 @@ export const AaveConfig: IAaveConfiguration = {
     FOX: strategyFOX,
     USDT: strategyUSDT,
     EURe: strategyEURe,
+    wstETH: strategywstETH,
   },
   ReserveAssets: {
     [eEthereumNetwork.buidlerevm]: {},
@@ -100,6 +89,7 @@ export const AaveConfig: IAaveConfiguration = {
       FOX: '0x21a42669643f45Bc0e086b8Fc2ed70c23D67509d',
       USDT: '0x4ECaBa5870353805a9F068101A40E0f32ed605C6',
       EURe: '0xcB444e90D8198415266c6a2724b7900fb12FC56E',
+      wstETH: '0x6C76971f98945AE98dD7d4DFcA8711ebea946eA6',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',

@@ -1,25 +1,25 @@
 {
   "AToken": {
     "xdai": {
-      "address": "0xdC77A058E11C341a54890DEA56a3F4fAf992F381",
+      "address": "0x3e2081400517E9eF8436401E0c06dC2cBe9eC2d2",
       "deployer": "0xBF8d706C844F1849B063870a42417C20227276F6"
     }
   },
   "StableDebtToken": {
     "xdai": {
-      "address": "0x059c47CDad2C96CA5551921124b75B82119BF73a",
+      "address": "0x5D9a99C1E2B0D7B0a446688FFaFB5189baC7Dc09",
       "deployer": "0xBF8d706C844F1849B063870a42417C20227276F6"
     }
   },
   "VariableDebtToken": {
     "xdai": {
-      "address": "0xF6373624d8ce43E7c5e5904B9f5d7AF3ecf3A2c4",
+      "address": "0x9546320a15179d0F4ac6F5Dc0996C43Fa87325B0",
       "deployer": "0xBF8d706C844F1849B063870a42417C20227276F6"
     }
   },
   "DefaultReserveInterestRateStrategy": {
     "xdai": {
-      "address": "0x152fe5a19e4A4740699Bfd519BE89c9F7540927F",
+      "address": "0xF7f88000be29D179015fB2C5eE466743f6386EDC",
       "deployer": "0xBF8d706C844F1849B063870a42417C20227276F6"
     }
   },

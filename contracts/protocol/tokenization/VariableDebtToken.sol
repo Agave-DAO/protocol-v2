@@ -15,7 +15,7 @@ import {DebtTokenBase} from './base/DebtTokenBase.sol';
 contract VariableDebtToken is DebtTokenBase, IVariableDebtToken {
   using WadRayMath for uint256;
 
-  uint256 public constant DEBT_TOKEN_REVISION = 0x2;
+  uint256 public constant DEBT_TOKEN_REVISION = 0x1;
 
   constructor(
     address pool,

@@ -9,7 +9,7 @@ import {
 } from '../../helpers/configuration';
 import { ZERO_ADDRESS } from '../../helpers/constants';
 import {
-  getAaveProtocolDataProvider,
+  getAgaveProtocolDataProvider,
   getAddressById,
   getLendingPool,
   getLendingPoolAddressesProvider,
@@ -55,7 +55,7 @@ task('verify:general', 'Deploy oracles for dev enviroment')
       const lendingPoolImpl = await getLendingPoolImpl();
       const lendingPoolConfiguratorImpl = await getLendingPoolConfiguratorImpl();
       const lendingPoolCollateralManagerImpl = await getLendingPoolCollateralManagerImpl();
-      const dataProvider = await getAaveProtocolDataProvider();
+      const dataProvider = await getAgaveProtocolDataProvider();
       const walletProvider = await getWalletProvider();
       const wethGateway = await getWETHGateway();
 

@@ -3,19 +3,16 @@ import { oneEther, oneRay, RAY, ZERO_ADDRESS } from '../../helpers/constants';
 import { ICommonConfiguration, EthereumNetwork, eEthereumNetwork } from '../../helpers/types';
 
 const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
-  AGVE: oneEther.multipliedBy('1.043620948469').toFixed(),
   USDC: oneEther.multipliedBy('1.00133843').toFixed(),
   WNATIVE: oneEther.toFixed(),
-  HNY: oneEther.multipliedBy('1002.508581').toFixed(),
   GNO: oneEther.multipliedBy('455.58220000').toFixed(),
-  FOX: oneEther.multipliedBy('0.35313437').toFixed(),
   WETH: oneEther.multipliedBy('1871.04928').toFixed(),
   LINK: oneEther.multipliedBy('24.28322').toFixed(),
   WBTC: oneEther.multipliedBy('47332.685').toFixed(),
-  USD: oneEther.multipliedBy('0.9989384').toFixed(),
   USDT: oneEther.multipliedBy('0.9989384').toFixed(),
   EURe: oneEther.multipliedBy('1.0989384').toFixed(),
   wstETH: oneEther.multipliedBy('1871.09890').toFixed(),
+  sDAI: oneEther.multipliedBy('1.09890').toFixed(),
 };
 // ----------------
 // PROTOCOL GLOBAL PARAMS
@@ -67,6 +64,9 @@ export const CommonsConfig: ICommonConfiguration = {
     wstETH: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
+    sDAI: {
+      borrowRate: oneRay.multipliedBy(0.01).toFixed(),
+    },
   },
   // ----------------
   // COMMON PROTOCOL ADDRESSES ACROSS POOLS
@@ -76,7 +76,6 @@ export const CommonsConfig: ICommonConfiguration = {
   PoolAdmin: {
     [eEthereumNetwork.coverage]: undefined,
     [eEthereumNetwork.buidlerevm]: undefined,
-    [eEthereumNetwork.coverage]: undefined,
     [eEthereumNetwork.hardhat]: undefined,
     [eEthereumNetwork.kovan]: undefined,
     [eEthereumNetwork.rinkeby]: undefined,
@@ -169,9 +168,6 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.hardhat]: {},
     [eEthereumNetwork.buidlerevm]: {},
     [EthereumNetwork.kovan]: {
-      AGVE: '', // actually AAVE
-      WXDAI: '', // actually DAI
-      HNY: '', // actually MKR
       WBTC: '0xF7904a295A029a3aBDFFB6F12755974a958C7C25',
       WETH: '',
       USD: '0x9326BFA02ADD2366b30bacB125260Af641031331',
@@ -212,10 +208,10 @@ export const CommonsConfig: ICommonConfiguration = {
       WNATIVE: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       USD: '0x678df3415fc31947dA4324eC63212874be5a82f8',
       LINK: '0xed322a5ac55bae091190dff9066760b86751947b',
-      FOX: '0x22441d81416430A54336aB28765abd31a792Ad37',
       USDT: '0x68811D7DF835B1c33e6EEae8E7C141eF48d48cc7',
-      EURe: '0xab70BCB260073d036d1660201e9d5405F5829b7a', //TODO: USE NEW ORACLE IMPLEMENTATION
+      EURe: '0xab70BCB260073d036d1660201e9d5405F5829b7a', 
       wstETH: '0xae27e63307963850c4d30BFba78FC1116d7b48C3',
+      sDAI: '0x2CD3494BB70A30f042FCfcCAB4D192F6B7449042',
     },
     [EthereumNetwork.main]: {
       AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',

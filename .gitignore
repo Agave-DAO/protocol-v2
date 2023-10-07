@@ -12,7 +12,8 @@ build/
 old-test/
 out/
 
-
+foundry/out/
+foundry/lib/
 coverage
 .coverage_artifacts
 .coverage_cache

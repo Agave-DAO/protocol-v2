@@ -55,7 +55,7 @@ export enum eContractid {
   DelegationAwareAToken = 'DelegationAwareAToken',
   MockStableDebtToken = 'MockStableDebtToken',
   MockVariableDebtToken = 'MockVariableDebtToken',
-  AaveProtocolDataProvider = 'AaveProtocolDataProvider',
+  AgaveProtocolDataProvider = 'AgaveProtocolDataProvider',
   IERC20Detailed = 'IERC20Detailed',
   StableDebtToken = 'StableDebtToken',
   VariableDebtToken = 'VariableDebtToken',
@@ -187,18 +187,16 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
-  //AGVE: T;
   USDC: T;
   GNO: T;
   LINK: T;
   WETH: T;
   WNATIVE: T;
   WBTC: T;
-  USD: T;
-  FOX: T;
   USDT: T;
   EURe: T;
   wstETH: T;
+  sDAI:T;
 }
 
 export type iAssetsWithoutETH<T> = Omit<iAssetBase<T>, 'ETH'>;
@@ -207,8 +205,7 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  //  | 'AGVE'
-  'USDC' | 'GNO' | 'WNATIVE' | 'WBTC' | 'WETH' | 'LINK' | 'FOX' | 'USDT' | 'EURe' | 'wstETH'
+  'USDC' | 'GNO' | 'WNATIVE' | 'WBTC' | 'WETH' | 'LINK' | 'USDT' | 'EURe' | 'wstETH' | 'sDAI'
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
@@ -218,19 +215,16 @@ export type iAavePoolTokens<T> = Omit<iAavePoolAssets<T>, 'ETH'>;
 export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
 export enum TokenContractId {
-  AGVE = 'AGVE',
-  HNY = 'HNY',
   WETH = 'WETH',
   WNATIVE = 'WNATIVE',
   LINK = 'LINK',
   USDC = 'USDC',
   WBTC = 'WBTC',
-  USD = 'USD',
-  FOX = 'FOX',
   GNO = 'GNO',
   USDT = 'USDT',
   EURe = 'EURe',
   wstETH = 'wstETH',
+  sDAI = 'sDAI',
 }
 
 export interface IReserveParams extends IReserveBorrowParams, IReserveCollateralParams {

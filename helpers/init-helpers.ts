@@ -5,10 +5,10 @@ import {
   IReserveParams,
   tEthereumAddress,
 } from './types';
-import { AaveProtocolDataProvider } from '../types/AaveProtocolDataProvider';
+import { AgaveProtocolDataProvider } from './types/AgaveProtocolDataProvider';
 import { chunk, DRE, getDb, waitForTx } from './misc-utils';
 import {
-  getAaveProtocolDataProvider,
+  getAgaveProtocolDataProvider,
   getAToken,
   getATokensAndRatesHelper,
   getLendingPoolAddressesProvider,
@@ -277,7 +277,7 @@ export const initReservesByHelper = async (
 export const configureReservesByHelper = async (
   reservesParams: iMultiPoolsAssets<IReserveParams>,
   tokenAddresses: { [symbol: string]: tEthereumAddress },
-  helpers: AaveProtocolDataProvider,
+  helpers: AgaveProtocolDataProvider,
   admin: tEthereumAddress
 ) => {
   const addressProvider = await getLendingPoolAddressesProvider();
@@ -384,7 +384,7 @@ export const initTokenReservesByHelper = async (
     await getLendingPoolAddressesProvider(addressesProviderAddress)
   ).connect(signer);
   const protocolDataProvider = await (
-    await getAaveProtocolDataProvider(dataProviderAddress)
+    await getAgaveProtocolDataProvider(dataProviderAddress)
   ).connect(signer);
   const poolAddress = await addressProvider.getLendingPool();
 
@@ -420,7 +420,7 @@ export const initTokenReservesByHelper = async (
     }
     let stableTokenImpl = await getAddressById(`stableDebt${symbol}`, network);
     let variableTokenImpl = await getAddressById(`variableDebt${symbol}`, network);
-    let aTokenImplementation = await getAddressById(`a${symbol}`, network);
+    let aTokenImplementation = await getAddressById(`ag${symbol}`, network);
     let strategyImpl = await getAddressById(`strategy${symbol}`, network);
 
     if (!stableTokenImpl) {
@@ -428,7 +428,7 @@ export const initTokenReservesByHelper = async (
         [
           poolAddress,
           tokenAddresses[symbol],
-          `Aave stable debt bearing ${symbol}`,
+          `Agave stable debt bearing ${symbol}`,
           `stableDebt${symbol}`,
           ZERO_ADDRESS,
         ],
@@ -441,7 +441,7 @@ export const initTokenReservesByHelper = async (
         [
           poolAddress,
           tokenAddresses[symbol],
-          `Aave variable debt bearing ${symbol}`,
+          `Agave variable debt bearing ${symbol}`,
           `variableDebt${symbol}`,
           ZERO_ADDRESS,
         ],
@@ -493,7 +493,7 @@ export const initTokenReservesByHelper = async (
       );
       strategyImpl = rates.address;
     }
-    const symbols = [`a${symbol}`, `variableDebt${symbol}`, `stableDebt${symbol}`];
+    const symbols = [`ag${symbol}`, `variableDebt${symbol}`, `stableDebt${symbol}`];
     const tokens = [aTokenImplementation, variableTokenImpl, stableTokenImpl];
     for (let index = 0; index < symbols.length; index++) {
       if (!(await isErc20SymbolCorrect(tokens[index], symbols[index]))) {

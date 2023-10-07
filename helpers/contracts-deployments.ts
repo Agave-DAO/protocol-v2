@@ -252,13 +252,13 @@ export const deployWalletBalancerProvider = async (verify?: boolean) =>
     verify
   );
 
-export const deployAaveProtocolDataProvider = async (
+export const deployAgaveProtocolDataProvider = async (
   addressesProvider: tEthereumAddress,
   verify?: boolean
 ) =>
   withSaveAndVerify(
     await new AgaveProtocolDataProviderFactory(await getFirstSigner()).deploy(addressesProvider),
-    eContractid.AaveProtocolDataProvider,
+    eContractid.AgaveProtocolDataProvider,
     [addressesProvider],
     verify
   );

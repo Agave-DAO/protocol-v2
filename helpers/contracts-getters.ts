@@ -99,10 +99,10 @@ export const getIErc20Detailed = async (address: tEthereumAddress) =>
     await getFirstSigner()
   );
 
-export const getAaveProtocolDataProvider = async (address?: tEthereumAddress) =>
+export const getAgaveProtocolDataProvider = async (address?: tEthereumAddress) =>
   await AgaveProtocolDataProviderFactory.connect(
     address ||
-      (await getDb().get(`${eContractid.AaveProtocolDataProvider}.${DRE.network.name}`).value())
+      (await getDb().get(`${eContractid.AgaveProtocolDataProvider}.${DRE.network.name}`).value())
         .address,
     await getFirstSigner()
   );

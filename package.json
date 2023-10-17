@@ -145,6 +145,7 @@
   ],
   "license": "AGPLv3",
   "dependencies": {
+    "@poanet/solidity-flattener": "^3.0.9",
     "escape-string-regexp": "^4.0.0",
     "tmp-promise": "^3.0.2"
   },
